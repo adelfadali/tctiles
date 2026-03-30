@@ -1,206 +1,1130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artisan Tile & Stone | Precision Flooring</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>True Craft Tile & Stone | Professional Tile Installation</title>
+    <meta name="description" content="True Craft Tile & Stone in Shakopee, MN. Serving the Metro area with 25+ years of expert tile and stone installation. Call 612-702-0502 for free estimate!" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        h1, h2 { font-family: 'Playfair Display', serif; }
-        .tile-pattern {
-            background-color: #ffffff;
-            background-image:  radial-gradient(#e5e7eb 1px, transparent 1px);
-            background-size: 20px 20px;
+        /* Reset & Base */
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background: #f9f9f9;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        .preloader.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .loader {
+            border: 5px solid rgba(255,255,255,0.1);
+            border-top: 5px solid #fff;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% {transform: rotate(0deg);}
+            100% {transform: rotate(360deg);}
+        }
+
+        /* Navbar */
+        nav.navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+        nav.navbar.scrolled {
+            background: #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        .nav-logo img.logo-img {
+            max-height: 50px;
+            object-fit: contain;
+        }
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+        .nav-link {
+            font-weight: 500;
+            color: #333;
+            position: relative;
+            padding: 4px 0;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #1e3c72;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #1e3c72;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .cta-button {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 10px 26px;
+            border-radius: 30px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 6px 15px rgba(30,60,114,0.3);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .cta-button:hover {
+            background: linear-gradient(135deg, #2a5298, #1e3c72);
+            transform: translateY(-3px);
+        }
+
+        /* Hamburger (mobile) */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            width: 25px;
+            height: 20px;
+            justify-content: center;
+        }
+        .hamburger span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background: #333;
+            border-radius: 1.5px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 0 20px;
+        }
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 100px 0;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        .title-line {
+            display: block;
+            animation: slideInUp 1s ease forwards;
+            opacity: 0;
+        }
+        .title-line:nth-child(1) { animation-delay: 0.3s; }
+        .title-line:nth-child(2) { animation-delay: 0.6s; }
+        .title-line:nth-child(3) { animation-delay: 0.9s; }
+        @keyframes slideInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .hero-subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: #d0d9f7;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 30px;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            display: block;
+        }
+        .stat-label {
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 0.725rem;
+            color: #b0c4ff;
+            margin-top: 6px;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: #f4c242;
+            color: #1e3c72;
+            padding: 14px 34px;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 6px 15px rgba(244, 194, 66, 0.5);
+            transition: background 0.3s ease, transform 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-primary:hover {
+            background: #d1a60c;
+            transform: translateY(-3px);
+        }
+        .btn-secondary {
+            border: 2px solid #f4c242;
+            color: white;
+            padding: 14px 34px;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background: #f4c242;
+            color: #1e3c72;
+            transform: translateY(-3px);
+        }
+        .btn-large {
+            font-size: 1.1rem;
+        }
+
+        /* Floating tiles animation */
+        .hero-image {
+            position: relative;
+            height: 350px;
+        }
+        .floating-tiles {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .tile {
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            background: #f4c242;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(244, 194, 66, 0.7);
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+        .tile-1 {
+            top: 5%;
+            left: 10%;
+            animation-name: float1;
+            animation-duration: 4s;
+        }
+        .tile-2 {
+            top: 35%;
+            left: 70%;
+            animation-name: float2;
+            animation-duration: 5s;
+        }
+        .tile-3 {
+            top: 60%;
+            left: 20%;
+            animation-name: float3;
+            animation-duration: 6s;
+        }
+        .tile-4 {
+            top: 80%;
+            left: 75%;
+            animation-name: float4;
+            animation-duration: 3.5s;
+        }
+        @keyframes float1 {
+            0% { transform: translateY(0) rotate(2deg);}
+            100% { transform: translateY(-25px) rotate(-2deg);}
+        }
+        @keyframes float2 {
+            0% { transform: translateY(0) rotate(-2deg);}
+            100% { transform: translateY(-30px) rotate(2deg);}
+        }
+        @keyframes float3 {
+            0% { transform: translateY(0) rotate(1deg);}
+            100% { transform: translateY(-20px) rotate(-1deg);}
+        }
+        @keyframes float4 {
+            0% { transform: translateY(0) rotate(3deg);}
+            100% { transform: translateY(-15px) rotate(-3deg);}
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            color: rgba(255,255,255,0.7);
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(15px); }
+        }
+
+        /* Services Section */
+        section.services {
+            background: white;
+            padding: 80px 20px;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-title {
+            font-size: 2.75rem;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 12px;
+        }
+        .section-subtitle {
+            font-weight: 400;
+            color: #555;
+            font-size: 1.2rem;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+            gap: 2.5rem;
+        }
+        .service-card {
+            background: #f5f7ff;
+            border-radius: 12px;
+            padding: 30px 25px;
+            box-shadow: 0 6px 12px rgba(30,60,114,0.15);
+            text-align: center;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            cursor: default;
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(30,60,114,0.3);
+        }
+        .service-icon {
+            font-size: 3rem;
+            color: #f4c242;
+            margin-bottom: 18px;
+        }
+        .service-card h3 {
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: #1e3c72;
+        }
+        .service-card p {
+            font-weight: 400;
+            color: #4a4a4a;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        /* Gallery Section */
+        section.gallery {
+            background: #eef2ff;
+            padding: 80px 20px;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+            gap: 20px;
+        }
+        .gallery-item {
+            position: relative;
+            height: 280px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 14px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(0deg, rgba(30,60,114,0.8) 0%, transparent 100%);
+            color: white;
+            font-weight: 600;
+            font-size: 1.15rem;
+            border-radius: 0 0 14px 14px;
+        }
+        .gallery-cta {
+            margin-top: 40px;
+            text-align: center;
+        }
+        .gallery-cta .btn-primary {
+            font-size: 1.15rem;
+            padding: 14px 48px;
+            box-shadow: 0 7px 20px rgba(244,194,66,0.55);
+        }
+
+        /* About Section */
+        section.about {
+            background: white;
+            padding: 80px 20px;
+        }
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .about-text h2 {
+            font-size: 2.75rem;
+            color: #1e3c72;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .about-text p {
+            font-size: 1.15rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(150px,1fr));
+            gap: 15px 40px;
+            margin-bottom: 35px;
+        }
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #1e3c72;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .feature i {
+            color: #f4c242;
+            font-size: 1.25rem;
+        }
+        .btn-primary {
+            display: inline-block;
+            padding: 14px 48px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .btn-primary:hover {
+            background: #d1a60c;
+        }
+        .about-image .image-placeholder {
+            width: 100%;
+            height: 350px;
+            background: #f4c242;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e3c72;
+            font-size: 6rem;
+            box-shadow: 0 7px 20px rgba(244,194,66,0.5);
+        }
+
+        /* Contact Section */
+        section.contact {
+            background: #eef2ff;
+            padding: 80px 20px 100px;
+        }
+        .contact-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: flex-start;
+        }
+        .section-header {
+            max-width: 600px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+        .section-title {
+            color: #1e3c72;
+            font-size: 2.75rem;
+            font-weight: 700;
+        }
+        .section-subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-top: 10px;
+        }
+        .contact-info {
+            background: white;
+            border-radius: 18px;
+            padding: 30px 35px;
+            box-shadow: 0 7px 22px rgba(30,60,114,0.15);
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            font-weight: 600;
+            color: #1e3c72;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        .contact-item i {
+            font-size: 2.1rem;
+            color: #f4c242;
+            flex-shrink: 0;
+        }
+        .contact-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+            color: #1e3c72;
+        }
+        .contact-item a, 
+        .contact-item p {
+            font-weight: 400;
+            color: #555;
+            font-size: 1rem;
+        }
+        form.contact-form {
+            background: white;
+            border-radius: 18px;
+            padding: 30px 35px;
+            box-shadow: 0 7px 22px rgba(30,60,114,0.15);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group.full-width {
+            margin-bottom: 30px;
+        }
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 12px;
+            border: 2px solid #ccc;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            font-family: inherit;
+            resize: vertical;
+        }
+        input[type="text"]:focus,
+        input[type="tel"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #1e3c72;
+            box-shadow: 0 0 8px rgba(30,60,114,0.3);
+        }
+        button[type="submit"] {
+            background: #1e3c72;
+            color: white;
+            font-weight: 600;
+            padding: 15px;
+            width: 100%;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: background 0.3s ease;
+        }
+        button[type="submit"]:hover {
+            background: #16305a;
+        }
+
+        /* Footer */
+        footer.footer {
+            background: #1e3c72;
+            color: white;
+            padding: 50px 20px 30px;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 3rem;
+            align-items: center;
+        }
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            min-width: 250px;
+        }
+        .footer-brand img.footer-logo-img {
+            max-height: 60px;
+            object-fit: contain;
+        }
+        .footer-brand h3 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        .footer-brand p {
+            font-weight: 300;
+            font-size: 1rem;
+            margin-top: 4px;
+            color: #d0d9f7;
+        }
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            flex-grow: 1;
+            justify-content: center;
+            font-weight: 500;
+        }
+        .footer-links a {
+            color: white;
+            font-size: 1rem;
+            padding-bottom: 3px;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+        .footer-links a:hover {
+            border-color: #f4c242;
+        }
+        .footer-contact {
+            min-width: 250px;
+            font-size: 1rem;
+        }
+        .footer-contact p {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-contact i {
+            color: #f4c242;
+            font-size: 1.2rem;
+        }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            text-align: center;
+            font-weight: 300;
+            font-size: 0.95rem;
+            color: #b0b8d3;
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                padding: 80px 0;
+            }
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .about-image {
+                order: -1;
+            }
+            nav.nav-container {
+                padding: 0 12px;
+            }
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                background: white;
+                position: fixed;
+                top: 70px;
+                right: 20px;
+                width: 250px;
+                border-radius: 12px;
+                box-shadow: 0 8px 22px rgba(30,60,114,0.2);
+                padding: 20px;
+                z-index: 2000;
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .cta-button {
+                display: none;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            .nav-links, .footer-links {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900">
+<body>
 
-    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold tracking-tighter">METRO<span class="text-blue-600">TILE</span></div>
-            <div class="hidden md:flex space-x-8 font-medium">
-                <a href="#" class="hover:text-blue-600 transition">Portfolio</a>
-                <a href="#" class="hover:text-blue-600 transition">Services</a>
-                <a href="#" class="hover:text-blue-600 transition">Process</a>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader" aria-hidden="true">
+        <div class="loader" aria-label="Loading..."></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Primary Navigation">
+        <div class="nav-container container">
+            <div class="nav-logo">
+                <a href="#home" aria-label="True Craft Tile & Stone Home">
+                    <img src="images/logo.png" alt="True Craft Tile & Stone Logo" class="logo-img" />
+                </a>
             </div>
-            <a href="#quote" class="bg-slate-900 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition duration-300">Free Estimate</a>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <a href="#contact" class="cta-button nav-cta">Free Quote</a>
         </div>
     </nav>
 
-    <header class="relative h-screen flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=2000" 
-                 class="w-full h-full object-cover scale-105 animate-pulse-slow" style="animation: zoom 20s infinite alternate;" alt="Luxury Tile">
-            <div class="absolute inset-0 bg-slate-900/40"></div>
-        </div>
-        
-        <div class="relative z-10 text-center text-white px-4">
-            <h1 class="text-5xl md:text-7xl mb-6">Mastery in Every <span class="underline decoration-blue-500">Square Inch</span></h1>
-            <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8 font-light">Custom stone, ceramic, and porcelain installations for modern homes and commercial spaces.</p>
-            <div class="flex flex-col md:flex-row gap-4 justify-center">
-                <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition shadow-xl">View Our Work</button>
-                <button class="bg-white/10 backdrop-blur-md border border-white/30 hover:bg-white/20 text-white px-8 py-4 rounded-lg text-lg font-semibold transition">Our Services</button>
-            </div>
-        </div>
-    </header>
-
-    <section class="py-24 px-6 tile-pattern">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16">
-                <div>
-                    <h2 class="text-4xl md:text-5xl mb-4">Crafting Surfaces</h2>
-                    <p class="text-slate-500 max-w-md">From intricate mosaics to large-format slabs, we handle the materials that define your space.</p>
+    <!-- Hero Section -->
+    <section id="home" class="hero" role="banner" aria-label="Homepage hero section">
+        <div class="hero-content container">
+            <div class="hero-text" >
+                <h1 class="hero-title" aria-label="Crafting Beautiful Spaces">
+                    <span class="title-line">Crafting</span>
+                    <span class="title-line">Beautiful</span>
+                    <span class="title-line">Spaces</span>
+                </h1>
+                <p class="hero-subtitle" aria-label="Business Location and Experience">
+                    Based in Shakopee, MN | Serving the Metro Area | 25+ Years Experience
+                </p>
+                <div class="hero-stats" aria-live="polite" aria-atomic="true">
+                    <div class="stat">
+                        <span class="stat-number" data-target="500">0</span>
+                        <span class="stat-label">Projects Completed</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-target="25">0</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-target="100">0</span>
+                        <span class="stat-label">Happy Clients</span>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary btn-large" aria-label="Get Free Quote">Get Free Quote</a>
+                    <a href="tel:6127020502" class="btn-secondary btn-large" aria-label="Call Now 612-702-0502">
+                        <i class="fas fa-phone" aria-hidden="true"></i> Call Now: 612-702-0502
+                    </a>
                 </div>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="group relative overflow-hidden rounded-2xl bg-white shadow-lg transition-transform hover:-translate-y-2">
-                    <div class="h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1620626011761-9963d7b59639?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="Bathroom">
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-xl font-bold mb-2">Luxury Bathrooms</h3>
-                        <p class="text-slate-600 mb-4">Waterproof systems and spa-like aesthetics with precision drainage.</p>
-                        <span class="text-blue-600 font-semibold group-hover:underline">Explore &rarr;</span>
-                    </div>
+            <div class="hero-image" aria-hidden="true">
+                <div class="floating-tiles" aria-hidden="true">
+                    <div class="tile tile-1"></div>
+                    <div class="tile tile-2"></div>
+                    <div class="tile tile-3"></div>
+                    <div class="tile tile-4"></div>
                 </div>
+            </div>
+        </div>
+        <div class="scroll-indicator" aria-hidden="true" title="Scroll down">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
 
-                <div class="group relative overflow-hidden rounded-2xl bg-white shadow-lg transition-transform hover:-translate-y-2">
-                    <div class="h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="Kitchen">
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-xl font-bold mb-2">Modern Kitchens</h3>
-                        <p class="text-slate-600 mb-4">Backsplashes and flooring that withstand heat, spills, and heavy traffic.</p>
-                        <span class="text-blue-600 font-semibold group-hover:underline">Explore &rarr;</span>
-                    </div>
+    <!-- Services Section -->
+    <section id="services" class="services" aria-label="Our Services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">Transform your space with our expert craftsmanship</p>
+            </div>
+            <div class="services-grid">
+                <article class="service-card" tabindex="0">
+                    <div class="service-icon"><i class="fas fa-shower" aria-hidden="true"></i></div>
+                    <h3>Bathroom Tile</h3>
+                    <p>Custom shower surrounds, floors, walls, and backsplashes with premium materials</p>
+                </article>
+                <article class="service-card" tabindex="0">
+                    <div class="service-icon"><i class="fas fa-utensils" aria-hidden="true"></i></div>
+                    <h3>Kitchen Backsplash</h3>
+                    <p>Beautiful glass, ceramic, and stone backsplashes that elevate your kitchen</p>
+                </article>
+                <article class="service-card" tabindex="0">
+                    <div class="service-icon"><i class="fas fa-home" aria-hidden="true"></i></div>
+                    <h3>Floor Tile</h3>
+                    <p>Durability meets design with porcelain, ceramic, and natural stone flooring</p>
+                </article>
+                <article class="service-card" tabindex="0">
+                    <div class="service-icon"><i class="fas fa-fireplace" aria-hidden="true"></i></div>
+                    <h3>Feature Walls</h3>
+                    <p>Stunning accent walls, fireplaces, and custom stone features</p>
+                </article>
+                <article class="service-card" tabindex="0">
+                    <div class="service-icon"><i class="fas fa-crown" aria-hidden="true"></i></div>
+                    <h3>Custom Stone</h3>
+                    <p>Marble, granite, quartz, and natural stone installations</p>
+                </article>
+                <article class="service-card" tabindex="0">
+                    <div class="service-icon"><i class="fas fa-tools" aria-hidden="true"></i></div>
+                    <h3>Repairs & Maintenance</h3>
+                    <p>Expert repairs, grout refresh, and tile restoration services</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery" aria-label="Gallery of Our Work">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Work</h2>
+                <p class="section-subtitle">See our stunning transformations</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')" tabindex="0" aria-label="Luxury Shower">
+                    <div class="gallery-overlay" aria-hidden="true"><h3>Luxury Shower</h3></div>
                 </div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1558618047-3c8c76bbb17e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')" tabindex="0" aria-label="Kitchen Backsplash">
+                    <div class="gallery-overlay" aria-hidden="true"><h3>Kitchen Backsplash</h3></div>
+                </div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')" tabindex="0" aria-label="Modern Flooring">
+                    <div class="gallery-overlay" aria-hidden="true"><h3>Modern Flooring</h3></div>
+                </div>
+                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1600585152563-6fbb65e1c1ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')" tabindex="0" aria-label="Feature Wall">
+                    <div class="gallery-overlay" aria-hidden="true"><h3>Feature Wall</h3></div>
+                </div>
+            </div>
+            <div class="gallery-cta">
+                <a href="#contact" class="btn-primary" aria-label="See More Projects">See More Projects</a>
+            </div>
+        </div>
+    </section>
 
-                <div class="group relative overflow-hidden rounded-2xl bg-white shadow-lg transition-transform hover:-translate-y-2">
-                    <div class="h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="Commercial">
+    <!-- About Section -->
+    <section id="about" class="about" aria-label="About True Craft Tile & Stone">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About True Craft Tile & Stone</h2>
+                    <p>Based in Shakopee, Minnesota, we proudly serve the entire Metro area with over 25 years of expert tile and stone installation experience.</p>
+                    <div class="about-features">
+                        <div class="feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>25+ Years Experience</span></div>
+                        <div class="feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Licensed & Insured</span></div>
+                        <div class="feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Free Estimates</span></div>
+                        <div class="feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Quality Guarantee</span></div>
+                        <div class="feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Clean Workspaces</span></div>
+                        <div class="feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Competitive Pricing</span></div>
                     </div>
-                    <div class="p-8">
-                        <h3 class="text-xl font-bold mb-2">Commercial Spaces</h3>
-                        <p class="text-slate-600 mb-4">High-durability installations for lobbies, restaurants, and retail stores.</p>
-                        <span class="text-blue-600 font-semibold group-hover:underline">Explore &rarr;</span>
+                    <a href="#contact" class="btn-primary">Get Your Free Quote</a>
+                </div>
+                <div class="about-image">
+                    <div class="image-placeholder" aria-hidden="true">
+                        <i class="fas fa-hammer"></i>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="bg-slate-900 py-20 text-white" x-data="{ count: 0 }" x-intersect="count = 1">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
-            <div>
-                <div class="text-4xl font-bold text-blue-400 mb-2">15+</div>
-                <div class="text-slate-400 uppercase tracking-widest text-xs">Years Exp.</div>
+    <!-- Contact Section -->
+    <section id="contact" class="contact" aria-label="Contact True Craft Tile & Stone">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get Your Free Quote</h2>
+                <p class="section-subtitle">Ready to transform your space? Contact us today!</p>
             </div>
-            <div>
-                <div class="text-4xl font-bold text-blue-400 mb-2">500+</div>
-                <div class="text-slate-400 uppercase tracking-widest text-xs">Projects Done</div>
-            </div>
-            <div>
-                <div class="text-4xl font-bold text-blue-400 mb-2">100%</div>
-                <div class="text-slate-400 uppercase tracking-widest text-xs">Satisfaction</div>
-            </div>
-            <div>
-                <div class="text-4xl font-bold text-blue-400 mb-2">Lifetime</div>
-                <div class="text-slate-400 uppercase tracking-widest text-xs">Workmanship</div>
-            </div>
-        </div>
-    </section>
-
-    <style>
-        @keyframes zoom {
-            from { transform: scale(1); }
-            to { transform: scale(1.1); }
-        }
-    </style>
-
-    <section id="quote" class="py-24 px-6 bg-slate-100 relative overflow-hidden" x-data="{ submitted: false }">
-        <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 -rotate-45 translate-x-32 -translate-y-32"></div>
-        
-        <div class="max-w-7xl mx-auto relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                
-                <div>
-                    <h2 class="text-4xl md:text-5xl mb-6">Let’s Layout Your <span class="text-blue-600 italic">Vision.</span></h2>
-                    <p class="text-slate-600 text-lg mb-8">
-                        Whether it's a small backsplash or a full-scale commercial lobby, our estimates are detailed, transparent, and free. 
-                    </p>
-                    
-                    <div class="space-y-6">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm">
-                                <span class="text-blue-600">📍</span>
-                            </div>
-                            <p class="font-medium">Servicing the Greater Metro Area & Suburbs</p>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm">
-                                <span class="text-blue-600">📞</span>
-                            </div>
-                            <p class="font-medium text-xl">(612) 702-0502</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white p-8 md:p-12 rounded-3xl shadow-2xl border border-slate-200">
-                    <div x-show="submitted" x-transition class="text-center py-12">
-                        <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-2">Message Sent!</h3>
-                        <p class="text-slate-500">We'll get back to you within 24 hours to schedule your measurement.</p>
-                        <button @click="submitted = false" class="mt-6 text-blue-600 font-semibold hover:underline underline-offset-4">Send another message</button>
-                    </div>
-
-                    <form x-show="!submitted" @submit.prevent="submitted = true" class="space-y-5">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                            <div>
-                                <label class="block text-sm font-semibold mb-2 uppercase tracking-wider text-slate-500">Name</label>
-                                <input type="text" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition" placeholder="John Doe">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold mb-2 uppercase tracking-wider text-slate-500">Phone</label>
-                                <input type="tel" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition" placeholder="(555) 000-0000">
-                            </div>
-                        </div>
-                        
+            <div class="contact-content">
+                <aside class="contact-info" aria-labelledby="contact-info-title">
+                    <h3 id="contact-info-title" class="sr-only">Contact Information</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-phone" aria-hidden="true"></i>
                         <div>
-                            <label class="block text-sm font-semibold mb-2 uppercase tracking-wider text-slate-500">Project Type</label>
-                            <select class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none appearance-none bg-slate-50">
-                                <option>Bathroom Remodel</option>
-                                <option>Kitchen Backsplash</option>
-                                <option>Floor Tiling</option>
-                                <option>Commercial / Other</option>
-                            </select>
+                            <h4>Call Us</h4>
+                            <a href="tel:6127020502">612-702-0502</a><br />
+                            <a href="tel:9524860554">952-486-0554</a>
                         </div>
-
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
                         <div>
-                            <label class="block text-sm font-semibold mb-2 uppercase tracking-wider text-slate-500">Message</label>
-                            <textarea rows="4" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition" placeholder="Tell us about your project..."></textarea>
+                            <h4>Email</h4>
+                            <a href="mailto:adelfadali@gmail.com">adelfadali@gmail.com</a>
                         </div>
-
-                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-200 transition-all active:scale-[0.98]">
-                            Send Request &rarr;
-                        </button>
-                    </form>
-                </div>
-
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock" aria-hidden="true"></i>
+                        <div>
+                            <h4>Hours</h4>
+                            <p>Mon-Fri: 7AM-6PM<br />Sat: 8AM-4PM</p>
+                        </div>
+                    </div>
+                </aside>
+                <form class="contact-form" id="contactForm" aria-label="Send a message form">
+                    <div class="form-group">
+                        <label for="name" class="sr-only">Your Name *</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name *" required autocomplete="name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="sr-only">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Phone Number *" required autocomplete="tel" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="sr-only">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Email Address" autocomplete="email" />
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="message" class="sr-only">Project Details *</label>
+                        <textarea id="message" name="message" placeholder="Project details (room, size, tile type, etc.) *" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" aria-label="Send Message">
+                        Send Message
+                        <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                    </button>
+                </form>
             </div>
         </div>
     </section>
 
-    <footer class="bg-slate-900 py-8 text-center text-slate-500 text-sm border-t border-slate-800">
-        &copy; 2026 Metro Tile & Stone. All Rights Reserved. Built with Precision.
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo" aria-label="Footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/logo.png" alt="True Craft Tile & Stone Logo" class="footer-logo-img" />
+                    <div>
+                        <h3>True Craft Tile & Stone</h3>
+                        <p>Professional Tile Installation Services</p>
+                    </div>
+                </div>
+                <nav class="footer-links" aria-label="Footer navigation">
+                    <a href="#home">Home</a>
+                    <a href="#services">Services</a>
+                    <a href="#gallery">Gallery</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+                <div class="footer-contact">
+                    <p><i class="fas fa-phone" aria-hidden="true"></i> 612-702-0502</p>
+                    <p><i class="fas fa-envelope" aria-hidden="true"></i> adelfadali@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 True Craft Tile & Stone. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Preloader hide on window load
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            preloader.classList.add('hide');
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 600);
+        });
+
+        // Navbar scroll background change
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            const expanded = hamburger.getAttribute('aria-expanded') === 'true' || false;
+            hamburger.setAttribute('aria-expanded', !expanded);
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu after clicking a link
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', false);
+                }
+            });
+        });
+
+        // Animate counters in hero stats
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 200;
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const increment = Math.ceil(target / speed);
+
+                    if (count < target) {
+                        counter.innerText = count + increment > target ? target : count + increment;
+                        setTimeout(updateCount, 15);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+        };
+
+        // Trigger animation when hero stats are visible
+        let animated = false;
+        window.addEventListener('scroll', () => {
+            const heroStats = document.querySelector('.hero-stats');
+            if (heroStats) {
+                const rect = heroStats.getBoundingClientRect();
+                if (!animated && rect.top < window.innerHeight && rect.bottom >= 0) {
+                    animateCounters();
+                    animated = true;
+                }
+            }
+        });
+
+        // Contact Form Submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Collect form data
+            const formData = new FormData(contactForm);
+            const data = {};
+            formData.forEach((value, key) => data[key] = value.trim());
+
+            // Basic validation done by HTML required attributes
+
+            // Use Formspree to handle form submission easily for static sites
+            fetch("https://formspree.io/f/meqrpgeb", {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json'
+                },
+                body: formData
+            }).then(response => {
+                if (response.ok) {
+                    alert("Thank you for contacting True Craft Tile & Stone! We will get back to you soon.");
+                    contactForm.reset();
+                } else {
+                    alert("Oops! There was a problem submitting the form. Please try again or call us directly.");
+                }
+            }).catch(() => {
+                alert("Oops! There was a problem submitting the form. Please try again or call us directly.");
+            });
+        });
+    </script>
+
 </body>
 </html>
