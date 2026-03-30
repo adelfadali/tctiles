@@ -1,1108 +1,1147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>True Craft Tile & Stone | Professional Tile Installation</title>
-    <meta name="description" content="True Craft Tile & Stone in Shakopee, MN. Serving the Metro area with 25+ years of expert tile and stone installation. Call 612-702-0502 for free estimate!" />
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <style>
-        /* Reset & Base */
-        *, *::before, *::after {
-            margin: 0; padding: 0; box-sizing: border-box;
-        }
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
-            background: #f9f9f9;
-        }
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-        .container {
-            max-width: 1140px;
-            margin: 0 auto;
-            padding: 0 20px;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>True Craft Tile & Stone | Professional Tile Installation</title>
+  <meta name="description" content="True Craft Tile & Stone in Shakopee, MN. Serving the Metro area with 25+ years of expert tile and stone installation. Call 612-702-0502 for free estimate!" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Base & Reset */
+    *, *::before, *::after {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fafafa;
+      color: #111;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-        /* Navbar */
-        nav.navbar {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            z-index: 10000;
-            padding: 1rem 0;
-            transition: background 0.3s ease, box-shadow 0.3s ease;
-        }
-        nav.navbar.scrolled {
-            background: #fff;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-        }
-        .nav-container {
-            max-width: 1140px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-        }
-        .nav-logo img.logo-img {
-            max-height: 45px;
-            object-fit: contain;
-        }
-        .nav-menu {
-            display: flex;
-            gap: 1.5rem;
-        }
-        .nav-link {
-            font-weight: 500;
-            color: #333;
-            position: relative;
-            padding: 4px 0;
-            transition: color 0.3s ease;
-            font-size: 0.95rem;
-        }
-        .nav-link:hover {
-            color: #1e3c72;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0%;
-            height: 2px;
-            background: #1e3c72;
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        .cta-button {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: white;
-            padding: 8px 22px;
-            border-radius: 30px;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.95rem;
-            box-shadow: 0 6px 15px rgba(30,60,114,0.3);
-            transition: background 0.3s ease, transform 0.3s ease;
-            white-space: nowrap;
-        }
-        .cta-button:hover {
-            background: linear-gradient(135deg, #2a5298, #1e3c72);
-            transform: translateY(-3px);
-        }
+    /* Color Palette */
+    :root {
+      --black: #111;
+      --white: #fff;
+      --dark-gray: #222;
+      --gray-light: #ddd;
+      --primary: #f16524;
+      --primary-dark: #cc4e1a;
+      --shadow-glow: rgba(241,101,36,0.42);
+    }
 
-        /* Hamburger (mobile) */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            width: 25px;
-            height: 20px;
-            justify-content: center;
-        }
-        .hamburger span {
-            display: block;
-            height: 3px;
-            width: 100%;
-            background: #333;
-            border-radius: 1.5px;
-            transition: all 0.3s ease;
-        }
+    /* Navbar */
+    nav.navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: var(--white);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      z-index: 10000;
+      padding: 16px 0;
+      transition: background 0.3s ease;
+      font-weight: 600;
+      letter-spacing: 1.1px;
+    }
+    .nav-container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo img.logo-img {
+      max-height: 52px;
+      filter: brightness(0) saturate(100%) invert(13%) sepia(85%) saturate(7482%) hue-rotate(6deg) brightness(99%) contrast(105%);
+      /* subtle orange tint */
+      transition: filter 0.3s ease;
+    }
+    .nav-logo img.logo-img:hover {
+      filter: brightness(0) saturate(100%) invert(47%) sepia(64%) saturate(4207%) hue-rotate(5deg) brightness(102%) contrast(104%);
+    }
+    .nav-menu {
+      display: flex;
+      gap: 32px;
+    }
+    .nav-link {
+      color: var(--dark-gray);
+      font-weight: 600;
+      font-size: 1rem;
+      position: relative;
+      padding: 6px 0;
+      transition: color 0.25s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--primary);
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover {
+      color: var(--primary);
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .cta-button {
+      background: var(--primary);
+      color: var(--white);
+      font-weight: 700;
+      padding: 10px 28px;
+      border-radius: 500px;
+      font-size: 1rem;
+      box-shadow: 0 8px 20px var(--shadow-glow);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      white-space: nowrap;
+    }
+    .cta-button:hover {
+      background: var(--primary-dark);
+      box-shadow: 0 12px 30px var(--shadow-glow);
+    }
 
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 0 20px 60px;
-            box-sizing: border-box;
-        }
-        .hero-content {
-            max-width: 1140px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-            padding: 100px 0 0;
-            position: relative;
-            z-index: 1;
-            box-sizing: border-box;
-        }
-        .hero-title {
-            font-size: clamp(2.5rem, 6vw, 5.5rem);
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1rem;
-            overflow: hidden;
-        }
-        .title-line {
-            display: block;
-            animation: slideInUp 1s ease forwards;
-            opacity: 0;
-        }
-        .title-line:nth-child(1) { animation-delay: 0.3s; }
-        .title-line:nth-child(2) { animation-delay: 0.6s; }
-        .title-line:nth-child(3) { animation-delay: 0.9s; }
-        @keyframes slideInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(100%);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .hero-subtitle {
-            font-size: 1rem;
-            font-weight: 300;
-            margin-bottom: 1.8rem;
-            color: #d0d9f7;
-            max-width: 420px;
-        }
-        .hero-stats {
-            display: flex;
-            gap: 2.5rem;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-        .stat {
-            text-align: center;
-            min-width: 80px;
-        }
-        .stat-number {
-            font-size: 2.25rem;
-            font-weight: 700;
-            color: #fff;
-            display: block;
-        }
-        .stat-label {
-            text-transform: uppercase;
-            font-weight: 600;
-            font-size: 0.7rem;
-            color: #b0c4ff;
-            margin-top: 6px;
-        }
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-        .btn-primary {
-            background: #f4c242;
-            color: #1e3c72;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            box-shadow: 0 6px 15px rgba(244, 194, 66, 0.5);
-            transition: background 0.3s ease, transform 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1rem;
-            white-space: nowrap;
-        }
-        .btn-primary:hover {
-            background: #d1a60c;
-            transform: translateY(-3px);
-        }
-        .btn-secondary {
-            border: 2px solid #f4c242;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: transparent;
-            transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
-            font-size: 1rem;
-            white-space: nowrap;
-        }
-        .btn-secondary:hover {
-            background: #f4c242;
-            color: #1e3c72;
-            transform: translateY(-3px);
-        }
-        /* Floating tiles animation */
-        .hero-image {
-            position: relative;
-            height: 280px;
-            max-width: 320px;
-            margin: 0 auto;
-        }
-        .floating-tiles {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-        .tile {
-            position: absolute;
-            width: 70px;
-            height: 70px;
-            background: #f4c242;
-            border-radius: 10px;
-            box-shadow: 0 6px 20px rgba(244, 194, 66, 0.7);
-            animation-timing-function: ease-in-out;
-            animation-iteration-count: infinite;
-            animation-direction: alternate;
-        }
-        .tile-1 {
-            top: 5%;
-            left: 10%;
-            animation-name: float1;
-            animation-duration: 4s;
-        }
-        .tile-2 {
-            top: 35%;
-            left: 70%;
-            animation-name: float2;
-            animation-duration: 5s;
-        }
-        .tile-3 {
-            top: 60%;
-            left: 20%;
-            animation-name: float3;
-            animation-duration: 6s;
-        }
-        .tile-4 {
-            top: 80%;
-            left: 75%;
-            animation-name: float4;
-            animation-duration: 3.5s;
-        }
-        @keyframes float1 {
-            0% { transform: translateY(0) rotate(2deg);}
-            100% { transform: translateY(-25px) rotate(-2deg);}
-        }
-        @keyframes float2 {
-            0% { transform: translateY(0) rotate(-2deg);}
-            100% { transform: translateY(-30px) rotate(2deg);}
-        }
-        @keyframes float3 {
-            0% { transform: translateY(0) rotate(1deg);}
-            100% { transform: translateY(-20px) rotate(-1deg);}
-        }
-        @keyframes float4 {
-            0% { transform: translateY(0) rotate(3deg);}
-            100% { transform: translateY(-15px) rotate(-3deg);}
-        }
-        /* Scroll Indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 2rem;
-            color: rgba(255,255,255,0.7);
-            animation: bounce 2s infinite;
-            cursor: pointer;
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(15px); }
-        }
-        /* Services Section */
-        section.services {
-            background: white;
-            padding: 70px 20px 60px;
-        }
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        .section-title {
-            font-size: 2.25rem;
-            font-weight: 700;
-            color: #1e3c72;
-            margin-bottom: 8px;
-        }
-        .section-subtitle {
-            font-weight: 400;
-            color: #555;
-            font-size: 1.1rem;
-        }
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-            gap: 2rem;
-        }
-        .service-card {
-            background: #f5f7ff;
-            border-radius: 12px;
-            padding: 25px 20px;
-            box-shadow: 0 5px 12px rgba(30,60,114,0.15);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: default;
-        }
-        .service-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 10px 28px rgba(30,60,114,0.3);
-        }
-        .service-icon {
-            font-size: 2.7rem;
-            color: #f4c242;
-            margin-bottom: 16px;
-        }
-        .service-card h3 {
-            margin-bottom: 10px;
-            font-weight: 600;
-            color: #1e3c72;
-        }
-        .service-card p {
-            font-weight: 400;
-            color: #4a4a4a;
-            font-size: 0.9rem;
-            line-height: 1.4;
-        }
-        /* Gallery Section */
-        section.gallery {
-            background: #eef2ff;
-            padding: 70px 20px 60px;
-        }
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-            gap: 18px;
-        }
-        .gallery-item {
-            position: relative;
-            height: 260px;
-            background-size: cover;
-            background-position: center;
-            border-radius: 14px;
-            cursor: pointer;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-        .gallery-item:hover {
-            transform: scale(1.05);
-        }
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(0deg, rgba(30,60,114,0.85) 0%, transparent 100%);
-            color: white;
-            font-weight: 600;
-            font-size: 1rem;
-            border-radius: 0 0 14px 14px;
-        }
-        .gallery-cta {
-            margin-top: 30px;
-            text-align: center;
-        }
-        .gallery-cta .btn-primary {
-            font-size: 1.1rem;
-            padding: 13px 46px;
-            box-shadow: 0 6px 18px rgba(244,194,66,0.55);
-        }
-        /* About Section */
-        section.about {
-            background: white;
-            padding: 70px 20px 60px;
-        }
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
-            align-items: center;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .about-text h2 {
-            font-size: 2.25rem;
-            color: #1e3c72;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-        .about-text p {
-            font-size: 1.05rem;
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 28px;
-        }
-        .about-features {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(140px,1fr));
-            gap: 12px 32px;
-            margin-bottom: 30px;
-        }
-        .feature {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #1e3c72;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-        .feature i {
-            color: #f4c242;
-            font-size: 1.2rem;
-        }
-        .btn-primary {
-            display: inline-block;
-            padding: 12px 40px;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        .btn-primary:hover {
-            background: #d1a60c;
-        }
-        .about-image .image-placeholder {
-            width: 100%;
-            height: 280px;
-            background: #f4c242;
-            border-radius: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #1e3c72;
-            font-size: 5rem;
-            box-shadow: 0 7px 20px rgba(244,194,66,0.5);
-        }
-        /* Contact Section */
-        section.contact {
-            background: #eef2ff;
-            padding: 70px 20px 70px;
-        }
-        .contact-content {
-            max-width: 900px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
-            align-items: flex-start;
-            box-sizing: border-box;
-        }
-        .section-header {
-            max-width: 600px;
-            margin: 0 auto 50px;
-            text-align: center;
-        }
-        .section-title {
-            color: #1e3c72;
-            font-size: 2.25rem;
-            font-weight: 700;
-        }
-        .section-subtitle {
-            color: #666;
-            font-size: 1.05rem;
-            font-weight: 400;
-            margin-top: 8px;
-        }
-        .contact-info {
-            background: white;
-            border-radius: 18px;
-            padding: 25px 30px;
-            box-shadow: 0 7px 22px rgba(30,60,114,0.15);
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            font-weight: 600;
-            color: #1e3c72;
-            box-sizing: border-box;
-        }
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .contact-item i {
-            font-size: 2rem;
-            color: #f4c242;
-            flex-shrink: 0;
-        }
-        .contact-item h4 {
-            font-size: 1.05rem;
-            margin-bottom: 3px;
-            color: #1e3c72;
-        }
-        .contact-item a, 
-        .contact-item p {
-            font-weight: 400;
-            color: #555;
-            font-size: 0.95rem;
-        }
-        form.contact-form {
-            background: white;
-            border-radius: 18px;
-            padding: 25px 30px;
-            box-shadow: 0 7px 22px rgba(30,60,114,0.15);
-            box-sizing: border-box;
-        }
-        .form-group {
-            margin-bottom: 18px;
-        }
-        .form-group.full-width {
-            margin-bottom: 25px;
-        }
-        input[type="text"],
-        input[type="tel"],
-        input[type="email"],
-        textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border-radius: 12px;
-            border: 2px solid #ccc;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-            font-family: inherit;
-            resize: vertical;
-        }
-        input[type="text"]:focus,
-        input[type="tel"]:focus,
-        input[type="email"]:focus,
-        textarea:focus {
-            outline: none;
-            border-color: #1e3c72;
-            box-shadow: 0 0 8px rgba(30,60,114,0.3);
-        }
-        button[type="submit"] {
-            background: #1e3c72;
-            color: white;
-            font-weight: 600;
-            padding: 14px;
-            width: 100%;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            transition: background 0.3s ease;
-        }
-        button[type="submit"]:hover {
-            background: #16305a;
-        }
-        /* Footer */
-        footer.footer {
-            background: #1e3c72;
-            color: white;
-            padding: 45px 20px 25px;
-        }
-        .footer-content {
-            max-width: 1140px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 2rem;
-            align-items: center;
-        }
-        .footer-brand {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            min-width: 220px;
-        }
-        .footer-brand img.footer-logo-img {
-            max-height: 55px;
-            object-fit: contain;
-        }
-        .footer-brand h3 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-        }
-        .footer-brand p {
-            font-weight: 300;
-            font-size: 0.95rem;
-            margin-top: 3px;
-            color: #d0d9f7;
-        }
-        .footer-links {
-            display: flex;
-            gap: 25px;
-            flex-wrap: wrap;
-            flex-grow: 1;
-            justify-content: center;
-            font-weight: 500;
-            font-size: 0.95rem;
-        }
-        .footer-links a {
-            color: white;
-            padding-bottom: 2px;
-            border-bottom: 2px solid transparent;
-            transition: border-color 0.3s ease;
-        }
-        .footer-links a:hover {
-            border-color: #f4c242;
-        }
-        .footer-contact {
-            min-width: 220px;
-            font-size: 0.95rem;
-        }
-        .footer-contact p {
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            gap: 7px;
-        }
-        .footer-contact i {
-            color: #f4c242;
-            font-size: 1.15rem;
-        }
-        .footer-bottom {
-            max-width: 1140px;
-            margin: 32px auto 0;
-            text-align: center;
-            font-weight: 300;
-            font-size: 0.9rem;
-            color: #b0b8d3;
-        }
-        /* Responsive */
-        @media (max-width: 991px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                padding: 80px 0 20px;
-            }
-            .hero-subtitle {
-                max-width: 100%;
-                font-size: 1rem;
-            }
-            .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .about-image {
-                order: -1;
-                margin-bottom: 40px;
-            }
-            nav.nav-container {
-                padding: 0 12px;
-            }
-            .nav-menu {
-                display: none;
-                flex-direction: column;
-                background: white;
-                position: fixed;
-                top: 70px;
-                right: 20px;
-                width: 250px;
-                border-radius: 12px;
-                box-shadow: 0 8px 22px rgba(30,60,114,0.2);
-                padding: 20px;
-                z-index: 2000;
-                max-height: calc(100vh - 90px);
-                overflow-y: auto;
-            }
-            .nav-menu.active {
-                display: flex;
-            }
-            .hamburger {
-                display: flex;
-            }
-            .cta-button {
-                display: none;
-            }
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-        }
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2.3rem;
-            }
-            .hero-subtitle {
-                font-size: 0.95rem;
-            }
-            .services-grid, .gallery-grid {
-                grid-template-columns: 1fr !important;
-            }
-            .hero-stats {
-                justify-content: center;
-                gap: 1.8rem;
-            }
-            .contact-info {
-                font-size: 0.9rem;
-            }
-            .footer-content {
-                flex-direction: column;
-                gap: 1.5rem;
-                text-align: center;
-            }
-            .footer-links {
-                justify-content: center;
-            }
-            .footer-brand h3 {
-                font-size: 1.4rem;
-            }
-        }
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+      width: 24px;
+      height: 20px;
+      justify-content: center;
+    }
+    .hamburger span {
+      height: 3px;
+      width: 100%;
+      background: var(--dark-gray);
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
 
-        /* Accessibility Helpers */
-        .sr-only {
-            position: absolute !important;
-            width: 1px !important;
-            height: 1px !important;
-            padding: 0 !important;
-            margin: -1px !important;
-            overflow: hidden !important;
-            clip: rect(0,0,0,0) !important;
-            white-space: nowrap !important;
-            border: 0 !important;
-        }
-    </style>
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(110deg, #f16524cc 20%, #2b2b2b 90%);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 0 24px 80px;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -30%;
+      right: -30%;
+      width: 140%;
+      height: 140%;
+      background: radial-gradient(circle at center, #f1652455, transparent 70%);
+      z-index: 0;
+      filter: blur(120px);
+      animation: glowPulse 6s ease infinite alternate;
+      border-radius: 50%;
+    }
+    @keyframes glowPulse {
+      0% {filter: blur(100px);}
+      100% {filter: blur(130px);}
+    }
+    .hero-content {
+      max-width: 900px;
+      z-index: 1;
+    }
+    .hero-title {
+      font-size: clamp(3.5rem, 8vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.06;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+      font-family: 'Poppins', sans-serif;
+      text-shadow: 0 5px 15px rgba(241,101,36,0.7);
+    }
+    .hero-title span {
+      display: block;
+    }
+    .hero-subtitle {
+      font-size: 1.15rem;
+      font-weight: 400;
+      padding-left: 6px;
+      margin-bottom: 40px;
+      color: #fff0d2;
+      letter-spacing: 0.9px;
+      font-style: italic;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+    .stat {
+      text-align: center;
+      min-width: 120px;
+      background: rgba(255 255 255 / 0.09);
+      border-radius: 18px;
+      padding: 18px 20px;
+      box-shadow: 0 6px 20px rgba(241, 101, 36, 0.3);
+      backdrop-filter: blur(6px);
+      transition: all 0.4s ease;
+    }
+    .stat:hover {
+      background: rgba(255 255 255 / 0.18);
+      box-shadow: 0 10px 30px rgba(241, 101, 36, 0.6);
+      transform: translateY(-6px);
+    }
+    .stat-number {
+      font-size: 2.3rem;
+      font-weight: 700;
+      color: var(--white);
+      text-shadow: 1px 1px 8px var(--primary);
+      margin-bottom: 6px;
+      font-family: 'Poppins', sans-serif;
+    }
+    .stat-label {
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      color: #ffd6adcc;
+      letter-spacing: 1.2px;
+      font-family: 'Poppins', sans-serif;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    /* Services Section */
+    section.services {
+      background: #1b1b1b;
+      color: var(--white);
+      padding: 70px 24px 60px;
+      clip-path: polygon(0 42px, 100% 0, 100% calc(100% - 42px), 0% 100%);
+      position: relative;
+      z-index: 10;
+    }
+    section.services::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      height: 42px;
+      width: 100%;
+      background: #fafafa;
+      z-index: -1;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--primary);
+      letter-spacing: 1.5px;
+      font-family: 'Poppins', sans-serif;
+    }
+    .section-subtitle {
+      font-weight: 400;
+      font-size: 1.1rem;
+      max-width: 460px;
+      margin: 0 auto;
+      color: #bfbfbfdd;
+      font-style: italic;
+      letter-spacing: 0.06em;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 28px 20px;
+      margin-top: 12px;
+    }
+    .service-card {
+      background: #2b2b2b;
+      border-radius: 20px;
+      padding: 24px 24px 30px;
+      box-shadow: 0 7px 21px rgba(241,101,36,0.3);
+      transform-style: preserve-3d;
+      transition: transform 0.4s cubic-bezier(0.19,1,0.22,1), box-shadow 0.4s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+    }
+    .service-card:hover {
+      box-shadow: 0 20px 40px rgba(241,101,36,0.6);
+      transform: translateY(-15px) scale(1.03) perspective(900px) rotateX(6deg);
+      z-index: 20;
+    }
+    .service-icon {
+      font-size: 46px;
+      color: var(--primary);
+      margin-bottom: 20px;
+      filter: drop-shadow(0 0 5px var(--primary));
+      transition: color 0.3s ease;
+    }
+    .service-card:hover .service-icon {
+      color: #ff8f52;
+      filter: drop-shadow(0 0 15px #ff7943);
+    }
+    .service-card h3 {
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 14px;
+      color: var(--white);
+    }
+    .service-card p {
+      color: #d1d1d1cc;
+      font-size: 1rem;
+      line-height: 1.5;
+      flex-grow: 1;
+    }
+
+    /* Gallery Section */
+    section.gallery {
+      background: #fff1e7;
+      padding: 70px 24px 64px;
+      clip-path: polygon(0 42px, 100% 0, 100% calc(100% - 42px), 0% 100%);
+      position: relative;
+      z-index: 10;
+      margin-bottom: 48px;
+    }
+    section.gallery::before {
+      content: "";
+      position: absolute;
+      bottom: 0; left: 0;
+      height: 42px;
+      width: 100%;
+      background: #1b1b1b;
+      z-index: -1;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+    .section-header .section-title {
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: #b85a13;
+      letter-spacing: 1.6px;
+      margin-bottom: 12px;
+    }
+    .section-subtitle {
+      color: #916328cc;
+      max-width: 460px;
+      margin: 0 auto;
+      font-style: italic;
+      letter-spacing: 0.04em;
+      font-weight: 400;
+      font-size: 1.1rem;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 18px;
+    }
+    .gallery-item {
+      position: relative;
+      height: 260px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 14px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .gallery-item:hover {
+      transform: scale(1.06);
+      box-shadow: 0 10px 36px rgba(241,101,36,0.4);
+      z-index: 10;
+    }
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 20px;
+      background: linear-gradient(0deg, rgba(241,101,36,0.70) 0%, transparent 100%);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: 1px;
+      border-radius: 0 0 14px 14px;
+      user-select: none;
+    }
+    .gallery-cta {
+      margin-top: 36px;
+      text-align: center;
+    }
+    .gallery-cta .btn-primary {
+      background: var(--primary);
+      color: white;
+      padding: 14px 62px;
+      font-size: 1.15rem;
+      border-radius: 50px;
+      box-shadow: 0 7px 24px var(--shadow-glow);
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery-cta .btn-primary:hover {
+      background: var(--primary-dark);
+      box-shadow: 0 10px 32px var(--shadow-glow);
+    }
+
+    /* About Section */
+    section.about {
+      background: var(--dark-gray);
+      color: var(--white);
+      padding: 70px 24px 70px;
+      position: relative;
+      overflow: hidden;
+      clip-path: polygon(0 42px, 100% 0, 100% 100%, 0% 100%);
+      margin-bottom: 70px;
+      box-shadow:
+        inset 0 0 64px 5px rgba(241,101,36,0.15),
+        0 15px 22px rgba(0,0,0,0.2);
+      border-radius: 22px;
+    }
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: center;
+      max-width: 1000px;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+    .about-text h2 {
+      font-size: 2.75rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+      font-family: 'Poppins', sans-serif;
+      text-shadow: 0 0 18px var(--primary);
+    }
+    .about-text p {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      color: #f7f5f2dd;
+      max-width: 580px;
+      margin-bottom: 30px;
+      font-style: italic;
+      font-weight: 400;
+    }
+    .about-features {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(140px,1fr));
+      gap: 13px 42px;
+      margin-bottom: 30px;
+    }
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #f2c79a;
+    }
+    .feature i {
+      font-size: 1.3rem;
+      color: var(--primary);
+      filter: drop-shadow(0 0 7px var(--primary));
+      transition: color 0.3s ease;
+    }
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 44px;
+      border-radius: 50px;
+      font-weight: 700;
+      color: var(--white);
+      background: var(--primary);
+      box-shadow: 0 8px 28px var(--shadow-glow);
+      white-space: nowrap;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: 1.5px;
+      font-size: 1.1rem;
+      text-shadow: 0 0 10px var(--primary);
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      box-shadow: 0 12px 38px var(--shadow-glow);
+    }
+    .about-image .image-placeholder {
+      width: 100%;
+      height: 280px;
+      background: var(--primary);
+      border-radius: 22px;
+      box-shadow: 0 8px 25px var(--shadow-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 5rem;
+      user-select: none;
+      filter: drop-shadow(0 0 25px var(--primary));
+    }
+
+    /* Contact Section */
+    section.contact {
+      background: var(--white);
+      padding: 70px 24px 70px;
+      box-sizing: border-box;
+      box-shadow: 0 7px 38px rgba(241,101,36,0.18);
+      border-radius: 24px;
+      max-width: 960px;
+      margin: 0 auto 60px;
+      position: relative;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .section-title {
+      font-weight: 700;
+      font-size: 2.3rem;
+      color: var(--primary);
+      letter-spacing: 1.4px;
+      font-family: 'Poppins', sans-serif;
+    }
+    .section-subtitle {
+      font-weight: 400;
+      font-size: 1.15rem;
+      color: #666;
+      font-style: italic;
+      letter-spacing: 0.06em;
+      margin-top: 6px;
+    }
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      box-sizing: border-box;
+    }
+    .contact-info {
+      color: var(--dark-gray);
+      font-weight: 700;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      font-family: 'Poppins', sans-serif;
+    }
+    .contact-item {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+    .contact-item i {
+      font-size: 2.5rem;
+      color: var(--primary);
+      filter: drop-shadow(0 0 8px var(--primary));
+      min-width: 40px;
+      flex-shrink: 0;
+    }
+    .contact-item h4 {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+      color: var(--primary);
+    }
+    .contact-item a,
+    .contact-item p {
+      font-weight: 400;
+      font-size: 1rem;
+      color: #555;
+      word-break: break-word;
+    }
+    form.contact-form {
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .form-group {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .form-group.full-width {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      position: absolute;
+      top: 12px;
+      left: 18px;
+      color: #999;
+      font-weight: 400;
+      transition: top 0.3s ease, font-size 0.3s ease;
+      pointer-events: none;
+      font-size: 1rem;
+      user-select: none;
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: 0.4px;
+    }
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    textarea {
+      border: 2px solid #dedede;
+      border-radius: 12px;
+      padding: 16px 18px 16px 18px;
+      font-size: 1.05rem;
+      outline-offset: 2px;
+      font-family: 'Poppins', sans-serif;
+      transition: border-color 0.3s ease;
+      resize: vertical;
+      background-color: #fafafa;
+    }
+    input[type="text"]:focus,
+    input[type="tel"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      border-color: var(--primary);
+      background-color: #fff;
+      box-shadow: 0 0 12px var(--shadow-glow);
+    }
+    /* Floating labels effect on focus and if filled */
+    input:not(:placeholder-shown) + label,
+    textarea:not(:placeholder-shown) + label,
+    input:focus + label,
+    textarea:focus + label {
+      top: -10px;
+      font-size: 0.8rem;
+      color: var(--primary);
+      font-weight: 600;
+      background: var(--white);
+      padding: 0 6px;
+      pointer-events: none;
+    }
+    button[type="submit"] {
+      background: var(--primary);
+      border-radius: 50px;
+      padding: 15px 0;
+      font-weight: 700;
+      color: var(--white);
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 8px 28px var(--shadow-glow);
+      border: none;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: 1.4px;
+      font-family: 'Poppins', sans-serif;
+    }
+    button[type="submit"]:hover {
+      background: var(--primary-dark);
+      box-shadow: 0 12px 38px var(--shadow-glow);
+    }
+
+    /* Footer */
+    footer.footer {
+      background: var(--black);
+      color: #ccc;
+      padding: 48px 24px 30px;
+      font-family: 'Poppins', sans-serif;
+    }
+    .footer-content {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+      align-items: center;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      min-width: 220px;
+    }
+    .footer-brand img.footer-logo-img {
+      max-height: 60px;
+      filter: brightness(100%) invert(97%) sepia(6%) saturate(199%) hue-rotate(172deg) brightness(87%) contrast(82%);
+    }
+    .footer-brand h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--white);
+    }
+    .footer-brand p {
+      font-weight: 300;
+      font-size: 0.95rem;
+      margin-top: 4px;
+      color: #bbb;
+    }
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      flex-grow: 1;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--white);
+      letter-spacing: 0.8px;
+    }
+    .footer-links a {
+      color: var(--white);
+      padding-bottom: 3px;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+    .footer-links a:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .footer-contact {
+      min-width: 220px;
+      font-size: 1rem;
+      color: #ccc;
+    }
+    .footer-contact p {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-contact i {
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+    .footer-bottom {
+      max-width: 1140px;
+      margin: 36px auto 0;
+      text-align: center;
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    /* Responsive */
+    @media (max-width: 991px) {
+      .hero-content {
+        max-width: 100%;
+        padding: 70px 12px 0;
+      }
+      .hero-subtitle {
+        max-width: 100%;
+        font-size: 1rem;
+      }
+      .hero-stats {
+        justify-content: center;
+        gap: 20px;
+      }
+      .about-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 0 12px;
+      }
+      .about-image {
+        order: -1;
+        margin-bottom: 40px;
+      }
+      .contact-content {
+        grid-template-columns: 1fr;
+      }
+      nav.nav-container {
+        padding: 0 12px;
+      }
+      .nav-menu {
+        display: none;
+        flex-direction: column;
+        background: var(--white);
+        position: fixed;
+        top: 70px;
+        right: 20px;
+        width: 250px;
+        border-radius: 14px;
+        box-shadow: 0 8px 22px rgba(30,60,114,0.2);
+        padding: 20px;
+        z-index: 100000;
+        max-height: calc(100vh - 90px);
+        overflow-y: auto;
+      }
+      .nav-menu.active {
+        display: flex;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .cta-button {
+        display: none;
+      }
+    }
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 2.6rem;
+        letter-spacing: 1.2px;
+      }
+      .services-grid, .gallery-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .contact-info {
+        font-size: 0.95rem;
+      }
+      .footer-content {
+        flex-direction: column;
+        gap: 1.3rem;
+        text-align: center;
+      }
+      .footer-links {
+        justify-content: center;
+      }
+      .footer-brand h3 {
+        font-size: 1.3rem;
+      }
+    }
+
+  </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar" id="navbar" role="navigation" aria-label="Primary Navigation">
-        <div class="nav-container container">
-            <div class="nav-logo">
-                <a href="#home" aria-label="True Craft Tile & Stone Home">
-                    <img src="images/logo.png" alt="True Craft Tile & Stone Logo" class="logo-img" />
-                </a>
-            </div>
-            <div class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#services" class="nav-link">Services</a>
-                <a href="#gallery" class="nav-link">Gallery</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
-            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <a href="#contact" class="cta-button nav-cta">Free Quote</a>
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Primary Navigation">
+    <div class="nav-container container">
+      <div class="nav-logo">
+        <a href="#home" aria-label="True Craft Tile & Stone Home">
+          <img src="images/logo.png" alt="True Craft Tile & Stone Logo" class="logo-img" />
+        </a>
+      </div>
+      <div class="nav-menu" id="nav-menu">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#gallery" class="nav-link">Gallery</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a href="#contact" class="cta-button nav-cta">Free Quote</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero" role="banner" aria-label="Homepage hero section">
+    <div class="hero-content container">
+      <div class="hero-text">
+        <h1 class="hero-title" aria-label="Crafting Beautiful Spaces">
+          <span class="title-line">Crafting</span>
+          <span class="title-line">Beautiful</span>
+          <span class="title-line">Spaces</span>
+        </h1>
+        <p class="hero-subtitle" aria-label="Business Location and Experience">
+          Based in Shakopee, MN | Serving the Metro Area | 25+ Years Experience
+        </p>
+        <div class="hero-stats" aria-live="polite" aria-atomic="true">
+          <div class="stat">
+            <span class="stat-number" data-target="500">0</span>
+            <span class="stat-label">Projects Completed</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number" data-target="25">0</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number" data-target="100">0</span>
+            <span class="stat-label">Happy Clients</span>
+          </div>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero" role="banner" aria-label="Homepage hero section">
-        <div class="hero-content container">
-            <div class="hero-text" >
-                <h1 class="hero-title" aria-label="Crafting Beautiful Spaces">
-                    <span class="title-line">Crafting</span>
-                    <span class="title-line">Beautiful</span>
-                    <span class="title-line">Spaces</span>
-                </h1>
-                <p class="hero-subtitle" aria-label="Business Location and Experience">
-                    Based in Shakopee, MN | Serving the Metro Area | 25+ Years Experience
-                </p>
-                <div class="hero-stats" aria-live="polite" aria-atomic="true">
-                    <div class="stat">
-                        <span class="stat-number" data-target="500">0</span>
-                        <span class="stat-label">Projects Completed</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number" data-target="25">0</span>
-                        <span class="stat-label">Years Experience</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number" data-target="100">0</span>
-                        <span class="stat-label">Happy Clients</span>
-                    </div>
-                </div>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn-primary btn-large" aria-label="Get Free Quote">Get Free Quote</a>
-                    <a href="tel:6127020502" class="btn-secondary btn-large" aria-label="Call Now 612-702-0502">
-                        <i class="fas fa-phone" aria-hidden="true"></i> Call Now: 612-702-0502
-                    </a>
-                </div>
-            </div>
-            <div class="hero-image" aria-hidden="true">
-                <div class="floating-tiles" aria-hidden="true">
-                    <div class="tile tile-1"></div>
-                    <div class="tile tile-2"></div>
-                    <div class="tile tile-3"></div>
-                    <div class="tile tile-4"></div>
-                </div>
-            </div>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn-primary btn-large" aria-label="Get Free Quote">Get Free Quote</a>
+          <a href="tel:6127020502" class="btn-secondary btn-large" aria-label="Call Now 612-702-0502">
+            <i class="fas fa-phone" aria-hidden="true"></i> Call Now: 612-702-0502
+          </a>
         </div>
-        <div class="scroll-indicator" aria-hidden="true" title="Scroll down">
-            <i class="fas fa-chevron-down"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services" aria-label="Our Services">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">Transform your space with our expert craftsmanship</p>
+      </div>
+      <div class="services-grid">
+        <article class="service-card" tabindex="0">
+          <div class="service-icon"><i class="fas fa-shower" aria-hidden="true"></i></div>
+          <h3>Bathroom Tile</h3>
+          <p>Custom shower surrounds, floors, walls, and backsplashes with premium materials</p>
+        </article>
+        <article class="service-card" tabindex="0">
+          <div class="service-icon"><i class="fas fa-utensils" aria-hidden="true"></i></div>
+          <h3>Kitchen Backsplash</h3>
+          <p>Beautiful glass, ceramic, and stone backsplashes that elevate your kitchen</p>
+        </article>
+        <article class="service-card" tabindex="0">
+          <div class="service-icon"><i class="fas fa-home" aria-hidden="true"></i></div>
+          <h3>Floor Tile</h3>
+          <p>Durability meets design with porcelain, ceramic, and natural stone flooring</p>
+        </article>
+        <article class="service-card" tabindex="0">
+          <div class="service-icon"><i class="fas fa-fireplace" aria-hidden="true"></i></div>
+          <h3>Feature Walls</h3>
+          <p>Stunning accent walls, fireplaces, and custom stone features</p>
+        </article>
+        <article class="service-card" tabindex="0">
+          <div class="service-icon"><i class="fas fa-crown" aria-hidden="true"></i></div>
+          <h3>Custom Stone</h3>
+          <p>Marble, granite, quartz, and natural stone installations</p>
+        </article>
+        <article class="service-card" tabindex="0">
+          <div class="service-icon"><i class="fas fa-tools" aria-hidden="true"></i></div>
+          <h3>Repairs & Maintenance</h3>
+          <p>Expert repairs, grout refresh, and tile restoration services</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="gallery" aria-label="Gallery of Our Work">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Our Work</h2>
+        <p class="section-subtitle">See our stunning transformations</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')" tabindex="0" aria-label="Luxury Shower">
+          <div class="gallery-overlay" aria-hidden="true"><h3>Luxury Shower</h3></div>
         </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services" aria-label="Our Services">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Our Services</h2>
-                <p class="section-subtitle">Transform your space with our expert craftsmanship</p>
-            </div>
-            <div class="services-grid">
-                <article class="service-card" tabindex="0">
-                    <div class="service-icon"><i class="fas fa-shower" aria-hidden="true"></i></div>
-                    <h3>Bathroom Tile</h3>
-                    <p>Custom shower surrounds, floors, walls, and backsplashes with premium materials</p>
-                </article>
-                <article class="service-card" tabindex="0">
-                    <div class="service-icon"><i class="fas fa-utensils" aria-hidden="true"></i></div>
-                    <h3>Kitchen Backsplash</h3>
-                    <p>Beautiful glass, ceramic, and stone backsplashes that elevate your kitchen</p>
-                </article>
-                <article class="service-card" tabindex="0">
-                    <div class="service-icon"><i class="fas fa-home" aria-hidden="true"></i></div>
-                    <h3>Floor Tile</h3>
-                    <p>Durability meets design with porcelain, ceramic, and natural stone flooring</p>
-                </article>
-                <article class="service-card" tabindex="0">
-                    <div class="service-icon"><i class="fas fa-fireplace" aria-hidden="true"></i></div>
-                    <h3>Feature Walls</h3>
-                    <p>Stunning accent walls, fireplaces, and custom stone features</p>
-                </article>
-                <article class="service-card" tabindex="0">
-                    <div class="service-icon"><i class="fas fa-crown" aria-hidden="true"></i></div>
-                    <h3>Custom Stone</h3>
-                    <p>Marble, granite, quartz, and natural stone installations</p>
-                </article>
-                <article class="service-card" tabindex="0">
-                    <div class="service-icon"><i class="fas fa-tools" aria-hidden="true"></i></div>
-                    <h3>Repairs & Maintenance</h3>
-                    <p>Expert repairs, grout refresh, and tile restoration services</p>
-                </article>
-            </div>
+        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1558618047-3c8c76bbb17e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')" tabindex="0" aria-label="Kitchen Backsplash">
+          <div class="gallery-overlay" aria-hidden="true"><h3>Kitchen Backsplash</h3></div>
         </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery" aria-label="Gallery of Our Work">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Our Work</h2>
-                <p class="section-subtitle">See our stunning transformations</p>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')" tabindex="0" aria-label="Luxury Shower">
-                    <div class="gallery-overlay" aria-hidden="true"><h3>Luxury Shower</h3></div>
-                </div>
-                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1558618047-3c8c76bbb17e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')" tabindex="0" aria-label="Kitchen Backsplash">
-                    <div class="gallery-overlay" aria-hidden="true"><h3>Kitchen Backsplash</h3></div>
-                </div>
-                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')" tabindex="0" aria-label="Modern Flooring">
-                    <div class="gallery-overlay" aria-hidden="true"><h3>Modern Flooring</h3></div>
-                </div>
-                <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1600585152563-6fbb65e1c1ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')" tabindex="0" aria-label="Feature Wall">
-                    <div class="gallery-overlay" aria-hidden="true"><h3>Feature Wall</h3></div>
-                </div>
-            </div>
-            <div class="gallery-cta">
-                <a href="#contact" class="btn-primary" aria-label="See More Projects">See More Projects</a>
-            </div>
+        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')" tabindex="0" aria-label="Modern Flooring">
+          <div class="gallery-overlay" aria-hidden="true"><h3>Modern Flooring</h3></div>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about" aria-label="About True Craft Tile & Stone">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>About True Craft Tile & Stone</h2>
-                    <p>Based in Shakopee, Minnesota, we proudly serve the entire Metro area with over 25 years of expert tile and stone installation experience.</p>
-                    <div class="about-features">
-                        <div class="feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>25+ Years Experience</span></div>
-                        <div class="feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Licensed & Insured</span></div>
-                        <div class="feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Free Estimates</span></div>
-                        <div class="feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Quality Guarantee</span></div>
-                        <div class="feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Clean Workspaces</span></div>
-                        <div class="feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Competitive Pricing</span></div>
-                    </div>
-                    <a href="#contact" class="btn-primary">Get Your Free Quote</a>
-                </div>
-                <div class="about-image">
-                    <div class="image-placeholder" aria-hidden="true">
-                        <i class="fas fa-hammer"></i>
-                    </div>
-                </div>
-            </div>
+        <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1600585152563-6fbb65e1c1ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')" tabindex="0" aria-label="Feature Wall">
+          <div class="gallery-overlay" aria-hidden="true"><h3>Feature Wall</h3></div>
         </div>
-    </section>
+      </div>
+      <div class="gallery-cta">
+        <a href="#contact" class="btn-primary" aria-label="See More Projects">See More Projects</a>
+      </div>
+    </div>
+  </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact" aria-label="Contact True Craft Tile & Stone">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Get Your Free Quote</h2>
-                <p class="section-subtitle">Ready to transform your space? Contact us today!</p>
-            </div>
-            <div class="contact-content">
-                <aside class="contact-info" aria-labelledby="contact-info-title">
-                    <h3 id="contact-info-title" class="sr-only">Contact Information</h3>
-                    <div class="contact-item">
-                        <i class="fas fa-phone" aria-hidden="true"></i>
-                        <div>
-                            <h4>Call Us</h4>
-                            <a href="tel:6127020502">612-702-0502</a><br />
-                            <a href="tel:9524860554">952-486-0554</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope" aria-hidden="true"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <a href="mailto:adelfadali@gmail.com">adelfadali@gmail.com</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-clock" aria-hidden="true"></i>
-                        <div>
-                            <h4>Hours</h4>
-                            <p>Mon-Fri: 7AM-6PM<br />Sat: 8AM-4PM</p>
-                        </div>
-                    </div>
-                </aside>
-                <form
-                  class="contact-form"
-                  id="contactForm"
-                  action="https://formspree.io/f/mwvwokzz"
-                  method="POST"
-                  aria-label="Send a message form"
-                >
-                  <div class="form-group">
-                    <label for="name" class="sr-only">Your Name *</label>
-                    <input type="text" id="name" name="name" placeholder="Your Name *" required autocomplete="name" />
-                  </div>
-                  <div class="form-group">
-                    <label for="phone" class="sr-only">Phone Number *</label>
-                    <input type="tel" id="phone" name="phone" placeholder="Phone Number *" required autocomplete="tel" />
-                  </div>
-                  <div class="form-group">
-                    <label for="email" class="sr-only">Email Address</label>
-                    <input type="email" id="email" name="email" placeholder="Email Address" autocomplete="email" />
-                  </div>
-                  <div class="form-group full-width">
-                    <label for="message" class="sr-only">Project Details *</label>
-                    <textarea id="message" name="message" placeholder="Project details (room, size, tile type, etc.) *" rows="5" required></textarea>
-                  </div>
-                  <button type="submit" aria-label="Send Message">Send Message <i class="fas fa-paper-plane" aria-hidden="true"></i></button>
-                </form>
-            </div>
+  <!-- About Section -->
+  <section id="about" class="about" aria-label="About True Craft Tile & Stone">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>About True Craft Tile & Stone</h2>
+          <p>Based in Shakopee, Minnesota, we proudly serve the entire Metro area with over 25 years of expert tile and stone installation experience.</p>
+          <div class="about-features">
+            <div class="feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>25+ Years Experience</span></div>
+            <div class="feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Licensed & Insured</span></div>
+            <div class="feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Free Estimates</span></div>
+            <div class="feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Quality Guarantee</span></div>
+            <div class="feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Clean Workspaces</span></div>
+            <div class="feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Competitive Pricing</span></div>
+          </div>
+          <a href="#contact" class="btn-primary">Get Your Free Quote</a>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer" role="contentinfo" aria-label="Footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <img src="images/logo.png" alt="True Craft Tile & Stone Logo" class="footer-logo-img" />
-                    <div>
-                        <h3>True Craft Tile & Stone</h3>
-                        <p>Professional Tile Installation Services</p>
-                    </div>
-                </div>
-                <nav class="footer-links" aria-label="Footer navigation">
-                    <a href="#home">Home</a>
-                    <a href="#services">Services</a>
-                    <a href="#gallery">Gallery</a>
-                    <a href="#about">About</a>
-                    <a href="#contact">Contact</a>
-                </nav>
-                <div class="footer-contact">
-                    <p><i class="fas fa-phone" aria-hidden="true"></i> 612-702-0502</p>
-                    <p><i class="fas fa-envelope" aria-hidden="true"></i> adelfadali@gmail.com</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 True Craft Tile & Stone. All rights reserved.</p>
-            </div>
+        <div class="about-image">
+          <div class="image-placeholder" aria-hidden="true">
+            <i class="fas fa-hammer"></i>
+          </div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <!-- JavaScript -->
-    <script>
-        // Navbar scroll background change
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 80) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+  <!-- Contact Section -->
+  <section id="contact" class="contact" aria-label="Contact True Craft Tile & Stone">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Get Your Free Quote</h2>
+        <p class="section-subtitle">Ready to transform your space? Contact us today!</p>
+      </div>
+      <div class="contact-content">
+        <aside class="contact-info" aria-labelledby="contact-info-title">
+          <h3 id="contact-info-title" class="sr-only">Contact Information</h3>
+          <div class="contact-item">
+            <i class="fas fa-phone" aria-hidden="true"></i>
+            <div>
+              <h4>Call Us</h4>
+              <a href="tel:6127020502">612-702-0502</a><br />
+              <a href="tel:9524860554">952-486-0554</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope" aria-hidden="true"></i>
+            <div>
+              <h4>Email</h4>
+              <a href="mailto:adelfadali@gmail.com">adelfadali@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <div>
+              <h4>Hours</h4>
+              <p>Mon-Fri: 7AM-6PM<br />Sat: 8AM-4PM</p>
+            </div>
+          </div>
+        </aside>
+        <form
+          class="contact-form"
+          id="contactForm"
+          action="https://formspree.io/f/mwvwokzz"
+          method="POST"
+          aria-label="Send a message form"
+          autocomplete="on"
+        >
+          <div class="form-group">
+            <input type="text" id="name" name="name" placeholder="Your Name *" required autocomplete="name" />
+            <label for="name">Your Name *</label>
+          </div>
+          <div class="form-group">
+            <input type="tel" id="phone" name="phone" placeholder="Phone Number *" required autocomplete="tel" />
+            <label for="phone">Phone Number *</label>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" name="email" placeholder="Email Address" autocomplete="email" />
+            <label for="email">Email Address</label>
+          </div>
+          <div class="form-group full-width">
+            <textarea id="message" name="message" placeholder="Project details (room, size, tile type, etc.) *" rows="5" required></textarea>
+            <label for="message">Project details (room, size, tile type, etc.) *</label>
+          </div>
+          <button type="submit" aria-label="Send Message">Send Message <i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+  </section>
 
-        // Hamburger menu toggle
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo" aria-label="Footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="images/logo.png" alt="True Craft Tile & Stone Logo" class="footer-logo-img" />
+          <div>
+            <h3>True Craft Tile & Stone</h3>
+            <p>Professional Tile Installation Services</p>
+          </div>
+        </div>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="#home">Home</a>
+          <a href="#services">Services</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="footer-contact">
+          <p><i class="fas fa-phone"></i> 612-702-0502</p>
+          <p><i class="fas fa-envelope"></i> adelfadali@gmail.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 True Craft Tile & Stone. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
-        hamburger.addEventListener('click', () => {
-            const expanded = hamburger.getAttribute('aria-expanded') === 'true' || false;
-            hamburger.setAttribute('aria-expanded', !expanded);
-            navMenu.classList.toggle('active');
-        });
+  <!-- JavaScript -->
+  <script>
+    // Navbar scroll background change
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 80) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
 
-        // Close mobile menu after clicking a link
-        navMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (navMenu.classList.contains('active')) {
-                    navMenu.classList.remove('active');
-                    hamburger.setAttribute('aria-expanded', false);
-                }
-            });
-        });
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
 
-        // Animate counters in hero stats
-        const counters = document.querySelectorAll('.stat-number');
-        const speed = 200;
+    hamburger.addEventListener('click', () => {
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true' || false;
+      hamburger.setAttribute('aria-expanded', !expanded);
+      navMenu.classList.toggle('active');
+    });
 
-        const animateCounters = () => {
-            counters.forEach(counter => {
-                const updateCount = () => {
-                    const target = +counter.getAttribute('data-target');
-                    const count = +counter.innerText;
-                    const increment = Math.ceil(target / speed);
+    // Close mobile menu after clicking a link
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (navMenu.classList.contains('active')) {
+          navMenu.classList.remove('active');
+          hamburger.setAttribute('aria-expanded', false);
+        }
+      });
+    });
 
-                    if (count < target) {
-                        counter.innerText = count + increment > target ? target : count + increment;
-                        setTimeout(updateCount, 15);
-                    } else {
-                        counter.innerText = target;
-                    }
-                };
-                updateCount();
-            });
+    // Animate counters in hero stats
+    const counters = document.querySelectorAll('.stat-number');
+    const speed = 200;
+
+    const animateCounters = () => {
+      counters.forEach(counter => {
+        const updateCount = () => {
+          const target = +counter.getAttribute('data-target');
+          const count = +counter.innerText;
+          const increment = Math.ceil(target / speed);
+
+          if (count < target) {
+            counter.innerText = count + increment > target ? target : count + increment;
+            setTimeout(updateCount, 15);
+          } else {
+            counter.innerText = target;
+          }
         };
+        updateCount();
+      });
+    };
 
-        // Trigger animation when hero stats are visible
-        let animated = false;
-        window.addEventListener('scroll', () => {
-            const heroStats = document.querySelector('.hero-stats');
-            if (heroStats) {
-                const rect = heroStats.getBoundingClientRect();
-                if (!animated && rect.top < window.innerHeight && rect.bottom >= 0) {
-                    animateCounters();
-                    animated = true;
-                }
-            }
-        });
-    </script>
-
+    // Trigger animation when hero stats are visible
+    let animated = false;
+    window.addEventListener('scroll', () => {
+      const heroStats = document.querySelector('.hero-stats');
+      if (heroStats) {
+        const rect = heroStats.getBoundingClientRect();
+        if (!animated && rect.top < window.innerHeight && rect.bottom >= 0) {
+          animateCounters();
+          animated = true;
+        }
+      }
+    });
+  </script>
 </body>
 </html>
