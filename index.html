@@ -41,10 +41,18 @@
         'kitchen backsplash 44Shakopee Minneapolis Tile contractor.jpg',
         'kitchen backsplash 444Shakopee Minneapolis Tile contractor.jpg'
     ],
+    next() {
+        this.activeSlide = this.activeSlide === this.slides.length - 1 ? 0 : this.activeSlide + 1;
+    },
+    prev() {
+        this.activeSlide = this.activeSlide === 0 ? this.slides.length - 1 : this.activeSlide - 1;
+    },
     init() {
-        setInterval(() => {
-            this.activeSlide = this.activeSlide === this.slides.length - 1 ? 0 : this.activeSlide + 1;
-        }, 3000);
+        let timer = setInterval(() => this.next(), 5000);
+        this.$watch('activeSlide', () => {
+            clearInterval(timer);
+            timer = setInterval(() => this.next(), 5000);
+        });
     },
     async submitForm(e) {
         this.loading = true;
@@ -74,34 +82,97 @@
         </div>
     </nav>
 
-    <header id="home" class="relative pt-48 pb-32 bg-slate-50 bg-grid">
+    <header id="home" class="relative pt-48 pb-20 bg-slate-50 bg-grid">
         <div class="max-w-5xl mx-auto px-6 text-center">
             <span class="text-blue-700 font-bold tracking-[0.2em] text-sm uppercase mb-6 block">Shakopee's Master Tile Contractor Since 1991</span>
             <h1 class="text-6xl lg:text-8xl font-bold leading-tight text-slate-900 mb-10 uppercase">Mastery in Every <br><span class="text-blue-700 italic lowercase">Square Inch.</span></h1>
             <p class="text-xl text-slate-600 max-w-2xl mx-auto mb-12">35+ Years of Professional Excellence. Serving Shakopee, Minneapolis, and the Twin Cities Metro.</p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#quote" class="bg-slate-900 text-white px-10 py-5 rounded-xl font-bold text-lg hover:shadow-2xl transition inline-block uppercase tracking-widest">Get My Estimate</a>
-                <a href="#work" class="bg-white text-slate-900 border-2 border-slate-200 px-10 py-5 rounded-xl font-bold text-lg hover:bg-slate-50 transition uppercase tracking-widest">View Gallery</a>
-            </div>
         </div>
     </header>
 
-    <section id="work" class="section-padding bg-white border-y">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-4xl lg:text-6xl font-bold mb-12 uppercase tracking-tighter">Our Recent <span class="text-blue-700">Work</span></h2>
-            <div class="relative w-full h-[500px] lg:h-[750px] overflow-hidden rounded-[3rem] shadow-2xl bg-slate-900 mx-auto max-w-6xl">
-                <template x-for="(slide, index) in slides" :key="index">
-                    <div x-show="activeSlide === index" 
-                         x-transition:enter="transition ease-out duration-1000"
-                         x-transition:enter-start="opacity-0 scale-105"
-                         x-transition:enter-end="opacity-100 scale-100"
-                         x-transition:leave="transition ease-in duration-1000"
-                         x-transition:leave-start="opacity-100"
-                         x-transition:leave-end="opacity-0"
-                         class="absolute inset-0">
-                        <img :src="slide" class="w-full h-full object-cover" alt="Custom Backsplash Shakopee">
+    <section id="work" class="pb-32 bg-white border-b">
+        <div class="max-w-[1400px] mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <div class="lg:col-span-7">
+                    <div class="mb-8 flex justify-between items-end">
+                        <div>
+                            <h2 class="text-4xl font-bold uppercase tracking-tighter">Our Recent <span class="text-blue-700">Work</span></h2>
+                            <p class="text-slate-500 font-bold uppercase text-[10px] tracking-widest mt-2">Browse our premium transformations</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <button @click="prev()" class="p-3 rounded-full bg-slate-100 hover:bg-blue-700 hover:text-white transition shadow-sm">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                            </button>
+                            <button @click="next()" class="p-3 rounded-full bg-slate-100 hover:bg-blue-700 hover:text-white transition shadow-sm">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                            </button>
+                        </div>
                     </div>
-                </template>
+
+                    <div class="relative w-full h-[500px] lg:h-[650px] overflow-hidden rounded-[2.5rem] shadow-2xl bg-slate-900 group">
+                        <template x-for="(slide, index) in slides" :key="index">
+                            <div x-show="activeSlide === index" 
+                                 x-transition:enter="transition ease-out duration-700"
+                                 x-transition:enter-start="opacity-0 scale-105"
+                                 x-transition:enter-end="opacity-100 scale-100"
+                                 x-transition:leave="transition ease-in duration-700"
+                                 x-transition:leave-start="opacity-100"
+                                 x-transition:leave-end="opacity-0"
+                                 class="absolute inset-0">
+                                <img :src="slide" class="w-full h-full object-cover" :alt="'Tile Installation ' + index">
+                            </div>
+                        </template>
+
+                        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+                            <template x-for="(slide, index) in slides" :key="index">
+                                <button @click="activeSlide = index" 
+                                        class="h-2 rounded-full transition-all duration-300" 
+                                        :class="activeSlide === index ? 'w-10 bg-white shadow-lg' : 'w-2 bg-white/40 hover:bg-white/60'">
+                                </button>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 bg-slate-900 rounded-[2.5rem] p-8 lg:p-10 shadow-2xl text-white sticky top-28">
+                    <div x-show="!submitted">
+                        <h3 class="text-3xl font-bold mb-2 uppercase tracking-tight">Quick Estimate</h3>
+                        <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-8">Get a response within 24 hours</p>
+                        
+                        <form @submit.prevent="submitForm($event)" class="space-y-4">
+                            <div class="relative"><input type="text" name="name" required class="peer w-full bg-slate-800/50 border-2 border-slate-700 rounded-2xl p-4 pt-6 text-white outline-none focus:border-blue-500 transition-all"><label class="absolute left-4 top-2 text-blue-500 text-[10px] font-bold uppercase tracking-widest">Full Name</label></div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="relative"><input type="tel" name="phone" required class="peer w-full bg-slate-800/50 border-2 border-slate-700 rounded-2xl p-4 pt-6 text-white outline-none focus:border-blue-500 transition-all"><label class="absolute left-4 top-2 text-blue-500 text-[10px] font-bold uppercase tracking-widest">Phone</label></div>
+                                <div class="relative"><input type="text" name="city" required class="peer w-full bg-slate-800/50 border-2 border-slate-700 rounded-2xl p-4 pt-6 text-white outline-none focus:border-blue-500 transition-all"><label class="absolute left-4 top-2 text-blue-500 text-[10px] font-bold uppercase tracking-widest">City</label></div>
+                            </div>
+                            <div class="relative"><input type="email" name="email" required class="peer w-full bg-slate-800/50 border-2 border-slate-700 rounded-2xl p-4 pt-6 text-white outline-none focus:border-blue-500 transition-all"><label class="absolute left-4 top-2 text-blue-500 text-[10px] font-bold uppercase tracking-widest">Email Address</label></div>
+                            <div class="relative">
+                                <select name="service" required class="w-full bg-slate-800/50 border-2 border-slate-700 rounded-2xl p-4 pt-6 text-white outline-none focus:border-blue-500 transition-all appearance-none">
+                                    <option value="Bathroom Remodel">Bathroom Remodel</option>
+                                    <option value="Kitchen Backsplash">Kitchen Backsplash</option>
+                                    <option value="Tub Surrounding">Tub Surrounding</option>
+                                    <option value="Maintenance">Maintenance/Restoration</option>
+                                    <option value="Commercial">Commercial Project</option>
+                                </select>
+                                <label class="absolute left-4 top-2 text-blue-500 text-[10px] font-bold uppercase tracking-widest">Service</label>
+                            </div>
+                            <div class="relative">
+                                <textarea name="message" rows="3" required class="peer w-full bg-slate-800/50 border-2 border-slate-700 rounded-2xl p-4 pt-6 text-white outline-none focus:border-blue-500 transition-all"></textarea>
+                                <label class="absolute left-4 top-2 text-blue-500 text-[10px] font-bold uppercase tracking-widest">Project Details</label>
+                            </div>
+                            <button type="submit" :disabled="loading" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-5 rounded-2xl text-lg shadow-xl transition-all uppercase tracking-widest">
+                                <span x-show="!loading">Send Request →</span>
+                                <span x-show="loading" class="animate-pulse">Processing...</span>
+                            </button>
+                        </form>
+                    </div>
+                    <div x-show="submitted" class="text-center py-12" x-cloak x-transition>
+                        <div class="text-6xl mb-6">✓</div>
+                        <h3 class="text-2xl font-bold uppercase mb-2">Thank You</h3>
+                        <p class="text-slate-400">Your request has been received. True Craft will contact you shortly.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -148,12 +219,12 @@
         <div class="max-w-4xl mx-auto px-6">
             <h2 class="text-4xl lg:text-5xl font-bold mb-12 text-center uppercase tracking-tighter">The <span class="italic text-blue-700">True Craft</span> Standard</h2>
             <div class="prose prose-lg text-slate-700 leading-relaxed space-y-8 max-w-none">
-                <p>For over 35 years, <strong>True Craft Tile & Stone</strong> has stood as the premier choice for homeowners and designers in Shakopee, Minneapolis, and the surrounding Twin Cities. We understand that tile isn't just a surface—it's a permanent architectural feature of your home. Unlike generic contractors, we approach every project with the precision of an artisan and the technical knowledge of a master installer.</p>
+                <p>For over 35 years, <strong>True Craft Tile & Stone</strong> has stood as the premier choice for homeowners and designers in Shakopee, Minneapolis, and the surrounding Twin Cities. We understand that tile isn't just a surface—it's a permanent architectural feature of your home.</p>
                 <h3 class="text-2xl font-bold text-slate-900">Why Precision Matters in Tile Installation</h3>
-                <p>Tile installation is a science as much as it is an art. A poorly installed shower can lead to catastrophic water damage behind your walls, often not visible until it’s too late. That is why we specialize in the <strong>Schluter-Kerdi Waterproofing System</strong>. By using industry-leading vapor management and waterproofing technology, we ensure your bathroom retreat remains beautiful and mold-free for decades.</p>
-                <p>Our expertise extends beyond the bathroom. From custom kitchen backsplashes that serve as the focal point of your home to large-format porcelain flooring that requires a perfectly level subfloor, we handle the technical challenges that others shy away from. We evaluate every substrate for structural integrity and use premium mortars and grouts tailored to your specific tile material—whether it’s natural marble, glass mosaic, or handmade ceramic.</p>
+                <p>Tile installation is a science as much as it is an art. A poorly installed shower can lead to catastrophic water damage behind your walls. That is why we specialize in the <strong>Schluter-Kerdi Waterproofing System</strong>. By using industry-leading technology, we ensure your bathroom retreat remains beautiful and mold-free for decades.</p>
+                <p>Our expertise extends beyond the bathroom. From custom kitchen backsplashes to large-format porcelain flooring, we handle the technical challenges that others shy away from. We evaluate every substrate for structural integrity and use premium mortars and grouts tailored to your specific project needs.</p>
                 <h3 class="text-2xl font-bold text-slate-900">Dedicated to the Shakopee & Minneapolis Community</h3>
-                <p>Being a local Shakopee business, our reputation is built on the word-of-mouth of satisfied neighbors. We don’t just "lay tile"—we provide a seamless, professional experience. This includes detailed layout planning to avoid "slivers" or awkward cuts, ensuring symmetry in every corner. We offer a <strong>2-year workmanship warranty</strong> because we believe in the longevity of our work. When you choose True Craft, you are investing in a lifetime of durability and timeless design.</p>
+                <p>Being a local Shakopee business, our reputation is built on the word-of-mouth of satisfied neighbors. We don’t just "lay tile"—we provide a seamless, professional experience. This includes detailed layout planning to avoid "slivers" or awkward cuts. We offer a <strong>2-year workmanship warranty</strong> because we believe in the longevity of our work.</p>
             </div>
         </div>
     </section>
@@ -162,7 +233,6 @@
         <div class="max-w-4xl mx-auto px-6">
             <h2 class="text-4xl font-bold text-center mb-16 uppercase tracking-tighter text-slate-900">Mastering the Details: <span class="text-blue-700">FAQ</span></h2>
             <div class="grid grid-cols-1 gap-4">
-                
                 <div class="border-2 border-slate-100 rounded-3xl bg-white overflow-hidden shadow-sm">
                     <button @click="activeFaq = 1" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 1 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
                         <span>What is your primary service area?</span>
@@ -172,107 +242,34 @@
                         True Craft Tile & Stone serves the entire <strong>Twin Cities Metro</strong>, with a core focus on <strong>Shakopee, Minneapolis</strong>, Eden Prairie, and Edina.
                     </div>
                 </div>
-
                 <div class="border-2 border-slate-100 rounded-3xl bg-white overflow-hidden shadow-sm">
                     <button @click="activeFaq = 2" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 2 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
-                        <span>Do you offer a warranty on your installation?</span>
+                        <span>Do you offer a warranty?</span>
                         <span class="text-2xl transition-transform" :class="activeFaq === 2 ? 'rotate-45' : ''">+</span>
                     </button>
                     <div x-show="activeFaq === 2" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>
-                        Yes. We provide a <strong>2-year workmanship warranty</strong> on all our installations. This is double the industry standard, reflecting our confidence in the 35+ years of experience we bring to every job.
+                        Yes. We provide a <strong>2-year workmanship warranty</strong> on all installations, double the industry standard.
                     </div>
                 </div>
-
                 <div class="border-2 border-slate-100 rounded-3xl bg-white overflow-hidden shadow-sm">
                     <button @click="activeFaq = 3" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 3 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
-                        <span>Why do you recommend Schluter-Kerdi systems for showers?</span>
+                        <span>Why Schluter-Kerdi?</span>
                         <span class="text-2xl transition-transform" :class="activeFaq === 3 ? 'rotate-45' : ''">+</span>
                     </button>
                     <div x-show="activeFaq === 3" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>
-                        Schluter-Kerdi is the gold standard for waterproofing. Unlike traditional cement board, it creates a completely integrated, vapor-tight seal that prevents mold growth and structural rot behind your tiles.
+                        It creates a vapor-tight seal that prevents mold growth and structural rot behind your tiles.
                     </div>
                 </div>
-
-                <div class="border-2 border-slate-100 rounded-3xl bg-white overflow-hidden shadow-sm">
-                    <button @click="activeFaq = 4" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 4 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
-                        <span>Can you install large-format tile (LFT)?</span>
-                        <span class="text-2xl transition-transform" :class="activeFaq === 4 ? 'rotate-45' : ''">+</span>
-                    </button>
-                    <div x-show="activeFaq === 4" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>
-                        Absolutely. Large-format tiles require advanced leveling systems and specific mortar coverage to prevent cracking and "lippage" (uneven edges). We use specialized tools to ensure a perfectly flat, monolithic look.
-                    </div>
-                </div>
-
-                <div class="border-2 border-slate-100 rounded-3xl bg-white overflow-hidden shadow-sm">
-                    <button @click="activeFaq = 5" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 5 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
-                        <span>How do you handle layout and symmetry?</span>
-                        <span class="text-2xl transition-transform" :class="activeFaq === 5 ? 'rotate-45' : ''">+</span>
-                    </button>
-                    <div x-show="activeFaq === 5" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>
-                        Layout is the most important step. We "dry-lay" or measure precisely before thin-set touches the floor to avoid awkward small cuts (slivers) at the edges, ensuring your project looks balanced and professional.
-                    </div>
-                </div>
-
-                <div class="border-2 border-slate-100 rounded-3xl bg-white overflow-hidden shadow-sm">
-                    <button @click="activeFaq = 6" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 6 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
-                        <span>What type of grout do you use?</span>
-                        <span class="text-2xl transition-transform" :class="activeFaq === 6 ? 'rotate-45' : ''">+</span>
-                    </button>
-                    <div x-show="activeFaq === 6" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>
-                        We use high-performance polymer-modified or epoxy grouts. These are stain-resistant, color-consistent, and far more durable than the cheap sanded grout found at big-box stores.
-                    </div>
-                </div>
-
-                <div class="border-2 border-slate-100 rounded-3xl bg-white overflow-hidden shadow-sm">
-                    <button @click="activeFaq = 7" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 7 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
-                        <span>Do you handle subfloor preparation?</span>
-                        <span class="text-2xl transition-transform" :class="activeFaq === 7 ? 'rotate-45' : ''">+</span>
-                    </button>
-                    <div x-show="activeFaq === 7" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>
-                        Yes. A tile job is only as good as what’s underneath it. We evaluate subfloors for deflection (bounce) and levelness, installing uncoupling membranes like Ditra to prevent future grout cracking.
-                    </div>
-                </div>
-
-                <div class="border-2 border-slate-100 rounded-3xl bg-white overflow-hidden shadow-sm">
-                    <button @click="activeFaq = 8" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 8 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
-                        <span>How long does a typical bathroom project take?</span>
-                        <span class="text-2xl transition-transform" :class="activeFaq === 8 ? 'rotate-45' : ''">+</span>
-                    </button>
-                    <div x-show="activeFaq === 8" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>
-                        While every project varies, a standard custom shower usually takes 5 to 7 working days to allow for proper waterproofing cure times, precision setting, and final grouting/sealing.
-                    </div>
-                </div>
-
-                <div class="border-2 border-slate-100 rounded-3xl bg-white overflow-hidden shadow-sm">
-                    <button @click="activeFaq = 9" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 9 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
-                        <span>Can you install natural stone like marble or slate?</span>
-                        <span class="text-2xl transition-transform" :class="activeFaq === 9 ? 'rotate-45' : ''">+</span>
-                    </button>
-                    <div x-show="activeFaq === 9" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>
-                        Yes. Natural stone requires a different level of care, including specific white thin-sets to prevent staining and professional-grade sealants to protect the stone’s porous surface.
-                    </div>
-                </div>
-
-                <div class="border-2 border-slate-100 rounded-3xl bg-white overflow-hidden shadow-sm">
-                    <button @click="activeFaq = 10" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 10 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
-                        <span>What should I have ready for my estimate?</span>
-                        <span class="text-2xl transition-transform" :class="activeFaq === 10 ? 'rotate-45' : ''">+</span>
-                    </button>
-                    <div x-show="activeFaq === 10" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>
-                        Having your rough measurements and an idea of the tile type (ceramic, porcelain, stone) helps us provide a more accurate quote. Photos of your current space are also highly beneficial.
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <section id="quote" class="section-padding bg-slate-900 text-white">
+    <section id="quote" class="section-padding bg-slate-900 text-white border-t border-slate-800">
         <div class="max-w-4xl mx-auto px-6">
             <div x-show="!submitted">
                 <div class="text-center mb-16">
-                    <h2 class="text-5xl lg:text-6xl font-bold mb-4 uppercase tracking-tighter">Start Your <span class="text-blue-500">Project</span></h2>
-                    <p class="text-slate-400 font-bold uppercase tracking-[0.3em] text-xs">Licensed • Insured • 35+ Years Mastery</p>
+                    <h2 class="text-5xl lg:text-6xl font-bold mb-4 uppercase tracking-tighter">Detailed <span class="text-blue-500">Inquiry</span></h2>
+                    <p class="text-slate-400 font-bold uppercase tracking-[0.3em] text-xs">Full Project Specification</p>
                 </div>
                 <form @submit.prevent="submitForm($event)" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="relative"><input type="text" name="name" required class="peer w-full bg-slate-800/50 border-2 border-slate-700 rounded-2xl p-5 pt-7 text-white outline-none focus:border-blue-500 transition-all"><label class="absolute left-5 top-2 text-blue-500 text-[10px] font-bold uppercase tracking-widest">Full Name</label></div>
@@ -281,11 +278,11 @@
                     <div class="relative"><input type="text" name="city" required class="peer w-full bg-slate-800/50 border-2 border-slate-700 rounded-2xl p-5 pt-7 text-white outline-none focus:border-blue-500 transition-all"><label class="absolute left-5 top-2 text-blue-500 text-[10px] font-bold uppercase tracking-widest">City / Location</label></div>
                     <div class="md:col-span-2 relative">
                         <select name="service" required class="w-full bg-slate-800/50 border-2 border-slate-700 rounded-2xl p-5 pt-7 text-white outline-none focus:border-blue-500 transition-all appearance-none">
-                            <option value="Bathroom Remodel">Bathroom Remodel / Custom Shower</option>
+                            <option value="Bathroom Remodel">Bathroom Remodel</option>
                             <option value="Tub Surrounding">Tub Surrounding</option>
                             <option value="Kitchen Backsplash">Kitchen Backsplash</option>
-                            <option value="Maintenance/Restoration">Maintenance and Restoration</option>
-                            <option value="Commercial Projects">Commercial Projects</option>
+                            <option value="Maintenance">Maintenance/Restoration</option>
+                            <option value="Commercial">Commercial Project</option>
                             <option value="Floor Installation">Floor Installation</option>
                         </select>
                         <label class="absolute left-5 top-2 text-blue-500 text-[10px] font-bold uppercase tracking-widest">Service Type</label>
@@ -300,7 +297,6 @@
             <div x-show="submitted" class="text-center py-20 bg-white rounded-[3rem] shadow-2xl relative" x-cloak x-transition>
                 <div class="text-7xl mb-8">✓</div>
                 <h2 class="text-4xl font-bold text-slate-900 mb-4 uppercase">Received</h2>
-                <p class="text-slate-600 text-xl max-w-md mx-auto mb-10 px-6 font-sans">Thank you. We will contact you shortly.</p>
                 <a href="https://www.facebook.com/elfadali.llc/photos" target="_blank" class="inline-flex items-center gap-3 bg-[#1877F2] text-white font-bold py-5 px-12 rounded-full text-lg shadow-xl hover:scale-105 transition">Facebook Gallery</a>
             </div>
         </div>
