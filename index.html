@@ -286,44 +286,113 @@
         </div>
     </section>
 
-    <section id="faq" class="section-padding bg-white border-y reveal">
-        <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16 uppercase tracking-tighter">Mastering the Details: <span class="text-blue-700">FAQ</span></h2>
-            <div class="space-y-6">
-                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
-                    <button @click="activeFaq = activeFaq === 1 ? 0 : 1" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 1 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
-                        <span class="text-xl">What makes your custom shower installation process superior to standard methods?</span>
-                        <span class="text-2xl transition-transform" :class="activeFaq === 1 ? 'rotate-45' : ''">+</span>
-                    </button>
-                    <div x-show="activeFaq === 1" class="faq-answer p-8 text-slate-600 border-t border-slate-100 leading-relaxed" x-cloak x-transition>
-                        <p>At True Craft Tile and Stone, we believe that the beauty of a shower is secondary only to its integrity. Most standard "contractor-grade" showers rely on cement board and a plastic liner. While these materials are common, they are fundamentally flawed. Cement board is water-resistant, but it is not waterproof. Over time, moisture moves through the tile and grout, saturating the board and eventually reaching the wood studs behind it. This creates a hidden environment for mold and rot that may not be visible for years but will eventually compromise your home’s structure.</p>
-                        <p>Our approach is fundamentally different because we are Schluter-Kerdi Authorized installers. We utilize a complete system-based approach where every component—the drain, the shower pan, and the walls—is integrated into a single, vapor-tight envelope. We start with Kerdi-Board, a lightweight, waterproof, and dimensionally stable substrate that replaces traditional heavy cement boards. Every seam and corner is then sealed with Kerdi-Band using specialized thin-set mortar. This ensures that water is managed on the surface of the system, never allowing it to penetrate into the wall cavity.</p>
-                        <p>Beyond the waterproofing, our technical precision in the layout phase is what truly sets us apart. We don't just "start laying tile." we perform complex mathematical layouts to ensure that all cuts are balanced and symmetrical. We pay close attention to the "wrap" of the tile patterns in corners so that the design remains continuous. This level of planning prevents small, unsightly slivers of tile at the edges and creates a visual flow that mirrors high-end luxury resorts. When you invest in a shower from True Craft Tile and Stone, you are investing in 35 years of engineering expertise combined with artisanal finishing.</p>
-                    </div>
+   <section id="faq" class="section-padding bg-white border-y reveal" x-data="{activeFaq: 1}">
+    <div class="max-w-4xl mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center mb-16 uppercase tracking-tighter">
+            Mastering the Details: <span class="text-blue-700">FAQ</span>
+        </h2>
+        <div class="space-y-6">
+            <!-- FAQ 1 -->
+            <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
+                <button @click="activeFaq = activeFaq === 1 ? 0 : 1" 
+                        class="w-full p-6 text-left font-bold flex justify-between items-center transition" 
+                        :class="activeFaq === 1 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
+                    <span class="text-xl">What makes True Craft Tile & Stone’s custom shower installations superior?</span>
+                    <span class="text-2xl transition-transform" :class="activeFaq === 1 ? 'rotate-45' : ''">+</span>
+                </button>
+                <div x-show="activeFaq === 1" class="faq-answer p-8 text-slate-600 border-t border-slate-100 leading-relaxed" x-cloak x-transition>
+                    <p>True Craft Tile & Stone’s custom shower installations stand apart due to meticulous craftsmanship and a commitment to lasting quality. Unlike many contractors who rely on traditional methods and materials prone to water damage and mold, True Craft employs advanced Schluter-Kerdi waterproofing systems which create a fully vapor-tight shower environment. This approach prevents leaks and mold growth, ensuring your shower remains pristine and durable for decades. Beyond waterproofing technologies, the team dedicates significant time to precise layout planning, ensuring tile symmetry and balanced cuts that elevate both function and aesthetics. Each project combines the latest industry standards with an artisanal attention to detail, providing homeowners with a stunning, spa-quality shower that also offers peace of mind. True Craft’s 35+ years of experience ensures deep understanding of materials, installation techniques, and waterproofing science, guaranteeing an investment that enhances home value and comfort while avoiding costly repairs in the future.</p>
                 </div>
+            </div>
 
-                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
-                    <button @click="activeFaq = activeFaq === 4 ? 0 : 4" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 4 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
-                        <span class="text-xl">What special considerations are required for fireplace tile and stone installations?</span>
-                        <span class="text-2xl transition-transform" :class="activeFaq === 4 ? 'rotate-45' : ''">+</span>
-                    </button>
-                    <div x-show="activeFaq === 4" class="faq-answer p-8 text-slate-600 border-t border-slate-100 leading-relaxed" x-cloak x-transition>
-                        <p>Fireplace tiling is one of the most technical areas of interior masonry because it involves extreme thermal expansion and contraction. At True Craft Tile and Stone, we understand that a fireplace isn't just a focal point; it's a heat-generating appliance that requires specific material choices and installation techniques to prevent cracking or tile failure. The cycle of heating and cooling creates immense stress on the bond between the tile and the substrate. If the wrong thin-set or improper expansion joints are used, the tiles will eventually pop or "tent" as the heat causes the materials to expand at different rates.</p>
-                        <p>Our fireplace installation process begins with a thermal assessment of the surround. We use high-performance, polymer-modified mortars specifically designed for high-heat environments. These mortars maintain their flexibility under extreme temperature shifts, allowing the tile to expand without breaking the bond. For the substrate, we ensure that the surface is non-combustible and structurally reinforced to handle the weight of heavy stone or large-format tiles. We also pay strict attention to local Shakopee and Minneapolis building codes regarding clearances to combustible materials, ensuring your fireplace is as safe as it is beautiful.</p>
-                        <p>Design-wise, a fireplace offers a unique opportunity for "book-matching" or complex stone layouts. Whether you are looking for a sleek, modern floor-to-ceiling porcelain slab or a traditional stacked-stone hearth, we prioritize the "architectural alignment" of the project. We ensure that the mantel, the firebox, and the floor transition are all perfectly integrated. Because the fireplace is often the center of the living room, we take extra time to hand-select stone pieces for color consistency and grain direction. A True Craft fireplace is designed to be a permanent, high-performance masterpiece that adds significant resale value to your home while serving as a safe, stunning gathering place for your family.</p>
-                    </div>
+            <!-- FAQ 2 -->
+            <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
+                <button @click="activeFaq = activeFaq === 2 ? 0 : 2" 
+                        class="w-full p-6 text-left font-bold flex justify-between items-center transition" 
+                        :class="activeFaq === 2 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
+                    <span class="text-xl">How does True Craft Tile & Stone ensure long-lasting tile floors?</span>
+                    <span class="text-2xl transition-transform" :class="activeFaq === 2 ? 'rotate-45' : ''">+</span>
+                </button>
+                <div x-show="activeFaq === 2" class="faq-answer p-8 text-slate-600 border-t border-slate-100 leading-relaxed" x-cloak x-transition>
+                    <p>At True Craft Tile & Stone, long-lasting tile floors start with expert substrate preparation and precise installation. Properly prepared subflooring ensures optimal tile adhesion and prevents movement that causes cracks or lippage over time. The team uses high-quality thin-set mortars matched perfectly to tile type and site conditions to secure each tile firmly in place. Precision leveling during installation eliminates potential tripping hazards and future tile breakage, providing floors that stay flawless through years of daily use. Beyond installation, True Craft offers grout sealing and maintenance advice to maintain grout integrity and prevent discoloration or water infiltration which can jeopardize flooring lifespan. Their experience spans a broad range of tile materials — from durable porcelain to elegant natural stone — understanding the unique requirements of each to maximize longevity and beauty. Clients gain confidence knowing that their floors are installed with the highest craftsmanship standards, backed by True Craft’s commitment to offering professional tile solutions that endure, enhance home value, and deliver unsurpassed aesthetics.</p>
                 </div>
+            </div>
 
-                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
-                    <button @click="activeFaq = activeFaq === 5 ? 0 : 5" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 5 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
-                        <span class="text-xl">How do commercial tile requirements differ from residential projects?</span>
-                        <span class="text-2xl transition-transform" :class="activeFaq === 5 ? 'rotate-45' : ''">+</span>
-                    </button>
-                    <div x-show="activeFaq === 5" class="faq-answer p-8 text-slate-600 border-t border-slate-100 leading-relaxed" x-cloak x-transition>
-                        <p>Commercial tile installation is a different beast entirely, focused heavily on liability, slip resistance, and extreme durability. In a residential setting, aesthetics often drive the decision-making process. In a commercial environment—such as a restaurant kitchen, a hotel lobby, or a retail store—performance and safety are the primary mandates. At True Craft Tile and Stone, we approach commercial projects with a focus on DCOF (Dynamic Coefficient of Friction) ratings. We ensure that all selected materials meet or exceed the ANSI A326.3 standard for slip resistance in wet environments, protecting business owners from potential liability issues.</p>
-                        <p>The technical requirements for commercial substrates are also significantly higher. In a high-traffic lobby, the floor must withstand thousands of footfalls daily, as well as the weight of heavy equipment and cleaning machinery. We utilize specialized commercial-grade uncoupling membranes that protect the tile from the vibrations and shifting common in large commercial buildings. For industrial kitchens, we often recommend epoxy grouts. Unlike standard cementitious grout, epoxy is 100% non-porous and resistant to the acids, fats, and harsh industrial degreasers used in commercial cleaning. This prevents the growth of bacteria and ensures the facility passes health inspections with ease.</p>
-                        <p>Finally, we understand that for commercial clients, "time is money." Commercial projects require strict adherence to timelines and coordination with other trades (plumbers, electricians, and inspectors). Our 35+ years of experience allows us to manage these complex logistical schedules without sacrificing quality. We provide comprehensive documentation, including technical data sheets (TDS) and safety data sheets (SDS) for all materials used, ensuring that your commercial facility is fully compliant with all Twin Cities building regulations. Whether it’s a 100-square-foot restroom or a 5,000-square-foot showroom, True Craft brings industrial-strength precision to every commercial square inch.</p>
-                    </div>
+            <!-- FAQ 3 -->
+            <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
+                <button @click="activeFaq = activeFaq === 3 ? 0 : 3" 
+                        class="w-full p-6 text-left font-bold flex justify-between items-center transition" 
+                        :class="activeFaq === 3 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
+                    <span class="text-xl">What advantages do Schluter waterproof systems provide over traditional tile methods?</span>
+                    <span class="text-2xl transition-transform" :class="activeFaq === 3 ? 'rotate-45' : ''">+</span>
+                </button>
+                <div x-show="activeFaq === 3" class="faq-answer p-8 text-slate-600 border-t border-slate-100 leading-relaxed" x-cloak x-transition>
+                    <p>Schluter waterproof systems, exclusively installed by True Craft Tile & Stone, represent a revolutionary improvement in tile installation technology. Traditional tile methods often rely on cement boards and plastic liners that provide limited waterproofing and are susceptible to leaks and mold growth. Schluter’s systems integrate waterproof membranes, drains, and substrate boards specifically engineered to create a continuous waterproof barrier beneath tile settings. This comprehensive system effectively eliminates water intrusion behind walls and floors, thereby preventing structural damage and health hazards related to mold. For homeowners, this means that their newly installed tile showers, floors, or tub surrounds remain durable and hygienic for decades without costly repairs. Additionally, Schluter systems simplify the installation process of complex wet areas, ensuring all transitions and corners are sealed correctly, and mitigating installation errors common in traditional methods. True Craft’s mastery and authorization with Schluter products guarantee professional application of this premium technology, protecting your home’s investment and ending worries about hidden water damage once and for all.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
+                <button @click="activeFaq = activeFaq === 4 ? 0 : 4" 
+                        class="w-full p-6 text-left font-bold flex justify-between items-center transition" 
+                        :class="activeFaq === 4 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
+                    <span class="text-xl">How does True Craft Tile & Stone approach fireplace tile and stone installations?</span>
+                    <span class="text-2xl transition-transform" :class="activeFaq === 4 ? 'rotate-45' : ''">+</span>
+                </button>
+                <div x-show="activeFaq === 4" class="faq-answer p-8 text-slate-600 border-t border-slate-100 leading-relaxed" x-cloak x-transition>
+                    <p>Tile and stone fireplaces require a unique combination of artistry and technical expertise. True Craft Tile & Stone excels in creating fireplace installations that are both stunning and built to endure the stresses of frequent thermal changes. We carefully select substrates and mortars designed to withstand the intense heat cycles that fireplaces create, preventing tile cracking and detachment. Our installation process includes proper structural reinforcement, use of heat-resistant membranes, and expansion joints to allow for movement caused by temperature extremes. This attention to detail ensures the longevity and safety of your fireplace tile work. Aesthetic considerations are also paramount; True Craft meticulously plans layouts, matching stone veins and tile patterns for impeccable visual flow and balance. The end result is a fireplace center piece that enhances home ambiance while guaranteeing safety and durability. Our extensive experience with fireplace tile projects allows us to comply fully with local building codes and industry best practices while delivering exquisite, personalized designs.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
+                <button @click="activeFaq = activeFaq === 5 ? 0 : 5" 
+                        class="w-full p-6 text-left font-bold flex justify-between items-center transition" 
+                        :class="activeFaq === 5 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
+                    <span class="text-xl">What should commercial clients expect when working with True Craft Tile & Stone?</span>
+                    <span class="text-2xl transition-transform" :class="activeFaq === 5 ? 'rotate-45' : ''">+</span>
+                </button>
+                <div x-show="activeFaq === 5" class="faq-answer p-8 text-slate-600 border-t border-slate-100 leading-relaxed" x-cloak x-transition>
+                    <p>True Craft Tile & Stone brings over 35 years of experience to commercial tile projects, offering superior craftsmanship tailored to demanding commercial environments. Clients can expect strict adherence to building codes and safety standards, along with the use of high-durability materials suited for heavy foot traffic and rigorous cleaning regimens. Our team emphasizes slip resistance, sanitation needs, and aesthetics, selecting appropriate tiles and grouts like epoxies that withstand industrial exposure. Project scheduling is meticulously coordinated with other contractors to minimize business disruption and ensure timely completion. True Craft also documents materials and methods used, providing commercial clients with the compliance certifications necessary for inspections. Whether the project is a restaurant, retail store, or corporate lobby, commercial clients receive the same level of meticulous planning, expert installation, and warranty-backed quality assurance that residential clients value, ensuring long-term satisfaction and peace of mind.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 6 -->
+            <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
+                <button @click="activeFaq = activeFaq === 6 ? 0 : 6" 
+                        class="w-full p-6 text-left font-bold flex justify-between items-center transition" 
+                        :class="activeFaq === 6 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
+                    <span class="text-xl">How does True Craft Tile & Stone handle tile repair and maintenance?</span>
+                    <span class="text-2xl transition-transform" :class="activeFaq === 6 ? 'rotate-45' : ''">+</span>
+                </button>
+                <div x-show="activeFaq === 6" class="faq-answer p-8 text-slate-600 border-t border-slate-100 leading-relaxed" x-cloak x-transition>
+                    <p>Tile repair and maintenance are critical services offered by True Craft Tile & Stone to extend the life and beauty of your tile installations. We address common issues such as cracked tiles, loose grout, discoloration, and water damage by thoroughly assessing the problem and applying industry-tested restoration techniques. Our team carefully removes damaged sections while preserving surrounding areas, replaces tiles matching color and texture precisely, and refreshes grout lines for seamless aesthetic restoration. We also provide grout sealing services to prevent future staining and moisture infiltration, helping maintain a hygienic and vibrant surface. Cleanup protocols are strictly followed ensuring no residue or dust is left behind. True Craft’s commitment to quality in repair and maintenance frees homeowners and businesses from concerns over tile deterioration, making your investment in your interior or exterior surfaces last for years to come with professional care and support.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 7 -->
+            <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
+                <button @click="activeFaq = activeFaq === 7 ? 0 : 7" 
+                        class="w-full p-6 text-left font-bold flex justify-between items-center transition" 
+                        :class="activeFaq === 7 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
+                    <span class="text-xl">Why is grout sealing important and how does True Craft handle it?</span>
+                    <span class="text-2xl transition-transform" :class="activeFaq === 7 ? 'rotate-45' : ''">+</span>
+                </button>
+                <div x-show="activeFaq === 7" class="faq-answer p-8 text-slate-600 border-t border-slate-100 leading-relaxed" x-cloak x-transition>
+                    <p>Grout sealing plays an essential role in protecting your tile surfaces by creating a barrier that repels water, dirt, and stains. True Craft Tile & Stone emphasizes professional grout sealing as a maintenance standard to preserve the appearance and durability of your tiled areas. Sealers prevent mold and mildew growth within porous grout lines, reduce discoloration, and make routine cleaning easier. Applying a high-quality, penetrating sealer correctly requires expert surface preparation and understanding of grout types. True Craft uses premium sealants designed for the specific grout installed, ensuring optimal protection without altering tile aesthetics. We recommend periodic sealing depending on usage and environment, often every 1-3 years, to maintain ongoing defense against moisture and wear. Our sealing service extends the lifespan of your tile investment, improves hygiene, and keeps your tile installations vibrant and beautiful for years.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 8 -->
+            <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
+                <button @click="activeFaq = activeFaq === 8 ? 0 : 8" 
+                        class="w-full p-6 text-left font-bold flex justify-between items-center transition" 
+                        :class="activeFaq === 8 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
+                    <span class="text-xl">What should I expect during the tile installation process with True Craft?</span>
+                    <span class="text-2xl transition-transform" :class="activeFaq === 8 ? 'rotate-45' : ''">+</span>
+                </button>
+                <div x-show="activeFaq === 8" class="faq-answer p-8 text-slate-600 border-t border-slate-100 leading-relaxed" x-cloak x-transition>
+                    <p>When you engage True Craft Tile & Stone for your tile project, you can expect a professional, transparent, and detail-focused experience from start to finish. Our process begins with a comprehensive consultation to understand your design vision, functional needs, and timeline. Once a plan is agreed upon, our craftsmen prepare the site meticulously, ensuring substrates are clean, level, and structurally sound. Installation follows with careful tile layout using mathematical planning to optimize pattern flow and minimize waste. During this phase, expect regular communication and updates from our team to keep you informed. After tile setting, we perform precise grouting and clean-up, paying close attention to finishing details that make your project stand apart. We review the completed work with you, addressing any questions. Finally, we provide guidance on ongoing care and offer warranties on workmanship for your peace of mind. True Craft’s dedication to excellence means your installation will be beautiful, functional, and long-lasting.</p>
                 </div>
             </div>
         </div>
