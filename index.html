@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>True Craft Tile & Stone | Master Tile Contractor Shakopee & Minneapolis</title>
-    <meta name="description" content="35+ years of expert tile installation in Shakopee & Minneapolis. Specialized in Schluter waterproof showers, maintenance, restoration, and commercial projects.">
+    <meta name="description" content="35+ years of expert tile installation in Shakopee & Minneapolis. Specialized in Schluter waterproof showers, flooring, and commercial projects.">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -99,6 +99,10 @@
             <span class="text-blue-700 font-bold tracking-[0.2em] text-sm uppercase mb-6 block">Shakopee's Master Tile Contractor Since 1991</span>
             <h1 class="text-6xl lg:text-8xl font-bold leading-tight text-slate-900 mb-10 uppercase tracking-tighter">Mastery in Every <br><span class="text-blue-700 italic lowercase">Square Inch.</span></h1>
             <p class="text-xl text-slate-600 max-w-2xl mx-auto mb-12">35+ Years of Professional Excellence. Serving Shakopee, Minneapolis, and the Twin Cities Metro.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#quote" class="bg-blue-700 text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-blue-800 transition shadow-xl">Start My Project</a>
+                <a href="tel:9524860554" class="bg-white text-slate-900 border-2 border-slate-200 px-10 py-5 rounded-2xl font-black uppercase tracking-widest hover:border-blue-700 transition">Call Now</a>
+            </div>
         </div>
     </header>
 
@@ -129,6 +133,7 @@
                                 <option>Kitchen Backsplash</option>
                                 <option>Custom Shower</option>
                                 <option>Tub Surround</option>
+                                <option>Flooring Installation</option>
                                 <option>Commercial Project</option>
                             </select>
                             <textarea name="message" placeholder="Project Details" rows="3" class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white"></textarea>
@@ -154,6 +159,11 @@
                     <div class="text-blue-700 mb-4"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4h16v16H4V4zm4 4h8v8H8V8z"/></svg></div>
                     <h3 class="text-xl font-bold mb-2 uppercase">Custom Showers</h3>
                     <p class="text-slate-600">100% waterproof Schluter systems for a mold-free, spa-like experience.</p>
+                </div>
+                <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100 hover:shadow-xl transition">
+                    <div class="text-blue-700 mb-4"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg></div>
+                    <h3 class="text-xl font-bold mb-2 uppercase">Flooring</h3>
+                    <p class="text-slate-600">Expert installation of porcelain, ceramic, and natural stone flooring with zero-lippage precision.</p>
                 </div>
                 <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100 hover:shadow-xl transition">
                     <div class="text-blue-700 mb-4"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg></div>
@@ -186,6 +196,8 @@
                 
                 <p>In addition to new installations, True Craft Tile and Stone provides expert maintenance and restoration services. Grout is the most vulnerable part of any tile installation; over time, it can crack, stain, or lose its seal. We offer deep-cleaning and regrouting services that can make a ten-year-old bathroom look brand new. For natural stone surfaces like marble, granite, and travertine, our professional sealing techniques protect the porous stone from staining and etching, preserving its natural elegance for years to come.</p>
                 
+                <p>Furthermore, our flooring expertise covers a vast array of materials and patterns. From high-end porcelain planks that mimic hardwood to classic natural stone tiles, we ensure your flooring is installed with a zero-lippage guarantee. This precision is vital not only for the look of your home but also for the safety and longevity of the material. A perfectly flat floor prevents tiles from cracking under pressure and ensures that your furniture sits perfectly level.</p>
+                
                 <p>When you choose True Craft Tile and Stone, you aren't just hiring a laborer; you are partnering with a master contractor who understands the chemistry of thin-sets, the physics of substrate preparation, and the artistry of layout design. We provide a <strong>2-year workmanship warranty</strong> on all projects, giving you total peace of mind that your home is in the hands of the best in the business.</p>
             </div>
         </div>
@@ -195,61 +207,61 @@
         <div class="max-w-4xl mx-auto px-6">
             <h2 class="text-4xl font-bold text-center mb-16 uppercase tracking-tighter">Mastering the Details: <span class="text-blue-700">FAQ</span></h2>
             <div class="space-y-4">
-                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden">
-                    <button @click="activeFaq = 1" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 1 ? 'bg-blue-50 text-blue-700' : 'text-slate-900'">
+                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
+                    <button @click="activeFaq = 1" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 1 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
                         <span>What is your primary service area?</span>
-                        <span>+</span>
+                        <span class="text-2xl" :class="activeFaq === 1 ? 'rotate-45' : ''">+</span>
                     </button>
-                    <div x-show="activeFaq === 1" class="p-6 text-slate-600 border-t border-slate-100">True Craft Tile and Stone primarily serves Shakopee, Minneapolis, Eden Prairie, Bloomington, and the surrounding Twin Cities Metro.</div>
+                    <div x-show="activeFaq === 1" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>True Craft Tile and Stone primarily serves Shakopee, Minneapolis, Eden Prairie, Bloomington, and the surrounding Twin Cities Metro.</div>
                 </div>
-                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden">
-                    <button @click="activeFaq = 2" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 2 ? 'bg-blue-50 text-blue-700' : 'text-slate-900'">
+                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
+                    <button @click="activeFaq = 2" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 2 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
                         <span>Why should I use a Schluter-Kerdi system?</span>
-                        <span>+</span>
+                        <span class="text-2xl" :class="activeFaq === 2 ? 'rotate-45' : ''">+</span>
                     </button>
-                    <div x-show="activeFaq === 2" class="p-6 text-slate-600 border-t border-slate-100">Traditional "cement board" methods can still absorb water and grow mold. The Schluter system creates a 100% waterproof and vapor-tight barrier, protecting your home's framing and ensuring a mold-free shower for life.</div>
+                    <div x-show="activeFaq === 2" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>Traditional methods can still absorb water and grow mold. The Schluter system creates a 100% waterproof and vapor-tight barrier, ensuring a mold-free shower for life.</div>
                 </div>
-                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden">
-                    <button @click="activeFaq = 3" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 3 ? 'bg-blue-50 text-blue-700' : 'text-slate-900'">
+                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
+                    <button @click="activeFaq = 3" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 3 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
                         <span>How long does a typical bathroom remodel take?</span>
-                        <span>+</span>
+                        <span class="text-2xl" :class="activeFaq === 3 ? 'rotate-45' : ''">+</span>
                     </button>
-                    <div x-show="activeFaq === 3" class="p-6 text-slate-600 border-t border-slate-100">While every project varies, a full custom shower installation typically takes 5 to 10 working days, ensuring we allow proper cure times for waterproofing and grout.</div>
+                    <div x-show="activeFaq === 3" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>A full custom shower installation typically takes 5 to 10 working days, allowing proper cure times for waterproofing and grout.</div>
                 </div>
-                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden">
-                    <button @click="activeFaq = 4" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 4 ? 'bg-blue-50 text-blue-700' : 'text-slate-900'">
+                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
+                    <button @click="activeFaq = 4" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 4 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
                         <span>Do you provide a warranty on your work?</span>
-                        <span>+</span>
+                        <span class="text-2xl" :class="activeFaq === 4 ? 'rotate-45' : ''">+</span>
                     </button>
-                    <div x-show="activeFaq === 4" class="p-6 text-slate-600 border-t border-slate-100">Yes. True Craft Tile and Stone provides a comprehensive 2-year workmanship warranty. We stand behind every cut, tile, and grout line we place.</div>
+                    <div x-show="activeFaq === 4" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>Yes. True Craft Tile and Stone provides a comprehensive 2-year workmanship warranty on all new installations.</div>
                 </div>
-                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden">
-                    <button @click="activeFaq = 5" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 5 ? 'bg-blue-50 text-blue-700' : 'text-slate-900'">
+                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
+                    <button @click="activeFaq = 5" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 5 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
                         <span>Can you install large-format tile?</span>
-                        <span>+</span>
+                        <span class="text-2xl" :class="activeFaq === 5 ? 'rotate-45' : ''">+</span>
                     </button>
-                    <div x-show="activeFaq === 5" class="p-6 text-slate-600 border-t border-slate-100">Absolutely. Large-format tile requires specialized leveling systems and specific thin-set mortars to prevent "lippage" (uneven edges). We use industry-leading tools to ensure a flat, perfect finish.</div>
+                    <div x-show="activeFaq === 5" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>Absolutely. We use specialized leveling systems to prevent "lippage" and ensure a perfectly flat finish on tiles larger than 12x12.</div>
                 </div>
-                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden">
-                    <button @click="activeFaq = 6" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 6 ? 'bg-blue-50 text-blue-700' : 'text-slate-900'">
+                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
+                    <button @click="activeFaq = 6" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 6 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
                         <span>Do you handle commercial tile installations?</span>
-                        <span>+</span>
+                        <span class="text-2xl" :class="activeFaq === 6 ? 'rotate-45' : ''">+</span>
                     </button>
-                    <div x-show="activeFaq === 6" class="p-6 text-slate-600 border-t border-slate-100">Yes, we take on commercial projects for restaurants, retail spaces, and office lobbies. We understand the need for durability and meeting strict building codes in commercial environments.</div>
+                    <div x-show="activeFaq === 6" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>Yes, we offer high-durability solutions for restaurants, retail, and office lobbies that meet all commercial building codes.</div>
                 </div>
-                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden">
-                    <button @click="activeFaq = 7" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 7 ? 'bg-blue-50 text-blue-700' : 'text-slate-900'">
+                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
+                    <button @click="activeFaq = 7" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 7 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
                         <span>Should I choose ceramic or porcelain tile?</span>
-                        <span>+</span>
+                        <span class="text-2xl" :class="activeFaq === 7 ? 'rotate-45' : ''">+</span>
                     </button>
-                    <div x-show="activeFaq === 7" class="p-6 text-slate-600 border-t border-slate-100">Porcelain is denser and more water-resistant, making it better for floors and wet areas. Ceramic is often easier to cut and works beautifully for kitchen backsplashes. We can help you decide based on your specific project needs.</div>
+                    <div x-show="activeFaq === 7" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>Porcelain is denser and more water-resistant, making it better for floors and wet areas. Ceramic is excellent for wall applications like backsplashes.</div>
                 </div>
-                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden">
-                    <button @click="activeFaq = 8" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 8 ? 'bg-blue-50 text-blue-700' : 'text-slate-900'">
+                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
+                    <button @click="activeFaq = 8" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 8 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
                         <span>Can you restore my old stone floor?</span>
-                        <span>+</span>
+                        <span class="text-2xl" :class="activeFaq === 8 ? 'rotate-45' : ''">+</span>
                     </button>
-                    <div x-show="activeFaq === 8" class="p-6 text-slate-600 border-t border-slate-100">Yes! We provide professional restoration, including deep cleaning, regrouting, and high-performance sealing to bring back the original luster of your natural stone.</div>
+                    <div x-show="activeFaq === 8" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>Yes! We provide deep cleaning, regrouting, and high-performance sealing to restore natural stone luster.</div>
                 </div>
             </div>
         </div>
