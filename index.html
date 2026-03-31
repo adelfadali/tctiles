@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>True Craft Tile & Stone | Master Tile Contractor Shakopee & Minneapolis</title>
-    <meta name="description" content="35+ years of expert tile installation in Shakopee & Minneapolis. Specialized in Schluter waterproof showers, flooring, and commercial projects.">
+    <meta name="description" content="35+ years of expert tile installation in Shakopee & Minneapolis. Specialized in Schluter waterproof showers, flooring, fireplaces, and commercial projects.">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -75,7 +75,8 @@
     <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#home" class="flex items-center gap-3">
-                <img src="TC tile.jpg" class="h-14 w-auto" alt="True Craft Tile & Stone Logo">
+                <img src="TC tile.jpg" class="h-14 w-auto" alt="Logo">
+                <span class="font-bold text-lg tracking-tighter text-slate-900 hidden sm:block">True Craft Tile & Stone</span>
             </a>
 
             <div class="hidden lg:flex items-center space-x-8 font-bold text-xs uppercase tracking-widest text-slate-500">
@@ -127,17 +128,21 @@
                     <div x-show="!submitted">
                         <h3 class="text-3xl font-bold mb-8 uppercase tracking-tight">Quick Estimate</h3>
                         <form @submit.prevent="submitForm($event)" class="space-y-4">
-                            <input type="text" name="name" placeholder="Full Name" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white">
-                            <input type="tel" name="phone" placeholder="Phone" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white">
-                            <select name="service" class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white">
+                            <input type="text" name="name" placeholder="Full Name" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all">
+                            <input type="tel" name="phone" placeholder="Phone" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all">
+                            <select name="service" class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all appearance-none">
+                                <option disabled selected>Select a Service</option>
                                 <option>Kitchen Backsplash</option>
                                 <option>Custom Shower</option>
                                 <option>Tub Surround</option>
                                 <option>Flooring Installation</option>
+                                <option>Fireplace Tile</option>
+                                <option>Maintenance & Restoration</option>
                                 <option>Commercial Project</option>
+                                <option>Other Service</option>
                             </select>
-                            <textarea name="message" placeholder="Project Details" rows="3" class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white"></textarea>
-                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-5 rounded-2xl uppercase tracking-widest">Send Request</button>
+                            <textarea name="message" placeholder="Project Details" rows="3" class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all"></textarea>
+                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-5 rounded-2xl uppercase tracking-widest transition-all">Send Request</button>
                         </form>
                     </div>
                     <div x-show="submitted" class="text-center py-12">✓ Request Sent</div>
@@ -219,14 +224,7 @@
                         <span>Why should I use a Schluter-Kerdi system?</span>
                         <span class="text-2xl" :class="activeFaq === 2 ? 'rotate-45' : ''">+</span>
                     </button>
-                    <div x-show="activeFaq === 2" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>Traditional methods can still absorb water and grow mold. The Schluter system creates a 100% waterproof and vapor-tight barrier, ensuring a mold-free shower for life.</div>
-                </div>
-                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
-                    <button @click="activeFaq = 3" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 3 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
-                        <span>How long does a typical bathroom remodel take?</span>
-                        <span class="text-2xl" :class="activeFaq === 3 ? 'rotate-45' : ''">+</span>
-                    </button>
-                    <div x-show="activeFaq === 3" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>A full custom shower installation typically takes 5 to 10 working days, allowing proper cure times for waterproofing and grout.</div>
+                    <div x-show="activeFaq === 2" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>Traditional methods can still absorb water and grow mold. The Schluter system creates a 100% waterproof barrier, ensuring a mold-free shower for life.</div>
                 </div>
                 <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
                     <button @click="activeFaq = 4" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 4 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
@@ -234,27 +232,6 @@
                         <span class="text-2xl" :class="activeFaq === 4 ? 'rotate-45' : ''">+</span>
                     </button>
                     <div x-show="activeFaq === 4" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>Yes. True Craft Tile and Stone provides a comprehensive 2-year workmanship warranty on all new installations.</div>
-                </div>
-                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
-                    <button @click="activeFaq = 5" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 5 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
-                        <span>Can you install large-format tile?</span>
-                        <span class="text-2xl" :class="activeFaq === 5 ? 'rotate-45' : ''">+</span>
-                    </button>
-                    <div x-show="activeFaq === 5" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>Absolutely. We use specialized leveling systems to prevent "lippage" and ensure a perfectly flat finish on tiles larger than 12x12.</div>
-                </div>
-                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
-                    <button @click="activeFaq = 6" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 6 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
-                        <span>Do you handle commercial tile installations?</span>
-                        <span class="text-2xl" :class="activeFaq === 6 ? 'rotate-45' : ''">+</span>
-                    </button>
-                    <div x-show="activeFaq === 6" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>Yes, we offer high-durability solutions for restaurants, retail, and office lobbies that meet all commercial building codes.</div>
-                </div>
-                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
-                    <button @click="activeFaq = 7" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 7 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
-                        <span>Should I choose ceramic or porcelain tile?</span>
-                        <span class="text-2xl" :class="activeFaq === 7 ? 'rotate-45' : ''">+</span>
-                    </button>
-                    <div x-show="activeFaq === 7" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>Porcelain is denser and more water-resistant, making it better for floors and wet areas. Ceramic is excellent for wall applications like backsplashes.</div>
                 </div>
                 <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
                     <button @click="activeFaq = 8" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 8 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
@@ -271,12 +248,25 @@
         <div class="max-w-4xl mx-auto px-6">
             <div x-show="!submitted">
                 <div class="text-center mb-16">
-                    <h2 class="text-5xl font-bold mb-4 uppercase tracking-tighter">Detailed <span class="text-blue-500">Inquiry</span></h2>
+                    <h2 class="text-5xl font-bold mb-4 uppercase tracking-tighter text-white">Detailed <span class="text-blue-500">Inquiry</span></h2>
                 </div>
                 <form @submit.prevent="submitForm($event)" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <input type="text" name="name" placeholder="Full Name" required class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white">
-                    <input type="tel" name="phone" placeholder="Phone" required class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white">
-                    <textarea name="message" rows="4" placeholder="How can we help?" class="md:col-span-2 bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white"></textarea>
+                    <input type="text" name="name" placeholder="Full Name" required class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white outline-none focus:border-blue-500 transition-all">
+                    <input type="tel" name="phone" placeholder="Phone" required class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white outline-none focus:border-blue-500 transition-all">
+                    <div class="md:col-span-2">
+                        <select name="service" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white outline-none focus:border-blue-500 transition-all appearance-none">
+                            <option value="" disabled selected>Choose a Service</option>
+                            <option>Kitchen Backsplash</option>
+                            <option>Custom Shower</option>
+                            <option>Tub Surround</option>
+                            <option>Flooring Installation</option>
+                            <option>Fireplace Tile</option>
+                            <option>Maintenance & Restoration</option>
+                            <option>Commercial Project</option>
+                            <option>Other Service Not Listed</option>
+                        </select>
+                    </div>
+                    <textarea name="message" rows="4" placeholder="How can we help?" class="md:col-span-2 bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white outline-none focus:border-blue-500 transition-all"></textarea>
                     <button type="submit" class="md:col-span-2 bg-blue-600 hover:bg-blue-500 text-white font-black py-6 rounded-2xl text-xl uppercase tracking-widest transition-all">Submit Inquiry</button>
                 </form>
             </div>
