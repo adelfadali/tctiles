@@ -22,6 +22,7 @@
         .bg-grid { background-image: radial-gradient(#cbd5e1 0.5px, transparent 0.5px); background-size: 30px 30px; }
         .section-padding { padding-top: 100px; padding-bottom: 100px; }
         [x-cloak] { display: none !important; }
+        .faq-answer p { margin-bottom: 1rem; }
     </style>
 </head>
 <body class="bg-white text-slate-900" x-data="{ 
@@ -194,15 +195,10 @@
             <h2 class="text-4xl lg:text-5xl font-bold mb-12 text-center uppercase tracking-tighter">The <span class="italic text-blue-700">True Craft</span> Standard</h2>
             <div class="space-y-6 text-slate-700">
                 <p>For over 35 years, <strong>True Craft Tile and Stone</strong> has been the definitive choice for homeowners and businesses in Shakopee, Minneapolis, and across the Twin Cities metro area. Our philosophy is simple: tile is not just a surface; it is a permanent architectural investment that defines the character of your home. We approach every kitchen backsplash, custom shower, and tub surround with the precision of master craftsmen, ensuring that every line is perfectly leveled and every joint is flawlessly grouted.</p>
-                
                 <p>What sets True Craft Tile and Stone apart is our commitment to modern technical excellence. We are <strong>Schluter-Kerdi Authorized</strong> installers, specializing in system-based waterproofing. While many contractors still use outdated methods that lead to mold growth and leaking behind walls, we utilize the Kerdi-Board system to create a 100% vapor-tight environment. This means your spa-like custom shower is not just beautiful on the day of installation—it is built to remain mold-free and structurally sound for a lifetime.</p>
-                
                 <p>Our experience extends beyond residential interiors. We have successfully completed numerous commercial projects, providing high-durability tile solutions for businesses that demand both aesthetic appeal and long-term performance. Whether it is a high-traffic restaurant kitchen or a luxury building lobby, our team manages the complexities of large-scale layouts with the same attention to detail we bring to a private master bath.</p>
-                
                 <p>In addition to new installations, True Craft Tile and Stone provides expert maintenance and restoration services. Grout is the most vulnerable part of any tile installation; over time, it can crack, stain, or lose its seal. We offer deep-cleaning and regrouting services that can make a ten-year-old bathroom look brand new. For natural stone surfaces like marble, granite, and travertine, our professional sealing techniques protect the porous stone from staining and etching, preserving its natural elegance for years to come.</p>
-                
                 <p>Furthermore, our flooring expertise covers a vast array of materials and patterns. From high-end porcelain planks that mimic hardwood to classic natural stone tiles, we ensure your flooring is installed with a zero-lippage guarantee. This precision is vital not only for the look of your home but also for the safety and longevity of the material. A perfectly flat floor prevents tiles from cracking under pressure and ensures that your furniture sits perfectly level.</p>
-                
                 <p>When you choose True Craft Tile and Stone, you aren't just hiring a laborer; you are partnering with a master contractor who understands the chemistry of thin-sets, the physics of substrate preparation, and the artistry of layout design. We provide a <strong>2-year workmanship warranty</strong> on all projects, giving you total peace of mind that your home is in the hands of the best in the business.</p>
             </div>
         </div>
@@ -211,34 +207,41 @@
     <section id="faq" class="section-padding bg-white border-y">
         <div class="max-w-4xl mx-auto px-6">
             <h2 class="text-4xl font-bold text-center mb-16 uppercase tracking-tighter">Mastering the Details: <span class="text-blue-700">FAQ</span></h2>
-            <div class="space-y-4">
+            <div class="space-y-6">
                 <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
                     <button @click="activeFaq = 1" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 1 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
-                        <span>What is your primary service area?</span>
-                        <span class="text-2xl" :class="activeFaq === 1 ? 'rotate-45' : ''">+</span>
+                        <span class="text-xl">What makes your custom shower installation process superior to standard methods?</span>
+                        <span class="text-2xl" :class="activeFaq === 1 ? 'rotate-45' : '' transition-transform">+</span>
                     </button>
-                    <div x-show="activeFaq === 1" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>True Craft Tile and Stone primarily serves Shakopee, Minneapolis, Eden Prairie, Bloomington, and the surrounding Twin Cities Metro.</div>
+                    <div x-show="activeFaq === 1" class="faq-answer p-8 text-slate-600 border-t border-slate-100 leading-relaxed" x-cloak x-transition>
+                        <p>At True Craft Tile and Stone, we believe that the beauty of a shower is secondary only to its integrity. Most standard "contractor-grade" showers rely on cement board and a plastic liner. While these materials are common, they are fundamentally flawed. Cement board is water-resistant, but it is not waterproof. Over time, moisture moves through the tile and grout, saturating the board and eventually reaching the wood studs behind it. This creates a hidden environment for mold and rot that may not be visible for years but will eventually compromise your home’s structure.</p>
+                        <p>Our approach is fundamentally different because we are Schluter-Kerdi Authorized installers. We utilize a complete system-based approach where every component—the drain, the shower pan, and the walls—is integrated into a single, vapor-tight envelope. We start with Kerdi-Board, a lightweight, waterproof, and dimensionally stable substrate that replaces traditional heavy cement boards. Every seam and corner is then sealed with Kerdi-Band using specialized thin-set mortar. This ensures that water is managed on the surface of the system, never allowing it to penetrate into the wall cavity.</p>
+                        <p>Beyond the waterproofing, our technical precision in the layout phase is what truly sets us apart. We don't just "start laying tile." we perform complex mathematical layouts to ensure that all cuts are balanced and symmetrical. We pay close attention to the "wrap" of the tile patterns in corners so that the design remains continuous. This level of planning prevents small, unsightly slivers of tile at the edges and creates a visual flow that mirrors high-end luxury resorts. When you invest in a shower from True Craft Tile and Stone, you are investing in 35 years of engineering expertise combined with artisanal finishing.</p>
+                    </div>
                 </div>
+
                 <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
                     <button @click="activeFaq = 2" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 2 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
-                        <span>Why should I use a Schluter-Kerdi system?</span>
-                        <span class="text-2xl" :class="activeFaq === 2 ? 'rotate-45' : ''">+</span>
+                        <span class="text-xl">How do you ensure long-term durability and prevent lippage in large-format flooring?</span>
+                        <span class="text-2xl" :class="activeFaq === 2 ? 'rotate-45' : '' transition-transform">+</span>
                     </button>
-                    <div x-show="activeFaq === 2" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>Traditional methods can still absorb water and grow mold. The Schluter system creates a 100% waterproof barrier, ensuring a mold-free shower for life.</div>
+                    <div x-show="activeFaq === 2" class="faq-answer p-8 text-slate-600 border-t border-slate-100 leading-relaxed" x-cloak x-transition>
+                        <p>Large-format tiles—defined as any tile with at least one edge longer than 15 inches—are currently the most popular choice for modern flooring. However, they are also the most difficult to install correctly. The most common issue with large tile is "lippage," which is the vertical displacement between the edges of adjacent tiles. Not only does this look unprofessional, but it also creates a significant tripping hazard and makes the floor difficult to clean. At True Craft Tile and Stone, we have developed a rigorous protocol to eliminate these issues entirely.</p>
+                        <p>The process begins with substrate preparation. No subfloor is perfectly flat, and with large tiles, even a 1/8-inch dip can cause major problems. We use high-quality self-leveling underlayments or specialized patching compounds to bring the subfloor within industry tolerances (typically 1/8 inch over 10 feet) before the first tile is ever touched. This "pre-work" is what separates a master installation from a DIY effort. If the foundation isn't flat, the finish never will be.</p>
+                        <p>During the actual installation, we employ advanced Mechanical Leveling Systems. These systems use clips and wedges to physically lock the tiles into a single plane while the mortar cures. This counteracts the natural tendency of large tiles to settle or "bow" in the middle. Furthermore, we use specialized Large and Heavy Tile (LHT) mortars. These mortars have unique chemical properties that support the weight of the tile without shrinking during the drying process, which is the primary cause of tiles sinking after the contractor has left the site. Finally, we ensure 95% mortar coverage through back-buttering each tile, providing a solid bond that prevents cracking under heavy foot traffic or furniture weight. Our commitment to these technical steps ensures that your flooring remains a flawless, monolithic surface for decades.</p>
+                    </div>
                 </div>
+
                 <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
-                    <button @click="activeFaq = 4" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 4 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
-                        <span>Do you provide a warranty on your work?</span>
-                        <span class="text-2xl" :class="activeFaq === 4 ? 'rotate-45' : ''">+</span>
+                    <button @click="activeFaq = 3" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 3 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
+                        <span class="text-xl">What is your professional advice regarding tile selection and maintenance for high-traffic areas?</span>
+                        <span class="text-2xl" :class="activeFaq === 3 ? 'rotate-45' : '' transition-transform">+</span>
                     </button>
-                    <div x-show="activeFaq === 4" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>Yes. True Craft Tile and Stone provides a comprehensive 2-year workmanship warranty on all new installations.</div>
-                </div>
-                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
-                    <button @click="activeFaq = 8" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 8 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
-                        <span>Can you restore my old stone floor?</span>
-                        <span class="text-2xl" :class="activeFaq === 8 ? 'rotate-45' : ''">+</span>
-                    </button>
-                    <div x-show="activeFaq === 8" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>Yes! We provide deep cleaning, regrouting, and high-performance sealing to restore natural stone luster.</div>
+                    <div x-show="activeFaq === 3" class="faq-answer p-8 text-slate-600 border-t border-slate-100 leading-relaxed" x-cloak x-transition>
+                        <p>Choosing the right material for a high-traffic area is a balance between aesthetics, durability, and maintenance requirements. At True Craft Tile and Stone, we generally recommend Porcelain for kitchens, entryways, and mudrooms. Unlike standard ceramic tile, porcelain is fired at much higher temperatures, making it nearly impervious to water and significantly harder. It has a lower absorption rate (less than 0.5%), which means it is naturally stain-resistant and can withstand the harsh cleaning chemicals often needed in busy households. When selecting porcelain, we advise clients to look at the PEI (Porcelain Enamel Institute) rating; a rating of 4 or 5 is ideal for heavy residential or light commercial use.</p>
+                        <p>While natural stone—like marble or travertine—offers a timeless and unique beauty that porcelain cannot perfectly replicate, it comes with a higher "maintenance tax." Stone is porous and chemically sensitive. It requires professional sealing every 12 to 24 months to prevent oils and liquids from penetrating the surface. If you choose natural stone, we provide an initial deep-seal treatment using high-grade fluoropolymer sealers that bond at the molecular level, providing the best possible defense against etching and staining. However, for a "set it and forget it" lifestyle, high-quality porcelain is almost always the superior choice.</p>
+                        <p>Maintenance is the final pillar of longevity. We always educate our clients on the importance of using pH-neutral cleaners. Many common household cleaners contain acidic or alkaline agents that slowly strip away grout sealers and can eventually degrade the grout itself. For grout, we highly recommend High-Performance Epoxy or High-Density Cementitious grouts like Mapei Ultracolor Plus FA. These products are color-consistent, shrink-resistant, and inherently resistant to mold and mildew. By combining the right material selection with modern grout technology and proper cleaning education, we ensure your investment at True Craft Tile and Stone remains as vibrant as the day it was installed. We don't just build floors; we build lasting value.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -263,7 +266,7 @@
                             <option>Fireplace Tile</option>
                             <option>Maintenance & Restoration</option>
                             <option>Commercial Project</option>
-                            <option>Other Service Not Listed</option>
+                            <option>Other Service</option>
                         </select>
                     </div>
                     <textarea name="message" rows="4" placeholder="How can we help?" class="md:col-span-2 bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white outline-none focus:border-blue-500 transition-all"></textarea>
