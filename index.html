@@ -682,7 +682,7 @@
 
                 <div class="lg:col-span-5 bg-slate-900 rounded-[2.5rem] p-8 lg:p-10 shadow-2xl text-white lg:sticky top-28">
                     <div x-show="!submitted">
-                        <h3 class="text-3xl font-bold mb-8 uppercase tracking-tight">Quick Estimate</h3>
+                        <h3 class="text-3xl font-bold mb-8 uppercase tracking-tight">GET MY FREE Estimate</h3>
                         <form @submit.prevent="submitForm($event)" class="space-y-4">
                             <input type="text" name="name" placeholder="Full Name" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all">
                             
@@ -710,7 +710,7 @@
                                 <option>Text Message</option>
                             </select>
 
-                            <textarea name="message" placeholder="Project Details" rows="3" class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all"></textarea>
+                            <textarea name="message" placeholder="Project Details (Optional)" rows="3" class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all"></textarea>
                             <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-5 rounded-2xl uppercase tracking-widest transition-all disabled:opacity-50" :disabled="loading">
                                 <span x-show="!loading">Send Request</span>
                                 <span x-show="loading">Processing...</span>
