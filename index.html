@@ -9,36 +9,9 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>True Craft Tile & Stone | Master Tile Contractor Shakopee & Minneapolis</title>
-    <meta name="description" content="35+ years of expert tile installation in Shakopee & Minneapolis. Specialized in Schluter waterproof showers, kitchen backsplashes, and stone flooring. Free estimates.">
-    <link rel="canonical" href="https://www.tctiles.com/">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "HomeAndConstructionBusiness",
-      "name": "True Craft Tile and Stone",
-      "image": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a",
-      "@id": "https://www.tctiles.com",
-      "url": "https://www.tctiles.com",
-      "telephone": "+19524860554",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "1364 Savanna Dr",
-        "addressLocality": "Shakopee",
-        "addressRegion": "MN",
-        "postalCode": "55379",
-        "addressCountry": "US"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 44.7905,
-        "longitude": -93.5272
-      }
-    }
-    </script>
-
+    <meta name="description" content="35+ years of expert tile installation in Shakopee & Minneapolis. Specialized in Schluter waterproof showers, kitchen backsplashes, and stone flooring.">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -53,19 +26,30 @@
 </head>
 <body class="bg-white text-slate-900" x-data="{ 
     submitted: false, 
+    loading: false,
     activeFaq: 1,
-    submitLead(e) {
-        e.preventDefault();
-        const name = document.getElementById('name').value;
-        const phone = document.getElementById('phone').value;
-        const msg = document.getElementById('message').value;
+    async submitForm(e) {
+        this.loading = true;
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzVCxLxV4PkIEphyQjj-9nCCNxVDhqJnvz8ALcUFYIVd3_6oNZD_EDRRmSW1KV3khBCEg/exec';
+        const formData = new FormData(e.target);
         
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({'event': 'form_submission'});
+        try {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({'event': 'form_submission'});
 
-        window.location.href = `mailto:adelfadali@gmail.com?subject=New Tile Quote: ${name}&body=Name: ${name}%0APhone: ${phone}%0A%0AProject Info: ${msg}`;
-        
-        this.submitted = true;
+            await fetch(scriptURL, { 
+                method: 'POST', 
+                body: formData,
+                mode: 'no-cors'
+            });
+            
+            this.loading = false;
+            this.submitted = true;
+        } catch (err) {
+            console.error('Error!', err.message);
+            alert('Submission failed. Please call 952-486-0554 directly.');
+            this.loading = false;
+        }
     }
 }">
 
@@ -103,7 +87,7 @@
             </div>
             <div class="relative">
                 <div class="absolute -inset-4 bg-blue-100 rounded-[3rem] -rotate-3"></div>
-                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80" alt="Master Tile Installation Minneapolis" width="800" height="600" class="relative rounded-[2.5rem] shadow-2xl object-cover w-full h-[500px]">
+                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80" alt="Master Tile Installation" width="800" height="600" class="relative rounded-[2.5rem] shadow-2xl object-cover w-full h-[500px]">
             </div>
         </div>
     </header>
@@ -139,10 +123,10 @@
             <h2 class="text-4xl lg:text-5xl font-bold mb-12 text-center underline decoration-blue-700 underline-offset-8">The <span class="italic text-blue-700">True Craft</span> Standard</h2>
             <div class="prose prose-lg text-slate-700 leading-relaxed space-y-8 font-sans">
                 <p>
-                    For over 35 years, <strong>True Craft Tile & Stone</strong> has been the premier choice for homeowners in Shakopee, Minneapolis, and the surrounding suburbs who refuse to settle for "good enough." Our philosophy is built on the belief that tile installation is a permanent architectural feature, not a temporary decoration. When you hire us, you aren't just getting a laborer; you are getting a master craftsman who has seen every possible layout challenge and structural hurdle in the industry.
+                    For over 35 years, <strong>True Craft Tile & Stone</strong> has been the premier choice for homeowners in Shakopee, Minneapolis, and the surrounding suburbs who refuse to settle for "good enough." Our philosophy is built on the belief that tile installation is a permanent architectural feature, not a temporary decoration.
                 </p>
                 <p>
-                    We have completed over 500 kitchens and bathrooms across the Twin Cities, and our reputation is built on one simple rule: <strong>Do it right the first time.</strong> Many contractors cut corners by using cheap thin-sets or skipping proper waterproofing. At True Craft, we use only premium-grade materials and follow TCNA (Tile Council of North America) standards for every single project. This commitment to quality is why we confidently offer a 2-year workmanship warranty—double the industry standard. Mastery isn't just about the tile; it's about the trust we build with every client.
+                    We have completed over 500 kitchens and bathrooms across the Twin Cities, and our reputation is built on one simple rule: <strong>Do it right the first time.</strong> Many contractors cut corners by using cheap thin-sets or skipping proper waterproofing. At True Craft, we use only premium-grade materials and follow TCNA standards for every single project. This commitment to quality is why we confidently offer a 2-year workmanship warranty—double the industry standard.
                 </p>
             </div>
         </div>
@@ -150,7 +134,7 @@
 
     <section id="faq" class="section-padding bg-white border-t">
         <div class="max-w-3xl mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16 uppercase tracking-tighter">Shakopee <span class="text-blue-700">Tile FAQ</span></h2>
+            <h2 class="text-4xl font-bold text-center mb-16 uppercase tracking-tighter">Local <span class="text-blue-700">FAQ</span></h2>
             <div class="space-y-6">
                 <div class="border-2 border-slate-100 rounded-3xl overflow-hidden">
                     <button @click="activeFaq = 1" class="w-full p-8 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 1 ? 'bg-blue-700 text-white' : 'bg-white hover:bg-slate-50'">
@@ -158,7 +142,7 @@
                         <span class="text-2xl" x-text="activeFaq === 1 ? '−' : '+'"></span>
                     </button>
                     <div x-show="activeFaq === 1" class="p-8 text-slate-600 bg-white border-t font-sans leading-relaxed" x-cloak>
-                        We are based in <strong>Shakopee, MN</strong> and proudly serve the entire <strong>Twin Cities Metro area</strong>, including Minneapolis, Prior Lake, Savage, Chanhassen, Eden Prairie, Bloomington, and Minnetonka.
+                        We are based in <strong>Shakopee, MN</strong> and proudly serve the entire <strong>Twin Cities Metro area</strong>, including Minneapolis, Prior Lake, Savage, Chanhassen, Eden Prairie, and Bloomington.
                     </div>
                 </div>
             </div>
@@ -166,14 +150,53 @@
     </section>
 
     <section id="quote" class="section-padding bg-slate-900 text-white">
-        <div class="max-w-4xl mx-auto px-6">
+        <div class="max-w-4xl mx-auto px-6 text-center">
             <div x-show="!submitted">
-                <h2 class="text-4xl lg:text-6xl font-bold text-center mb-6 uppercase">Get Your Estimate</h2>
-                <p class="text-center text-slate-400 mb-16 text-sm uppercase tracking-widest font-bold">Direct to Adelfadali@gmail.com</p>
-                <form @submit="submitLead($event)" class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-                    <input type="text" id="name" placeholder="Full Name" required class="w-full p-5 rounded-2xl bg-slate-800 border-none focus:ring-4 focus:ring-blue-600 text-white text-lg transition-all outline-none">
-                    <input type="tel" id="phone" placeholder="Phone Number" required class="w-full p-5 rounded-2xl bg-slate-800 border-none focus:ring-4 focus:ring-blue-600 text-white text-lg transition-all outline-none">
-                    <textarea id="message" rows="5" placeholder="Tell us about your kitchen or bathroom project..." required class="md:col-span-2 w-full p-5 rounded-2xl bg-slate-800 border-none focus:ring-4 focus:ring-blue-600 text-white text-lg transition-all outline-none"></textarea>
-                    <button type="submit" class="md:col-span-2 bg-blue-600 hover:bg-blue-700 text-white font-black py-6 rounded-2xl text-xl shadow-2xl transition-all active:scale-95 uppercase tracking-widest">
-                        Open Email To Send &rarr;
-                    </
+                <h2 class="text-4xl lg:text-6xl font-bold mb-4 uppercase">Get Your Estimate</h2>
+                <p class="text-slate-400 mb-12 uppercase tracking-widest text-sm">Direct to Adelfadali@gmail.com</p>
+                
+                <form @submit.prevent="submitForm($event)" class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+                    <div class="space-y-3">
+                        <label class="text-xs font-bold uppercase text-slate-500 tracking-widest">Full Name</label>
+                        <input type="text" name="name" placeholder="John Doe" required class="w-full p-5 rounded-2xl bg-slate-800 border-none focus:ring-4 focus:ring-blue-600 text-white text-lg transition-all outline-none">
+                    </div>
+                    <div class="space-y-3">
+                        <label class="text-xs font-bold uppercase text-slate-500 tracking-widest">Phone Number</label>
+                        <input type="tel" name="phone" placeholder="952-000-0000" required class="w-full p-5 rounded-2xl bg-slate-800 border-none focus:ring-4 focus:ring-blue-600 text-white text-lg transition-all outline-none">
+                    </div>
+                    <div class="md:col-span-2 space-y-3">
+                        <label class="text-xs font-bold uppercase text-slate-500 tracking-widest">Project Details</label>
+                        <textarea name="message" rows="5" placeholder="Tell us about your project..." required class="w-full p-5 rounded-2xl bg-slate-800 border-none focus:ring-4 focus:ring-blue-600 text-white text-lg transition-all outline-none"></textarea>
+                    </div>
+                    <button type="submit" :disabled="loading" class="md:col-span-2 bg-blue-600 hover:bg-blue-700 text-white font-black py-6 rounded-2xl text-xl shadow-2xl transition-all active:scale-95 uppercase tracking-widest flex justify-center items-center">
+                        <span x-show="!loading">Submit Request →</span>
+                        <span x-show="loading" class="animate-pulse">Sending Lead...</span>
+                    </button>
+                </form>
+            </div>
+
+            <div x-show="submitted" class="text-center py-20 bg-slate-800 rounded-[3rem]" x-cloak x-transition>
+                <div class="text-8xl mb-8">🏆</div>
+                <h2 class="text-4xl font-bold mb-4">Inquiry Received!</h2>
+                <p class="text-slate-400 text-xl px-12 leading-relaxed">Thank you for contacting True Craft Tile & Stone. Adelfadali@gmail.com has been notified, and we will be in touch shortly to schedule your estimate.</p>
+                <button @click="submitted = false" class="mt-8 text-blue-400 font-bold hover:underline font-sans uppercase text-sm tracking-widest">Send another message</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-16 bg-white border-t border-slate-100 text-center">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="font-bold text-2xl text-slate-900 mb-2 tracking-tighter uppercase">TRUE CRAFT TILE & STONE</p>
+            <p class="text-slate-500 font-sans">1364 Savanna Dr, Shakopee, MN 55379 | 952.486.0554</p>
+            <div class="mt-12 flex justify-center space-x-6 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                <span>Licensed & Insured</span>
+                <span>•</span>
+                <span>2-Year Warranty</span>
+                <span>•</span>
+                <span>35+ Years Mastery</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
