@@ -6,6 +6,7 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-NL6Q79ZT');</script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>True Craft Tile & Stone | Master Tile Contractor Shakopee & Minneapolis</title>
@@ -60,7 +61,6 @@
         this.activeSlide = this.activeSlide === 0 ? this.slides.length - 1 : this.activeSlide - 1;
     },
     init() {
-        // Auto-play only if modal is closed
         setInterval(() => {
             if (!this.modalOpen) this.next();
         }, 4500);
@@ -89,8 +89,7 @@
     }
 }" @keydown.escape="modalOpen = false">
 
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NL6Q79ZT"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NL6Q79ZT" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <template x-teleport="body">
         <div x-show="modalOpen" 
@@ -116,7 +115,7 @@
 
             <div class="max-w-5xl max-h-[85vh] px-4" @click.away="modalOpen = false">
                 <img :src="slides[activeSlide]" class="w-full h-full object-contain rounded-lg shadow-2xl" alt="Full size project image">
-                <p class="text-white/60 text-center mt-4 font-mono text-xs uppercase tracking-widest">Project View <span x-text="activeSlide + 1"></span> / <span x-text="slides.length"></span></p>
+                <p class="text-white/60 text-center mt-4 font-mono text-xs uppercase tracking-widest">Project <span x-text="activeSlide + 1"></span> / <span x-text="slides.length"></span></p>
             </div>
         </div>
     </template>
@@ -125,21 +124,21 @@
         <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#home" class="flex items-center gap-3">
                 <img src="TC tile.jpg" class="h-14 w-auto" alt="True Craft Tile & Stone Logo">
-                <span class="font-bold text-lg tracking-tighter text-slate-900 hidden sm:block">True Craft Tile & Stone</span>
+                <span class="font-bold text-lg tracking-tighter text-slate-900 hidden sm:block uppercase">True Craft Tile & Stone</span>
             </a>
 
             <div class="hidden lg:flex items-center space-x-8 font-bold text-xs uppercase tracking-widest text-slate-500">
                 <a href="#work" class="hover:text-blue-700 transition text-slate-900">Our Work</a>
                 <a href="#services" class="hover:text-blue-700 transition">Services</a>
-                <a href="#about" class="hover:text-blue-700 transition">Our Mastery</a>
+                <a href="#about" class="hover:text-blue-700 transition">Mastery</a>
                 <a href="#faq" class="hover:text-blue-700 transition">FAQ</a>
             </div>
 
             <div class="flex items-center space-x-5">
-                <a href="https://www.facebook.com/elfadali.llc/" target="_blank" aria-label="Visit our Facebook page" class="text-[#1877F2] hover:scale-110 transition-transform">
+                <a href="https://www.facebook.com/elfadali.llc/" target="_blank" class="text-[#1877F2] hover:scale-110 transition-transform">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                 </a>
-                <a href="tel:9524860554" class="font-bold text-slate-900 border-l pl-5 whitespace-nowrap">952.486.0554</a>
+                <a href="tel:9524860554" class="font-bold text-slate-900 border-l pl-5">952.486.0554</a>
             </div>
         </div>
     </nav>
@@ -148,10 +147,10 @@
         <div class="max-w-5xl mx-auto px-6 text-center">
             <span class="text-blue-700 font-bold tracking-[0.2em] text-sm uppercase mb-6 block">Shakopee's Master Tile Contractor Since 1991</span>
             <h1 class="text-6xl lg:text-8xl font-bold leading-tight text-slate-900 mb-10 uppercase tracking-tighter">Mastery in Every <br><span class="text-blue-700 italic lowercase">Square Inch.</span></h1>
-            <p class="text-xl text-slate-600 max-w-2xl mx-auto mb-12">35+ Years of Professional Excellence. Serving Shakopee, Minneapolis, and the Twin Cities Metro.</p>
+            <p class="text-xl text-slate-600 max-w-2xl mx-auto mb-12">35+ Years of Excellence. Serving Shakopee, Minneapolis, and the Twin Cities Metro.</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#quote" class="bg-blue-700 text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-blue-800 transition shadow-xl text-center">Start My Project</a>
-                <a href="tel:9524860554" class="bg-white text-slate-900 border-2 border-slate-200 px-10 py-5 rounded-2xl font-black uppercase tracking-widest hover:border-blue-700 transition text-center">Call Now</a>
+                <a href="#work" class="bg-blue-700 text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-blue-800 transition shadow-xl text-center">Explore Our Work</a>
+                <a href="tel:9524860554" class="bg-white text-slate-900 border-2 border-slate-200 px-10 py-5 rounded-2xl font-black uppercase tracking-widest hover:border-blue-700 transition text-center">Call Today</a>
             </div>
         </div>
     </header>
@@ -167,7 +166,7 @@
                                  x-transition:enter-start="opacity-0 scale-105"
                                  x-transition:enter-end="opacity-100 scale-100"
                                  class="absolute inset-0">
-                                <img :src="slide" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" :alt="'Premium Tile Installation Portfolio ' + (index + 1)" loading="lazy">
+                                <img :src="slide" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Tile Installation">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-10">
                                     <span class="text-white font-bold uppercase tracking-widest text-sm flex items-center gap-2">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
@@ -176,7 +175,6 @@
                                 </div>
                             </div>
                         </template>
-
                         <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
                             <template x-for="(slide, index) in slides" :key="index">
                                 <div class="w-1.5 h-1.5 rounded-full transition-all duration-300" :class="activeSlide === index ? 'bg-white w-6' : 'bg-white/30'"></div>
@@ -185,16 +183,16 @@
                     </div>
                 </div>
 
-                <div class="lg:col-span-5 bg-slate-900 rounded-[2.5rem] p-8 lg:p-10 shadow-2xl text-white lg:sticky lg:top-28">
+                <div class="lg:col-span-5 bg-slate-900 rounded-[2.5rem] p-8 lg:p-10 shadow-2xl text-white">
                     <div x-show="!submitted">
                         <h3 class="text-3xl font-bold mb-8 uppercase tracking-tight">Quick Estimate</h3>
-                        <form @submit.prevent="submitForm($event)" name="quick-estimate" class="space-y-4">
+                        <form @submit.prevent="submitForm($event)" class="space-y-4">
                             <input type="text" name="name" placeholder="Full Name" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all">
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <input type="tel" name="phone" placeholder="Phone" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all">
-                                <input type="email" name="email" placeholder="Email Address" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all">
+                                <input type="email" name="email" placeholder="Email" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all">
                             </div>
-                            <select name="service" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all appearance-none">
+                            <select name="service" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all">
                                 <option disabled selected value="">Select a Service</option>
                                 <option>Kitchen Backsplash</option>
                                 <option>Custom Shower</option>
@@ -226,20 +224,20 @@
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h2 class="text-4xl lg:text-5xl font-bold mb-16 uppercase tracking-tighter">Specialized <span class="text-blue-700">Services</span></h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
-                <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100 hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100 hover:shadow-2xl transition-all">
                     <div class="text-blue-700 mb-4"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg></div>
                     <h3 class="text-xl font-bold mb-2 uppercase">Kitchen Backsplash</h3>
                     <p class="text-slate-600">Precision mosaic and subway tile work that serves as the crown jewel of your kitchen.</p>
                 </div>
-                <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100 hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100 hover:shadow-2xl transition-all">
                     <div class="text-blue-700 mb-4"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4h16v16H4V4zm4 4h8v8H8V8z"/></svg></div>
                     <h3 class="text-xl font-bold mb-2 uppercase">Custom Showers</h3>
                     <p class="text-slate-600">100% waterproof Schluter systems for a mold-free, spa-like experience.</p>
                 </div>
-                <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100 hover:shadow-2xl hover:scale-105 transition-all duration-300">
-                    <div class="text-blue-700 mb-4"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg></div>
+                <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100 hover:shadow-2xl transition-all">
+                    <div class="text-blue-700 mb-4"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6z"/></svg></div>
                     <h3 class="text-xl font-bold mb-2 uppercase">Flooring</h3>
-                    <p class="text-slate-600">Expert installation of porcelain, ceramic, and natural stone flooring with zero-lippage precision.</p>
+                    <p class="text-slate-600">Expert installation of porcelain, ceramic, and stone flooring with zero-lippage precision.</p>
                 </div>
             </div>
         </div>
@@ -249,8 +247,8 @@
         <div class="max-w-4xl mx-auto px-6">
             <h2 class="text-4xl lg:text-5xl font-bold mb-12 text-center uppercase tracking-tighter">The <span class="italic text-blue-700">True Craft</span> Standard</h2>
             <div class="space-y-6 text-slate-700 leading-relaxed text-lg">
-                <p>For over 35 years, <strong>True Craft Tile and Stone</strong> has been the definitive choice for homeowners in Shakopee, Minneapolis, and the Twin Cities. We treat tile as a permanent architectural investment.</p>
-                <p>We are <strong>Schluter-Kerdi Authorized</strong> installers. We utilize the Kerdi-Board system to create 100% vapor-tight environments, ensuring your custom shower remains mold-free for a lifetime.</p>
+                <p>For over 35 years, <strong>True Craft Tile and Stone</strong> has been the definitive choice for homeowners. We treat tile as a permanent architectural investment.</p>
+                <p>We are <strong>Schluter-Kerdi Authorized</strong> installers, ensuring 100% vapor-tight environments that prevent mold for a lifetime.</p>
             </div>
         </div>
     </section>
@@ -276,13 +274,13 @@
         <div class="max-w-4xl mx-auto px-6">
             <div x-show="!submitted">
                 <div class="text-center mb-16">
-                    <h2 class="text-5xl font-bold mb-4 uppercase tracking-tighter text-white">Detailed <span class="text-blue-500">Inquiry</span></h2>
+                    <h2 class="text-5xl font-bold mb-4 uppercase tracking-tighter">Detailed <span class="text-blue-500">Inquiry</span></h2>
                 </div>
-                <form @submit.prevent="submitForm($event)" name="detailed-inquiry" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <form @submit.prevent="submitForm($event)" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <input type="text" name="name" placeholder="Full Name" required class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white outline-none focus:border-blue-500 transition-all">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <input type="tel" name="phone" placeholder="Phone" required class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white outline-none focus:border-blue-500 transition-all">
-                        <input type="email" name="email" placeholder="Email Address" required class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white outline-none focus:border-blue-500 transition-all">
+                        <input type="email" name="email" placeholder="Email" required class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white outline-none focus:border-blue-500 transition-all">
                     </div>
                     <select name="service" required class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white outline-none focus:border-blue-500 transition-all appearance-none">
                         <option value="" disabled selected>Choose a Service</option>
@@ -305,15 +303,13 @@
             <div x-show="submitted" class="text-center py-20" x-cloak>
                  <div class="text-blue-500 text-8xl mb-6">✓</div>
                  <h2 class="text-4xl font-bold uppercase mb-4">Thank You</h2>
-                 <p class="text-xl text-slate-400">Your inquiry has been received. We will be in touch shortly.</p>
+                 <p class="text-xl text-slate-400">Your message is in our inbox. Talk soon.</p>
             </div>
         </div>
     </section>
 
-    <footer class="bg-white py-12 border-t border-slate-100">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <p class="text-slate-500 text-sm">&copy; 2026 True Craft Tile & Stone. All rights reserved. | Shakopee, MN</p>
-        </div>
+    <footer class="bg-white py-12 border-t border-slate-100 text-center">
+        <p class="text-slate-500 text-sm">&copy; 2026 True Craft Tile & Stone. All rights reserved. | Shakopee, MN</p>
     </footer>
 </body>
 </html>
