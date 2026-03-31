@@ -971,39 +971,23 @@
   <div id="google-map" class="w-full h-full rounded-lg shadow-lg"></div>
 </section>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Google Maps Test - True Craft Tile & Stone</title>
-  <style>
-    /* Basic full-screen map styling */
-    #map {
-      height: 50vh;
-      width: 100%;
-    }
-  </style>
-</head>
-<body>
-  <div id="map"></div>
+<div id="google-map" style="width: 100%; height: 400px;"></div>
 
-  <script>
-    // Initialize and add the map
-    function initMap() {
-      const minneapolis = { lat: 44.9778, lng: -93.2650 };
-      const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 12,
-        center: Minneapolis,
-      });
-      new google.maps.Marker({
-        position: Shakopee,
-        map: map,
-        title: "True Craft Tile & Stone - Minneapolis, MN",
-      });
-    }
-  </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfr6vidpdA6W71-vaDh3DY1xOugpjwKFY&callback=initMap" async defer></script>
+<script>
+  function initMap() {
+    const shakopee = { lat: 44.7973, lng: -93.5273 };
+    const map = new google.maps.Map(document.getElementById("google-map"), {
+      zoom: 13,
+      center: shakopee,
+    });
+    new google.maps.Marker({
+      position: shakopee,
+      map: map,
+      title: "True Craft Tile & Stone - Shakopee, MN",
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfr6vidpdA6W71-vaDh3DY1xOugpjwKFY&callback=initMap" async defer></script>
 
     <footer class="py-16 text-center bg-white border-t border-slate-100 reveal">
         <p class="font-bold text-2xl uppercase tracking-tighter mb-4 text-slate-900">TRUE CRAFT TILE & STONE</p>
