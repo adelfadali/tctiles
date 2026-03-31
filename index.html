@@ -131,6 +131,7 @@
                         <form @submit.prevent="submitForm($event)" class="space-y-4">
                             <input type="text" name="name" placeholder="Full Name" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all">
                             <input type="tel" name="phone" placeholder="Phone" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all">
+                            
                             <select name="service" class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all appearance-none">
                                 <option disabled selected>Select a Service</option>
                                 <option>Kitchen Backsplash</option>
@@ -142,6 +143,14 @@
                                 <option>Commercial Project</option>
                                 <option>Other Service</option>
                             </select>
+
+                            <select name="contact_method" class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all appearance-none">
+                                <option disabled selected>How should we contact you?</option>
+                                <option>Phone Call</option>
+                                <option>Email</option>
+                                <option>Text Message</option>
+                            </select>
+
                             <textarea name="message" placeholder="Project Details" rows="3" class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all"></textarea>
                             <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-5 rounded-2xl uppercase tracking-widest transition-all">Send Request</button>
                         </form>
@@ -221,26 +230,26 @@
                 </div>
 
                 <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
-                    <button @click="activeFaq = 2" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 2 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
-                        <span class="text-xl">How do you ensure long-term durability and prevent lippage in large-format flooring?</span>
-                        <span class="text-2xl" :class="activeFaq === 2 ? 'rotate-45' : '' transition-transform">+</span>
+                    <button @click="activeFaq = 4" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 4 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
+                        <span class="text-xl">What special considerations are required for fireplace tile and stone installations?</span>
+                        <span class="text-2xl" :class="activeFaq === 4 ? 'rotate-45' : '' transition-transform">+</span>
                     </button>
-                    <div x-show="activeFaq === 2" class="faq-answer p-8 text-slate-600 border-t border-slate-100 leading-relaxed" x-cloak x-transition>
-                        <p>Large-format tiles—defined as any tile with at least one edge longer than 15 inches—are currently the most popular choice for modern flooring. However, they are also the most difficult to install correctly. The most common issue with large tile is "lippage," which is the vertical displacement between the edges of adjacent tiles. Not only does this look unprofessional, but it also creates a significant tripping hazard and makes the floor difficult to clean. At True Craft Tile and Stone, we have developed a rigorous protocol to eliminate these issues entirely.</p>
-                        <p>The process begins with substrate preparation. No subfloor is perfectly flat, and with large tiles, even a 1/8-inch dip can cause major problems. We use high-quality self-leveling underlayments or specialized patching compounds to bring the subfloor within industry tolerances (typically 1/8 inch over 10 feet) before the first tile is ever touched. This "pre-work" is what separates a master installation from a DIY effort. If the foundation isn't flat, the finish never will be.</p>
-                        <p>During the actual installation, we employ advanced Mechanical Leveling Systems. These systems use clips and wedges to physically lock the tiles into a single plane while the mortar cures. This counteracts the natural tendency of large tiles to settle or "bow" in the middle. Furthermore, we use specialized Large and Heavy Tile (LHT) mortars. These mortars have unique chemical properties that support the weight of the tile without shrinking during the drying process, which is the primary cause of tiles sinking after the contractor has left the site. Finally, we ensure 95% mortar coverage through back-buttering each tile, providing a solid bond that prevents cracking under heavy foot traffic or furniture weight. Our commitment to these technical steps ensures that your flooring remains a flawless, monolithic surface for decades.</p>
+                    <div x-show="activeFaq === 4" class="faq-answer p-8 text-slate-600 border-t border-slate-100 leading-relaxed" x-cloak x-transition>
+                        <p>Fireplace tiling is one of the most technical areas of interior masonry because it involves extreme thermal expansion and contraction. At True Craft Tile and Stone, we understand that a fireplace isn't just a focal point; it's a heat-generating appliance that requires specific material choices and installation techniques to prevent cracking or tile failure. The cycle of heating and cooling creates immense stress on the bond between the tile and the substrate. If the wrong thin-set or improper expansion joints are used, the tiles will eventually pop or "tent" as the heat causes the materials to expand at different rates.</p>
+                        <p>Our fireplace installation process begins with a thermal assessment of the surround. We use high-performance, polymer-modified mortars specifically designed for high-heat environments. These mortars maintain their flexibility under extreme temperature shifts, allowing the tile to expand without breaking the bond. For the substrate, we ensure that the surface is non-combustible and structurally reinforced to handle the weight of heavy stone or large-format tiles. We also pay strict attention to local Shakopee and Minneapolis building codes regarding clearances to combustible materials, ensuring your fireplace is as safe as it is beautiful.</p>
+                        <p>Design-wise, a fireplace offers a unique opportunity for "book-matching" or complex stone layouts. Whether you are looking for a sleek, modern floor-to-ceiling porcelain slab or a traditional stacked-stone hearth, we prioritize the "architectural alignment" of the project. We ensure that the mantel, the firebox, and the floor transition are all perfectly integrated. Because the fireplace is often the center of the living room, we take extra time to hand-select stone pieces for color consistency and grain direction. A True Craft fireplace is designed to be a permanent, high-performance masterpiece that adds significant resale value to your home while serving as a safe, stunning gathering place for your family.</p>
                     </div>
                 </div>
 
                 <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
-                    <button @click="activeFaq = 3" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 3 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
-                        <span class="text-xl">What is your professional advice regarding tile selection and maintenance for high-traffic areas?</span>
-                        <span class="text-2xl" :class="activeFaq === 3 ? 'rotate-45' : '' transition-transform">+</span>
+                    <button @click="activeFaq = 5" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 5 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
+                        <span class="text-xl">How do commercial tile requirements differ from residential projects?</span>
+                        <span class="text-2xl" :class="activeFaq === 5 ? 'rotate-45' : '' transition-transform">+</span>
                     </button>
-                    <div x-show="activeFaq === 3" class="faq-answer p-8 text-slate-600 border-t border-slate-100 leading-relaxed" x-cloak x-transition>
-                        <p>Choosing the right material for a high-traffic area is a balance between aesthetics, durability, and maintenance requirements. At True Craft Tile and Stone, we generally recommend Porcelain for kitchens, entryways, and mudrooms. Unlike standard ceramic tile, porcelain is fired at much higher temperatures, making it nearly impervious to water and significantly harder. It has a lower absorption rate (less than 0.5%), which means it is naturally stain-resistant and can withstand the harsh cleaning chemicals often needed in busy households. When selecting porcelain, we advise clients to look at the PEI (Porcelain Enamel Institute) rating; a rating of 4 or 5 is ideal for heavy residential or light commercial use.</p>
-                        <p>While natural stone—like marble or travertine—offers a timeless and unique beauty that porcelain cannot perfectly replicate, it comes with a higher "maintenance tax." Stone is porous and chemically sensitive. It requires professional sealing every 12 to 24 months to prevent oils and liquids from penetrating the surface. If you choose natural stone, we provide an initial deep-seal treatment using high-grade fluoropolymer sealers that bond at the molecular level, providing the best possible defense against etching and staining. However, for a "set it and forget it" lifestyle, high-quality porcelain is almost always the superior choice.</p>
-                        <p>Maintenance is the final pillar of longevity. We always educate our clients on the importance of using pH-neutral cleaners. Many common household cleaners contain acidic or alkaline agents that slowly strip away grout sealers and can eventually degrade the grout itself. For grout, we highly recommend High-Performance Epoxy or High-Density Cementitious grouts like Mapei Ultracolor Plus FA. These products are color-consistent, shrink-resistant, and inherently resistant to mold and mildew. By combining the right material selection with modern grout technology and proper cleaning education, we ensure your investment at True Craft Tile and Stone remains as vibrant as the day it was installed. We don't just build floors; we build lasting value.</p>
+                    <div x-show="activeFaq === 5" class="faq-answer p-8 text-slate-600 border-t border-slate-100 leading-relaxed" x-cloak x-transition>
+                        <p>Commercial tile installation is a different beast entirely, focused heavily on liability, slip resistance, and extreme durability. In a residential setting, aesthetics often drive the decision-making process. In a commercial environment—such as a restaurant kitchen, a hotel lobby, or a retail store—performance and safety are the primary mandates. At True Craft Tile and Stone, we approach commercial projects with a focus on DCOF (Dynamic Coefficient of Friction) ratings. We ensure that all selected materials meet or exceed the ANSI A326.3 standard for slip resistance in wet environments, protecting business owners from potential liability issues.</p>
+                        <p>The technical requirements for commercial substrates are also significantly higher. In a high-traffic lobby, the floor must withstand thousands of footfalls daily, as well as the weight of heavy equipment and cleaning machinery. We utilize specialized commercial-grade uncoupling membranes that protect the tile from the vibrations and shifting common in large commercial buildings. For industrial kitchens, we often recommend epoxy grouts. Unlike standard cementitious grout, epoxy is 100% non-porous and resistant to the acids, fats, and harsh industrial degreasers used in commercial cleaning. This prevents the growth of bacteria and ensures the facility passes health inspections with ease.</p>
+                        <p>Finally, we understand that for commercial clients, "time is money." Commercial projects require strict adherence to timelines and coordination with other trades (plumbers, electricians, and inspectors). Our 35+ years of experience allows us to manage these complex logistical schedules without sacrificing quality. We provide comprehensive documentation, including technical data sheets (TDS) and safety data sheets (SDS) for all materials used, ensuring that your commercial facility is fully compliant with all Twin Cities building regulations. Whether it’s a 100-square-foot restroom or a 5,000-square-foot showroom, True Craft brings industrial-strength precision to every commercial square inch.</p>
                     </div>
                 </div>
             </div>
@@ -256,19 +265,26 @@
                 <form @submit.prevent="submitForm($event)" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <input type="text" name="name" placeholder="Full Name" required class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white outline-none focus:border-blue-500 transition-all">
                     <input type="tel" name="phone" placeholder="Phone" required class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white outline-none focus:border-blue-500 transition-all">
-                    <div class="md:col-span-2">
-                        <select name="service" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white outline-none focus:border-blue-500 transition-all appearance-none">
-                            <option value="" disabled selected>Choose a Service</option>
-                            <option>Kitchen Backsplash</option>
-                            <option>Custom Shower</option>
-                            <option>Tub Surround</option>
-                            <option>Flooring Installation</option>
-                            <option>Fireplace Tile</option>
-                            <option>Maintenance & Restoration</option>
-                            <option>Commercial Project</option>
-                            <option>Other Service</option>
-                        </select>
-                    </div>
+                    
+                    <select name="service" required class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white outline-none focus:border-blue-500 transition-all appearance-none">
+                        <option value="" disabled selected>Choose a Service</option>
+                        <option>Kitchen Backsplash</option>
+                        <option>Custom Shower</option>
+                        <option>Tub Surround</option>
+                        <option>Flooring Installation</option>
+                        <option>Fireplace Tile</option>
+                        <option>Maintenance & Restoration</option>
+                        <option>Commercial Project</option>
+                        <option>Other Service</option>
+                    </select>
+
+                    <select name="contact_method" required class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white outline-none focus:border-blue-500 transition-all appearance-none">
+                        <option value="" disabled selected>Preferred Contact Method</option>
+                        <option>Phone Call</option>
+                        <option>Email</option>
+                        <option>Text Message</option>
+                    </select>
+
                     <textarea name="message" rows="4" placeholder="How can we help?" class="md:col-span-2 bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white outline-none focus:border-blue-500 transition-all"></textarea>
                     <button type="submit" class="md:col-span-2 bg-blue-600 hover:bg-blue-500 text-white font-black py-6 rounded-2xl text-xl uppercase tracking-widest transition-all">Submit Inquiry</button>
                 </form>
