@@ -9,7 +9,7 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>True Craft Tile & Stone | Master Tile Contractor Shakopee & Minneapolis</title>
+    <title>True Craft Tile & Stone | Expert Tile Contractor Shakopee</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -19,152 +19,101 @@
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
         .bg-grid { background-image: radial-gradient(#cbd5e1 0.5px, transparent 0.5px); background-size: 30px 30px; }
-        .section-padding { padding-top: 100px; padding-bottom: 100px; }
         [x-cloak] { display: none !important; }
     </style>
 </head>
 <body class="bg-white text-slate-900" x-data="{ 
     submitted: false, 
     loading: false,
+    activeSlide: 0,
+    slides: [
+        'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1620622339501-44c124b68ef8?auto=format&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1556912177-c54030639a6d?auto=format&fit=crop&q=80',
+        'https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&q=80'
+    ],
+    init() {
+        setInterval(() => {
+            this.activeSlide = this.activeSlide === this.slides.length - 1 ? 0 : this.activeSlide + 1;
+        }, 1000);
+    },
     async submitForm(e) {
         this.loading = true;
         const scriptURL = 'https://script.google.com/macros/s/AKfycbzVCxLxV4PkIEphyQjj-9nCCNxVDhqJnvz8ALcUFYIVd3_6oNZD_EDRRmSW1KV3khBCEg/exec';
         const formData = new FormData(e.target);
-        
         try {
             await fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' });
             this.loading = false;
             this.submitted = true;
         } catch (err) {
-            alert('Submission failed. Please call 952-486-0554');
+            alert('Error. Please call 952-486-0554');
             this.loading = false;
         }
     }
 }">
 
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100">
+    <nav class="fixed w-full z-50 bg-white/95 border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#home" class="font-bold text-xl uppercase tracking-tighter">TRUE CRAFT <span class="text-blue-700 italic lowercase">Tile</span></a>
-            <div class="hidden lg:flex items-center space-x-8 font-bold text-xs uppercase tracking-widest text-slate-500">
-                <a href="#home" class="hover:text-blue-700 transition">Home</a>
-                <a href="#services" class="hover:text-blue-700 transition">Services</a>
-                <a href="#about" class="hover:text-blue-700 transition">Our Mastery</a>
-                <a href="#quote" class="hover:text-blue-700 transition">Free Quote</a>
-            </div>
-            <a href="tel:9524860554" class="font-bold text-slate-900 hover:text-blue-700 transition">952.486.0554</a>
+            <a href="#" class="font-bold text-xl uppercase tracking-tighter">TRUE CRAFT <span class="text-blue-700 italic lowercase">Tile</span></a>
+            <a href="tel:9524860554" class="font-bold text-slate-900">952.486.0554</a>
         </div>
     </nav>
 
-    <header id="home" class="relative pt-40 pb-24 bg-slate-50 bg-grid overflow-hidden">
+    <header id="home" class="relative pt-32 pb-16 bg-slate-50 bg-grid overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-                <span class="text-blue-700 font-bold tracking-widest text-sm uppercase font-sans">Shakopee's Trusted Tile Experts Since 1991</span>
+            <div class="z-10">
+                <span class="text-blue-700 font-bold tracking-widest text-sm uppercase">Shakopee's Master Tile Contractor</span>
                 <h1 class="text-5xl lg:text-7xl font-bold leading-tight mt-4 text-slate-900 mb-8 uppercase">Mastery in Every <span class="text-blue-700 italic lowercase">Square Inch.</span></h1>
-                <p class="text-xl text-slate-600 leading-relaxed mb-10">From custom walk-in showers in Minneapolis to intricate kitchen backsplashes in Shakopee, we deliver a 2-year workmanship warranty and 35+ years of precision craftsmanship.</p>
-                <a href="#quote" class="bg-slate-900 text-white px-10 py-5 rounded-xl font-bold text-lg hover:shadow-2xl transition inline-block">Start My Project</a>
+                <a href="#quote" class="bg-slate-900 text-white px-10 py-5 rounded-xl font-bold text-lg shadow-lg hover:shadow-2xl transition inline-block">Request Estimate</a>
             </div>
-            <div class="relative">
-                <div class="absolute -inset-4 bg-blue-100 rounded-[3rem] -rotate-3"></div>
-                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80" alt="Master Tile Installation" width="800" height="600" class="relative rounded-[2.5rem] shadow-2xl object-cover w-full h-[500px]">
+
+            <div class="relative w-full h-[400px] lg:h-[550px] overflow-hidden rounded-[2.5rem] shadow-2xl bg-slate-200">
+                <template x-for="(slide, index) in slides" :key="index">
+                    <div x-show="activeSlide === index" 
+                         x-transition:enter="transition ease-out duration-500"
+                         x-transition:enter-start="opacity-0 scale-105"
+                         x-transition:enter-end="opacity-100 scale-100"
+                         x-transition:leave="transition ease-in duration-500"
+                         x-transition:leave-start="opacity-100"
+                         x-transition:leave-end="opacity-0"
+                         class="absolute inset-0">
+                        <img :src="slide" class="w-full h-full object-cover" alt="Tile Project Photo">
+                    </div>
+                </template>
+                <div class="absolute bottom-0 left-0 h-1 bg-blue-600 transition-all duration-1000 ease-linear" :style="'width: ' + ((activeSlide + 1) / slides.length * 100) + '%'"></div>
             </div>
         </div>
     </header>
 
-    <section id="services" class="section-padding bg-white border-y">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-4xl lg:text-5xl font-bold mb-16 text-center">Comprehensive <span class="text-blue-700">Tile Services</span></h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div class="space-y-6">
-                    <h3 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-700 pl-4 uppercase tracking-tighter">Kitchen Mastery</h3>
-                    <p class="text-slate-600 leading-loose">We specialize in intricate mosaic patterns, classic subway tile layouts, and complex designs that require a master's eye for symmetry. From Shakopee to Minneapolis, our kitchen transformations are known for their flawless finish.</p>
-                </div>
-                <div class="space-y-6">
-                    <h3 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-700 pl-4 uppercase tracking-tighter">Bathroom Retreats</h3>
-                    <p class="text-slate-600 leading-loose">A master bathroom should feel like a luxury spa. We specialize in custom shower pans, curbless entries, and full-room waterproofing using advanced Schluter systems.</p>
-                </div>
-                <div class="space-y-6">
-                    <h3 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-700 pl-4 uppercase tracking-tighter">Precision Flooring</h3>
-                    <p class="text-slate-600 leading-loose">Whether you are choosing wood-look porcelain planks or large stone tiles, we evaluate your subfloor integrity to prevent future cracking. We ensure a perfectly flat, "lippage-free" finish.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="quote" class="section-padding bg-slate-900 text-white">
+    <section id="quote" class="py-24 bg-slate-900 text-white">
         <div class="max-w-4xl mx-auto px-6">
             <div x-show="!submitted">
-                <div class="text-center mb-12">
-                    <h2 class="text-4xl lg:text-6xl font-bold mb-4 uppercase tracking-tight">Request Your <span class="text-blue-500">Estimate</span></h2>
-                    <p class="text-slate-400 uppercase tracking-widest text-sm font-bold">Free On-Site Measurements • Licensed & Insured</p>
-                </div>
-                
+                <h2 class="text-4xl lg:text-5xl font-bold mb-12 text-center uppercase tracking-tight text-white">Start Your <span class="text-blue-500">Project</span></h2>
                 <form @submit.prevent="submitForm($event)" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="relative group">
-                        <input type="text" name="name" id="name" required class="peer w-full bg-slate-800/50 border-2 border-slate-700 rounded-2xl p-5 pt-7 text-white outline-none focus:border-blue-500 transition-all placeholder-transparent">
-                        <label for="name" class="absolute left-5 top-2 text-blue-500 text-xs font-bold uppercase tracking-widest transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-slate-500 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-blue-500 peer-focus:text-xs">Full Name</label>
-                    </div>
-
-                    <div class="relative group">
-                        <input type="tel" name="phone" id="phone" required class="peer w-full bg-slate-800/50 border-2 border-slate-700 rounded-2xl p-5 pt-7 text-white outline-none focus:border-blue-500 transition-all placeholder-transparent">
-                        <label for="phone" class="absolute left-5 top-2 text-blue-500 text-xs font-bold uppercase tracking-widest transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-slate-500 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-blue-500 peer-focus:text-xs">Phone Number</label>
-                    </div>
-
-                    <div class="relative group">
-                        <input type="email" name="email" id="email" required class="peer w-full bg-slate-800/50 border-2 border-slate-700 rounded-2xl p-5 pt-7 text-white outline-none focus:border-blue-500 transition-all placeholder-transparent">
-                        <label for="email" class="absolute left-5 top-2 text-blue-500 text-xs font-bold uppercase tracking-widest transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-slate-500 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-blue-500 peer-focus:text-xs">Your Email Address</label>
-                    </div>
-
-                    <div class="relative group">
-                        <input type="text" name="city" id="city" required class="peer w-full bg-slate-800/50 border-2 border-slate-700 rounded-2xl p-5 pt-7 text-white outline-none focus:border-blue-500 transition-all placeholder-transparent">
-                        <label for="city" class="absolute left-5 top-2 text-blue-500 text-xs font-bold uppercase tracking-widest transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-slate-500 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-blue-500 peer-focus:text-xs">City / Location</label>
-                    </div>
-
-                    <div class="md:col-span-2 relative group">
-                        <select name="service" id="service" required class="peer w-full bg-slate-800/50 border-2 border-slate-700 rounded-2xl p-5 pt-7 text-white outline-none focus:border-blue-500 transition-all appearance-none">
-                            <option value="" disabled selected>Select Service Type</option>
-                            <option value="Bathroom Remodel">Bathroom Remodel / Shower</option>
-                            <option value="Kitchen Backsplash">Kitchen Backsplash</option>
-                            <option value="Floor Installation">Floor Installation (Stone/Tile)</option>
-                            <option value="Other">Other Custom Project</option>
-                        </select>
-                        <label for="service" class="absolute left-5 top-2 text-blue-500 text-xs font-bold uppercase tracking-widest">How can we help?</label>
-                        <div class="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-500">▼</div>
-                    </div>
-
-                    <div class="md:col-span-2 relative group">
-                        <textarea name="message" id="message" rows="4" required class="peer w-full bg-slate-800/50 border-2 border-slate-700 rounded-2xl p-5 pt-7 text-white outline-none focus:border-blue-500 transition-all placeholder-transparent"></textarea>
-                        <label for="message" class="absolute left-5 top-2 text-blue-500 text-xs font-bold uppercase tracking-widest transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-slate-500 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-blue-500 peer-focus:text-xs">Project Details</label>
-                    </div>
-
-                    <button type="submit" :disabled="loading" class="md:col-span-2 bg-blue-600 hover:bg-blue-500 text-white font-black py-6 rounded-2xl text-xl shadow-2xl transition-all active:scale-95 uppercase tracking-widest flex justify-center items-center">
-                        <span x-show="!loading">Submit Inquiry →</span>
+                    <input type="text" name="name" placeholder="Full Name" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white outline-none focus:border-blue-500 transition-all">
+                    <input type="tel" name="phone" placeholder="Phone Number" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white outline-none focus:border-blue-500 transition-all">
+                    <textarea name="message" rows="4" placeholder="Project Details..." required class="md:col-span-2 w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white outline-none focus:border-blue-500 transition-all"></textarea>
+                    <button type="submit" :disabled="loading" class="md:col-span-2 bg-blue-600 hover:bg-blue-500 text-white font-black py-6 rounded-2xl text-xl shadow-2xl transition-all uppercase tracking-widest flex justify-center items-center">
+                        <span x-show="!loading">Submit Request →</span>
                         <span x-show="loading" class="animate-pulse">Processing...</span>
                     </button>
                 </form>
             </div>
 
-            <div x-show="submitted" x-cloak x-transition class="text-center py-20 bg-white rounded-[3rem] shadow-2xl relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-2 bg-blue-600"></div>
-                <div class="text-7xl mb-6 text-green-500">✓</div>
-                <h2 class="text-4xl font-bold text-slate-900 mb-4 uppercase tracking-tighter">Inquiry Received</h2>
-                <p class="text-slate-600 text-xl max-w-md mx-auto px-6">Thank you for reaching out. We will contact you at your provided details shortly.</p>
-                <button @click="submitted = false" class="mt-8 text-blue-600 font-bold uppercase underline">Send another message</button>
+            <div x-show="submitted" class="text-center py-20 bg-white rounded-[3rem] shadow-2xl" x-cloak>
+                <div class="text-7xl mb-6">📸</div>
+                <h2 class="text-4xl font-bold text-slate-900 mb-4 uppercase">Request Received!</h2>
+                <p class="text-slate-600 text-xl max-w-md mx-auto mb-10">We'll be in touch. Check out more of our work on Facebook while you wait.</p>
+                <a href="https://www.facebook.com/elfadali.llc/photos" target="_blank" class="inline-flex items-center gap-3 bg-[#1877F2] text-white font-bold py-5 px-12 rounded-full text-lg shadow-xl">
+                   See More Photos
+                </a>
             </div>
         </div>
     </section>
 
-    <footer class="py-16 text-center border-t border-slate-100 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <p class="font-bold text-xl tracking-tighter uppercase mb-2">TRUE CRAFT TILE & STONE</p>
-            <p class="text-slate-500 font-sans">1364 Savanna Dr, Shakopee, MN 55379 | 952.486.0554</p>
-            <div class="mt-12 flex justify-center space-x-6 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                <span>Licensed & Insured</span>
-                <span>•</span>
-                <span>2-Year Warranty</span>
-                <span>•</span>
-                <span>Twin Cities Metro</span>
-            </div>
-        </div>
+    <footer class="py-12 text-center border-t border-slate-100">
+        <p class="font-bold uppercase tracking-tighter">TRUE CRAFT TILE & STONE</p>
+        <p class="text-slate-400 text-sm">1364 Savanna Dr, Shakopee, MN 55379</p>
     </footer>
 
 </body>
