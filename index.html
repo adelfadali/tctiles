@@ -10,7 +10,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>True Craft Tile & Stone | Master Tile Contractor Shakopee & Minneapolis</title>
-    <meta name="description" content="35+ years of expert tile installation in Shakopee & Minneapolis. Specialized in Schluter waterproof showers, kitchen backsplashes, and stone flooring.">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -27,47 +26,32 @@
 <body class="bg-white text-slate-900" x-data="{ 
     submitted: false, 
     loading: false,
-    activeFaq: 1,
     async submitForm(e) {
         this.loading = true;
         const scriptURL = 'https://script.google.com/macros/s/AKfycbzVCxLxV4PkIEphyQjj-9nCCNxVDhqJnvz8ALcUFYIVd3_6oNZD_EDRRmSW1KV3khBCEg/exec';
         const formData = new FormData(e.target);
         
         try {
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({'event': 'form_submission'});
-
-            await fetch(scriptURL, { 
-                method: 'POST', 
-                body: formData,
-                mode: 'no-cors'
-            });
-            
+            await fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' });
             this.loading = false;
             this.submitted = true;
         } catch (err) {
-            console.error('Error!', err.message);
-            alert('Submission failed. Please call 952-486-0554 directly.');
+            alert('Submission failed. Please call 952-486-0554');
             this.loading = false;
         }
     }
 }">
 
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NL6Q79ZT" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
     <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#home" class="font-bold text-xl tracking-tighter uppercase">TRUE CRAFT <span class="text-blue-700 italic lowercase">Tile</span></a>
-            <div class="hidden lg:flex items-center space-x-8 font-sans font-bold text-xs uppercase tracking-widest text-slate-500">
+            <a href="#home" class="font-bold text-xl uppercase tracking-tighter">TRUE CRAFT <span class="text-blue-700 italic lowercase">Tile</span></a>
+            <div class="hidden lg:flex items-center space-x-8 font-bold text-xs uppercase tracking-widest text-slate-500">
                 <a href="#home" class="hover:text-blue-700 transition">Home</a>
                 <a href="#services" class="hover:text-blue-700 transition">Services</a>
                 <a href="#about" class="hover:text-blue-700 transition">Our Mastery</a>
-                <a href="#faq" class="hover:text-blue-700 transition">FAQ</a>
+                <a href="#quote" class="hover:text-blue-700 transition">Free Quote</a>
             </div>
-            <div class="flex items-center space-x-4">
-                <a href="tel:9524860554" class="font-bold text-slate-900 hover:text-blue-700 transition">952.486.0554</a>
-                <a href="#quote" class="bg-blue-700 text-white px-5 py-2 rounded-lg font-bold shadow-lg hover:bg-blue-800 transition uppercase text-[10px]">Free Quote</a>
-            </div>
+            <a href="tel:9524860554" class="font-bold text-slate-900 hover:text-blue-700 transition">952.486.0554</a>
         </div>
     </nav>
 
@@ -77,13 +61,7 @@
                 <span class="text-blue-700 font-bold tracking-widest text-sm uppercase font-sans">Shakopee's Trusted Tile Experts Since 1991</span>
                 <h1 class="text-5xl lg:text-7xl font-bold leading-tight mt-4 text-slate-900 mb-8 uppercase">Mastery in Every <span class="text-blue-700 italic lowercase">Square Inch.</span></h1>
                 <p class="text-xl text-slate-600 leading-relaxed mb-10">From custom walk-in showers in Minneapolis to intricate kitchen backsplashes in Shakopee, we deliver a 2-year workmanship warranty and 35+ years of precision craftsmanship.</p>
-                <div class="flex flex-wrap gap-6">
-                    <a href="#quote" class="bg-slate-900 text-white px-10 py-5 rounded-xl font-bold text-lg hover:shadow-2xl transition">Start My Project</a>
-                    <div class="flex flex-col justify-center border-l border-slate-200 pl-6">
-                        <div class="flex text-yellow-400">★★★★★</div>
-                        <span class="text-xs font-bold text-slate-500 uppercase tracking-tighter">35+ Years Craftsmanship</span>
-                    </div>
-                </div>
+                <a href="#quote" class="bg-slate-900 text-white px-10 py-5 rounded-xl font-bold text-lg hover:shadow-2xl transition inline-block">Start My Project</a>
             </div>
             <div class="relative">
                 <div class="absolute -inset-4 bg-blue-100 rounded-[3rem] -rotate-3"></div>
@@ -95,105 +73,96 @@
     <section id="services" class="section-padding bg-white border-y">
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="text-4xl lg:text-5xl font-bold mb-16 text-center">Comprehensive <span class="text-blue-700">Tile Services</span></h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
                 <div class="space-y-6">
-                    <h3 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-700 pl-4 uppercase tracking-tighter">Kitchen Backsplashes</h3>
-                    <p class="text-slate-600 leading-loose">
-                        The kitchen is the heart of your home, and the backsplash is its focal point. We specialize in intricate mosaic patterns, classic subway tile layouts, and complex herringbone designs that require a master's eye for symmetry. Whether you are installing natural stone, glass, or ceramic, we ensure every cut is precise around outlets and cabinetry. Our 35 years of experience means we understand how to prepare surfaces for a lifetime of durability, using high-performance grouts that resist staining from cooking oils and steam. From Shakopee to Minneapolis, our kitchen transformations are known for their flawless finish and lasting value.
-                    </p>
+                    <h3 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-700 pl-4 uppercase tracking-tighter">Kitchen Mastery</h3>
+                    <p class="text-slate-600 leading-loose">We specialize in intricate mosaic patterns, classic subway tile layouts, and complex designs that require a master's eye for symmetry. From Shakopee to Minneapolis, our kitchen transformations are known for their flawless finish.</p>
                 </div>
                 <div class="space-y-6">
                     <h3 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-700 pl-4 uppercase tracking-tighter">Bathroom Retreats</h3>
-                    <p class="text-slate-600 leading-loose">
-                        A master bathroom should feel like a luxury spa. We specialize in custom shower pans, curbless entries, and full-room waterproofing using advanced Schluter systems. In the Minneapolis climate, moisture control is critical; we ensure your bathroom is built to withstand humidity without ever risking mold or structural decay. We install large-format porcelain, marble slabs, and custom niche shelving that looks built-in, not added on. Our expertise includes heated floor systems (Ditra-Heat) that provide incredible comfort during Minnesota winters. We don't just "lay tile"—we engineer waterproof environments that increase your home's equity.
-                    </p>
+                    <p class="text-slate-600 leading-loose">A master bathroom should feel like a luxury spa. We specialize in custom shower pans, curbless entries, and full-room waterproofing using advanced Schluter systems.</p>
                 </div>
                 <div class="space-y-6">
                     <h3 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-700 pl-4 uppercase tracking-tighter">Precision Flooring</h3>
-                    <p class="text-slate-600 leading-loose">
-                        Tile flooring requires more than just a level surface; it requires a deep understanding of subfloor preparation. Whether you are choosing wood-look porcelain planks or large stone tiles, we evaluate your joist spacing and subfloor thickness to prevent future cracking. We utilize the latest leveling systems to ensure a "lippage-free" finish, meaning your floors will be perfectly flat from wall to wall. Serving the entire Twin Cities metro, we handle high-traffic entries, mudrooms, and grand foyers. Our focus is on long-term structural integrity, ensuring that the stone or porcelain you invest in today remains beautiful and crack-free for decades.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="section-padding bg-slate-50">
-        <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-4xl lg:text-5xl font-bold mb-12 text-center underline decoration-blue-700 underline-offset-8">The <span class="italic text-blue-700">True Craft</span> Standard</h2>
-            <div class="prose prose-lg text-slate-700 leading-relaxed space-y-8 font-sans">
-                <p>
-                    For over 35 years, <strong>True Craft Tile & Stone</strong> has been the premier choice for homeowners in Shakopee, Minneapolis, and the surrounding suburbs who refuse to settle for "good enough." Our philosophy is built on the belief that tile installation is a permanent architectural feature, not a temporary decoration.
-                </p>
-                <p>
-                    We have completed over 500 kitchens and bathrooms across the Twin Cities, and our reputation is built on one simple rule: <strong>Do it right the first time.</strong> Many contractors cut corners by using cheap thin-sets or skipping proper waterproofing. At True Craft, we use only premium-grade materials and follow TCNA standards for every single project. This commitment to quality is why we confidently offer a 2-year workmanship warranty—double the industry standard.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section id="faq" class="section-padding bg-white border-t">
-        <div class="max-w-3xl mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16 uppercase tracking-tighter">Local <span class="text-blue-700">FAQ</span></h2>
-            <div class="space-y-6">
-                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden">
-                    <button @click="activeFaq = 1" class="w-full p-8 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 1 ? 'bg-blue-700 text-white' : 'bg-white hover:bg-slate-50'">
-                        <span>What is your service area?</span>
-                        <span class="text-2xl" x-text="activeFaq === 1 ? '−' : '+'"></span>
-                    </button>
-                    <div x-show="activeFaq === 1" class="p-8 text-slate-600 bg-white border-t font-sans leading-relaxed" x-cloak>
-                        We are based in <strong>Shakopee, MN</strong> and proudly serve the entire <strong>Twin Cities Metro area</strong>, including Minneapolis, Prior Lake, Savage, Chanhassen, Eden Prairie, and Bloomington.
-                    </div>
+                    <p class="text-slate-600 leading-loose">Whether you are choosing wood-look porcelain planks or large stone tiles, we evaluate your subfloor integrity to prevent future cracking. We ensure a perfectly flat, "lippage-free" finish.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="quote" class="section-padding bg-slate-900 text-white">
-        <div class="max-w-4xl mx-auto px-6 text-center">
+        <div class="max-w-4xl mx-auto px-6">
             <div x-show="!submitted">
-                <h2 class="text-4xl lg:text-6xl font-bold mb-4 uppercase">Get Your Estimate</h2>
-                <p class="text-slate-400 mb-12 uppercase tracking-widest text-sm">Direct to Adelfadali@gmail.com</p>
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl lg:text-6xl font-bold mb-4 uppercase tracking-tight">Request Your <span class="text-blue-500">Estimate</span></h2>
+                    <p class="text-slate-400 uppercase tracking-widest text-sm font-bold">Free On-Site Measurements • Licensed & Insured</p>
+                </div>
                 
-                <form @submit.prevent="submitForm($event)" class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-                    <div class="space-y-3">
-                        <label class="text-xs font-bold uppercase text-slate-500 tracking-widest">Full Name</label>
-                        <input type="text" name="name" placeholder="John Doe" required class="w-full p-5 rounded-2xl bg-slate-800 border-none focus:ring-4 focus:ring-blue-600 text-white text-lg transition-all outline-none">
+                <form @submit.prevent="submitForm($event)" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="relative group">
+                        <input type="text" name="name" id="name" required class="peer w-full bg-slate-800/50 border-2 border-slate-700 rounded-2xl p-5 pt-7 text-white outline-none focus:border-blue-500 transition-all placeholder-transparent">
+                        <label for="name" class="absolute left-5 top-2 text-blue-500 text-xs font-bold uppercase tracking-widest transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-slate-500 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-blue-500 peer-focus:text-xs">Full Name</label>
                     </div>
-                    <div class="space-y-3">
-                        <label class="text-xs font-bold uppercase text-slate-500 tracking-widest">Phone Number</label>
-                        <input type="tel" name="phone" placeholder="952-000-0000" required class="w-full p-5 rounded-2xl bg-slate-800 border-none focus:ring-4 focus:ring-blue-600 text-white text-lg transition-all outline-none">
+
+                    <div class="relative group">
+                        <input type="tel" name="phone" id="phone" required class="peer w-full bg-slate-800/50 border-2 border-slate-700 rounded-2xl p-5 pt-7 text-white outline-none focus:border-blue-500 transition-all placeholder-transparent">
+                        <label for="phone" class="absolute left-5 top-2 text-blue-500 text-xs font-bold uppercase tracking-widest transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-slate-500 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-blue-500 peer-focus:text-xs">Phone Number</label>
                     </div>
-                    <div class="md:col-span-2 space-y-3">
-                        <label class="text-xs font-bold uppercase text-slate-500 tracking-widest">Project Details</label>
-                        <textarea name="message" rows="5" placeholder="Tell us about your project..." required class="w-full p-5 rounded-2xl bg-slate-800 border-none focus:ring-4 focus:ring-blue-600 text-white text-lg transition-all outline-none"></textarea>
+
+                    <div class="relative group">
+                        <input type="email" name="email" id="email" required class="peer w-full bg-slate-800/50 border-2 border-slate-700 rounded-2xl p-5 pt-7 text-white outline-none focus:border-blue-500 transition-all placeholder-transparent">
+                        <label for="email" class="absolute left-5 top-2 text-blue-500 text-xs font-bold uppercase tracking-widest transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-slate-500 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-blue-500 peer-focus:text-xs">Your Email Address</label>
                     </div>
-                    <button type="submit" :disabled="loading" class="md:col-span-2 bg-blue-600 hover:bg-blue-700 text-white font-black py-6 rounded-2xl text-xl shadow-2xl transition-all active:scale-95 uppercase tracking-widest flex justify-center items-center">
-                        <span x-show="!loading">Submit Request →</span>
-                        <span x-show="loading" class="animate-pulse">Sending Lead...</span>
+
+                    <div class="relative group">
+                        <input type="text" name="city" id="city" required class="peer w-full bg-slate-800/50 border-2 border-slate-700 rounded-2xl p-5 pt-7 text-white outline-none focus:border-blue-500 transition-all placeholder-transparent">
+                        <label for="city" class="absolute left-5 top-2 text-blue-500 text-xs font-bold uppercase tracking-widest transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-slate-500 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-blue-500 peer-focus:text-xs">City / Location</label>
+                    </div>
+
+                    <div class="md:col-span-2 relative group">
+                        <select name="service" id="service" required class="peer w-full bg-slate-800/50 border-2 border-slate-700 rounded-2xl p-5 pt-7 text-white outline-none focus:border-blue-500 transition-all appearance-none">
+                            <option value="" disabled selected>Select Service Type</option>
+                            <option value="Bathroom Remodel">Bathroom Remodel / Shower</option>
+                            <option value="Kitchen Backsplash">Kitchen Backsplash</option>
+                            <option value="Floor Installation">Floor Installation (Stone/Tile)</option>
+                            <option value="Other">Other Custom Project</option>
+                        </select>
+                        <label for="service" class="absolute left-5 top-2 text-blue-500 text-xs font-bold uppercase tracking-widest">How can we help?</label>
+                        <div class="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-500">▼</div>
+                    </div>
+
+                    <div class="md:col-span-2 relative group">
+                        <textarea name="message" id="message" rows="4" required class="peer w-full bg-slate-800/50 border-2 border-slate-700 rounded-2xl p-5 pt-7 text-white outline-none focus:border-blue-500 transition-all placeholder-transparent"></textarea>
+                        <label for="message" class="absolute left-5 top-2 text-blue-500 text-xs font-bold uppercase tracking-widest transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-slate-500 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-blue-500 peer-focus:text-xs">Project Details</label>
+                    </div>
+
+                    <button type="submit" :disabled="loading" class="md:col-span-2 bg-blue-600 hover:bg-blue-500 text-white font-black py-6 rounded-2xl text-xl shadow-2xl transition-all active:scale-95 uppercase tracking-widest flex justify-center items-center">
+                        <span x-show="!loading">Submit Inquiry →</span>
+                        <span x-show="loading" class="animate-pulse">Processing...</span>
                     </button>
                 </form>
             </div>
 
-            <div x-show="submitted" class="text-center py-20 bg-slate-800 rounded-[3rem]" x-cloak x-transition>
-                <div class="text-8xl mb-8">🏆</div>
-                <h2 class="text-4xl font-bold mb-4">Inquiry Received!</h2>
-                <p class="text-slate-400 text-xl px-12 leading-relaxed">Thank you for contacting True Craft Tile & Stone. We have been notified, and we will be in touch shortly to schedule your estimate.</p>
-                <button @click="submitted = false" class="mt-8 text-blue-400 font-bold hover:underline font-sans uppercase text-sm tracking-widest">Send another message</button>
+            <div x-show="submitted" x-cloak x-transition class="text-center py-20 bg-white rounded-[3rem] shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-2 bg-blue-600"></div>
+                <div class="text-7xl mb-6 text-green-500">✓</div>
+                <h2 class="text-4xl font-bold text-slate-900 mb-4 uppercase tracking-tighter">Inquiry Received</h2>
+                <p class="text-slate-600 text-xl max-w-md mx-auto px-6">Thank you for reaching out. We will contact you at your provided details shortly.</p>
+                <button @click="submitted = false" class="mt-8 text-blue-600 font-bold uppercase underline">Send another message</button>
             </div>
         </div>
     </section>
 
-    <footer class="py-16 bg-white border-t border-slate-100 text-center">
+    <footer class="py-16 text-center border-t border-slate-100 bg-white">
         <div class="max-w-7xl mx-auto px-6">
-            <p class="font-bold text-2xl text-slate-900 mb-2 tracking-tighter uppercase">TRUE CRAFT TILE & STONE</p>
+            <p class="font-bold text-xl tracking-tighter uppercase mb-2">TRUE CRAFT TILE & STONE</p>
             <p class="text-slate-500 font-sans">1364 Savanna Dr, Shakopee, MN 55379 | 952.486.0554</p>
             <div class="mt-12 flex justify-center space-x-6 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
                 <span>Licensed & Insured</span>
                 <span>•</span>
                 <span>2-Year Warranty</span>
                 <span>•</span>
-                <span>35+ Years Mastery</span>
+                <span>Twin Cities Metro</span>
             </div>
         </div>
     </footer>
