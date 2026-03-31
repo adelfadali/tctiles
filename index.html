@@ -24,7 +24,6 @@
         [x-cloak] { display: none !important; }
         .faq-answer p { margin-bottom: 1rem; }
 
-        /* Dynamic Scroll Effect Classes */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -41,7 +40,6 @@
     loading: false,
     activeSlide: 0,
     activeFaq: 1,
-    autoplayInterval: null,
     slides: [
         'kitchen backsplash 0000 Shakopee Minneapolis Tile contractor.jpg',
         'kitchen backsplash 000 Shakopee Minneapolis Tile contractor.jpg',
@@ -57,21 +55,16 @@
     next() {
         this.activeSlide = this.activeSlide === this.slides.length - 1 ? 0 : this.activeSlide + 1;
     },
-    startAutoplay() {
-        this.autoplayInterval = setInterval(() => this.next(), 3000);
-    },
     init() {
-        this.startAutoplay();
+        setInterval(() => this.next(), 3500);
         
-        // Scroll Reveal Logic
-        const observerOptions = { threshold: 0.1 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     },
@@ -115,12 +108,12 @@
 
     <header id="home" class="relative pt-48 pb-20 bg-slate-50 bg-grid reveal active">
         <div class="max-w-5xl mx-auto px-6 text-center">
-            <span class="text-blue-700 font-bold tracking-[0.2em] text-sm uppercase mb-6 block">Shakopee's Master Tile Contractor </span>
+            <span class="text-blue-700 font-bold tracking-[0.2em] text-sm uppercase mb-6 block">Shakopee's Master Tile Contractor Since 1991</span>
             <h1 class="text-6xl lg:text-8xl font-bold leading-tight text-slate-900 mb-10 uppercase tracking-tighter">Mastery in Every <br><span class="text-blue-700 italic lowercase">Square Inch.</span></h1>
             <p class="text-xl text-slate-600 max-w-2xl mx-auto mb-12">35+ Years of Professional Excellence. Serving Shakopee, Minneapolis, and the Twin Cities Metro.</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#quote" class="bg-blue-700 text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-blue-800 transition shadow-xl">Start My Project</a>
-                <a href="tel:9524860554" class="bg-white text-slate-900 border-2 border-slate-200 px-10 py-5 rounded-2xl font-black uppercase tracking-widest hover:border-blue-700 transition">Call Now</a>
+                <a href="#quote" class="bg-blue-700 text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-blue-800 transition shadow-xl text-center">Start My Project</a>
+                <a href="tel:9524860554" class="bg-white text-slate-900 border-2 border-slate-200 px-10 py-5 rounded-2xl font-black uppercase tracking-widest hover:border-blue-700 transition text-center">Call Now</a>
             </div>
         </div>
     </header>
@@ -142,9 +135,9 @@
                     </div>
                 </div>
 
-                <div class="lg:col-span-5 bg-slate-900 rounded-[2.5rem] p-8 lg:p-10 shadow-2xl text-white sticky top-28">
+                <div class="lg:col-span-5 bg-slate-900 rounded-[2.5rem] p-8 lg:p-10 shadow-2xl text-white lg:sticky lg:top-28">
                     <div x-show="!submitted">
-                        <h3 class="text-3xl font-bold mb-8 uppercase tracking-tight">FREE Estimate</h3>
+                        <h3 class="text-3xl font-bold mb-8 uppercase tracking-tight">Quick Estimate</h3>
                         <form @submit.prevent="submitForm($event)" class="space-y-4">
                             <input type="text" name="name" placeholder="Full Name" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all">
                             
@@ -153,8 +146,8 @@
                                 <input type="email" name="email" placeholder="Email Address" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all">
                             </div>
 
-                            <select name="service" class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all appearance-none">
-                                <option disabled selected>Select a Service</option>
+                            <select name="service" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all appearance-none">
+                                <option disabled selected value="">Select a Service</option>
                                 <option>Kitchen Backsplash</option>
                                 <option>Custom Shower</option>
                                 <option>Tub Surround</option>
@@ -165,18 +158,25 @@
                                 <option>Other Service</option>
                             </select>
 
-                            <select name="contact_method" class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all appearance-none">
-                                <option disabled selected>Preferred Contact Method</option>
+                            <select name="contact_method" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all appearance-none">
+                                <option disabled selected value="">Preferred Contact Method</option>
                                 <option>Phone Call</option>
                                 <option>Email</option>
                                 <option>Text Message</option>
                             </select>
 
                             <textarea name="message" placeholder="Project Details" rows="3" class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all"></textarea>
-                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-5 rounded-2xl uppercase tracking-widest transition-all">Send Request</button>
+                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-5 rounded-2xl uppercase tracking-widest transition-all disabled:opacity-50" :disabled="loading">
+                                <span x-show="!loading">Send Request</span>
+                                <span x-show="loading">Processing...</span>
+                            </button>
                         </form>
                     </div>
-                    <div x-show="submitted" class="text-center py-12">✓ Request Sent</div>
+                    <div x-show="submitted" class="text-center py-12" x-cloak>
+                        <div class="text-blue-500 text-6xl mb-4">✓</div>
+                        <h3 class="text-2xl font-bold uppercase mb-2">Request Sent</h3>
+                        <p class="text-slate-400">We will be in touch shortly to discuss your project.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -239,9 +239,9 @@
             <h2 class="text-4xl font-bold text-center mb-16 uppercase tracking-tighter">Mastering the Details: <span class="text-blue-700">FAQ</span></h2>
             <div class="space-y-6">
                 <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
-                    <button @click="activeFaq = 1" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 1 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
+                    <button @click="activeFaq = activeFaq === 1 ? 0 : 1" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 1 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
                         <span class="text-xl">What makes your custom shower installation process superior to standard methods?</span>
-                        <span class="text-2xl" :class="activeFaq === 1 ? 'rotate-45' : '' transition-transform">+</span>
+                        <span class="text-2xl transition-transform" :class="activeFaq === 1 ? 'rotate-45' : ''">+</span>
                     </button>
                     <div x-show="activeFaq === 1" class="faq-answer p-8 text-slate-600 border-t border-slate-100 leading-relaxed" x-cloak x-transition>
                         <p>At True Craft Tile and Stone, we believe that the beauty of a shower is secondary only to its integrity. Most standard "contractor-grade" showers rely on cement board and a plastic liner. While these materials are common, they are fundamentally flawed. Cement board is water-resistant, but it is not waterproof. Over time, moisture moves through the tile and grout, saturating the board and eventually reaching the wood studs behind it. This creates a hidden environment for mold and rot that may not be visible for years but will eventually compromise your home’s structure.</p>
@@ -251,9 +251,9 @@
                 </div>
 
                 <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
-                    <button @click="activeFaq = 4" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 4 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
+                    <button @click="activeFaq = activeFaq === 4 ? 0 : 4" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 4 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
                         <span class="text-xl">What special considerations are required for fireplace tile and stone installations?</span>
-                        <span class="text-2xl" :class="activeFaq === 4 ? 'rotate-45' : '' transition-transform">+</span>
+                        <span class="text-2xl transition-transform" :class="activeFaq === 4 ? 'rotate-45' : ''">+</span>
                     </button>
                     <div x-show="activeFaq === 4" class="faq-answer p-8 text-slate-600 border-t border-slate-100 leading-relaxed" x-cloak x-transition>
                         <p>Fireplace tiling is one of the most technical areas of interior masonry because it involves extreme thermal expansion and contraction. At True Craft Tile and Stone, we understand that a fireplace isn't just a focal point; it's a heat-generating appliance that requires specific material choices and installation techniques to prevent cracking or tile failure. The cycle of heating and cooling creates immense stress on the bond between the tile and the substrate. If the wrong thin-set or improper expansion joints are used, the tiles will eventually pop or "tent" as the heat causes the materials to expand at different rates.</p>
@@ -263,9 +263,9 @@
                 </div>
 
                 <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
-                    <button @click="activeFaq = 5" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 5 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
+                    <button @click="activeFaq = activeFaq === 5 ? 0 : 5" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 5 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
                         <span class="text-xl">How do commercial tile requirements differ from residential projects?</span>
-                        <span class="text-2xl" :class="activeFaq === 5 ? 'rotate-45' : '' transition-transform">+</span>
+                        <span class="text-2xl transition-transform" :class="activeFaq === 5 ? 'rotate-45' : ''">+</span>
                     </button>
                     <div x-show="activeFaq === 5" class="faq-answer p-8 text-slate-600 border-t border-slate-100 leading-relaxed" x-cloak x-transition>
                         <p>Commercial tile installation is a different beast entirely, focused heavily on liability, slip resistance, and extreme durability. In a residential setting, aesthetics often drive the decision-making process. In a commercial environment—such as a restaurant kitchen, a hotel lobby, or a retail store—performance and safety are the primary mandates. At True Craft Tile and Stone, we approach commercial projects with a focus on DCOF (Dynamic Coefficient of Friction) ratings. We ensure that all selected materials meet or exceed the ANSI A326.3 standard for slip resistance in wet environments, protecting business owners from potential liability issues.</p>
@@ -311,12 +311,17 @@
                     </select>
 
                     <textarea name="message" rows="4" placeholder="How can we help?" class="md:col-span-2 bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white outline-none focus:border-blue-500 transition-all"></textarea>
-                    <button type="submit" class="md:col-span-2 bg-blue-600 hover:bg-blue-500 text-white font-black py-6 rounded-2xl text-xl uppercase tracking-widest transition-all">Submit Inquiry</button>
+                    <button type="submit" class="md:col-span-2 bg-blue-600 hover:bg-blue-500 text-white font-black py-6 rounded-2xl text-xl uppercase tracking-widest transition-all disabled:opacity-50" :disabled="loading">
+                        <span x-show="!loading">Submit Inquiry</span>
+                        <span x-show="loading">Sending...</span>
+                    </button>
                 </form>
             </div>
-            <div x-show="submitted" class="text-center py-20 bg-white text-slate-900 rounded-[3rem]">
-                <h2 class="text-4xl font-bold uppercase">Success</h2>
-                <p>We'll be in touch shortly.</p>
+            <div x-show="submitted" class="text-center py-20 bg-white text-slate-900 rounded-[3rem]" x-cloak>
+                <div class="text-green-500 text-6xl mb-4">✓</div>
+                <h2 class="text-4xl font-bold uppercase mb-2">Success</h2>
+                <p class="text-xl">We'll be in touch shortly.</p>
+                <button @click="submitted = false" class="mt-8 text-blue-600 font-bold uppercase tracking-widest text-sm">Send another message</button>
             </div>
         </div>
     </section>
