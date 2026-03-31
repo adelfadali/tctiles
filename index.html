@@ -971,24 +971,41 @@
   <div id="google-map" class="w-full h-full rounded-lg shadow-lg"></div>
 </section>
 
-<script>
-  function initMap() {
-    const minneapolis = { lat: 44.9778, lng: -93.2650 };
-    const map = new google.maps.Map(document.getElementById("google-map"), {
-      zoom: 12,
-      center: minneapolis,
-      mapTypeControl: false,
-      fullscreenControl: false,
-      streetViewControl: false,
-    });
-    new google.maps.Marker({
-      position: minneapolis,
-      map: map,
-      title: "True Craft Tile & Stone - Minneapolis, MN",
-    });
-  }
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Google Maps Test - True Craft Tile & Stone</title>
+  <style>
+    /* Basic full-screen map styling */
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script>
+    // Initialize and add the map
+    function initMap() {
+      const minneapolis = { lat: 44.9778, lng: -93.2650 };
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 12,
+        center: minneapolis,
+      });
+      new google.maps.Marker({
+        position: minneapolis,
+        map: map,
+        title: "True Craft Tile & Stone - Minneapolis, MN",
+      });
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfr6vidpdA6W71-vaDh3DY1xOugpjwKFY&callback=initMap" async defer></script>
+</body>
+</html>
 
     
     
