@@ -49,7 +49,7 @@
         this.activeSlide = this.activeSlide === 0 ? this.slides.length - 1 : this.activeSlide - 1;
     },
     startAutoplay() {
-        // Updated to 2000ms (2 seconds)
+        // 2-second rotation speed
         this.autoplayInterval = setInterval(() => this.next(), 2000);
     },
     stopAutoplay() {
@@ -75,7 +75,7 @@
 
     <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#home" class="font-bold text-xl uppercase tracking-tighter">TRUE CRAFT <span class="text-blue-700 italic lowercase">Tile</span></a>
+            <a href="#home" class="font-bold text-xl uppercase tracking-tighter text-slate-900">TRUE CRAFT <span class="text-blue-700 italic lowercase">Tile</span></a>
             <div class="hidden lg:flex items-center space-x-8 font-bold text-xs uppercase tracking-widest text-slate-500">
                 <a href="#work" class="hover:text-blue-700 transition">Our Work</a>
                 <a href="#services" class="hover:text-blue-700 transition">Services</a>
@@ -102,7 +102,7 @@
                     <div class="mb-8 flex justify-between items-end">
                         <div>
                             <h2 class="text-4xl font-bold uppercase tracking-tighter">Our Recent <span class="text-blue-700">Work</span></h2>
-                            <p class="text-slate-500 font-bold uppercase text-[10px] tracking-widest mt-2">Browse our high-end tile transformations</p>
+                            <p class="text-slate-500 font-bold uppercase text-[10px] tracking-widest mt-2">10 Recent Projects in Shakopee & Minneapolis</p>
                         </div>
                         <div class="flex gap-2">
                             <button @click="stopAutoplay(); prev()" class="p-3 rounded-full bg-slate-100 hover:bg-blue-700 hover:text-white transition shadow-sm">
@@ -114,7 +114,7 @@
                         </div>
                     </div>
 
-                    <div class="relative w-full h-[500px] lg:h-[650px] overflow-hidden rounded-[2.5rem] shadow-2xl bg-slate-900 group">
+                    <div class="relative w-full h-[500px] lg:h-[650px] overflow-hidden rounded-[2.5rem] shadow-2xl bg-slate-900">
                         <template x-for="(slide, index) in slides" :key="index">
                             <div x-show="activeSlide === index" 
                                  x-transition:enter="transition ease-out duration-300"
@@ -124,7 +124,7 @@
                                  x-transition:leave-start="opacity-100"
                                  x-transition:leave-end="opacity-0"
                                  class="absolute inset-0">
-                                <img :src="slide" class="w-full h-full object-cover" :alt="'Master Tile Work ' + index">
+                                <img :src="slide" class="w-full h-full object-cover" :alt="'Premium Tile Installation ' + index">
                             </div>
                         </template>
 
@@ -149,7 +149,6 @@
                                 <div class="relative"><input type="tel" name="phone" required class="peer w-full bg-slate-800/50 border-2 border-slate-700 rounded-2xl p-4 pt-6 text-white outline-none focus:border-blue-500 transition-all"><label class="absolute left-4 top-2 text-blue-500 text-[10px] font-bold uppercase tracking-widest">Phone</label></div>
                                 <div class="relative"><input type="text" name="city" required class="peer w-full bg-slate-800/50 border-2 border-slate-700 rounded-2xl p-4 pt-6 text-white outline-none focus:border-blue-500 transition-all"><label class="absolute left-4 top-2 text-blue-500 text-[10px] font-bold uppercase tracking-widest">City</label></div>
                             </div>
-                            <div class="relative"><input type="email" name="email" required class="peer w-full bg-slate-800/50 border-2 border-slate-700 rounded-2xl p-4 pt-6 text-white outline-none focus:border-blue-500 transition-all"><label class="absolute left-4 top-2 text-blue-500 text-[10px] font-bold uppercase tracking-widest">Email</label></div>
                             <div class="relative">
                                 <select name="service" required class="w-full bg-slate-800/50 border-2 border-slate-700 rounded-2xl p-4 pt-6 text-white outline-none focus:border-blue-500 transition-all appearance-none">
                                     <option value="Kitchen Backsplash">Kitchen Backsplash</option>
@@ -171,9 +170,64 @@
                     </div>
                     <div x-show="submitted" class="text-center py-12" x-cloak x-transition>
                         <div class="text-6xl mb-6">✓</div>
-                        <h3 class="text-2xl font-bold uppercase mb-2">Sent</h3>
+                        <h3 class="text-2xl font-bold uppercase mb-2">Request Received</h3>
                         <p class="text-slate-400">We will contact you shortly.</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section-padding bg-white">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl lg:text-5xl font-bold mb-16 uppercase tracking-tighter">Specialized <span class="text-blue-700">Expertise</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100 hover:shadow-xl transition text-left">
+                    <div class="text-blue-700 mb-4"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg></div>
+                    <h3 class="text-xl font-bold mb-4 uppercase tracking-tight">Custom Backsplashes</h3>
+                    <p class="text-slate-600">Precision mosaic and subway tile work for high-end kitchen transformations.</p>
+                </div>
+                <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100 hover:shadow-xl transition text-left">
+                    <div class="text-blue-700 mb-4"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4h16v16H4V4zm4 4h8v8H8V8z"/></svg></div>
+                    <h3 class="text-xl font-bold mb-4 uppercase tracking-tight">Schluter Showers</h3>
+                    <p class="text-slate-600">100% waterproof vapor-tight systems for permanent durability and zero mold.</p>
+                </div>
+                <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100 hover:shadow-xl transition text-left">
+                    <div class="text-blue-700 mb-4"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+                    <h3 class="text-xl font-bold mb-4 uppercase tracking-tight">Stone Maintenance</h3>
+                    <p class="text-slate-600">Deep cleaning, grout repair, and professional stone sealing services.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section-padding bg-slate-50">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl lg:text-5xl font-bold mb-12 text-center uppercase tracking-tighter">The <span class="italic text-blue-700">True Craft</span> Standard</h2>
+            <div class="prose prose-lg text-slate-700 leading-relaxed space-y-8 max-w-none">
+                <p>For over 35 years, <strong>True Craft Tile & Stone</strong> has been the standard for master craftsmanship in Shakopee and the Minneapolis area. We treat every installation as a permanent architectural feature of your home.</p>
+                <p>We specialize in the <strong>Schluter-Kerdi Waterproofing System</strong>, ensuring that your custom shower remains mold-free and structurally sound for a lifetime. Whether it's intricate kitchen backsplashes or natural stone flooring, we provide a <strong>2-year workmanship warranty</strong> on every project.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="section-padding bg-white border-y">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 uppercase tracking-tighter">Mastering the Details: <span class="text-blue-700">FAQ</span></h2>
+            <div class="grid grid-cols-1 gap-4">
+                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
+                    <button @click="activeFaq = 1" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 1 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
+                        <span>What is your service area?</span>
+                        <span class="text-2xl transition-transform" :class="activeFaq === 1 ? 'rotate-45' : ''">+</span>
+                    </button>
+                    <div x-show="activeFaq === 1" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>We serve Shakopee, Minneapolis, and the surrounding Twin Cities Metro.</div>
+                </div>
+                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
+                    <button @click="activeFaq = 2" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 2 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
+                        <span>Why use a Schluter system?</span>
+                        <span class="text-2xl transition-transform" :class="activeFaq === 2 ? 'rotate-45' : ''">+</span>
+                    </button>
+                    <div x-show="activeFaq === 2" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>It provides a vapor-tight, 100% waterproof barrier that prevents mold and structural rot.</div>
                 </div>
             </div>
         </div>
