@@ -967,6 +967,32 @@
         </div>
     </section>
 
+    <section id="map" class="w-full h-96 mb-16">
+  <div id="google-map" class="w-full h-full rounded-lg shadow-lg"></div>
+</section>
+
+<script>
+  function initMap() {
+    const minneapolis = { lat: 44.9778, lng: -93.2650 };
+    const map = new google.maps.Map(document.getElementById("google-map"), {
+      zoom: 12,
+      center: minneapolis,
+      mapTypeControl: false,
+      fullscreenControl: false,
+      streetViewControl: false,
+    });
+    new google.maps.Marker({
+      position: minneapolis,
+      map: map,
+      title: "True Craft Tile & Stone - Minneapolis, MN",
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+
+    
+    
+
     <footer class="py-16 text-center bg-white border-t border-slate-100 reveal">
         <p class="font-bold text-2xl uppercase tracking-tighter mb-4 text-slate-900">TRUE CRAFT TILE & STONE</p>
         <p class="text-slate-400 text-sm">1364 Savanna Dr, Shakopee, MN 55379 | 952.486.0554</p>
