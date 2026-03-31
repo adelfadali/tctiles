@@ -17,31 +17,40 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
         .bg-grid { background-image: radial-gradient(#cbd5e1 0.5px, transparent 0.5px); background-size: 30px 30px; }
-        .section-padding { padding-top: 100px; padding-bottom: 100px; }
         [x-cloak] { display: none !important; }
-        .faq-answer p { margin-bottom: 1rem; }
+        
+        /* STACKING PAPER EFFECT */
+        .stack-section {
+            position: sticky;
+            top: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 -20px 50px rgba(0,0,0,0.15);
+        }
 
-        /* Dynamic Scroll Effect Classes */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        /* HERO ANIMATIONS */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .animate-hero { opacity: 0; animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+
+        .faq-answer p { margin-bottom: 1rem; }
     </style>
 </head>
-<body class="bg-white text-slate-900" x-data="{ 
+<body class="text-slate-900" x-data="{ 
     submitted: false, 
-    loading: false,
     activeSlide: 0,
     activeFaq: 1,
-    autoplayInterval: null,
     slides: [
         'kitchen backsplash 0000 Shakopee Minneapolis Tile contractor.jpg',
         'kitchen backsplash 000 Shakopee Minneapolis Tile contractor.jpg',
@@ -54,277 +63,172 @@
         'kitchen backsplash 44Shakopee Minneapolis Tile contractor.jpg',
         'kitchen backsplash 444Shakopee Minneapolis Tile contractor.jpg'
     ],
-    next() {
-        this.activeSlide = this.activeSlide === this.slides.length - 1 ? 0 : this.activeSlide + 1;
-    },
-    startAutoplay() {
-        this.autoplayInterval = setInterval(() => this.next(), 3000);
-    },
-    init() {
-        this.startAutoplay();
-        
-        // Scroll Reveal Logic
-        const observerOptions = { threshold: 0.1 };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    },
+    next() { this.activeSlide = (this.activeSlide + 1) % this.slides.length; },
+    init() { setInterval(() => this.next(), 3000); },
     async submitForm(e) {
-        this.loading = true;
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzVCxLxV4PkIEphyQjj-9nCCNxVDhqJnvz8ALcUFYIVd3_6oNZD_EDRRmSW1KV3khBCEg/exec';
         const formData = new FormData(e.target);
         try {
-            await fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' });
-            this.loading = false;
+            await fetch('https://script.google.com/macros/s/AKfycbzVCxLxV4PkIEphyQjj-9nCCNxVDhqJnvz8ALcUFYIVd3_6oNZD_EDRRmSW1KV3khBCEg/exec', { method: 'POST', body: formData, mode: 'no-cors' });
             this.submitted = true;
-        } catch (err) {
-            alert('Submission failed. Please call 952-486-0554');
-            this.loading = false;
-        }
+        } catch (err) { alert('Failed. Call 952-486-0554'); }
     }
 }">
 
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100">
+    <nav class="fixed w-full z-[100] bg-white/90 backdrop-blur-md border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#home" class="flex items-center gap-3">
-                <img src="TC tile.jpg" class="h-14 w-auto" alt="Logo">
+            <a href="#" class="flex items-center gap-3">
+                <img src="TC tile.jpg" class="h-12 w-auto" alt="Logo">
                 <span class="font-bold text-lg tracking-tighter text-slate-900 hidden sm:block">True Craft Tile & Stone</span>
             </a>
-
             <div class="hidden lg:flex items-center space-x-8 font-bold text-xs uppercase tracking-widest text-slate-500">
-                <a href="#work" class="hover:text-blue-700 transition text-slate-900">Our Work</a>
+                <a href="#work" class="hover:text-blue-700 transition">Work</a>
                 <a href="#services" class="hover:text-blue-700 transition">Services</a>
-                <a href="#about" class="hover:text-blue-700 transition">Our Mastery</a>
+                <a href="#about" class="hover:text-blue-700 transition">Mastery</a>
                 <a href="#faq" class="hover:text-blue-700 transition">FAQ</a>
             </div>
-
-            <div class="flex items-center space-x-5">
-                <a href="https://www.facebook.com/elfadali.llc/" target="_blank" class="text-[#1877F2] hover:scale-110 transition-transform">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                </a>
-                <a href="tel:9524860554" class="font-bold text-slate-900 border-l pl-5">952.486.0554</a>
-            </div>
+            <a href="tel:9524860554" class="font-bold text-slate-900 border-l pl-5">952.486.0554</a>
         </div>
     </nav>
 
-    <header id="home" class="relative pt-48 pb-20 bg-slate-50 bg-grid reveal active">
+    <header id="home" class="stack-section bg-slate-50 bg-grid z-[10]">
         <div class="max-w-5xl mx-auto px-6 text-center">
-            <span class="text-blue-700 font-bold tracking-[0.2em] text-sm uppercase mb-6 block">Shakopee's Master Tile Contractor Since 1991</span>
-            <h1 class="text-6xl lg:text-8xl font-bold leading-tight text-slate-900 mb-10 uppercase tracking-tighter">Mastery in Every <br><span class="text-blue-700 italic lowercase">Square Inch.</span></h1>
-            <p class="text-xl text-slate-600 max-w-2xl mx-auto mb-12">35+ Years of Professional Excellence. Serving Shakopee, Minneapolis, and the Twin Cities Metro.</p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#quote" class="bg-blue-700 text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-blue-800 transition shadow-xl">Start My Project</a>
+            <span class="animate-hero delay-1 text-blue-700 font-bold tracking-[0.2em] text-sm uppercase mb-6 block">Shakopee's Master Tile Contractor Since 1991</span>
+            <h1 class="animate-hero delay-2 text-6xl lg:text-8xl font-bold leading-tight text-slate-900 mb-10 uppercase tracking-tighter">
+                Mastery in Every <br><span class="text-blue-700 italic lowercase">Square Inch.</span>
+            </h1>
+            <p class="animate-hero delay-3 text-xl text-slate-600 max-w-2xl mx-auto mb-12">35+ Years of Professional Excellence. Serving Shakopee, Minneapolis, and the Twin Cities Metro.</p>
+            <div class="animate-hero delay-4 flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#quote" class="bg-blue-700 text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition shadow-xl">Start My Project</a>
                 <a href="tel:9524860554" class="bg-white text-slate-900 border-2 border-slate-200 px-10 py-5 rounded-2xl font-black uppercase tracking-widest hover:border-blue-700 transition">Call Now</a>
             </div>
         </div>
     </header>
 
-    <section id="work" class="pb-32 bg-white border-b reveal">
-        <div class="max-w-[1400px] mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+    <section id="work" class="stack-section bg-white z-[20]">
+        <div class="max-w-[1400px] mx-auto px-6 py-20 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div class="lg:col-span-7">
-                    <div class="relative w-full h-[500px] lg:h-[650px] overflow-hidden rounded-[2.5rem] shadow-2xl bg-slate-900">
+                    <div class="relative w-full h-[500px] lg:h-[600px] overflow-hidden rounded-[2.5rem] shadow-2xl bg-slate-900">
                         <template x-for="(slide, index) in slides" :key="index">
-                            <div x-show="activeSlide === index" 
-                                 x-transition:enter="transition duration-500"
-                                 x-transition:enter-start="opacity-0 scale-105"
-                                 x-transition:enter-end="opacity-100 scale-100"
-                                 class="absolute inset-0">
-                                <img :src="slide" class="w-full h-full object-cover" :alt="'Premium Tile Installation ' + index">
+                            <div x-show="activeSlide === index" x-transition:enter="transition duration-700" x-transition:enter-start="opacity-0 scale-110" x-transition:enter-end="opacity-100 scale-100" class="absolute inset-0">
+                                <img :src="slide" class="w-full h-full object-cover" alt="Tile Work">
                             </div>
                         </template>
                     </div>
                 </div>
-
-                <div class="lg:col-span-5 bg-slate-900 rounded-[2.5rem] p-8 lg:p-10 shadow-2xl text-white sticky top-28">
-                    <div x-show="!submitted">
-                        <h3 class="text-3xl font-bold mb-8 uppercase tracking-tight">Quick Estimate</h3>
-                        <form @submit.prevent="submitForm($event)" class="space-y-4">
-                            <input type="text" name="name" placeholder="Full Name" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all">
-                            
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <input type="tel" name="phone" placeholder="Phone" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all">
-                                <input type="email" name="email" placeholder="Email Address" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all">
-                            </div>
-
-                            <select name="service" class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all appearance-none">
-                                <option disabled selected>Select a Service</option>
-                                <option>Kitchen Backsplash</option>
-                                <option>Custom Shower</option>
-                                <option>Tub Surround</option>
-                                <option>Flooring Installation</option>
-                                <option>Fireplace Tile</option>
-                                <option>Maintenance & Restoration</option>
-                                <option>Commercial Project</option>
-                                <option>Other Service</option>
-                            </select>
-
-                            <select name="contact_method" class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all appearance-none">
-                                <option disabled selected>Preferred Contact Method</option>
-                                <option>Phone Call</option>
-                                <option>Email</option>
-                                <option>Text Message</option>
-                            </select>
-
-                            <textarea name="message" placeholder="Project Details" rows="3" class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all"></textarea>
-                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-5 rounded-2xl uppercase tracking-widest transition-all">Send Request</button>
-                        </form>
-                    </div>
-                    <div x-show="submitted" class="text-center py-12">✓ Request Sent</div>
+                <div class="lg:col-span-5 bg-slate-900 rounded-[2.5rem] p-10 shadow-2xl text-white">
+                    <h3 class="text-3xl font-bold mb-8 uppercase tracking-tight">Quick Estimate</h3>
+                    <form @submit.prevent="submitForm($event)" class="space-y-4">
+                        <input type="text" name="name" placeholder="Full Name" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-xl p-4 text-white outline-none focus:border-blue-500 transition-all">
+                        <div class="grid grid-cols-2 gap-4">
+                            <input type="tel" name="phone" placeholder="Phone" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-xl p-4 text-white outline-none focus:border-blue-500 transition-all">
+                            <input type="email" name="email" placeholder="Email" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-xl p-4 text-white outline-none focus:border-blue-500 transition-all">
+                        </div>
+                        <select name="service" class="w-full bg-slate-800 border-2 border-slate-700 rounded-xl p-4 text-white appearance-none outline-none focus:border-blue-500">
+                            <option disabled selected>Select Service</option>
+                            <option>Kitchen Backsplash</option>
+                            <option>Custom Shower</option>
+                            <option>Tub Surround</option>
+                            <option>Flooring</option>
+                            <option>Fireplace</option>
+                            <option>Commercial</option>
+                        </select>
+                        <textarea name="message" placeholder="Project Details" rows="2" class="w-full bg-slate-800 border-2 border-slate-700 rounded-xl p-4 text-white outline-none focus:border-blue-500"></textarea>
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-4 rounded-xl uppercase tracking-widest transition-all">Send Request</button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="services" class="section-padding bg-white reveal">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-4xl lg:text-5xl font-bold mb-16 uppercase tracking-tighter">Specialized <span class="text-blue-700">Services</span></h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
-                <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100 hover:shadow-2xl hover:scale-105 transition-all duration-300">
-                    <div class="text-blue-700 mb-4"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg></div>
+    <section id="services" class="stack-section bg-slate-50 z-[30]">
+        <div class="max-w-7xl mx-auto px-6 py-20 w-full text-center">
+            <h2 class="text-4xl lg:text-6xl font-bold mb-16 uppercase tracking-tighter">Specialized <span class="text-blue-700">Services</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <div class="p-8 bg-white rounded-3xl border border-slate-100 hover:shadow-2xl transition duration-500 group">
+                    <div class="text-blue-700 mb-4 group-hover:scale-110 transition-transform"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg></div>
                     <h3 class="text-xl font-bold mb-2 uppercase">Kitchen Backsplash</h3>
                     <p class="text-slate-600">Precision mosaic and subway tile work that serves as the crown jewel of your kitchen.</p>
                 </div>
-                <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100 hover:shadow-2xl hover:scale-105 transition-all duration-300">
-                    <div class="text-blue-700 mb-4"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4h16v16H4V4zm4 4h8v8H8V8z"/></svg></div>
+                <div class="p-8 bg-white rounded-3xl border border-slate-100 hover:shadow-2xl transition duration-500 group">
+                    <div class="text-blue-700 mb-4 group-hover:scale-110 transition-transform"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4h16v16H4V4zm4 4h8v8H8V8z"/></svg></div>
                     <h3 class="text-xl font-bold mb-2 uppercase">Custom Showers</h3>
                     <p class="text-slate-600">100% waterproof Schluter systems for a mold-free, spa-like experience.</p>
                 </div>
-                <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100 hover:shadow-2xl hover:scale-105 transition-all duration-300">
-                    <div class="text-blue-700 mb-4"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg></div>
+                <div class="p-8 bg-white rounded-3xl border border-slate-100 hover:shadow-2xl transition duration-500 group">
+                    <div class="text-blue-700 mb-4 group-hover:scale-110 transition-transform"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg></div>
                     <h3 class="text-xl font-bold mb-2 uppercase">Flooring</h3>
                     <p class="text-slate-600">Expert installation of porcelain, ceramic, and natural stone flooring with zero-lippage precision.</p>
                 </div>
-                <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100 hover:shadow-2xl hover:scale-105 transition-all duration-300">
-                    <div class="text-blue-700 mb-4"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg></div>
-                    <h3 class="text-xl font-bold mb-2 uppercase">Tub Surroundings</h3>
-                    <p class="text-slate-600">Upgrading standard tub alcoves into elegant, durable, and waterproof tile statements.</p>
-                </div>
-                <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100 hover:shadow-2xl hover:scale-105 transition-all duration-300">
-                    <div class="text-blue-700 mb-4"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
-                    <h3 class="text-xl font-bold mb-2 uppercase">Restoration</h3>
-                    <p class="text-slate-600">Grout repair, deep cleaning, and professional stone sealing to restore original beauty.</p>
-                </div>
-                <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100 hover:shadow-2xl hover:scale-105 transition-all duration-300">
-                    <div class="text-blue-700 mb-4"><svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></div>
-                    <h3 class="text-xl font-bold mb-2 uppercase">Commercial Projects</h3>
-                    <p class="text-slate-600">High-durability tile solutions for restaurants, lobbies, and large-scale facilities.</p>
-                </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="section-padding bg-slate-50 reveal">
-        <div class="max-w-4xl mx-auto px-6 prose prose-lg prose-slate max-w-none">
+    <section id="about" class="stack-section bg-white z-[40]">
+        <div class="max-w-4xl mx-auto px-6 py-20">
             <h2 class="text-4xl lg:text-5xl font-bold mb-12 text-center uppercase tracking-tighter">The <span class="italic text-blue-700">True Craft</span> Standard</h2>
-            <div class="space-y-6 text-slate-700">
-                <p>For over 35 years, <strong>True Craft Tile and Stone</strong> has been the definitive choice for homeowners and businesses in Shakopee, Minneapolis, and across the Twin Cities metro area. Our philosophy is simple: tile is not just a surface; it is a permanent architectural investment that defines the character of your home. We approach every kitchen backsplash, custom shower, and tub surround with the precision of master craftsmen, ensuring that every line is perfectly leveled and every joint is flawlessly grouted.</p>
-                <p>What sets True Craft Tile and Stone apart is our commitment to modern technical excellence. We are <strong>Schluter-Kerdi Authorized</strong> installers, specializing in system-based waterproofing. While many contractors still use outdated methods that lead to mold growth and leaking behind walls, we utilize the Kerdi-Board system to create a 100% vapor-tight environment. This means your spa-like custom shower is not just beautiful on the day of installation—it is built to remain mold-free and structurally sound for a lifetime.</p>
-                <p>Our experience extends beyond residential interiors. We have successfully completed numerous commercial projects, providing high-durability tile solutions for businesses that demand both aesthetic appeal and long-term performance. Whether it is a high-traffic restaurant kitchen or a luxury building lobby, our team manages the complexities of large-scale layouts with the same attention to detail we bring to a private master bath.</p>
-                <p>In addition to new installations, True Craft Tile and Stone provides expert maintenance and restoration services. Grout is the most vulnerable part of any tile installation; over time, it can crack, stain, or lose its seal. We offer deep-cleaning and regrouting services that can make a ten-year-old bathroom look brand new. For natural stone surfaces like marble, granite, and travertine, our professional sealing techniques protect the porous stone from staining and etching, preserving its natural elegance for years to come.</p>
-                <p>Furthermore, our flooring expertise covers a vast array of materials and patterns. From high-end porcelain planks that mimic hardwood to classic natural stone tiles, we ensure your flooring is installed with a zero-lippage guarantee. This precision is vital not only for the look of your home but also for the safety and longevity of the material. A perfectly flat floor prevents tiles from cracking under pressure and ensures that your furniture sits perfectly level.</p>
-                <p>When you choose True Craft Tile and Stone, you aren't just hiring a laborer; you are partnering with a master contractor who understands the chemistry of thin-sets, the physics of substrate preparation, and the artistry of layout design. We provide a <strong>2-year workmanship warranty</strong> on all projects, giving you total peace of mind that your home is in the hands of the best in the business.</p>
+            <div class="space-y-6 text-slate-700 text-lg leading-relaxed">
+                <p>For over 35 years, <strong>True Craft Tile and Stone</strong> has been the definitive choice for homeowners in Shakopee and Minneapolis. Our philosophy is simple: tile is not just a surface; it is a permanent architectural investment.</p>
+                <p>We are <strong>Schluter-Kerdi Authorized</strong> installers, specializing in system-based waterproofing that ensures your spa-like custom shower remains mold-free and structurally sound for a lifetime.</p>
+                <p>Whether it's a luxury building lobby or a private master bath, we bring industrial-strength precision and artisanal finishing to every single project.</p>
             </div>
         </div>
     </section>
 
-    <section id="faq" class="section-padding bg-white border-y reveal">
-        <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16 uppercase tracking-tighter">Mastering the Details: <span class="text-blue-700">FAQ</span></h2>
-            <div class="space-y-6">
-                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
-                    <button @click="activeFaq = 1" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 1 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
-                        <span class="text-xl">What makes your custom shower installation process superior to standard methods?</span>
+    <section id="faq" class="stack-section bg-slate-50 z-[50]">
+        <div class="max-w-4xl mx-auto px-6 py-20 w-full">
+            <h2 class="text-4xl font-bold text-center mb-16 uppercase tracking-tighter">Expert <span class="text-blue-700">FAQ</span></h2>
+            <div class="space-y-4">
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                    <button @click="activeFaq = 1" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 1 ? 'bg-blue-50 text-blue-700' : 'text-slate-900'">
+                        <span class="text-lg">What makes your custom showers superior?</span>
                         <span class="text-2xl" :class="activeFaq === 1 ? 'rotate-45' : '' transition-transform">+</span>
                     </button>
-                    <div x-show="activeFaq === 1" class="faq-answer p-8 text-slate-600 border-t border-slate-100 leading-relaxed" x-cloak x-transition>
-                        <p>At True Craft Tile and Stone, we believe that the beauty of a shower is secondary only to its integrity. Most standard "contractor-grade" showers rely on cement board and a plastic liner. While these materials are common, they are fundamentally flawed. Cement board is water-resistant, but it is not waterproof. Over time, moisture moves through the tile and grout, saturating the board and eventually reaching the wood studs behind it. This creates a hidden environment for mold and rot that may not be visible for years but will eventually compromise your home’s structure.</p>
-                        <p>Our approach is fundamentally different because we are Schluter-Kerdi Authorized installers. We utilize a complete system-based approach where every component—the drain, the shower pan, and the walls—is integrated into a single, vapor-tight envelope. We start with Kerdi-Board, a lightweight, waterproof, and dimensionally stable substrate that replaces traditional heavy cement boards. Every seam and corner is then sealed with Kerdi-Band using specialized thin-set mortar. This ensures that water is managed on the surface of the system, never allowing it to penetrate into the wall cavity.</p>
-                        <p>Beyond the waterproofing, our technical precision in the layout phase is what truly sets us apart. We don't just "start laying tile." we perform complex mathematical layouts to ensure that all cuts are balanced and symmetrical. We pay close attention to the "wrap" of the tile patterns in corners so that the design remains continuous. This level of planning prevents small, unsightly slivers of tile at the edges and creates a visual flow that mirrors high-end luxury resorts. When you invest in a shower from True Craft Tile and Stone, you are investing in 35 years of engineering expertise combined with artisanal finishing.</p>
+                    <div x-show="activeFaq === 1" class="p-8 text-slate-600 border-t border-slate-100 leading-relaxed" x-transition>
+                        We use the full Schluter-Kerdi system. Unlike cement board, our system is 100% vapor-tight, preventing mold growth behind your walls forever.
                     </div>
                 </div>
-
-                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
-                    <button @click="activeFaq = 4" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 4 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
-                        <span class="text-xl">What special considerations are required for fireplace tile and stone installations?</span>
-                        <span class="text-2xl" :class="activeFaq === 4 ? 'rotate-45' : '' transition-transform">+</span>
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                    <button @click="activeFaq = 2" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 2 ? 'bg-blue-50 text-blue-700' : 'text-slate-900'">
+                        <span class="text-lg">Do you handle commercial tile projects?</span>
+                        <span class="text-2xl" :class="activeFaq === 2 ? 'rotate-45' : '' transition-transform">+</span>
                     </button>
-                    <div x-show="activeFaq === 4" class="faq-answer p-8 text-slate-600 border-t border-slate-100 leading-relaxed" x-cloak x-transition>
-                        <p>Fireplace tiling is one of the most technical areas of interior masonry because it involves extreme thermal expansion and contraction. At True Craft Tile and Stone, we understand that a fireplace isn't just a focal point; it's a heat-generating appliance that requires specific material choices and installation techniques to prevent cracking or tile failure. The cycle of heating and cooling creates immense stress on the bond between the tile and the substrate. If the wrong thin-set or improper expansion joints are used, the tiles will eventually pop or "tent" as the heat causes the materials to expand at different rates.</p>
-                        <p>Our fireplace installation process begins with a thermal assessment of the surround. We use high-performance, polymer-modified mortars specifically designed for high-heat environments. These mortars maintain their flexibility under extreme temperature shifts, allowing the tile to expand without breaking the bond. For the substrate, we ensure that the surface is non-combustible and structurally reinforced to handle the weight of heavy stone or large-format tiles. We also pay strict attention to local Shakopee and Minneapolis building codes regarding clearances to combustible materials, ensuring your fireplace is as safe as it is beautiful.</p>
-                        <p>Design-wise, a fireplace offers a unique opportunity for "book-matching" or complex stone layouts. Whether you are looking for a sleek, modern floor-to-ceiling porcelain slab or a traditional stacked-stone hearth, we prioritize the "architectural alignment" of the project. We ensure that the mantel, the firebox, and the floor transition are all perfectly integrated. Because the fireplace is often the center of the living room, we take extra time to hand-select stone pieces for color consistency and grain direction. A True Craft fireplace is designed to be a permanent, high-performance masterpiece that adds significant resale value to your home while serving as a safe, stunning gathering place for your family.</p>
-                    </div>
-                </div>
-
-                <div class="border-2 border-slate-100 rounded-3xl overflow-hidden shadow-sm">
-                    <button @click="activeFaq = 5" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 5 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
-                        <span class="text-xl">How do commercial tile requirements differ from residential projects?</span>
-                        <span class="text-2xl" :class="activeFaq === 5 ? 'rotate-45' : '' transition-transform">+</span>
-                    </button>
-                    <div x-show="activeFaq === 5" class="faq-answer p-8 text-slate-600 border-t border-slate-100 leading-relaxed" x-cloak x-transition>
-                        <p>Commercial tile installation is a different beast entirely, focused heavily on liability, slip resistance, and extreme durability. In a residential setting, aesthetics often drive the decision-making process. In a commercial environment—such as a restaurant kitchen, a hotel lobby, or a retail store—performance and safety are the primary mandates. At True Craft Tile and Stone, we approach commercial projects with a focus on DCOF (Dynamic Coefficient of Friction) ratings. We ensure that all selected materials meet or exceed the ANSI A326.3 standard for slip resistance in wet environments, protecting business owners from potential liability issues.</p>
-                        <p>The technical requirements for commercial substrates are also significantly higher. In a high-traffic lobby, the floor must withstand thousands of footfalls daily, as well as the weight of heavy equipment and cleaning machinery. We utilize specialized commercial-grade uncoupling membranes that protect the tile from the vibrations and shifting common in large commercial buildings. For industrial kitchens, we often recommend epoxy grouts. Unlike standard cementitious grout, epoxy is 100% non-porous and resistant to the acids, fats, and harsh industrial degreasers used in commercial cleaning. This prevents the growth of bacteria and ensures the facility passes health inspections with ease.</p>
-                        <p>Finally, we understand that for commercial clients, "time is money." Commercial projects require strict adherence to timelines and coordination with other trades (plumbers, electricians, and inspectors). Our 35+ years of experience allows us to manage these complex logistical schedules without sacrificing quality. We provide comprehensive documentation, including technical data sheets (TDS) and safety data sheets (SDS) for all materials used, ensuring that your commercial facility is fully compliant with all Twin Cities building regulations. Whether it’s a 100-square-foot restroom or a 5,000-square-foot showroom, True Craft brings industrial-strength precision to every commercial square inch.</p>
+                    <div x-show="activeFaq === 2" class="p-8 text-slate-600 border-t border-slate-100 leading-relaxed" x-transition>
+                        Yes. We provide high-durability solutions for restaurants and lobbies, including epoxy grouting and high-slip-resistance materials for safety.
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="quote" class="section-padding bg-slate-900 text-white reveal">
-        <div class="max-w-4xl mx-auto px-6">
+    <section id="quote" class="stack-section bg-slate-900 text-white z-[60]">
+        <div class="max-w-4xl mx-auto px-6 py-20 w-full">
             <div x-show="!submitted">
-                <div class="text-center mb-16">
-                    <h2 class="text-5xl font-bold mb-4 uppercase tracking-tighter text-white">Detailed <span class="text-blue-500">Inquiry</span></h2>
-                </div>
+                <h2 class="text-5xl font-bold mb-10 text-center uppercase tracking-tighter">Detailed <span class="text-blue-500">Inquiry</span></h2>
                 <form @submit.prevent="submitForm($event)" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <input type="text" name="name" placeholder="Full Name" required class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white outline-none focus:border-blue-500 transition-all">
-                    
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <input type="tel" name="phone" placeholder="Phone" required class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white outline-none focus:border-blue-500 transition-all">
-                        <input type="email" name="email" placeholder="Email Address" required class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white outline-none focus:border-blue-500 transition-all">
-                    </div>
-                    
-                    <select name="service" required class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white outline-none focus:border-blue-500 transition-all appearance-none">
-                        <option value="" disabled selected>Choose a Service</option>
-                        <option>Kitchen Backsplash</option>
+                    <input type="text" name="name" placeholder="Full Name" required class="bg-slate-800 border-2 border-slate-700 rounded-xl p-5 text-white outline-none focus:border-blue-500">
+                    <input type="email" name="email" placeholder="Email Address" required class="bg-slate-800 border-2 border-slate-700 rounded-xl p-5 text-white outline-none focus:border-blue-500">
+                    <select name="service" class="bg-slate-800 border-2 border-slate-700 rounded-xl p-5 text-white outline-none focus:border-blue-500">
                         <option>Custom Shower</option>
-                        <option>Tub Surround</option>
-                        <option>Flooring Installation</option>
-                        <option>Fireplace Tile</option>
-                        <option>Maintenance & Restoration</option>
-                        <option>Commercial Project</option>
-                        <option>Other Service</option>
+                        <option>Backsplash</option>
+                        <option>Flooring</option>
+                        <option>Commercial</option>
                     </select>
-
-                    <select name="contact_method" required class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white outline-none focus:border-blue-500 transition-all appearance-none">
-                        <option value="" disabled selected>Preferred Contact Method</option>
-                        <option>Phone Call</option>
-                        <option>Email</option>
-                        <option>Text Message</option>
-                    </select>
-
-                    <textarea name="message" rows="4" placeholder="How can we help?" class="md:col-span-2 bg-slate-800 border-2 border-slate-700 rounded-2xl p-5 text-white outline-none focus:border-blue-500 transition-all"></textarea>
-                    <button type="submit" class="md:col-span-2 bg-blue-600 hover:bg-blue-500 text-white font-black py-6 rounded-2xl text-xl uppercase tracking-widest transition-all">Submit Inquiry</button>
+                    <input type="tel" name="phone" placeholder="Phone Number" class="bg-slate-800 border-2 border-slate-700 rounded-xl p-5 text-white outline-none focus:border-blue-500">
+                    <textarea name="message" rows="4" placeholder="How can we help?" class="md:col-span-2 bg-slate-800 border-2 border-slate-700 rounded-xl p-5 text-white outline-none focus:border-blue-500"></textarea>
+                    <button type="submit" class="md:col-span-2 bg-blue-600 hover:bg-blue-500 text-white font-black py-6 rounded-xl text-xl uppercase tracking-widest transition-all">Submit Inquiry</button>
                 </form>
             </div>
             <div x-show="submitted" class="text-center py-20 bg-white text-slate-900 rounded-[3rem]">
-                <h2 class="text-4xl font-bold uppercase">Success</h2>
-                <p>We'll be in touch shortly.</p>
+                <h2 class="text-4xl font-bold uppercase">Sent</h2>
+                <p>We'll call you shortly.</p>
             </div>
+            <footer class="mt-20 pt-10 border-t border-slate-800 text-center text-slate-500 text-sm">
+                <p class="font-bold text-white mb-2">TRUE CRAFT TILE & STONE</p>
+                <p>1364 Savanna Dr, Shakopee, MN 55379 | 952.486.0554</p>
+            </footer>
         </div>
     </section>
-
-    <footer class="py-16 text-center bg-white border-t border-slate-100 reveal">
-        <p class="font-bold text-2xl uppercase tracking-tighter mb-4 text-slate-900">TRUE CRAFT TILE & STONE</p>
-        <p class="text-slate-400 text-sm">1364 Savanna Dr, Shakopee, MN 55379 | 952.486.0554</p>
-    </footer>
 
 </body>
 </html>
