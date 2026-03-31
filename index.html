@@ -94,38 +94,56 @@
         }
     }
 }" x-init="init()" @keydown.arrow-left.window="if(activeLightbox !== undefined){activeLightbox = (activeLightbox - 1 + slides.length) % slides.length}" @keydown.arrow-right.window="if(activeLightbox !== undefined){activeLightbox = (activeLightbox + 1) % slides.length}" @click.outside="if(activeLightbox !== undefined) activeLightbox = undefined">
+  
+  <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 flex items-center justify-between px-6 py-3 max-w-7xl mx-auto">
+    <!-- Dynamic Logo Only -->
+    <a href="#home" aria-label="True Craft Tile & Stone Home" class="flex items-center gap-3">
+      <img src="TC tile.jpg" alt="True Craft Tile & Stone Logo" class="h-14 w-auto" />
+      <span class="font-bold text-lg tracking-tighter text-slate-900 hidden sm:block">True Craft Tile & Stone</span>
+    </a>
 
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100">
-        <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#home" class="flex items-center gap-3" @click="closeNav()">
-                <img src="TC tile.jpg" class="h-14 w-auto" alt="Logo" />
-                <span class="font-bold text-lg tracking-tighter text-slate-900 hidden sm:block">True Craft Tile & Stone</span>
-            </a>
+    <!-- Nav Menu Button Instead of Call Button for Mobile -->
+    <button @click="toggleNav()" aria-label="Toggle menu"
+      :aria-expanded="navOpen.toString()"
+      class="lg:hidden flex items-center px-3 py-2 border rounded text-slate-700 border-slate-500 hover:text-blue-700 hover:border-blue-700 transition focus:outline-none">
+      <svg class="fill-current h-6 w-6" viewBox="0 0 20 20"><path x-show="!navOpen" d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path><path x-show="navOpen" fill-rule="evenodd" clip-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 011.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"></path></svg>
+    </button>
 
-            <!-- Desktop Menu -->
-            <div class="hidden lg:flex items-center space-x-8 font-bold text-xs uppercase tracking-widest text-slate-500">
-                <a href="#work" class="hover:text-blue-700 transition text-slate-900" @click="closeNav()">Our Work</a>
-                <a href="#services" class="hover:text-blue-700 transition" @click="closeNav()">Services</a>
-                <a href="#about" class="hover:text-blue-700 transition" @click="closeNav()">Our Mastery</a>
-                <a href="#faq" class="hover:text-blue-700 transition" @click="closeNav()">FAQ</a>
-            </div>
+    <!-- Desktop Menu Hidden on Mobile -->
+    <div class="hidden lg:flex items-center space-x-8 font-bold text-xs uppercase tracking-widest text-slate-500">
+      <a href="#work" class="hover:text-blue-700 transition text-slate-900" @click="closeNav()">Our Work</a>
+      <a href="#services" class="hover:text-blue-700 transition" @click="closeNav()">Services</a>
+      <a href="#about" class="hover:text-blue-700 transition" @click="closeNav()">Our Mastery</a>
+      <a href="#faq" class="hover:text-blue-700 transition" @click="closeNav()">FAQ</a>
+    </div>
+  </nav>
 
-            <!-- Mobile Hamburger -->
-            <button @click="toggleNav()" class="lg:hidden flex items-center px-3 py-2 border rounded text-slate-700 border-slate-500 hover:text-blue-700 hover:border-blue-700 transition focus:outline-none" aria-label="Toggle Menu" :aria-expanded="navOpen.toString()">
-                <svg class="fill-current h-6 w-6" viewBox="0 0 20 20"><path x-show="!navOpen" d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"  /><path x-show="navOpen" fill-rule="evenodd" clip-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 011.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></path></svg>
-            </button>
-        </div>
+  <!-- Mobile Menu Overlay -->
+  <div class="lg:hidden fixed inset-0 bg-white z-40 p-6 overflow-auto"
+    x-show="navOpen"
+    @click.outside="closeNav()"
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
+    x-transition:leave="transition ease-in duration-200"
+    x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0"
+    style="display:none"
+  >
+      <nav class="flex flex-col space-y-6 font-bold text-lg uppercase tracking-wide text-slate-900">
+        <a href="#work" @click="closeNav()" class="hover:text-blue-700">Our Work</a>
+        <a href="#services" @click="closeNav()" class="hover:text-blue-700">Services</a>
+        <a href="#about" @click="closeNav()" class="hover:text-blue-700">Our Mastery</a>
+        <a href="#faq" @click="closeNav()" class="hover:text-blue-700">FAQ</a>
+      </nav>
+  </div>
 
-        <!-- Mobile Menu -->
-        <div class="lg:hidden bg-white border-t border-slate-100 shadow-md" x-show="navOpen" @click.outside="closeNav()" x-transition>
-            <div class="flex flex-col space-y-2 px-6 pb-4 pt-2 font-bold text-sm uppercase tracking-wide text-slate-700 select-none">
-                <a href="#work" class="py-3 border-b border-slate-200 hover:bg-blue-50" @click="closeNav()">Our Work</a>
-                <a href="#services" class="py-3 border-b border-slate-200 hover:bg-blue-50" @click="closeNav()">Services</a>
-                <a href="#about" class="py-3 border-b border-slate-200 hover:bg-blue-50" @click="closeNav()">Our Mastery</a>
-                <a href="#faq" class="py-3 hover:bg-blue-50" @click="closeNav()">FAQ</a>
-            </div>
-        </div>
-    </nav>
+  <!-- Hero section remains the same -->
+
+  <!-- rest of your page continues unchanged -->
+
+</body>
+</html>
 
     <header id="home" class="relative overflow-hidden bg-slate-50">
   <head>
