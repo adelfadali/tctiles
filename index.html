@@ -159,18 +159,110 @@
     </section>
 
     <section id="faq" class="section-padding bg-white border-y">
-        <div class="max-w-3xl mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16 uppercase tracking-tighter text-slate-900">Installation <span class="text-blue-700">FAQ</span></h2>
-            <div class="space-y-4">
-                <div class="border-2 border-slate-200 rounded-3xl bg-white overflow-hidden">
-                    <button @click="activeFaq = 1" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 1 ? 'text-blue-700' : 'text-slate-900'">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 uppercase tracking-tighter text-slate-900">Mastering the Details: <span class="text-blue-700">FAQ</span></h2>
+            <div class="grid grid-cols-1 gap-4">
+                
+                <div class="border-2 border-slate-100 rounded-3xl bg-white overflow-hidden shadow-sm">
+                    <button @click="activeFaq = 1" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 1 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
                         <span>What is your primary service area?</span>
-                        <span class="text-2xl" x-text="activeFaq === 1 ? '−' : '+'"></span>
+                        <span class="text-2xl transition-transform" :class="activeFaq === 1 ? 'rotate-45' : ''">+</span>
                     </button>
-                    <div x-show="activeFaq === 1" class="p-6 text-slate-600 border-t" x-cloak x-transition>
-                        We serve <strong>Shakopee, Minneapolis</strong>, and the entire Twin Cities Metro area.
+                    <div x-show="activeFaq === 1" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>
+                        True Craft Tile & Stone serves the entire <strong>Twin Cities Metro</strong>, with a core focus on <strong>Shakopee, Minneapolis</strong>, Eden Prairie, and Edina.
                     </div>
                 </div>
+
+                <div class="border-2 border-slate-100 rounded-3xl bg-white overflow-hidden shadow-sm">
+                    <button @click="activeFaq = 2" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 2 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
+                        <span>Do you offer a warranty on your installation?</span>
+                        <span class="text-2xl transition-transform" :class="activeFaq === 2 ? 'rotate-45' : ''">+</span>
+                    </button>
+                    <div x-show="activeFaq === 2" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>
+                        Yes. We provide a <strong>2-year workmanship warranty</strong> on all our installations. This is double the industry standard, reflecting our confidence in the 35+ years of experience we bring to every job.
+                    </div>
+                </div>
+
+                <div class="border-2 border-slate-100 rounded-3xl bg-white overflow-hidden shadow-sm">
+                    <button @click="activeFaq = 3" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 3 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
+                        <span>Why do you recommend Schluter-Kerdi systems for showers?</span>
+                        <span class="text-2xl transition-transform" :class="activeFaq === 3 ? 'rotate-45' : ''">+</span>
+                    </button>
+                    <div x-show="activeFaq === 3" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>
+                        Schluter-Kerdi is the gold standard for waterproofing. Unlike traditional cement board, it creates a completely integrated, vapor-tight seal that prevents mold growth and structural rot behind your tiles.
+                    </div>
+                </div>
+
+                <div class="border-2 border-slate-100 rounded-3xl bg-white overflow-hidden shadow-sm">
+                    <button @click="activeFaq = 4" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 4 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
+                        <span>Can you install large-format tile (LFT)?</span>
+                        <span class="text-2xl transition-transform" :class="activeFaq === 4 ? 'rotate-45' : ''">+</span>
+                    </button>
+                    <div x-show="activeFaq === 4" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>
+                        Absolutely. Large-format tiles require advanced leveling systems and specific mortar coverage to prevent cracking and "lippage" (uneven edges). We use specialized tools to ensure a perfectly flat, monolithic look.
+                    </div>
+                </div>
+
+                <div class="border-2 border-slate-100 rounded-3xl bg-white overflow-hidden shadow-sm">
+                    <button @click="activeFaq = 5" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 5 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
+                        <span>How do you handle layout and symmetry?</span>
+                        <span class="text-2xl transition-transform" :class="activeFaq === 5 ? 'rotate-45' : ''">+</span>
+                    </button>
+                    <div x-show="activeFaq === 5" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>
+                        Layout is the most important step. We "dry-lay" or measure precisely before thin-set touches the floor to avoid awkward small cuts (slivers) at the edges, ensuring your project looks balanced and professional.
+                    </div>
+                </div>
+
+                <div class="border-2 border-slate-100 rounded-3xl bg-white overflow-hidden shadow-sm">
+                    <button @click="activeFaq = 6" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 6 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
+                        <span>What type of grout do you use?</span>
+                        <span class="text-2xl transition-transform" :class="activeFaq === 6 ? 'rotate-45' : ''">+</span>
+                    </button>
+                    <div x-show="activeFaq === 6" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>
+                        We use high-performance polymer-modified or epoxy grouts. These are stain-resistant, color-consistent, and far more durable than the cheap sanded grout found at big-box stores.
+                    </div>
+                </div>
+
+                <div class="border-2 border-slate-100 rounded-3xl bg-white overflow-hidden shadow-sm">
+                    <button @click="activeFaq = 7" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 7 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
+                        <span>Do you handle subfloor preparation?</span>
+                        <span class="text-2xl transition-transform" :class="activeFaq === 7 ? 'rotate-45' : ''">+</span>
+                    </button>
+                    <div x-show="activeFaq === 7" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>
+                        Yes. A tile job is only as good as what’s underneath it. We evaluate subfloors for deflection (bounce) and levelness, installing uncoupling membranes like Ditra to prevent future grout cracking.
+                    </div>
+                </div>
+
+                <div class="border-2 border-slate-100 rounded-3xl bg-white overflow-hidden shadow-sm">
+                    <button @click="activeFaq = 8" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 8 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
+                        <span>How long does a typical bathroom project take?</span>
+                        <span class="text-2xl transition-transform" :class="activeFaq === 8 ? 'rotate-45' : ''">+</span>
+                    </button>
+                    <div x-show="activeFaq === 8" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>
+                        While every project varies, a standard custom shower usually takes 5 to 7 working days to allow for proper waterproofing cure times, precision setting, and final grouting/sealing.
+                    </div>
+                </div>
+
+                <div class="border-2 border-slate-100 rounded-3xl bg-white overflow-hidden shadow-sm">
+                    <button @click="activeFaq = 9" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 9 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
+                        <span>Can you install natural stone like marble or slate?</span>
+                        <span class="text-2xl transition-transform" :class="activeFaq === 9 ? 'rotate-45' : ''">+</span>
+                    </button>
+                    <div x-show="activeFaq === 9" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>
+                        Yes. Natural stone requires a different level of care, including specific white thin-sets to prevent staining and professional-grade sealants to protect the stone’s porous surface.
+                    </div>
+                </div>
+
+                <div class="border-2 border-slate-100 rounded-3xl bg-white overflow-hidden shadow-sm">
+                    <button @click="activeFaq = 10" class="w-full p-6 text-left font-bold flex justify-between items-center transition" :class="activeFaq === 10 ? 'bg-blue-50 text-blue-700' : 'text-slate-900 hover:bg-slate-50'">
+                        <span>What should I have ready for my estimate?</span>
+                        <span class="text-2xl transition-transform" :class="activeFaq === 10 ? 'rotate-45' : ''">+</span>
+                    </button>
+                    <div x-show="activeFaq === 10" class="p-6 text-slate-600 border-t border-slate-100" x-cloak x-transition>
+                        Having your rough measurements and an idea of the tile type (ceramic, porcelain, stone) helps us provide a more accurate quote. Photos of your current space are also highly beneficial.
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
