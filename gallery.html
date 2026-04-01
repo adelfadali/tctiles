@@ -7,88 +7,131 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
 
     <style>
-        body { font-family: 'Montserrat', sans-serif; background-color: #fcfaf8; color: #1a1a1a; }
-        h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
         [x-cloak] { display: none !important; }
-        
-        /* Subtle transition for the project cards */
-        .card-shadow { box-shadow: 0 20px 40px -15px rgba(0,0,0,0.05); transition: all 0.5s ease; }
-        .card-shadow:hover { box-shadow: 0 40px 60px -20px rgba(0,0,0,0.15); transform: translateY(-5px); }
 
-        /* Masonry Grid Logic */
-        .masonry-grid { column-count: 1; column-gap: 2rem; }
-        @media (min-width: 768px) { .masonry-grid { column-count: 2; } }
-        @media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
+        /* MATCHING YOUR SITE ANIMATIONS */
+        @keyframes moveGrid { from { background-position: 0px 0px; } to { background-position: 24px 24px; } }
+        .moving-grid { animation: moveGrid 3s linear infinite; }
+        
+        .project-card { transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+        .project-card:hover { transform: translateY(-10px); }
+
+        /* Custom Scrollbar for your Slate theme */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
     </style>
 </head>
-<body x-data="{ 
-    navOpen: false, 
-    category: 'all', 
-    activeProject: null, 
-    activePhotoIndex: 0,
-    projects: [
-        { id: 1, title: 'Old World Kitchen', loc: 'Shakopee', cat: 'kitchens', imgs: ['kitchen-1.jpg', 'kitchen-2.jpg'] },
-        { id: 2, id: 2, title: 'Natural Stone Bath', loc: 'Minneapolis', cat: 'showers', imgs: ['shower-1.jpg'] },
-        { id: 3, title: 'Modern Hearth', loc: 'Prior Lake', cat: 'fireplace', imgs: ['fire-1.jpg'] }
-    ]
-}">
+<body class="bg-white text-slate-900" 
+      x-data="{ 
+        navOpen: false,
+        category: 'all',
+        activeProject: null,
+        activePhotoIndex: 0,
+        search: '',
+        
+        // --- ADD YOUR PROJECTS HERE ---
+        projects: [
+            {
+                id: 1,
+                title: 'Modern Herringbone Kitchen',
+                location: 'Shakopee, MN',
+                category: 'kitchens',
+                images: [
+                    'kitchen backsplash 0000 Shakopee Minneapolis Tile contractor.jpg',
+                    'kitchen backsplash 000 Shakopee Minneapolis Tile contractor.jpg'
+                ]
+            },
+            {
+                id: 2,
+                title: 'Luxury Shower System',
+                location: 'Minneapolis, MN',
+                category: 'showers',
+                images: ['shower1.jpg', 'shower2.jpg']
+            }
+        ],
 
-    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-stone-100">
-        <div class="max-w-7xl mx-auto px-8 py-6 flex justify-between items-center">
-            <a href="index.html" class="flex flex-col">
-                <span class="text-2xl font-bold tracking-[0.2em] uppercase text-stone-800">True Craft</span>
-                <span class="text-[10px] tracking-[0.4em] uppercase text-stone-400">Tile & Stone</span>
+        get filteredProjects() {
+            return this.projects.filter(p => {
+                const matchCat = this.category === 'all' || p.category === this.category;
+                const matchSearch = p.title.toLowerCase().includes(this.search.toLowerCase()) || 
+                                    p.location.toLowerCase().includes(this.search.toLowerCase());
+                return matchCat && matchSearch;
+            });
+        }
+      }">
+
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html#home" class="flex items-center gap-3">
+                <img src="TC tile.jpg" class="h-14 w-auto" alt="Logo" />
+                <span class="font-bold text-lg tracking-tighter text-slate-900 hidden sm:block">True Craft Tile & Stone</span>
             </a>
-            
-            <div class="hidden lg:flex items-center space-x-12 text-[10px] font-bold uppercase tracking-[0.2em]">
-                <a href="index.html" class="hover:text-stone-400 transition">Home</a>
-                <a href="gallery.html" class="text-stone-900 border-b border-stone-900 pb-1">Portfolio</a>
-                <a href="index.html#services" class="hover:text-stone-400 transition">Services</a>
-                <a href="tel:9524860554" class="text-stone-400">952.486.0554</a>
+
+            <div class="hidden lg:flex items-center space-x-8 font-bold text-xs uppercase tracking-widest text-slate-500">
+                <a href="index.html#home" class="hover:text-blue-700 transition">Home</a>
+                <a href="gallery.html" class="text-blue-700 border-b-2 border-blue-700">Gallery</a>
+                <a href="index.html#services" class="hover:text-blue-700 transition">Services</a>
+                <a href="tel:9524860554" class="bg-blue-600 text-white px-5 py-2.5 rounded-lg hover:bg-blue-700 transition shadow-md shadow-blue-200">Call Now</a>
             </div>
 
-            <button @click="navOpen = !navOpen" class="lg:hidden text-stone-800">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16" stroke-width="1.5"/></svg>
+            <button @click="navOpen = !navOpen" class="lg:hidden p-2 text-slate-700">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
+        </div>
+
+        <div class="lg:hidden bg-white border-t border-slate-100 shadow-md" x-show="navOpen" x-transition x-cloak>
+            <div class="flex flex-col space-y-2 px-6 pb-4 pt-2 font-bold text-sm uppercase tracking-wide text-slate-700">
+                <a href="index.html#home" class="py-3 border-b border-slate-200">🏠 Home</a>
+                <a href="gallery.html" class="py-3 border-b border-slate-200 text-blue-700">🖼️ Gallery</a>
+                <a href="tel:9524860554" class="py-4 mt-2 bg-blue-600 text-white text-center rounded-xl shadow-lg">Call Now</a>
+            </div>
         </div>
     </nav>
 
-    <header class="pt-40 pb-20 px-8">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-6xl md:text-8xl text-stone-800 mb-6">Master Portfolio</h1>
-            <div class="h-px w-24 bg-stone-200 mx-auto mb-8"></div>
-            <p class="text-stone-500 font-light italic text-xl">Curated collections of premium stone and tile craftsmanship.</p>
+    <header class="relative pt-48 pb-28 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] moving-grid"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
+            <span class="inline-flex px-4 py-1 bg-blue-600/20 border border-blue-500/30 rounded-full text-blue-400 text-[10px] uppercase font-black tracking-widest mb-6">Expert Craftsmanship</span>
+            <h1 class="text-6xl md:text-8xl font-bold text-white mb-8 tracking-tighter">Master <span class="text-blue-500">Portfolio</span></h1>
+            
+            <div class="max-w-xl mx-auto relative">
+                <input type="text" x-model="search" placeholder="Search projects by city..." 
+                       class="w-full bg-slate-800/50 border border-slate-700 rounded-2xl py-5 px-8 text-white outline-none focus:border-blue-500 transition-all backdrop-blur-md">
+            </div>
         </div>
     </header>
 
-    <div class="sticky top-[80px] z-40 bg-[#fcfaf8]/90 backdrop-blur-sm py-8">
-        <div class="max-w-7xl mx-auto px-8">
-            <div class="flex flex-wrap justify-center gap-4">
-                <template x-for="c in ['all', 'kitchens', 'showers', 'floorings', 'fireplace', 'commercial', 'custom']">
-                    <button @click="category = c" 
-                            :class="category === c ? 'bg-stone-800 text-white' : 'bg-white text-stone-400 hover:text-stone-800'"
-                            class="px-8 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest border border-stone-100 transition-all shadow-sm"
-                            x-text="c"></button>
-                </template>
-            </div>
+    <section class="sticky top-[75px] z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 py-6">
+        <div class="max-w-7xl mx-auto px-6 flex flex-wrap gap-3 justify-center">
+            <template x-for="cat in ['all', 'kitchens', 'showers', 'floorings', 'fireplace', 'commercial', 'custom']">
+                <button @click="category = cat" 
+                        :class="category === cat ? 'bg-blue-600 text-white border-blue-600' : 'bg-slate-50 text-slate-500 border-slate-200 hover:bg-slate-100'"
+                        class="px-6 py-2.5 rounded-xl font-bold uppercase text-[10px] tracking-widest transition-all border whitespace-nowrap">
+                    <span x-text="cat"></span>
+                </button>
+            </template>
         </div>
-    </div>
+    </section>
 
-    <main class="max-w-7xl mx-auto px-8 py-12">
-        <div class="masonry-grid">
-            <template x-for="p in projects.filter(i => category === 'all' || i.cat === category)">
-                <div class="break-inside-avoid mb-8 group cursor-pointer" @click="activeProject = p; activePhotoIndex = 0">
-                    <div class="relative card-shadow overflow-hidden bg-white p-4">
-                        <img :src="p.imgs[0]" class="w-full grayscale group-hover:grayscale-0 transition-all duration-1000">
-                        <div class="mt-6 flex justify-between items-end">
-                            <div>
-                                <h3 class="text-2xl text-stone-800" x-text="p.title"></h3>
-                                <p class="text-[10px] uppercase tracking-widest text-stone-400 mt-1" x-text="p.loc"></p>
-                            </div>
-                            <span class="text-[10px] font-bold text-stone-300" x-text="p.imgs.length + ' Photos'"></span>
+    <main class="max-w-7xl mx-auto px-6 py-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <template x-for="project in filteredProjects" :key="project.id">
+                <div class="project-card group cursor-pointer" @click="activeProject = project; activePhotoIndex = 0">
+                    <div class="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] shadow-2xl bg-slate-100 border border-slate-200">
+                        <img :src="project.images[0]" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent p-10 flex flex-col justify-end">
+                            <h3 class="text-white text-2xl font-bold" x-text="project.title"></h3>
+                            <p class="text-blue-500 font-bold uppercase text-[10px] tracking-widest mt-1" x-text="project.location"></p>
+                        </div>
+                        <div x-show="project.images.length > 1" class="absolute top-6 right-6 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/30 text-white text-[10px] font-black">
+                            <span x-text="`+ ${project.images.length - 1} PHOTOS` "></span>
                         </div>
                     </div>
                 </div>
@@ -96,37 +139,42 @@
         </div>
     </main>
 
-    <div x-show="activeProject" x-cloak class="fixed inset-0 z-[100] flex flex-col bg-white overflow-hidden">
-        <div class="flex justify-between items-center p-8 border-b border-stone-50">
-            <div class="flex flex-col">
-                <span class="text-[10px] uppercase tracking-widest text-stone-400" x-text="activeProject?.cat"></span>
-                <h2 class="text-2xl text-stone-800" x-text="activeProject?.title"></h2>
+    <div x-show="activeProject" x-cloak 
+         class="fixed inset-0 z-[100] flex flex-col bg-slate-950/98 backdrop-blur-2xl"
+         @keydown.escape.window="activeProject = null">
+        
+        <div class="flex justify-between items-center p-6 bg-slate-900/50 border-b border-white/5">
+            <div class="text-white">
+                <p class="text-[10px] font-black text-blue-500 uppercase tracking-[0.2em]" x-text="activeProject?.category"></p>
+                <p class="text-sm font-bold opacity-70" x-text="`${activePhotoIndex + 1} of ${activeProject?.images.length}`"></p>
             </div>
-            <button @click="activeProject = null" class="text-stone-300 hover:text-stone-800 text-4xl font-light">&times;</button>
+            <button @click="activeProject = null" class="text-white/40 hover:text-white text-5xl p-2 leading-none">&times;</button>
         </div>
 
-        <div class="flex-1 relative flex items-center justify-center p-4 bg-[#fcfaf8]">
-            <button @click="activePhotoIndex = (activePhotoIndex - 1 + activeProject.imgs.length) % activeProject.imgs.length" 
-                    class="hidden md:block absolute left-12 text-stone-200 hover:text-stone-800 text-6xl font-light">‹</button>
+        <div class="relative flex-1 flex items-center justify-center overflow-hidden">
+            <button x-show="activeProject?.images.length > 1" @click="activePhotoIndex = (activePhotoIndex - 1 + activeProject.images.length) % activeProject.images.length"
+                    class="hidden md:block absolute left-8 text-white/20 hover:text-blue-500 text-8xl transition-all">‹</button>
             
-            <img :src="activeProject?.imgs[activePhotoIndex]" 
-                 class="max-h-full max-w-full shadow-2xl object-contain transition-all duration-500"
-                 style="touch-action: pinch-zoom;">
+            <div class="w-full h-full flex items-center justify-center p-4">
+                <img :src="activeProject?.images[activePhotoIndex]" 
+                     class="max-h-full max-w-full rounded-2xl shadow-2xl object-contain transition-all duration-300"
+                     style="touch-action: pinch-zoom;">
+            </div>
 
-            <button @click="activePhotoIndex = (activePhotoIndex + 1) % activeProject.imgs.length" 
-                    class="hidden md:block absolute right-12 text-stone-200 hover:text-stone-800 text-6xl font-light">›</button>
+            <button x-show="activeProject?.images.length > 1" @click="activePhotoIndex = (activePhotoIndex + 1) % activeProject.images.length"
+                    class="hidden md:block absolute right-8 text-white/20 hover:text-blue-500 text-8xl transition-all">›</button>
         </div>
 
-        <div class="md:hidden flex justify-between p-8 border-t border-stone-50 bg-white">
-            <button @click="activePhotoIndex = (activePhotoIndex - 1 + activeProject.imgs.length) % activeProject.imgs.length" class="uppercase text-[10px] font-bold tracking-widest text-stone-400">Prev</button>
-            <span class="text-[10px] font-bold text-stone-800" x-text="(activePhotoIndex + 1) + ' / ' + activeProject?.imgs.length"></span>
-            <button @click="activePhotoIndex = (activePhotoIndex + 1) % activeProject.imgs.length" class="uppercase text-[10px] font-bold tracking-widest text-stone-900">Next</button>
+        <div class="md:hidden flex justify-between p-8 bg-slate-900/80 border-t border-white/5">
+            <button @click="activePhotoIndex = (activePhotoIndex - 1 + activeProject.images.length) % activeProject.images.length"
+                    class="text-white font-bold text-xs uppercase px-8 py-4 bg-white/10 rounded-2xl">Prev</button>
+            <button @click="activePhotoIndex = (activePhotoIndex + 1) % activeProject.images.length"
+                    class="text-white font-bold text-xs uppercase px-8 py-4 bg-blue-600 rounded-2xl shadow-xl">Next</button>
         </div>
     </div>
 
-    <footer class="py-20 text-center border-t border-stone-100">
-        <p class="text-[10px] uppercase tracking-[0.5em] text-stone-300">&copy; 2026 True Craft Tile & Stone</p>
+    <footer class="py-20 border-t border-slate-100 text-center">
+        <p class="text-slate-400 text-[10px] font-black uppercase tracking-[0.5em]">&copy; 2026 True Craft Tile & Stone</p>
     </footer>
-
 </body>
 </html>
