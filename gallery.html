@@ -26,6 +26,9 @@
             70% { box-shadow: 0 0 0 15px rgba(59, 130, 246, 0); }
             100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
         }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="bg-white text-slate-900" 
@@ -123,14 +126,18 @@
     </header>
 
     <section class="sticky top-[75px] z-40 bg-white/95 backdrop-blur-md border-b border-slate-100 py-6">
-        <div class="max-w-7xl mx-auto px-6 flex flex-wrap gap-3 justify-center">
-            <template x-for="cat in ['all', 'kitchens', 'showers', 'floorings', 'fireplace', 'commercial']">
-                <button @click="category = cat" 
-                        :class="category === cat ? 'bg-blue-600 text-white border-blue-600' : 'bg-slate-50 text-slate-400 border-slate-200'"
-                        class="px-6 py-2.5 rounded-xl font-bold uppercase text-[10px] tracking-widest border transition-all">
-                    <span x-text="cat"></span>
-                </button>
-            </template>
+        <div class="max-w-7xl mx-auto px-6 overflow-x-auto no-scrollbar">
+            <div class="flex flex-nowrap md:flex-wrap gap-3 justify-start md:justify-center">
+                <template x-for="cat in ['all', 'kitchens', 'showers', 'floorings', 'fireplace', 'commercial']">
+                    <button @click="category = cat" 
+                            :class="category === cat 
+                                ? 'bg-white text-blue-600 border-blue-600 shadow-lg' 
+                                : 'bg-blue-600 text-white border-blue-600 hover:bg-blue-700'"
+                            class="px-6 py-2.5 rounded-xl font-bold uppercase text-[10px] tracking-widest border transition-all whitespace-nowrap">
+                        <span x-text="cat"></span>
+                    </button>
+                </template>
+            </div>
         </div>
     </section>
 
