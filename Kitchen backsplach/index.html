@@ -1,1 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <title>Kitchen Backsplash Installation | True Craft Tile & Stone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .moving-grid { animation: moveGrid 3s linear infinite; }
+        @keyframes moveGrid { from { background-position: 0px 0px; } to { background-position: 24px 24px; } }
+    </style>
+</head>
+<body class="bg-white text-slate-900" x-data="{ navOpen: false, toggleNav() { this.navOpen = !this.navOpen; document.documentElement.classList.toggle('nav-open', this.navOpen); }, closeNav() { this.navOpen = false; document.documentElement.classList.remove('nav-open'); } }">
 
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="/" class="flex items-center gap-3">
+                <img src="/TC tile.jpg" class="h-14 w-auto" alt="Logo" />
+                <span class="font-bold text-lg tracking-tighter text-slate-900 hidden sm:block">True Craft Tile & Stone</span>
+            </a>
+            <div class="hidden lg:flex items-center space-x-8 font-bold text-xs uppercase tracking-widest text-slate-500">
+                <a href="/#home" class="hover:text-blue-700 transition">Home</a>
+                <a href="/gallery" class="hover:text-blue-700 transition">Gallery</a>
+                <a href="/#services" class="hover:text-blue-700 transition text-blue-600">Services</a>
+                <a href="/#about" class="hover:text-blue-700 transition">About</a>
+                <a href="tel:9524860554" class="bg-slate-900 text-white px-5 py-2.5 rounded-lg hover:bg-blue-600 transition ml-4">Call Now</a>
+            </div>
+            <button @click="toggleNav()" class="lg:hidden flex items-center px-3 py-2 border rounded text-slate-700 border-slate-500">
+                <svg class="h-6 w-6 fill-current" viewBox="0 0 20 20"><path x-show="!navOpen" d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/><path x-show="navOpen" d="M10 8.586L4.293 2.879 2.879 4.293 8.586 10l-5.707 5.707 1.414 1.414L10 11.414l5.707 5.707 1.414-1.414L11.414 10l5.707-5.707-1.414-1.414L10 8.586z"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <header class="relative pt-48 pb-28 bg-slate-950 overflow-hidden text-center">
+        <div class="absolute inset-0 bg-[size:24px_24px] moving-grid opacity-10" style="background-image: linear-gradient(to right, #80808012 1px, transparent 1px), linear-gradient(to bottom, #80808012 1px, transparent 1px);"></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-white">
+            <h1 class="text-5xl md:text-7xl font-bold mb-8 tracking-tighter">Kitchen <span class="text-blue-500">Backsplash</span> Mastery</h1>
+            <p class="text-xl text-slate-400 leading-relaxed">Precision mosaic and subway tile work that serves as the crown jewel of your kitchen.</p>
+        </div>
+    </header>
+
+    <article class="max-w-4xl mx-auto px-6 py-24 prose prose-slate prose-lg">
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-6">Elevating Your Kitchen’s Aesthetic</h2>
+            <p class="text-slate-600 mb-4">A kitchen backsplash is more than a functional moisture barrier; it is the visual centerpiece of your home. At True Craft Tile & Stone, we understand that the kitchen is the heart of the household, and our backsplash installations are designed to reflect that importance. Whether you prefer the timeless appeal of white subway tile or the intricate complexity of hand-laid glass mosaics, our 35+ years of experience ensures a flawless finish.</p>
+            <p class="text-slate-600">Precision is our baseline. We utilize advanced laser-leveling technology to ensure that every horizontal line is perfectly straight, even if your countertops have minor imperfections. Our master installers specialize in symmetrical layouts, ensuring that "cuts" at the corners or under cabinets are balanced and visually pleasing.</p>
+        </section>
+
+        <section class="bg-slate-50 rounded-[2.5rem] p-10 mb-16 border border-slate-100">
+            <h2 class="text-2xl font-bold mb-6">Investment & Quality Guide</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold text-blue-600 uppercase tracking-widest mb-2">Average Cost</h3>
+                    <p class="text-slate-600 italic mb-4">Typical range: $1,200 – $3,500</p>
+                    <p class="text-sm text-slate-500">Costs vary based on square footage, tile material (ceramic vs. natural stone), and pattern complexity (Herringbone, Chevron, or Mosaic).</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-blue-600 uppercase tracking-widest mb-2">Premium Materials</h3>
+                    <ul class="text-slate-600 space-y-2">
+                        <li>• Mapei Ultracolor Plus FA Grout</li>
+                        <li>• Schluter-Systems Edge Profiles</li>
+                        <li>• Custom-Mixed Laticrete Thinset</li>
+                        <li>• Professional Grade Sealants</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h3 class="text-2xl font-bold mb-4 text-slate-900">The Technical Advantage</h3>
+            <p class="text-slate-600 mb-6">Proper backsplash installation requires a deep understanding of substrate preparation. Many contractors skip the critical step of ensuring the drywall is flat and free of oils or grease before setting tile. We utilize premium modified thinsets that offer superior bond strength, ensuring your tiles will never shift or crack over time. For outlets and switches, we provide precision wet-saw cuts for a tight fit that is perfectly covered by your faceplates.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="bg-blue-50 p-6 rounded-2xl">
+                    <h4 class="font-bold text-blue-700">Waterproof Integrity</h4>
+                    <p class="text-sm text-slate-600">We treat the area behind the sink with extra care, ensuring silicone-based caulking at the countertop junction to prevent water from reaching the cabinets.</p>
+                </div>
+                <div class="bg-blue-50 p-6 rounded-2xl">
+                    <h4 class="font-bold text-blue-700">Zero-Mess Guarantee</h4>
+                    <p class="text-sm text-slate-600">We protect your countertops, flooring, and appliances with heavy-duty masking and drop cloths. Your kitchen stays clean throughout the process.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="text-center">
+            <h2 class="text-3xl font-bold mb-8">Ready to transform your kitchen?</h2>
+            <a href="/#contact" class="inline-block bg-blue-600 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-blue-700 transition shadow-xl">Request a Free Estimate</a>
+            <p class="mt-4 text-slate-400 font-bold uppercase tracking-widest text-xs">Serving Shakopee & The Greater Minneapolis Area</p>
+        </section>
+    </article>
+
+    <footer class="py-12 text-center border-t border-slate-100 bg-white">
+        <p class="text-slate-400 text-[10px] font-black uppercase tracking-[0.5em]">&copy; 2026 True Craft Tile & Stone</p>
+    </footer>
+
+</body>
+</html>
