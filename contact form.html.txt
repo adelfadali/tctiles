@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <title>Contact Us | True Craft Tile & Stone</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -55,83 +55,71 @@
         </div>
     </nav>
 
-    <header class="relative pt-32 pb-20 bg-slate-950 overflow-hidden text-center">
+    <header class="relative pt-40 pb-24 bg-slate-950 overflow-hidden text-center">
         <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] moving-grid opacity-20"></div>
-        <div class="absolute top-0 right-0 w-[400px] h-[400px] rounded-full blur-3xl orb-1" style="background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);"></div>
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-3xl orb-1" style="background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);"></div>
         
         <div class="relative z-10 max-w-4xl mx-auto px-6">
-            <h1 class="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tighter">Get Your <span class="text-blue-500">Quote</span></h1>
-            <p class="text-slate-400 text-lg max-w-2xl mx-auto italic">35+ Years of Precision Tiling Excellence</p>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tighter">Get Your <span class="text-blue-500">Master Quote</span></h1>
+            <p class="text-slate-400 text-lg max-w-2xl mx-auto font-medium">Connect with 35+ years of tiling precision.</p>
         </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-6 -mt-12 pb-32 relative z-20">
+    <main class="max-w-4xl mx-auto px-6 -mt-16 pb-32 relative z-20">
         <div class="bg-slate-900 rounded-[2.5rem] p-8 lg:p-12 shadow-2xl text-white border border-slate-800 form-container">
             
             <div x-show="!submitted">
-                <h3 class="text-2xl font-bold mb-8 uppercase tracking-widest text-blue-500">Project Details</h3>
+                <h3 class="text-2xl font-bold mb-8 uppercase tracking-widest text-blue-500">Project Inquiry</h3>
                 
                 <form @submit.prevent="submitForm($event)" class="space-y-5">
-                    <div class="space-y-2">
-                        <label class="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-500 ml-2">Full Name</label>
-                        <input type="text" name="name" placeholder="Name" required 
-                               class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all">
-                    </div>
-
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div class="space-y-2">
+                            <label class="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-500 ml-2">Name</label>
+                            <input type="text" name="name" placeholder="Name" required 
+                                   class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all">
+                        </div>
                         <div class="space-y-2">
                             <label class="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-500 ml-2">Phone</label>
                             <input type="tel" name="phone" placeholder="952-486-0554" required 
                                    class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all">
                         </div>
-                        <div class="space-y-2">
-                            <label class="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-500 ml-2">Email</label>
-                            <input type="email" name="email" placeholder="Email" required 
-                                   class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all">
-                        </div>
                     </div>
 
                     <div class="space-y-2">
-                        <label class="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-500 ml-2">Service Selection</label>
+                        <label class="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-500 ml-2">Email</label>
+                        <input type="email" name="email" placeholder="Email Address" required 
+                               class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all">
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-500 ml-2">Service Needed</label>
                         <select name="service" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all appearance-none">
                             <option disabled selected value="">Select a Service</option>
                             <option>Kitchen Backsplash</option>
                             <option>Custom Shower</option>
-                            <option>Tub Surround</option>
                             <option>Flooring Installation</option>
                             <option>Fireplace Tile</option>
-                            <option>Maintenance & Restoration</option>
                             <option>Commercial Project</option>
                         </select>
                     </div>
 
                     <div class="space-y-2">
-                        <label class="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-500 ml-2">Contact Preference</label>
-                        <select name="contact_method" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all appearance-none">
-                            <option disabled selected value="">Preferred Method</option>
-                            <option>Phone Call</option>
-                            <option>Email</option>
-                            <option>Text Message</option>
-                        </select>
-                    </div>
-
-                    <div class="space-y-2">
-                        <label class="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-500 ml-2">Tell Us About Your Project</label>
+                        <label class="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-500 ml-2">Your Vision</label>
                         <textarea name="message" placeholder="Details..." rows="4" 
                                   class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all"></textarea>
                     </div>
 
-                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-5 rounded-2xl uppercase tracking-widest transition-all shadow-xl shadow-blue-900/20 disabled:opacity-50" :disabled="loading">
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-5 rounded-2xl uppercase tracking-widest transition-all shadow-xl shadow-blue-900/40 disabled:opacity-50" :disabled="loading">
                         <span x-show="!loading">Send Request</span>
-                        <span x-show="loading">Processing...</span>
+                        <span x-show="loading">Processing Submission...</span>
                     </button>
                 </form>
             </div>
 
-            <div x-show="submitted" class="text-center py-20" x-cloak>
-                <div class="inline-flex items-center justify-center w-24 h-24 bg-blue-600/20 text-blue-500 text-6xl rounded-full mb-6">✓</div>
-                <h3 class="text-3xl font-bold uppercase mb-4 tracking-tighter">Request Received</h3>
-                <p class="text-slate-400 text-lg mb-8">We will contact you shortly to schedule your estimate.</p>
+            <div x-show="submitted" class="text-center py-16" x-cloak>
+                <div class="inline-flex items-center justify-center w-20 h-20 bg-blue-600/20 text-blue-500 text-5xl rounded-full mb-6">✓</div>
+                <h3 class="text-3xl font-bold uppercase mb-4 tracking-tighter">Thank You</h3>
+                <p class="text-slate-400 text-lg mb-8">Your request is in our system. We will contact you shortly.</p>
                 <a href="index.html" class="inline-block border border-slate-700 hover:border-blue-500 px-8 py-3 rounded-xl transition-all text-sm font-bold uppercase tracking-widest">Return Home</a>
             </div>
         </div>
