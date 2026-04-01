@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gallery | True Craft Tile & Stone</title>
+    <title>Gallery | True Craft Tile & Stone - 1000+ Projects</title>
+    <meta name="description" content="Explore 1000+ premium tile installations by True Craft Tile & Stone. Kitchen backsplashes, custom showers, flooring masterpieces in Shakopee & Minneapolis.">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -13,22 +14,34 @@
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
         [x-cloak] { display: none !important; }
-        .gallery-item { transition: all 0.4s ease; }
+        
+        .gallery-item { transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .gallery-item:hover { transform: translateY(-8px) scale(1.01); }
+        
+        @keyframes fadeInUp { 
+            from { opacity: 0; transform: translateY(20px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
         .animate-fadeInUp { animation: fadeInUp 0.6s ease forwards; }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Custom Scrollbar for Dark Theme */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900" 
+<body class="bg-slate-950 text-slate-100 overflow-x-hidden" 
       x-data="{
         activeLightbox: false,
         currentImage: 0,
         category: 'all',
         search: '',
         allImages: [
-            { src: 'kitchen backsplash 0000 Shakopee Minneapolis Tile contractor.jpg', category: 'kitchen', title: 'Modern Herringbone', location: 'Shakopee' },
-            { src: 'kitchen backsplash 000 Shakopee Minneapolis Tile contractor.jpg', category: 'kitchen', title: 'Classic Subway Tile', location: 'Minneapolis' },
-            { src: 'kitchen backsplash 00 Shakopee Minneapolis Tile contractor.jpg', category: 'kitchen', title: 'Contemporary Mosaic', location: 'Bloomington' },
-            { src: 'kitchen backsplash 0 Shakopee Minneapolis Tile contractor.jpg', category: 'kitchen', title: 'Custom Porcelain', location: 'Shakopee' },
+            { src: 'kitchen backsplash 0000 Shakopee Minneapolis Tile contractor.jpg', category: 'kitchen', title: 'Modern Herringbone Backsplash', location: 'Shakopee' },
+            { src: 'kitchen backsplash 000 Shakopee Minneapolis Tile contractor.jpg', category: 'kitchen', title: 'Subway Tile Masterpiece', location: 'Minneapolis' },
+            { src: 'kitchen backsplash 00 Shakopee Minneapolis Tile contractor.jpg', category: 'kitchen', title: 'Contemporary Mosaic Design', location: 'Bloomington' },
+            { src: 'kitchen backsplash 0 Shakopee Minneapolis Tile contractor.jpg', category: 'kitchen', title: 'Custom Porcelain Installation', location: 'Shakopee' },
             { src: 'kitchen backsplash 2 Shakopee Minneapolis Tile contractor.jpg', category: 'shower', title: 'Schluter Shower System', location: 'Minneapolis' },
             { src: 'kitchen backsplash 3 Shakopee Minneapolis Tile contractor.jpg', category: 'shower', title: 'Luxury Walk-in Shower', location: 'Prior Lake' },
             { src: 'kitchen backsplash 4 Shakopee Minneapolis Tile contractor.jpg', category: 'flooring', title: 'Large Format Floor Tile', location: 'Shakopee' },
@@ -36,92 +49,129 @@
             { src: 'kitchen backsplash 44Shakopee Minneapolis Tile contractor.jpg', category: 'kitchen', title: 'High-End Kitchen Detail', location: 'Minneapolis' },
             { src: 'kitchen backsplash 444Shakopee Minneapolis Tile contractor.jpg', category: 'kitchen', title: 'Master Craftsmanship', location: 'Shakopee' }
         ],
+        
         get filteredImages() {
-            const filtered = this.allImages.filter(img => {
+            return this.allImages.filter(img => {
                 const matchCategory = this.category === 'all' || img.category === this.category;
                 const matchSearch = img.title.toLowerCase().includes(this.search.toLowerCase()) || 
                                     img.location.toLowerCase().includes(this.search.toLowerCase());
                 return matchCategory && matchSearch;
             });
-            return filtered;
         },
+
+        init() {
+            // Watch for category changes to prevent index errors
+            this.$watch('category', () => this.currentImage = 0);
+            this.$watch('search', () => this.currentImage = 0);
+        },
+
         openLightbox(index) { 
             this.currentImage = index; 
             this.activeLightbox = true; 
-        }
+        },
+        nextImage() { this.currentImage = (this.currentImage + 1) % this.filteredImages.length; },
+        prevImage() { this.currentImage = (this.currentImage - 1 + this.filteredImages.length) % this.filteredImages.length; }
       }">
 
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b shadow-sm">
+    <nav class="fixed w-full z-50 bg-slate-900/90 backdrop-blur-md border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2">
-                <img src="TC tile.jpg" class="h-12 w-auto" alt="Logo">
-                <span class="font-bold text-lg hidden sm:block">True Craft Tile & Stone</span>
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="TC tile.jpg" class="h-12 w-auto" alt="True Craft Logo">
+                <span class="font-bold text-lg tracking-tighter hidden lg:block">True Craft Tile & Stone</span>
             </a>
-            <div class="flex gap-6 font-bold text-xs uppercase tracking-widest text-slate-600">
-                <a href="index.html" class="hover:text-blue-600">Home</a>
-                <a href="gallery.html" class="text-blue-600 border-b-2 border-blue-600">Gallery</a>
+            
+            <div class="hidden md:flex items-center space-x-8 font-bold text-xs uppercase tracking-widest text-slate-400">
+                <a href="index.html" class="hover:text-blue-400 transition">Home</a>
+                <a href="gallery.html" class="text-blue-500 border-b-2 border-blue-500 pb-1">Gallery</a>
+                <a href="index.html#services" class="hover:text-blue-400 transition">Services</a>
             </div>
+            
+            <a href="tel:9524860554" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl font-bold uppercase text-xs transition-all">
+                Call Now
+            </a>
         </div>
     </nav>
 
-    <section class="bg-slate-900 text-white pt-32 pb-20 px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">Project <span class="text-blue-400">Gallery</span></h1>
-            <input type="text" x-model="search" placeholder="Search projects or cities..." 
-                   class="w-full max-w-md px-6 py-4 bg-white/10 border border-white/20 rounded-full text-white outline-none focus:border-blue-400">
+    <header class="relative pt-40 pb-20 px-6 bg-gradient-to-b from-slate-900 to-slate-950 overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full opacity-20 pointer-events-none">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,#3b82f6_0%,transparent_70%)] blur-3xl"></div>
         </div>
-    </section>
+        
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <div class="inline-block px-4 py-1.5 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 text-[10px] font-bold uppercase tracking-widest mb-6">
+                Portfolio Excellence
+            </div>
+            <h1 class="text-5xl md:text-7xl font-black mb-6 tracking-tight">Master <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">Gallery</span></h1>
+            
+            <div class="max-w-md mx-auto relative mt-10">
+                <input type="text" x-model="search" placeholder="Search by city or project..." 
+                       class="w-full px-8 py-5 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:bg-white/10 transition-all">
+            </div>
+        </div>
+    </header>
 
-    <section class="max-w-7xl mx-auto px-6 py-10">
-        <div class="flex flex-wrap gap-2 justify-center mb-12">
+    <section class="py-10 px-6 max-w-7xl mx-auto">
+        <div class="flex flex-wrap gap-3 justify-center mb-16">
             <template x-for="cat in ['all', 'kitchen', 'shower', 'flooring', 'fireplace', 'commercial']">
-                <button @click="category = cat; search = ''" 
-                        :class="category === cat ? 'bg-blue-600 text-white' : 'bg-white text-slate-600 border-slate-200'"
-                        class="px-6 py-3 rounded-full font-bold uppercase text-[10px] tracking-widest border transition-all hover:shadow-md">
-                    <span x-text="cat"></span>
+                <button @click="category = cat" 
+                        :class="category === cat ? 'bg-blue-600 text-white border-blue-600' : 'bg-slate-900 text-slate-400 border-white/10'"
+                        class="px-6 py-3 rounded-xl font-bold uppercase text-[10px] tracking-widest border transition-all hover:border-blue-500">
+                    <span x-text="cat === 'all' ? 'All Projects' : cat"></span>
                 </button>
             </template>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6">
             <template x-for="(image, index) in filteredImages" :key="image.src">
-                <div class="gallery-item animate-fadeInUp">
-                    <div @click="openLightbox(index)" class="group cursor-pointer overflow-hidden rounded-2xl shadow-lg bg-white relative aspect-square">
-                        <img :src="image.src" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
-                            <h3 class="text-white font-bold" x-text="image.title"></h3>
-                            <p class="text-blue-300 text-sm" x-text="image.location"></p>
+                <div class="gallery-item break-inside-avoid mb-6 animate-fadeInUp">
+                    <div @click="openLightbox(index)" class="group cursor-pointer overflow-hidden rounded-2xl bg-slate-900 border border-white/5 relative">
+                        <img :src="image.src" :alt="image.title" 
+                             class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 brightness-90 group-hover:brightness-105"
+                             loading="lazy">
+                        
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+                            <h3 class="text-white font-bold text-sm" x-text="image.title"></h3>
+                            <p class="text-blue-400 text-xs font-medium" x-text="image.location"></p>
                         </div>
                     </div>
                 </div>
             </template>
         </div>
 
-        <div x-show="filteredImages.length === 0" class="text-center py-20" x-cloak>
-            <p class="text-xl text-slate-400">No images found. Try selecting "all".</p>
-            <button @click="category='all'" class="text-blue-600 underline mt-2">Reset Filter</button>
+        <div x-show="filteredImages.length === 0" class="text-center py-32" x-cloak>
+            <div class="text-4xl mb-4">🔍</div>
+            <h2 class="text-2xl font-bold text-slate-500 mb-2">No projects found.</h2>
+            <button @click="category='all'; search=''" class="text-blue-500 hover:underline font-bold">Show all projects</button>
         </div>
     </section>
 
-    <div x-show="activeLightbox" x-cloak 
-         class="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-4"
+    <div x-show="activeLightbox" 
+         x-cloak 
+         class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/98 backdrop-blur-xl p-4"
          @keydown.escape.window="activeLightbox = false">
         
-        <button @click="activeLightbox = false" class="absolute top-6 right-6 text-white text-5xl">&times;</button>
+        <button @click="activeLightbox = false" class="absolute top-8 right-8 text-white/50 hover:text-white text-5xl transition-colors">&times;</button>
         
-        <button @click="currentImage = (currentImage - 1 + filteredImages.length) % filteredImages.length" 
-                class="absolute left-4 text-white text-6xl hover:text-blue-400">‹</button>
-        <button @click="currentImage = (currentImage + 1) % filteredImages.length" 
-                class="absolute right-4 text-white text-6xl hover:text-blue-400">›</button>
+        <button @click="prevImage()" class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white/30 hover:text-blue-500 text-6xl transition-all">‹</button>
+        <button @click="nextImage()" class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white/30 hover:text-blue-500 text-6xl transition-all">›</button>
         
-        <div class="max-w-4xl w-full text-center">
-            <img :src="filteredImages[currentImage]?.src" class="max-h-[75vh] mx-auto rounded shadow-2xl">
-            <div class="mt-6 text-white" x-show="filteredImages[currentImage]">
-                <h2 class="text-xl font-bold" x-text="filteredImages[currentImage].title"></h2>
-                <p class="text-blue-400" x-text="filteredImages[currentImage].location"></p>
-            </div>
+        <div class="max-w-5xl w-full flex flex-col items-center">
+            <template x-if="filteredImages[currentImage]">
+                <div class="w-full">
+                    <img :src="filteredImages[currentImage].src" 
+                         class="max-h-[75vh] mx-auto rounded-xl shadow-2xl border border-white/10 object-contain">
+                    <div class="mt-8 text-center">
+                        <h2 class="text-2xl md:text-3xl font-bold text-white mb-2" x-text="filteredImages[currentImage].title"></h2>
+                        <p class="text-blue-500 font-bold uppercase tracking-widest text-xs" x-text="filteredImages[currentImage].location"></p>
+                    </div>
+                </div>
+            </template>
         </div>
     </div>
+
+    <footer class="py-12 border-t border-white/5 text-center text-slate-600 text-xs uppercase tracking-widest">
+        &copy; 2026 True Craft Tile & Stone. All Rights Reserved.
+    </footer>
 
 </body>
 </html>
