@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>True Craft Tile & Stone | Expert Tile Installer in Shakopee & Prior Lake</title>
+    <meta name="description" content="Searching for a professional tile contractor near me? True Craft Tile & Stone is the premier tile installer in Shakopee, MN. Expert flooring contractor for custom showers and kitchens.">
+    <meta name="keywords" content="Tile installer in Shakopee, flooring contractor Shakopee MN, tile contractor near me, bathroom tile installer, kitchen backsplash contractor, Minnesota tile specialist, Schluter system installer">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HomeAndConstructionBusiness",
+      "name": "True Craft Tile & Stone",
+      "image": "https://www.tctiles.com/TC%20tile.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Shakopee",
+        "addressRegion": "MN",
+        "addressCountry": "US"
+      },
+      "description": "Expert tile contractor specializing in custom showers, flooring, and kitchen backsplashes in Shakopee and surrounding areas.",
+      "url": "https://www.tctiles.com"
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; line-height: 1.8; scroll-behavior: smooth; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .moving-grid { animation: moveGrid 3s linear infinite; }
+        @keyframes moveGrid { from { background-position: 0px 0px; } to { background-position: 24px 24px; } }
+        .section-padding { padding: 100px 0; }
+    </style>
+</head>
+
+<body class="bg-white text-slate-900" x-data="{ mobileMenu: false }">
+
+    <nav class="fixed w-full z-[100] bg-white/95 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="/" class="flex items-center gap-3 group">
+                <img src="/TC tile.jpg" class="h-12 w-auto transition-transform group-hover:scale-105" alt="True Craft Tile Logo" />
+                <div class="flex flex-col text-left">
+                    <span class="font-bold text-lg tracking-tighter text-slate-900 leading-none uppercase">True Craft</span>
+                    <span class="text-[10px] uppercase tracking-[0.3em] text-blue-700 font-black">Tile & Stone</span>
+                </div>
+            </a>
+
+            <div class="hidden lg:flex items-center space-x-10 font-bold text-xs uppercase tracking-widest text-slate-500">
+                <a href="/" class="hover:text-blue-700 transition-colors">Home</a>
+                <a href="/gallery" class="hover:text-blue-700 transition-colors">Gallery</a>
+                <a href="#services" class="hover:text-blue-700 transition-colors">Services</a>
+                <a href="/contact%20form.html" class="bg-slate-900 text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-200">Get Quote</a>
+            </div>
+
+            <button class="lg:hidden text-slate-900" @click="mobileMenu = !mobileMenu">
+                <svg x-show="!mobileMenu" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                <svg x-show="mobileMenu" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+
+        <div x-show="mobileMenu" x-transition class="lg:hidden bg-white border-b border-slate-100 px-6 py-8 space-y-6 shadow-xl">
+            <a href="/" class="block text-xl font-bold text-slate-900">Home</a>
+            <a href="/gallery" class="block text-xl font-bold text-slate-900">Gallery</a>
+            <a href="#services" class="block text-xl font-bold text-slate-900">Services</a>
+            <a href="/contact%20form.html" class="block w-full text-center bg-blue-600 text-white py-4 rounded-2xl font-bold">Request a Quote</a>
+        </div>
+    </nav>
+
+    <header class="relative pt-48 pb-28 bg-slate-950 overflow-hidden text-center">
+        <div class="absolute inset-0 bg-[size:24px_24px] moving-grid opacity-10" style="background-image: linear-gradient(to right, #80808012 1px, transparent 1px), linear-gradient(to bottom, #80808012 1px, transparent 1px);"></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-white">
+            <h1 class="text-5xl md:text-7xl font-bold mb-8 tracking-tighter italic">
+                Professional <span class="text-blue-500">Tile Installer</span> in Shakopee
+            </h1>
+            <p class="text-xl text-slate-400 leading-relaxed max-w-2xl mx-auto italic">
+                The premier flooring contractor near you specializing in custom-engineered showers and precision stone installation.
+            </p>
+        </div>
+    </header>
+
+    <section id="services" class="section-padding bg-white">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl lg:text-5xl font-bold mb-16 uppercase tracking-tighter italic">
+                Specialized <span class="text-blue-700">Services</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+                
+                <a href="/Kitchen%20backsplach" class="block group p-8 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl transition-all duration-500">
+                    <div class="text-blue-700 mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 uppercase italic text-slate-900 group-hover:text-blue-700">Kitchen Backsplash</h3>
+                    <p class="text-slate-600 italic">Precision mosaic and subway tile work that serves as the crown jewel of your kitchen.</p>
+                </a>
+
+                <a href="/custom-showers" class="block group p-8 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl transition-all duration-500">
+                    <div class="text-blue-700 mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 uppercase italic text-slate-900 group-hover:text-blue-700">Custom Showers</h3>
+                    <p class="text-slate-600 italic">100% waterproof Schluter systems for a mold-free, spa-like experience.</p>
+                </a>
+
+                <a href="/flooring" class="block group p-8 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl transition-all duration-500">
+                    <div class="text-blue-700 mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 uppercase italic text-slate-900 group-hover:text-blue-700">Flooring</h3>
+                    <p class="text-slate-600 italic">Expert installation of porcelain and stone with zero-lippage precision.</p>
+                </a>
+
+                <a href="/tub-surroundings" class="block group p-8 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl transition-all duration-500">
+                    <div class="text-blue-700 mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 uppercase italic text-slate-900 group-hover:text-blue-700">Tub Surroundings</h3>
+                    <p class="text-slate-600 italic">Upgrading standard alcoves into durable and waterproof statements.</p>
+                </a>
+
+                <a href="/restoration" class="block group p-8 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl transition-all duration-500">
+                    <div class="text-blue-700 mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 uppercase italic text-slate-900 group-hover:text-blue-700">Restoration</h3>
+                    <p class="text-slate-600 italic">Grout repair and professional sealing to restore your stone's original beauty.</p>
+                </a>
+
+                <a href="/commercial" class="block group p-8 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl transition-all duration-500">
+                    <div class="text-blue-700 mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 uppercase italic text-slate-900 group-hover:text-blue-700">Commercial</h3>
+                    <p class="text-slate-600 italic">High-durability tile solutions for restaurants, lobbies, and facilities.</p>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 text-center bg-white border-t border-slate-100">
+        <p class="text-slate-400 text-[10px] font-black uppercase tracking-[0.5em] italic">&copy; 2026 True Craft Tile & Stone</p>
+    </footer>
+
+</body>
+</html>
