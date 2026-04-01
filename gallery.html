@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Project Gallery | True Craft Tile & Stone</title>
+    <meta name="description" content="View our portfolio of over 1000 premium tile and stone installations in Shakopee, Minneapolis, and the Twin Cities." />
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -21,9 +22,11 @@
         .gallery-card { transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
         .gallery-card:hover { transform: translateY(-10px); }
 
-        /* Lightbox transitions */
-        .fade-enter { opacity: 0; transform: scale(0.95); }
-        .fade-enter-active { opacity: 1; transform: scale(1); transition: all 0.3s ease-out; }
+        /* Custom Scrollbar for Premium Feel */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
     </style>
 </head>
 <body class="bg-white text-slate-900" 
@@ -51,114 +54,131 @@
                                     img.location.toLowerCase().includes(this.search.toLowerCase());
                 return matchCat && matchSearch;
             });
-        },
-        toggleNav() { this.navOpen = !this.navOpen; },
-        closeNav() { this.navOpen = false; }
+        }
       }"
       x-init="$watch('category', () => { activeLightbox = undefined; }); $watch('search', () => { activeLightbox = undefined; })">
 
     <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-3">
+            <a href="index.html#home" class="flex items-center gap-3">
                 <img src="TC tile.jpg" class="h-14 w-auto" alt="Logo" />
                 <span class="font-bold text-lg tracking-tighter text-slate-900 hidden sm:block">True Craft Tile & Stone</span>
             </a>
 
             <div class="hidden lg:flex items-center space-x-8 font-bold text-xs uppercase tracking-widest text-slate-500">
-                <a href="index.html" class="hover:text-blue-700 transition">Home</a>
-                <a href="gallery.html" class="text-blue-700 border-b-2 border-blue-700">Gallery</a>
+                <a href="index.html#home" class="hover:text-blue-700 transition text-slate-900">Home</a>
+                <a href="gallery.html" class="text-blue-700 border-b-2 border-blue-700 pb-1">Gallery</a>
                 <a href="index.html#services" class="hover:text-blue-700 transition">Services</a>
                 <a href="index.html#about" class="hover:text-blue-700 transition">About</a>
-                <a href="tel:9524860554" class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition shadow-md shadow-blue-200">Call Now</a>
+                <a href="index.html#faq" class="hover:text-blue-700 transition">FAQ</a>
+                <a href="tel:9524860554" class="bg-blue-600 text-white px-5 py-2.5 rounded-lg hover:bg-blue-700 transition shadow-md shadow-blue-200">Call Now</a>
             </div>
 
-            <button @click="toggleNav()" class="lg:hidden p-2 text-slate-700">
-                <svg class="h-6 w-6 fill-current" viewBox="0 0 20 20">
+            <button @click="navOpen = !navOpen" class="lg:hidden flex items-center px-3 py-2 border rounded text-slate-700 border-slate-500 hover:text-blue-700 hover:border-blue-700 transition focus:outline-none">
+                <svg class="fill-current h-6 w-6" viewBox="0 0 20 20">
                     <path x-show="!navOpen" d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
-                    <path x-show="navOpen" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 011.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/>
+                    <path x-show="navOpen" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 011.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
                 </svg>
             </button>
         </div>
+
+        <div class="lg:hidden bg-white border-t border-slate-100 shadow-md" x-show="navOpen" @click.outside="navOpen = false" x-transition x-cloak>
+            <div class="flex flex-col space-y-2 px-6 pb-4 pt-2 font-bold text-sm uppercase tracking-wide text-slate-700">
+                <a href="index.html#home" class="py-3 border-b border-slate-200 hover:bg-blue-50" @click="navOpen = false">🏠 Home</a>
+                <a href="gallery.html" class="py-3 border-b border-slate-200 bg-blue-50 text-blue-700 font-black">🖼️ Gallery</a>
+                <a href="index.html#services" class="py-3 border-b border-slate-200 hover:bg-blue-50" @click="navOpen = false">Services</a>
+                <a href="index.html#about" class="py-3 border-b border-slate-200 hover:bg-blue-50" @click="navOpen = false">About</a>
+                <a href="index.html#faq" class="py-3 hover:bg-blue-50" @click="navOpen = false">FAQ</a>
+                <a href="tel:9524860554" class="py-4 mt-2 bg-blue-600 text-white text-center rounded-xl shadow-lg">Call Now</a>
+            </div>
+        </div>
     </nav>
 
-    <header class="relative pt-40 pb-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
+    <header class="relative pt-40 pb-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
         <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] moving-grid"></div>
         
         <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
-            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6">
-                Project <span class="text-blue-400">Gallery</span>
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600/20 backdrop-blur-sm border border-blue-400/30 rounded-full text-blue-300 text-[10px] uppercase font-bold tracking-widest mb-8">
+                Portfolio Excellence
+            </div>
+            <h1 class="text-5xl md:text-8xl font-bold text-white mb-6 tracking-tighter">
+                Master <span class="text-blue-500">Gallery</span>
             </h1>
-            <p class="text-slate-300 text-lg max-w-2xl mx-auto mb-10">
-                Browse our portfolio of custom tile installations across Minnesota.
+            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-12">
+                Explore our collection of over 1000 completed projects, from high-end kitchens to custom waterproof showers.
             </p>
 
-            <div class="max-w-md mx-auto">
-                <input type="text" x-model="search" placeholder="Search projects or cities..." 
-                       class="w-full bg-slate-800/50 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all backdrop-blur-sm">
+            <div class="max-w-md mx-auto relative group">
+                <input type="text" x-model="search" placeholder="Search by city or project type..." 
+                       class="w-full bg-slate-800/80 border-2 border-slate-700 rounded-2xl p-5 text-white outline-none focus:border-blue-500 transition-all backdrop-blur-md shadow-2xl">
+                <div class="absolute right-5 top-1/2 -translate-y-1/2 text-slate-500">🔍</div>
             </div>
         </div>
-        <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent"></div>
+        
+        <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent"></div>
     </header>
 
-    <section class="max-w-7xl mx-auto px-6 py-12">
+    <section class="max-w-[1600px] mx-auto px-6 py-12">
         <div class="flex flex-wrap gap-3 justify-center mb-16">
             <template x-for="cat in ['all', 'kitchen', 'shower', 'flooring', 'fireplace', 'commercial']">
                 <button @click="category = cat" 
-                        :class="category === cat ? 'bg-blue-600 text-white shadow-lg shadow-blue-200' : 'bg-slate-50 text-slate-500 hover:bg-slate-100'"
-                        class="px-6 py-3 rounded-xl font-bold uppercase text-[11px] tracking-widest transition-all border border-transparent">
-                    <span x-text="cat === 'all' ? 'View All' : cat"></span>
+                        :class="category === cat ? 'bg-blue-600 text-white shadow-xl shadow-blue-200 border-blue-600' : 'bg-slate-50 text-slate-500 hover:bg-slate-100 border-slate-200'"
+                        class="px-8 py-3.5 rounded-xl font-bold uppercase text-[10px] tracking-widest transition-all border">
+                    <span x-text="cat === 'all' ? 'All Masterpieces' : cat"></span>
                 </button>
             </template>
         </div>
 
-        <div class="columns-1 sm:columns-2 lg:columns-3 gap-8">
+        <div class="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-8">
             <template x-for="(image, index) in filteredImages" :key="image.src">
-                <div class="gallery-card break-inside-avoid mb-8">
-                    <div @click="activeLightbox = index" class="group cursor-pointer overflow-hidden rounded-[2rem] shadow-xl bg-white relative border border-slate-100">
-                        <img :src="image.src" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700">
+                <div class="gallery-card break-inside-avoid mb-8 group">
+                    <div @click="activeLightbox = index" class="cursor-pointer overflow-hidden rounded-[2.5rem] shadow-2xl bg-white relative border border-slate-100">
+                        <img :src="image.src" :alt="image.title" class="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-1000 brightness-95 group-hover:brightness-100">
                         
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-8 flex flex-col justify-end">
-                            <h3 class="text-white text-xl font-bold" x-text="image.title"></h3>
-                            <p class="text-blue-400 font-semibold" x-text="image.location"></p>
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-10">
+                            <h3 class="text-white text-2xl font-bold mb-1" x-text="image.title"></h3>
+                            <p class="text-blue-400 font-bold uppercase tracking-widest text-xs" x-text="image.location"></p>
                         </div>
                     </div>
                 </div>
             </template>
         </div>
 
-        <div x-show="filteredImages.length === 0" class="text-center py-20" x-cloak>
-            <p class="text-slate-400 text-xl font-medium italic">No matches found for that selection.</p>
-            <button @click="category='all'; search=''" class="mt-4 text-blue-600 font-bold underline">Show all projects</button>
+        <div x-show="filteredImages.length === 0" class="text-center py-32" x-cloak>
+            <h2 class="text-3xl font-bold text-slate-300 mb-4 uppercase tracking-tighter">No projects found</h2>
+            <button @click="category='all'; search=''" class="text-blue-600 font-bold hover:underline">Reset filters and search</button>
         </div>
     </section>
 
     <div x-show="activeLightbox !== undefined" 
          x-cloak
-         class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/95 backdrop-blur-xl p-4"
+         class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/98 backdrop-blur-2xl p-4"
          @keydown.escape.window="activeLightbox = undefined">
         
-        <button @click="activeLightbox = undefined" class="absolute top-8 right-8 text-white/50 hover:text-white text-5xl transition-colors">&times;</button>
+        <button @click="activeLightbox = undefined" class="absolute top-8 right-8 text-white/40 hover:text-white text-5xl transition-colors font-light">&times;</button>
         
         <button @click="activeLightbox = (activeLightbox - 1 + filteredImages.length) % filteredImages.length" 
-                class="absolute left-6 text-white/20 hover:text-blue-400 text-6xl transition-all">‹</button>
+                class="absolute left-6 md:left-12 text-white/20 hover:text-blue-500 text-6xl md:text-8xl transition-all font-light">‹</button>
         <button @click="activeLightbox = (activeLightbox + 1) % filteredImages.length" 
-                class="absolute right-6 text-white/20 hover:text-blue-400 text-6xl transition-all">›</button>
+                class="absolute right-6 md:right-12 text-white/20 hover:text-blue-500 text-6xl md:text-8xl transition-all font-light">›</button>
         
-        <div class="max-w-5xl w-full text-center">
+        <div class="max-w-6xl w-full">
             <template x-if="filteredImages[activeLightbox]">
-                <div>
-                    <img :src="filteredImages[activeLightbox].src" class="max-h-[75vh] mx-auto rounded-3xl shadow-2xl border border-white/10 object-contain">
-                    <div class="mt-8">
-                        <h2 class="text-3xl font-bold text-white mb-2" x-text="filteredImages[activeLightbox].title"></h2>
-                        <p class="text-blue-400 font-bold uppercase tracking-widest text-sm" x-text="filteredImages[activeLightbox].location"></p>
+                <div class="animate-in fade-in zoom-in duration-300">
+                    <img :src="filteredImages[activeLightbox].src" class="max-h-[75vh] mx-auto rounded-[2rem] shadow-2xl border border-white/10 object-contain">
+                    <div class="mt-10 text-center">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-2" x-text="filteredImages[activeLightbox].title"></h2>
+                        <p class="text-blue-500 font-bold uppercase tracking-[0.3em] text-xs" x-text="filteredImages[activeLightbox].location"></p>
                     </div>
                 </div>
             </template>
         </div>
     </div>
 
-    <footer class="py-12 border-t border-slate-100 text-center bg-slate-50">
-        <p class="text-slate-400 text-xs uppercase tracking-[0.2em] font-bold">&copy; 2026 True Craft Tile & Stone. Master Artistry.</p>
+    <footer class="py-16 border-t border-slate-100 text-center bg-white">
+        <p class="text-slate-400 text-[10px] uppercase tracking-[0.4em] font-bold">
+            &copy; 2026 True Craft Tile & Stone. Serving Minnesota Since 1991.
+        </p>
     </footer>
 
 </body>
