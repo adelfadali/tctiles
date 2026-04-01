@@ -14,18 +14,20 @@
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
         [x-cloak] { display: none !important; }
 
-        /* MATCHING YOUR SITE ANIMATIONS */
+        /* True Craft Animations */
         @keyframes moveGrid { from { background-position: 0px 0px; } to { background-position: 24px 24px; } }
         .moving-grid { animation: moveGrid 3s linear infinite; }
         
         .project-card { transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
         .project-card:hover { transform: translateY(-10px); }
 
-        /* Custom Scrollbar for your Slate theme */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+        /* Floating Button Animation */
+        .pulse-blue { animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(59, 130, 246, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+        }
     </style>
 </head>
 <body class="bg-white text-slate-900" 
@@ -36,25 +38,9 @@
         activePhotoIndex: 0,
         search: '',
         
-        // --- ADD YOUR PROJECTS HERE ---
         projects: [
-            {
-                id: 1,
-                title: 'Modern Herringbone Kitchen',
-                location: 'Shakopee, MN',
-                category: 'kitchens',
-                images: [
-                    'kitchen backsplash 0000 Shakopee Minneapolis Tile contractor.jpg',
-                    'kitchen backsplash 000 Shakopee Minneapolis Tile contractor.jpg'
-                ]
-            },
-            {
-                id: 2,
-                title: 'Luxury Shower System',
-                location: 'Minneapolis, MN',
-                category: 'showers',
-                images: ['shower1.jpg', 'shower2.jpg']
-            }
+            { id: 1, title: 'Modern Herringbone Kitchen', location: 'Shakopee, MN', category: 'kitchens', images: ['kitchen1.jpg', 'kitchen2.jpg'] },
+            { id: 2, title: 'Luxury Shower System', location: 'Minneapolis, MN', category: 'showers', images: ['shower1.jpg'] }
         ],
 
         get filteredProjects() {
@@ -67,44 +53,34 @@
         }
       }">
 
+    <a href="#contact-form" class="fixed bottom-8 right-8 z-[60] bg-blue-600 text-white px-8 py-4 rounded-full font-bold shadow-2xl pulse-blue flex items-center gap-3 hover:bg-blue-700 transition-all scale-100 hover:scale-105 active:scale-95">
+        <span class="text-sm uppercase tracking-widest">Start My Project</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+    </a>
+
     <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
             <a href="index.html#home" class="flex items-center gap-3">
                 <img src="TC tile.jpg" class="h-14 w-auto" alt="Logo" />
                 <span class="font-bold text-lg tracking-tighter text-slate-900 hidden sm:block">True Craft Tile & Stone</span>
             </a>
-
             <div class="hidden lg:flex items-center space-x-8 font-bold text-xs uppercase tracking-widest text-slate-500">
                 <a href="index.html#home" class="hover:text-blue-700 transition">Home</a>
                 <a href="gallery.html" class="text-blue-700 border-b-2 border-blue-700">Gallery</a>
-                <a href="index.html#services" class="hover:text-blue-700 transition">Services</a>
-                <a href="tel:9524860554" class="bg-blue-600 text-white px-5 py-2.5 rounded-lg hover:bg-blue-700 transition shadow-md shadow-blue-200">Call Now</a>
+                <a href="#contact-form" class="bg-slate-900 text-white px-5 py-2.5 rounded-lg hover:bg-blue-600 transition">Get a Quote</a>
             </div>
-
             <button @click="navOpen = !navOpen" class="lg:hidden p-2 text-slate-700">
                 <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
-        </div>
-
-        <div class="lg:hidden bg-white border-t border-slate-100 shadow-md" x-show="navOpen" x-transition x-cloak>
-            <div class="flex flex-col space-y-2 px-6 pb-4 pt-2 font-bold text-sm uppercase tracking-wide text-slate-700">
-                <a href="index.html#home" class="py-3 border-b border-slate-200">🏠 Home</a>
-                <a href="gallery.html" class="py-3 border-b border-slate-200 text-blue-700">🖼️ Gallery</a>
-                <a href="tel:9524860554" class="py-4 mt-2 bg-blue-600 text-white text-center rounded-xl shadow-lg">Call Now</a>
-            </div>
         </div>
     </nav>
 
     <header class="relative pt-48 pb-28 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
         <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] moving-grid"></div>
         <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
-            <span class="inline-flex px-4 py-1 bg-blue-600/20 border border-blue-500/30 rounded-full text-blue-400 text-[10px] uppercase font-black tracking-widest mb-6">Expert Craftsmanship</span>
             <h1 class="text-6xl md:text-8xl font-bold text-white mb-8 tracking-tighter">Master <span class="text-blue-500">Portfolio</span></h1>
-            
-            <div class="max-w-xl mx-auto relative">
-                <input type="text" x-model="search" placeholder="Search projects by city..." 
-                       class="w-full bg-slate-800/50 border border-slate-700 rounded-2xl py-5 px-8 text-white outline-none focus:border-blue-500 transition-all backdrop-blur-md">
-            </div>
+            <input type="text" x-model="search" placeholder="Search projects by city..." 
+                   class="max-w-xl w-full bg-slate-800/50 border border-slate-700 rounded-2xl py-5 px-8 text-white outline-none focus:border-blue-500 transition-all backdrop-blur-md">
         </div>
     </header>
 
@@ -112,8 +88,8 @@
         <div class="max-w-7xl mx-auto px-6 flex flex-wrap gap-3 justify-center">
             <template x-for="cat in ['all', 'kitchens', 'showers', 'floorings', 'fireplace', 'commercial', 'custom']">
                 <button @click="category = cat" 
-                        :class="category === cat ? 'bg-blue-600 text-white border-blue-600' : 'bg-slate-50 text-slate-500 border-slate-200 hover:bg-slate-100'"
-                        class="px-6 py-2.5 rounded-xl font-bold uppercase text-[10px] tracking-widest transition-all border whitespace-nowrap">
+                        :class="category === cat ? 'bg-blue-600 text-white' : 'bg-slate-50 text-slate-400'"
+                        class="px-6 py-2.5 rounded-xl font-bold uppercase text-[10px] tracking-widest transition-all border border-slate-200">
                     <span x-text="cat"></span>
                 </button>
             </template>
@@ -130,50 +106,60 @@
                             <h3 class="text-white text-2xl font-bold" x-text="project.title"></h3>
                             <p class="text-blue-500 font-bold uppercase text-[10px] tracking-widest mt-1" x-text="project.location"></p>
                         </div>
-                        <div x-show="project.images.length > 1" class="absolute top-6 right-6 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/30 text-white text-[10px] font-black">
-                            <span x-text="`+ ${project.images.length - 1} PHOTOS` "></span>
-                        </div>
                     </div>
                 </div>
             </template>
         </div>
     </main>
 
-    <div x-show="activeProject" x-cloak 
-         class="fixed inset-0 z-[100] flex flex-col bg-slate-950/98 backdrop-blur-2xl"
-         @keydown.escape.window="activeProject = null">
-        
-        <div class="flex justify-between items-center p-6 bg-slate-900/50 border-b border-white/5">
-            <div class="text-white">
-                <p class="text-[10px] font-black text-blue-500 uppercase tracking-[0.2em]" x-text="activeProject?.category"></p>
-                <p class="text-sm font-bold opacity-70" x-text="`${activePhotoIndex + 1} of ${activeProject?.images.length}`"></p>
+    <section id="contact-form" class="py-24 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Start Your Project</h2>
+                <p class="text-slate-500">Ready to transform your space? Send us a message and we'll get back to you shortly.</p>
             </div>
-            <button @click="activeProject = null" class="text-white/40 hover:text-white text-5xl p-2 leading-none">&times;</button>
-        </div>
-
-        <div class="relative flex-1 flex items-center justify-center overflow-hidden">
-            <button x-show="activeProject?.images.length > 1" @click="activePhotoIndex = (activePhotoIndex - 1 + activeProject.images.length) % activeProject.images.length"
-                    class="hidden md:block absolute left-8 text-white/20 hover:text-blue-500 text-8xl transition-all">‹</button>
             
-            <div class="w-full h-full flex items-center justify-center p-4">
-                <img :src="activeProject?.images[activePhotoIndex]" 
-                     class="max-h-full max-w-full rounded-2xl shadow-2xl object-contain transition-all duration-300"
-                     style="touch-action: pinch-zoom;">
-            </div>
-
-            <button x-show="activeProject?.images.length > 1" @click="activePhotoIndex = (activePhotoIndex + 1) % activeProject.images.length"
-                    class="hidden md:block absolute right-8 text-white/20 hover:text-blue-500 text-8xl transition-all">›</button>
+            <form action="#" class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white p-8 md:p-12 rounded-[2.5rem] shadow-xl border border-slate-100">
+                <div class="flex flex-col gap-2">
+                    <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Full Name</label>
+                    <input type="text" placeholder="John Doe" class="bg-slate-50 border border-slate-200 rounded-xl p-4 focus:border-blue-500 outline-none transition-all">
+                </div>
+                <div class="flex flex-col gap-2">
+                    <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Phone Number</label>
+                    <input type="tel" placeholder="952-000-0000" class="bg-slate-50 border border-slate-200 rounded-xl p-4 focus:border-blue-500 outline-none transition-all">
+                </div>
+                <div class="flex flex-col gap-2 md:col-span-2">
+                    <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Project Type</label>
+                    <select class="bg-slate-50 border border-slate-200 rounded-xl p-4 focus:border-blue-500 outline-none transition-all">
+                        <option>Kitchen Backsplash</option>
+                        <option>Shower / Bathroom</option>
+                        <option>Floor Tile</option>
+                        <option>Fireplace</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="flex flex-col gap-2 md:col-span-2">
+                    <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Message</label>
+                    <textarea rows="4" placeholder="Tell us about your project..." class="bg-slate-50 border border-slate-200 rounded-xl p-4 focus:border-blue-500 outline-none transition-all"></textarea>
+                </div>
+                <button type="submit" class="md:col-span-2 bg-blue-600 text-white py-5 rounded-2xl font-bold uppercase tracking-widest hover:bg-blue-700 transition-all shadow-lg shadow-blue-200">
+                    Send Project Request
+                </button>
+            </form>
         </div>
+    </section>
 
-        <div class="md:hidden flex justify-between p-8 bg-slate-900/80 border-t border-white/5">
-            <button @click="activePhotoIndex = (activePhotoIndex - 1 + activeProject.images.length) % activeProject.images.length"
-                    class="text-white font-bold text-xs uppercase px-8 py-4 bg-white/10 rounded-2xl">Prev</button>
-            <button @click="activePhotoIndex = (activePhotoIndex + 1) % activeProject.images.length"
-                    class="text-white font-bold text-xs uppercase px-8 py-4 bg-blue-600 rounded-2xl shadow-xl">Next</button>
+    <div x-show="activeProject" x-cloak class="fixed inset-0 z-[100] flex flex-col bg-slate-950/98 backdrop-blur-2xl">
+        <div class="flex justify-between items-center p-6 bg-slate-900/50 border-b border-white/5">
+            <div class="text-white"><p class="text-sm font-bold opacity-70" x-text="`${activePhotoIndex + 1} of ${activeProject?.images.length}`"></p></div>
+            <button @click="activeProject = null" class="text-white/40 hover:text-white text-5xl leading-none">&times;</button>
+        </div>
+        <div class="relative flex-1 flex items-center justify-center p-4">
+            <img :src="activeProject?.images[activePhotoIndex]" class="max-h-full max-w-full rounded-2xl shadow-2xl object-contain" style="touch-action: pinch-zoom;">
         </div>
     </div>
 
-    <footer class="py-20 border-t border-slate-100 text-center">
+    <footer class="py-20 text-center bg-white border-t border-slate-100">
         <p class="text-slate-400 text-[10px] font-black uppercase tracking-[0.5em]">&copy; 2026 True Craft Tile & Stone</p>
     </footer>
 </body>
