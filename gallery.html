@@ -41,18 +41,15 @@
         search: '',
         submitted: false,
         loading: false,
-        // Inside your x-data object
-navOpen: false,
-
-toggleNav() {
-    this.navOpen = !this.navOpen;
-    document.documentElement.classList.toggle('nav-open', this.navOpen);
-},
-
-closeNav() {
-    this.navOpen = false;
-    document.documentElement.classList.remove('nav-open');
-}
+    // NAVIGATION LOGIC
+        toggleNav() {
+            this.navOpen = !this.navOpen;
+            document.documentElement.classList.toggle('nav-open', this.navOpen);
+        },
+        closeNav() {
+            this.navOpen = false;
+            document.documentElement.classList.remove('nav-open');
+        },
         projects: [
             {
                 id: 1,
