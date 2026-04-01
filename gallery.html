@@ -1,61 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- ALL YOUR EXISTING HEAD + TITLE: "Gallery | True Craft Tile & Stone" -->
-    <title>Gallery | True Craft Tile & Stone</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gallery | True Craft Tile & Stone - 1000+ Projects</title>
+    <meta name="description" content="Explore 1000+ premium tile installations by True Craft Tile & Stone. Kitchen backsplashes, custom showers, flooring masterpieces in Shakopee & Minneapolis.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .gallery-item { transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .gallery-item:hover { transform: translateY(-12px) scale(1.02) !important; }
+        .lightbox-img { transition: transform 0.3s ease; }
+        .lightbox-img:hover { transform: scale(1.02); }
+        .masonry-column { column-fill: balance; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fadeInUp { animation: fadeInUp 0.8s ease forwards; }
+        .category-chip { transition: all 0.3s ease; }
+        .category-chip.active { transform: scale(1.05); box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4); }
+    </style>
 </head>
-<body class="bg-white text-slate-900" x-data="{ 
-    activeLightbox: undefined,
-    galleryImages: [
-        // 50+ of YOUR images + more categories
-        'images/kitchen-backsplash-1.jpg',
-        'images/custom-shower-1.jpg',
-        // ... all your images + placeholders
-    ]
-}">
-    
-    <!-- SAME NAV WITH "Gallery" ACTIVE -->
-    
-    <section class="min-h-screen py-20 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-20">
-                <h1 class="text-5xl lg:text-7xl font-bold uppercase tracking-tighter mb-6">
-                    Our <span class="text-blue-700">Masterpieces</span>
-                </h1>
-                <p class="text-xl text-slate-600 max-w-2xl mx-auto">
-                    35+ Years of Precision Tile Craftsmanship
-                </p>
-            </div>
+<body class="bg-gradient-to-br from-slate-50 via-white to-slate-100 text-slate-900 overflow-x-hidden" 
+      x-data="{
+        activeLightbox: null,
+        currentImage: 0,
+        category: 'all',
+        search: '',
+        images: {
+            all: [
+                { src: 'kitchen backsplash 0000 Shakopee Minneapolis Tile contractor.jpg', category: 'kitchen', title: 'Modern Kitchen Backsplash', location: 'Shakopee' },
+                { src: 'kitchen backsplash 000 Shakopee Minneapolis Tile contractor.jpg', category: 'kitchen', title: 'Subway Tile Masterpiece', location: 'Minneapolis' },
+                // Add ALL your 10+ images here with titles
+                { src: 'kitchen backsplash 5 Shakopee Minneapolis Tile contractor.jpg', category: 'kitchen', title: 'Luxury Marble Backsplash', location: 'Eden Prairie' },
+                // ... continue for 50+ images
+            ],
+            kitchen: [], shower: [], flooring: [], fireplace: [], commercial: []
+        },
+        filteredImages() {
+            let result = this.images.all;
+            if (this.category !== 'all') {
+                result = result.filter(img => img.category === this.category);
+            }
+            if (this.search) {
+                result = result.filter(img => 
+                    img.title.toLowerCase().includes(this.search.toLowerCase()) ||
+                    img.location.toLowerCase().includes(this.search.toLowerCase())
+                );
+            }
+            return result;
+        },
+        openLightbox(index) { this.currentImage = index; this.activeLightbox = true; },
+        nextImage() { this.currentImage = (this.currentImage + 1) % this.filteredImages().length; },
+        prevImage() { this.currentImage = (this.currentImage - 1 + this.filteredImages().length) % this.filteredImages().length; },
+        categories() { 
+            return ['all', 'kitchen', 'shower', 'flooring', 'fireplace', 'commercial']; 
+        }
+      }" x-init="$nextTick(() => {
+        // Auto-scroll gallery items into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeInUp');
+                }
+            });
+        });
+        document.querySelectorAll('.gallery-item').forEach(el => observer.observe(el));
+      })">
 
-            <!-- MASONRY GALLERY GRID -->
-            <div class="gallery-grid columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 mb-12">
-                <template x-for="img in galleryImages" :key="img">
-                    <a :href="img" 
-                       @click.prevent="activeLightbox = galleryImages.indexOf(img)"
-                       class="gallery-item block mb-4 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-zoom-in group">
-                        <img :src="img" 
-                             :alt="img" 
-                             class="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-500" 
-                             loading="lazy"/>
-                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                            <span class="text-white font-bold text-sm">View Full Size</span>
-                        </div>
-                    </a>
-                </template>
+    <!-- NAVIGATION (Matches your main page) -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-lg">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="TC tile.jpg" class="h-14 w-auto transition-transform group-hover:scale-110" alt="True Craft Logo">
+                <span class="font-bold text-xl tracking-tighter text-slate-900 hidden lg:block">True Craft Tile & Stone</span>
+            </a>
+            
+            <div class="hidden lg:flex items-center space-x-8 font-bold text-sm uppercase tracking-widest text-slate-500">
+                <a href="index.html" class="hover:text-blue-700 transition-all duration-300 pb-1 border-b-2 border-transparent hover:border-blue-700">Home</a>
+                <a href="gallery.html" class="text-blue-900 border-b-2 border-blue-700 pb-1 font-black">Gallery</a>
+                <a href="services.html" class="hover:text-blue-700 transition-all duration-300 pb-1 border-b-2 border-transparent hover:border-blue-700">Services</a>
+                <a href="about.html" class="hover:text-blue-700 transition-all duration-300 pb-1 border-b-2 border-transparent hover:border-blue-700">About</a>
+                <a href="contact.html" class="hover:text-blue-700 transition-all duration-300 pb-1 border-b-2 border-transparent hover:border-blue-700">Contact</a>
             </div>
+            
+            <a href="tel:9524860554" class="hidden md:flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-2xl font-bold uppercase text-sm hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl hover:scale-105">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                </svg>
+                Call Now
+            </a>
+        </div>
+    </nav>
 
-            <!-- CATEGORIES FILTER -->
-            <div class="flex flex-wrap gap-4 justify-center mb-12">
-                <button class="px-6 py-3 bg-blue-600 text-white rounded-2xl font-bold uppercase text-sm hover:bg-blue-700">All</button>
-                <button class="px-6 py-3 bg-slate-200 text-slate-700 rounded-2xl font-bold uppercase text-sm hover:bg-slate-300">Kitchens</button>
-                <button class="px-6 py-3 bg-slate-200 text-slate-700 rounded-2xl font-bold uppercase text-sm hover:bg-slate-300">Showers</button>
-                <!-- More filters -->
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 text-white pt-20">
+        <!-- Animated background -->
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.1)_0%,transparent_70%)]"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(100,116,139,0.1)_0%,transparent_70%)] animate-pulse"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+            <div class="inline-flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl mb-8 animate-pulse">
+                <div class="w-3 h-3 bg-blue-400 rounded-full animate-ping"></div>
+                <span class="font-bold uppercase tracking-wider">1000+ Projects • 35+ Years Excellence</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight">
+                <span>Master</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-purple-500">Gallery</span>
+            </h1>
+            <p class="text-2xl md:text-3xl text-slate-200 mb-12 max-w-3xl mx-auto leading-relaxed">
+                Precision tile craftsmanship across Shakopee, Minneapolis & Twin Cities
+            </p>
+            
+            <!-- Search + Filter Bar -->
+            <div class="max-w-2xl mx-auto flex flex-col lg:flex-row gap-4 mb-16">
+                <div class="relative flex-1">
+                    <input 
+                        type="text" 
+                        x-model="search"
+                        placeholder="🔍 Search projects (Kitchen, Shower, Shakopee...)" 
+                        class="w-full px-8 py-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl text-white placeholder-slate-300 font-semibold text-lg focus:outline-none focus:border-blue-400 transition-all"
+                    >
+                    <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400" x-show="search.length === 0">Press Enter</span>
+                </div>
+                <button @click="search=''" class="px-8 py-6 bg-blue-600 text-white rounded-3xl font-bold uppercase text-lg hover:bg-blue-700 hover:scale-105 transition-all shadow-xl" x-show="search.length > 0">
+                    Clear
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- FULLSCREEN LIGHTBOX (same as your existing) -->
-    <!-- ... your existing lightbox code ... -->
+    <!-- FILTER TABS + STATS -->
+    <section class="py-20 px-6 max-w-7xl mx-auto">
+        <!-- Category Filters -->
+        <div class="flex flex-wrap gap-3 justify-center mb-20">
+            <template x-for="cat in categories()" :key="cat">
+                <button @click="category = cat"
+                        :class="category === cat ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-xl category-chip active' : 'bg-white/60 text-slate-700 hover:bg-white shadow-lg category-chip'"
+                        class="px-8 py-5 rounded-3xl font-bold uppercase text-sm tracking-wider transition-all duration-300 border-2 border-slate-200 hover:scale-105 hover:shadow-2xl">
+                    <span x-text="cat === 'all' ? 'All Projects' : cat.charAt(0).toUpperCase() + cat.slice(1) + 's'"></span>
+                    <span class="ml-2 text-xs opacity-75" x-show="category === cat">(<span x-text="filteredImages().filter(img => img.category === cat).length"></span>)</span>
+                </button>
+            </template>
+        </div>
 
-</body>
-</html>
+        <!-- Stats Row -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20 text-center">
+            <div class="p-10 bg-white/70 backdrop-blur-xl rounded-3xl shadow-2xl border border-slate-100 hover:shadow-3xl transition-all hover:scale-105">
+                <div class="text-5xl font-black text-blue-700 mb-4">1000+</div>
+                <div class="text-2xl font-bold text-slate-800 uppercase tracking-wide">Projects</div>
+            </div>
+            <div class="p-10 bg-white/70 backdrop-blur-xl rounded-3xl shadow-2xl border border-slate-100 hover:shadow-3xl transition-all hover:scale-105">
+                <div class="text-5xl font-black text-blue-700 mb-4">35+</div>
+                <div class="text-2xl font-bold text-slate-800 uppercase tracking-wide">Years</div>
+            </div>
+            <div class="p-10 bg-white/70 backdrop-blur-xl rounded-3xl shadow-2xl border border-slate-100 hover:shadow-3xl transition-all hover:scale-105">
+                <div class="text-5xl font-black text-blue-700 mb-4">5.0</div>
+                <div class="text-2xl font-bold text-slate-800 uppercase tracking-wide">Stars</div>
+            </div>
+        </div>
+
+        <!-- DYNAMIC MASONRY GALLERY -->
+        <div class="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 2xl:columns-5 gap-8 mb-20" 
+             style="column-fill: balance;">
+            <template x-for="(image, index) in filteredImages()" :key="index">
+                <div class="gallery-item break-inside-avoid mb-8 opacity-0">
+                    <div @click="openLightbox(index)" 
+                         class="group cursor-pointer overflow-hidden rounded-3xl shadow-2xl bg-white hover:shadow-3xl transition-all duration-500 relative"
+                         style="aspect-ratio: 4/3;">
+                        <img :src="image.src" 
+                             :alt="image.title" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 group-hover:brightness-110"
+                             loading="lazy"/>
+                        
+                        <!-- Hover overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8">
+                            <h3 class="text-white font-bold text-xl mb-2 line-clamp-2" x-text="image.title"></h3>
+                            <p class="text-blue-300 font-semibold text-lg" x-text="image.location"></p>
+                            <div class="flex gap-2 mt-3">
+                                <span class="px-3 py-1 bg-blue-600/80 text-white text-xs rounded-full font-bold uppercase tracking-wider" x-text="image.category.toUpperCase()"></span>
+                                <span class="px-3 py-1 bg-white/20 text-white text-xs rounded-full font-bold">View</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            
+            <!-- No results -->
+            <div x-show="filteredImages().length === 0" class="col-span-full text-center py-32">
+                <div class="text-6xl mb-8">🔍</div>
+                <h2 class="text-4xl font-bold text-slate-500 mb-4">No projects found</h2>
+                <p class="text-xl text-slate-400">Try different search terms or categories</p>
+            </div>
+        </div>
+
+        <!-- Results counter -->
+        <div class="text-center">
+            <p class="text-2xl font-bold text-slate-600" x-text="`${filteredImages().length} projects matching your search`"></p>
+        </div>
+    </section>
+
+    <!-- FULLSCREEN LIGHTBOX -->
+    <div x-show="activeLightbox" 
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0"
+         x-transition:enter-end="opacity-100"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100"
+         x-transition:leave-end="opacity-0"
+         class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/98 p-4" 
+         @click.self="activeLightbox = false"
+         @keydown.escape.window="activeLightbox = false"
+         x-trap.inert="activeLightbox">
+        
+        <button @click="activeLightbox = false" class="absolute top-8 right-8 z-10 text-white text-4xl font-black hover:text-blue-400 transition-colors w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-sm bg-black/50 hover:bg-white/20" aria-label="Close">
+            ×
+        </button>
+        
+        <!-- Navigation arrows -->
+        <button @click="prevImage()" class="absolute left-8 top-1/2 -translate-y-1/2 z-10 text-white text-5xl font-black hover:text-blue-400 transition-all w-16 h-16 rounded-full flex items-center justify-center backdrop-blur-sm bg-black/50 hover:bg-white/20 hover:scale-110" aria-label="Previous">
+            ‹
+        </button>
+        <button @click="nextImage()" class="absolute right-8 top-1/2 -translate-y-1/2 z-10 text-white text-5xl font-black hover:text-blue-400 transition-all w-16 h-16 rounded-full flex items-center justify-center backdrop-blur-sm bg-black/50 hover:bg-white/20 hover:scale-110" aria-label="Next">
+            ›
+        </button>
+        
+        <!-- Main image -->
+        <div class="max-w-6xl max-h-[90vh] flex items-center justify-center">
+            <img x-bind:src="filteredImages()[currentImage]?.src" 
+                 x-bind:alt="filteredImages()[currentImage]?.title"
+                 class="lightbox-img max-h-full max-w-full object-contain rounded-3xl shadow-4xl"
+                 @keydown.arrow-left.prevent="prevImage()"
+                 @keydown.arrow-right.prevent="nextImage()">
+        </div>
+        
+        <!-- Image info -->
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 bg-black/80 backdrop-blur-xl text-white px-8 py-6 rounded-3xl max-w-2xl mx-auto text-center shadow-2xl">
+            <h2 class="text-3xl font-bold mb-2" x-text="filteredImages()[currentImage]?.title"></h2>
+            <p class="text-xl text-blue-300 mb-4" x-text="filteredImages()[currentImage]?.location"></p>
+            <div class="flex gap-4 justify-center items-center">
+                <span class="px-4 py-2 bg-blue-600/80 text-white text-sm rounded-full font-bold uppercase tracking-wider" x-text="filteredImages()[currentImage]?.category?.toUpperCase()"></span>
+                <span class="
