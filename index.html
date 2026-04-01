@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -23,34 +23,57 @@
         .bg-grid { background-image: radial-gradient(#cbd5e1 0.5px, transparent 0.5px); background-size: 30px 30px; }
         .section-padding { padding-top: 100px; padding-bottom: 100px; }
         [x-cloak] { display: none !important; }
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        
-        /* Animations */
-        @keyframes moveGrid { from { background-position: 0 0; } to { background-position: 24px 24px; } }
+        .faq-answer p { margin-bottom: 1rem; }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .nav-open .nav-menu {
+            display: flex !important;
+        }
+
+        /* Hero Animations */
+        @keyframes moveGrid { from { background-position: 0px 0px; } to { background-position: 24px 24px; } }
         @keyframes float1 { 0%, 100% { transform: translate(0, 0) scale(1); } 33% { transform: translate(100px, 50px) scale(1.3); } 66% { transform: translate(-50px, -30px) scale(0.9); } }
         @keyframes float2 { 0%, 100% { transform: translate(0, 0) scale(1); } 33% { transform: translate(-80px, -40px) scale(1.2); } 66% { transform: translate(60px, 20px) scale(0.95); } }
+        @keyframes float3 { 0%, 100% { transform: translate(0, 0) scale(1); } 33% { transform: translate(150px, -100px) scale(1.4); } 66% { transform: translate(-100px, 80px) scale(0.8); } }
         @keyframes floatParticle { 0% { transform: translateY(0) scale(0); opacity: 0; } 50% { opacity: 1; transform: translateY(-150px) scale(1.5); } 100% { transform: translateY(0) scale(0); opacity: 0; } }
         @keyframes rotateShape { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.1; } 50% { transform: scale(1.2); opacity: 0.3; } }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
         @keyframes pulseRing { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(96, 165, 250, 0.7); } 50% { transform: scale(1.5); box-shadow: 0 0 0 8px rgba(96, 165, 250, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(96, 165, 250, 0); } }
         @keyframes glowPulse { 0%, 100% { box-shadow: 0 10px 30px rgba(37, 99, 235, 0.5); } 50% { box-shadow: 0 15px 40px rgba(37, 99, 235, 0.6); } }
 
         .moving-grid { animation: moveGrid 3s linear infinite; }
         .orb-1 { animation: float1 15s ease-in-out infinite; }
         .orb-2 { animation: float2 18s ease-in-out infinite; }
+        .orb-3 { animation: float3 20s ease-in-out infinite; }
         .particle { animation: floatParticle 6s ease-in-out infinite; }
-        .rotating-shape { animation: rotateShape 20s linear infinite; opacity: 0.1; }
+        .rotating-shape { animation: rotateShape 20s linear infinite, pulse 15s ease-in-out infinite; }
         .badge-pulse { animation: pulseRing 2s ease-out infinite; }
         .btn-glow { animation: glowPulse 2s ease-in-out infinite; }
-        .hover-scale:hover { transform: scale(1.05); transition: 0.3s; }
+        .gradient-text { background: linear-gradient(90deg, #60a5fa, #3b82f6, #2563eb); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gradientShift 8s ease infinite; }
+        
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-600 { animation-delay: 0.6s; }
+        .delay-800 { animation-delay: 0.8s; }
+        .delay-1000 { animation-delay: 1s; }
+        .delay-1200 { animation-delay: 1.2s; }
+        .delay-1400 { animation-delay: 1.4s; }
     </style>
 </head>
-
 <body class="bg-white text-slate-900" x-data="{ 
     submitted: false, 
     loading: false,
     activeSlide: 0,
     activeLightbox: undefined,
+    activeFaq: 1,
     navOpen: false,
     slides: [
         'kitchen backsplash 0000 Shakopee Minneapolis Tile contractor.jpg',
@@ -64,7 +87,46 @@
         'kitchen backsplash 44Shakopee Minneapolis Tile contractor.jpg',
         'kitchen backsplash 444Shakopee Minneapolis Tile contractor.jpg'
     ],
-    next() { this.activeSlide = this.activeSlide === this.slides.length - 1 ? 0 : this.activeSlide + 1; },
+    next() {
+        this.activeSlide = this.activeSlide === this.slides.length - 1 ? 0 : this.activeSlide + 1;
+    },
+    toggleNav() {
+        this.navOpen = !this.navOpen;
+        document.documentElement.classList.toggle('nav-open', this.navOpen);
+    },
+    closeNav() {
+        this.navOpen = false;
+        document.documentElement.classList.remove('nav-open');
+    },
+    init() {
+        setInterval(() => this.next(), 3500);
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        
+        // Generate floating particles
+        const particlesContainer = document.getElementById('particles');
+        if(particlesContainer) {
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle absolute rounded-full';
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.width = `${2 + Math.random() * 4}px`;
+                particle.style.height = `${2 + Math.random() * 4}px`;
+                particle.style.background = `rgba(96, 165, 250, ${0.3 + Math.random() * 0.4})`;
+                particle.style.animationDelay = `${Math.random() * 8}s`;
+                particle.style.animationDuration = `${4 + Math.random() * 6}s`;
+                particlesContainer.appendChild(particle);
+            }
+        }
+    },
     async submitForm(e) {
         this.loading = true;
         const scriptURL = 'https://script.google.com/macros/s/AKfycbzVCxLxV4PkIEphyQjj-9nCCNxVDhqJnvz8ALcUFYIVd3_6oNZD_EDRRmSW1KV3khBCEg/exec';
@@ -73,97 +135,158 @@
             await fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' });
             this.loading = false;
             this.submitted = true;
-            // GOOGLE ADS CONVERSION REDIRECT
+            
+            // REDIRECT TO THANK YOU PAGE FOR GOOGLE ADS
             window.location.href = 'thank-you.html'; 
+            
         } catch (err) {
             alert('Submission failed. Please call 952-486-0554');
             this.loading = false;
         }
-    },
-    init() {
-        setInterval(() => this.next(), 3500);
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     }
-}" x-init="init()">
+}" x-init="init()" @keydown.arrow-left.window="if(activeLightbox !== undefined){activeLightbox = (activeLightbox - 1 + slides.length) % slides.length}" @keydown.arrow-right.window="if(activeLightbox !== undefined){activeLightbox = (activeLightbox + 1) % slides.length}" @click.outside="if(activeLightbox !== undefined) activeLightbox = undefined">
 
     <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#home" class="flex items-center gap-3">
+            <a href="#home" class="flex items-center gap-3" @click="closeNav()">
                 <img src="TC tile.jpg" class="h-14 w-auto" alt="Logo" />
                 <span class="font-bold text-lg tracking-tighter text-slate-900 hidden sm:block">True Craft Tile & Stone</span>
             </a>
+
             <div class="hidden lg:flex items-center space-x-8 font-bold text-xs uppercase tracking-widest text-slate-500">
-                <a href="#work" class="hover:text-blue-700 transition text-slate-900">Our Work</a>
-                <a href="#services" class="hover:text-blue-700 transition">Services</a>
-                <a href="#about" class="hover:text-blue-700 transition">Our Mastery</a>
-                <a href="#faq" class="hover:text-blue-700 transition">FAQ</a>
+                <a href="#work" class="hover:text-blue-700 transition text-slate-900" @click="closeNav()">Our Work</a>
+                <a href="#services" class="hover:text-blue-700 transition" @click="closeNav()">Services</a>
+                <a href="#about" class="hover:text-blue-700 transition" @click="closeNav()">Our Mastery</a>
+                <a href="#faq" class="hover:text-blue-700 transition" @click="closeNav()">FAQ</a>
             </div>
-            <button @click="navOpen = !navOpen" class="lg:hidden p-2 border rounded text-slate-700">
-                <svg class="h-6 w-6 fill-current" viewBox="0 0 20 20"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+
+            <button @click="toggleNav()" class="lg:hidden flex items-center px-3 py-2 border rounded text-slate-700 border-slate-500 hover:text-blue-700 hover:border-blue-700 transition focus:outline-none">
+                <svg class="fill-current h-6 w-6" viewBox="0 0 20 20"><path x-show="!navOpen" d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /><path x-show="navOpen" fill-rule="evenodd" clip-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 011.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/></svg>
             </button>
+        </div>
+
+        <div class="lg:hidden bg-white border-t border-slate-100 shadow-md" x-show="navOpen" @click.outside="closeNav()" x-transition>
+            <div class="flex flex-col space-y-2 px-6 pb-4 pt-2 font-bold text-sm uppercase tracking-wide text-slate-700 select-none">
+                <a href="#work" class="py-3 border-b border-slate-200 hover:bg-blue-50" @click="closeNav()">Our Work</a>
+                <a href="#services" class="py-3 border-b border-slate-200 hover:bg-blue-50" @click="closeNav()">Services</a>
+                <a href="#about" class="py-3 border-b border-slate-200 hover:bg-blue-50" @click="closeNav()">Our Mastery</a>
+                <a href="#faq" class="py-3 hover:bg-blue-50" @click="closeNav()">FAQ</a>
+            </div>
         </div>
     </nav>
 
     <header id="home" class="relative min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
         <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] moving-grid"></div>
         <div class="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-3xl orb-1" style="background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);"></div>
-        
-        <div class="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-32">
+        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full blur-3xl orb-2" style="background: radial-gradient(circle, rgba(100, 116, 139, 0.2) 0%, transparent 70%);"></div>
+        <div class="absolute top-1/2 left-1/4 w-[300px] h-[300px] rounded-full blur-3xl orb-3" style="background: radial-gradient(circle, rgba(96, 165, 250, 0.15) 0%, transparent 70%);"></div>
+
+        <div id="particles"></div>
+
+        <div class="absolute left-[20%] top-[20%] w-[50px] h-[50px] border border-blue-400/10 rounded-full rotating-shape"></div>
+        <div class="absolute left-[40%] top-[35%] w-[80px] h-[80px] border border-blue-400/10 rounded-lg rotating-shape" style="animation-duration: 20s;"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 pt-20 pb-32">
             <div class="max-w-4xl">
-                <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600/20 backdrop-blur-sm border border-blue-400/30 rounded-full text-blue-300 text-sm mb-8">
+                <div class="inline-flex items-center gap-2 px-4 py-4 bg-blue-600/20 backdrop-blur-sm border border-blue-400/30 rounded-full text-blue-300 text-sm mb-8" style="animation: slideIn 0.8s ease-out forwards; animation-delay: 0.3s;">
                     <div class="w-3 h-3 bg-blue-400 rounded-full badge-pulse"></div>
                     35+ Years of Excellence
                 </div>
-                <h1 class="text-5xl lg:text-8xl font-bold text-white leading-tight mb-6">
-                    Mastery in Every <br>
-                    <span class="text-blue-500">Square Inch</span>
+
+                <h1 class="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight mb-6">
+                    <span class="block" style="animation: slideIn 0.8s ease-out forwards; animation-delay: 0.6s;">Mastery in Every</span>
+                    <span class="block mt-2 gradient-text" style="animation: slideIn 0.8s ease-out forwards; animation-delay: 0.8s;">Square Inch</span>
                 </h1>
-                <p class="text-xl text-slate-300 mb-12">Professional Excellence in Tile & Stone Installation serving Shakopee, Minneapolis, and the Twin Cities Metro.</p>
+
+                <p class="text-xl sm:text-2xl text-slate-300 mb-4 leading-relaxed" style="animation: slideIn 0.8s ease-out forwards; animation-delay: 1s;">
+                    Professional Excellence in Tile & Stone Installation
+                </p>
                 
-                <div class="flex flex-col sm:group flex-row gap-4">
-                    <a href="#work" class="px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold btn-glow hover-scale text-center">Start My Project</a>
-                    <a href="tel:9524860554" class="px-8 py-4 bg-white/10 text-white border border-white/20 rounded-lg font-semibold hover-scale text-center">Call Now</a>
+                <p class="text-lg text-slate-400 mb-12" style="animation: slideIn 0.8s ease-out forwards; animation-delay: 1.2s;">
+                    Serving Shakopee, Minneapolis, and the Twin Cities Metro
+                </p>
+
+                <div class="flex flex-col sm:group flex-row gap-4 mb-20" style="animation: slideIn 0.8s ease-out forwards; animation-delay: 1.4s;">
+                    <a href="#work" class="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-all duration-300 shadow-lg shadow-blue-600/50 btn-glow transform hover:scale-105">
+                        Start My Project
+                        <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                    <a href="tel:9524860554" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white border border-white/20 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                        Call Now
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-3 gap-8 pt-12 border-t border-white/10">
+                    <div class="transform hover:scale-105 transition-all">
+                        <div class="text-3xl sm:text-4xl font-bold text-white mb-2">35+</div>
+                        <div class="text-slate-400 text-sm sm:text-base">Years Experience</div>
+                    </div>
+                    <div class="transform hover:scale-105 transition-all">
+                        <div class="text-3xl sm:text-4xl font-bold text-white mb-2">100%</div>
+                        <div class="text-slate-400 text-sm sm:text-base">Quality Guaranteed</div>
+                    </div>
+                    <div class="transform hover:scale-105 transition-all">
+                        <div class="text-3xl sm:text-4xl font-bold text-white mb-2">1000+</div>
+                        <div class="text-slate-400 text-sm sm:text-base">Projects Completed</div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent"></div>
     </header>
 
-    <section id="work" class="section-padding bg-white reveal">
+    <section id="work" class="pb-32 bg-white border-b reveal">
         <div class="max-w-[1400px] mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-                <div class="lg:col-span-7">
+                <div class="lg:col-span-7 relative">
                     <div class="w-full h-[500px] lg:h-[650px] overflow-hidden rounded-[2.5rem] shadow-2xl bg-slate-900 relative">
                         <template x-for="(slide, index) in slides" :key="index">
-                            <div x-show="activeSlide === index" x-transition class="absolute inset-0 cursor-zoom-in" @click="activeLightbox = index">
+                            <div x-show="activeSlide === index" 
+                                 x-transition:enter="transition duration-500"
+                                 x-transition:enter-start="opacity-0 scale-105"
+                                 x-transition:enter-end="opacity-100 scale-100"
+                                 class="absolute inset-0 cursor-zoom-in"
+                                 @click="activeLightbox = index"
+                                 role="button"
+                                 tabindex="0">
                                 <img :src="slide" class="w-full h-full object-cover" :alt="'Premium Tile Installation ' + (index + 1)" />
                             </div>
                         </template>
                     </div>
                 </div>
 
-                <div class="lg:col-span-5 bg-slate-900 rounded-[2.5rem] p-8 lg:p-10 shadow-2xl text-white">
+                <div class="lg:col-span-5 bg-slate-900 rounded-[2.5rem] p-8 lg:p-10 shadow-2xl text-white lg:sticky top-28">
                     <div x-show="!submitted">
                         <h3 class="text-3xl font-bold mb-8 uppercase tracking-tight">GET MY FREE Estimate</h3>
                         <form @submit.prevent="submitForm($event)" class="space-y-4">
-                            <input type="text" name="name" placeholder="Full Name" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white focus:border-blue-500 outline-none transition-all">
-                            <div class="grid grid-cols-2 gap-4">
-                                <input type="tel" name="phone" placeholder="Phone" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white focus:border-blue-500 outline-none transition-all">
-                                <input type="email" name="email" placeholder="Email" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white focus:border-blue-500 outline-none transition-all">
+                            <input type="text" name="name" placeholder="Full Name" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all">
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <input type="tel" name="phone" placeholder="Phone" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all">
+                                <input type="email" name="email" placeholder="Email Address" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all">
                             </div>
-                            <select name="service" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white focus:border-blue-500 outline-none transition-all">
+
+                            <select name="service" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all appearance-none">
                                 <option disabled selected value="">Select a Service</option>
                                 <option>Kitchen Backsplash</option>
                                 <option>Custom Shower</option>
+                                <option>Tub Surround</option>
                                 <option>Flooring Installation</option>
                                 <option>Fireplace Tile</option>
+                                <option>Maintenance & Restoration</option>
                                 <option>Commercial Project</option>
+                                <option>Other Service</option>
                             </select>
-                            <textarea name="message" placeholder="Project Details (Optional)" rows="3" class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white focus:border-blue-500 outline-none transition-all"></textarea>
-                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-5 rounded-2xl uppercase tracking-widest transition-all" :disabled="loading">
+
+                            <select name="contact_method" required class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all appearance-none">
+                                <option disabled selected value="">Preferred Contact Method</option>
+                                <option>Phone Call</option>
+                                <option>Email</option>
+                                <option>Text Message</option>
+                            </select>
+
+                            <textarea name="message" placeholder="Project Details (Optional)" rows="3" class="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-white outline-none focus:border-blue-500 transition-all"></textarea>
+                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-5 rounded-2xl uppercase tracking-widest transition-all disabled:opacity-50" :disabled="loading">
                                 <span x-show="!loading">Send Request</span>
                                 <span x-show="loading">Processing...</span>
                             </button>
@@ -171,33 +294,18 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section id="services" class="section-padding bg-slate-50 reveal">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-4xl lg:text-5xl font-bold mb-16 uppercase">Specialized <span class="text-blue-700">Services</span></h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-                <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100">
-                    <h3 class="text-xl font-bold mb-4">Schluter® Custom Showers</h3>
-                    <p class="text-slate-600">Certified installers of the full Schluter system, providing a 100% waterproof guarantee for lifetime durability.</p>
-                </div>
-                <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100">
-                    <h3 class="text-xl font-bold mb-4">Kitchen Backsplashes</h3>
-                    <p class="text-slate-600">Precision installation of mosaic, subway, and large-format porcelain to transform your kitchen space.</p>
-                </div>
-                <div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100">
-                    <h3 class="text-xl font-bold mb-4">Fireplace & Accents</h3>
-                    <p class="text-slate-600">Specialized stone and tile work for fireplaces and feature walls to create a stunning focal point.</p>
-                </div>
+            <div x-show="activeLightbox !== undefined" x-cloak class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-90 z-50 p-4" @click.self="activeLightbox = undefined">
+                <button @click="activeLightbox = undefined" class="absolute top-5 right-5 text-white text-4xl">&times;</button>
+                <img :src="slides[activeLightbox]" class="max-h-[80vh] max-w-full rounded-lg shadow-lg object-contain" />
             </div>
         </div>
     </section>
 
-    <div x-show="activeLightbox !== undefined" x-cloak class="fixed inset-0 flex items-center justify-center bg-black/90 z-[100] p-4" @click="activeLightbox = undefined">
-        <button class="absolute top-5 right-5 text-white text-4xl">&times;</button>
-        <img :src="slides[activeLightbox]" class="max-h-[90vh] max-w-full rounded-lg shadow-2xl" />
-    </div>
-
+    <section id="services" class="section-padding bg-white reveal">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl lg:text-5xl font-bold mb-16 uppercase tracking-tighter">Specialized <span class="text-blue-700">Services</span></h2>
+            </div>
+    </section>
 </body>
 </html>
