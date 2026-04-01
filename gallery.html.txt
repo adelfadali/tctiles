@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ALL YOUR EXISTING HEAD + TITLE: "Gallery | True Craft Tile & Stone" -->
+    <title>Gallery | True Craft Tile & Stone</title>
+</head>
+<body class="bg-white text-slate-900" x-data="{ 
+    activeLightbox: undefined,
+    galleryImages: [
+        // 50+ of YOUR images + more categories
+        'images/kitchen-backsplash-1.jpg',
+        'images/custom-shower-1.jpg',
+        // ... all your images + placeholders
+    ]
+}">
+    
+    <!-- SAME NAV WITH "Gallery" ACTIVE -->
+    
+    <section class="min-h-screen py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h1 class="text-5xl lg:text-7xl font-bold uppercase tracking-tighter mb-6">
+                    Our <span class="text-blue-700">Masterpieces</span>
+                </h1>
+                <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+                    35+ Years of Precision Tile Craftsmanship
+                </p>
+            </div>
+
+            <!-- MASONRY GALLERY GRID -->
+            <div class="gallery-grid columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 mb-12">
+                <template x-for="img in galleryImages" :key="img">
+                    <a :href="img" 
+                       @click.prevent="activeLightbox = galleryImages.indexOf(img)"
+                       class="gallery-item block mb-4 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-zoom-in group">
+                        <img :src="img" 
+                             :alt="img" 
+                             class="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-500" 
+                             loading="lazy"/>
+                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                            <span class="text-white font-bold text-sm">View Full Size</span>
+                        </div>
+                    </a>
+                </template>
+            </div>
+
+            <!-- CATEGORIES FILTER -->
+            <div class="flex flex-wrap gap-4 justify-center mb-12">
+                <button class="px-6 py-3 bg-blue-600 text-white rounded-2xl font-bold uppercase text-sm hover:bg-blue-700">All</button>
+                <button class="px-6 py-3 bg-slate-200 text-slate-700 rounded-2xl font-bold uppercase text-sm hover:bg-slate-300">Kitchens</button>
+                <button class="px-6 py-3 bg-slate-200 text-slate-700 rounded-2xl font-bold uppercase text-sm hover:bg-slate-300">Showers</button>
+                <!-- More filters -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FULLSCREEN LIGHTBOX (same as your existing) -->
+    <!-- ... your existing lightbox code ... -->
+
+</body>
+</html>
