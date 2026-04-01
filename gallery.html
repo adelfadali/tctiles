@@ -9,7 +9,63 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    
+    x-data="{
+    activeLightbox: false,
+    currentImage: 0,
+    category: 'all',
+    search: '',
+    images: {
+        all: [
+            // KITCHEN CATEGORY
+            { src: 'kitchen backsplash 0000 Shakopee Minneapolis Tile contractor.jpg', category: 'kitchen', title: 'Modern Herringbone', location: 'Shakopee' },
+            { src: 'kitchen backsplash 000 Shakopee Minneapolis Tile contractor.jpg', category: 'kitchen', title: 'Subway Tile Masterpiece', location: 'Minneapolis' },
+            { src: 'kitchen backsplash 00 Shakopee Minneapolis Tile contractor.jpg', category: 'kitchen', title: 'Contemporary Mosaic', location: 'Bloomington' },
+            { src: 'kitchen backsplash 0 Shakopee Minneapolis Tile contractor.jpg', category: 'kitchen', title: 'Custom Porcelain', location: 'Shakopee' },
+            
+            // SHOWER CATEGORY (Categorized for testing)
+            { src: 'kitchen backsplash 2 Shakopee Minneapolis Tile contractor.jpg', category: 'shower', title: 'Schluter Shower System', location: 'Minneapolis' },
+            { src: 'kitchen backsplash 3 Shakopee Minneapolis Tile contractor.jpg', category: 'shower', title: 'Luxury Walk-in Shower', location: 'Prior Lake' },
+            
+            // FLOORING CATEGORY (Categorized for testing)
+            { src: 'kitchen backsplash 4 Shakopee Minneapolis Tile contractor.jpg', category: 'flooring', title: 'Large Format Floor Tile', location: 'Shakopee' },
+            { src: 'kitchen backsplash 5 Shakopee Minneapolis Tile contractor.jpg', category: 'flooring', title: 'Natural Stone Flooring', location: 'Eden Prairie' },
+            
+            // OTHERS
+            { src: 'kitchen backsplash 44Shakopee Minneapolis Tile contractor.jpg', category: 'kitchen', title: 'High-End Detail', location: 'Minneapolis' },
+            { src: 'kitchen backsplash 444Shakopee Minneapolis Tile contractor.jpg', category: 'kitchen', title: 'Master Craftsmanship', location: 'Shakopee' }
+        ]
+    },
+    filteredImages() {
+        let result = this.images.all;
+        
+        // Filter by Category
+        if (this.category !== 'all') {
+            result = result.filter(img => img.category === this.category);
+        }
+        
+        // Filter by Search Text
+        if (this.search) {
+            result = result.filter(img => 
+                img.title.toLowerCase().includes(this.search.toLowerCase()) ||
+                img.location.toLowerCase().includes(this.search.toLowerCase())
+            );
+        }
+        return result;
+    },
+    openLightbox(index) { 
+        this.currentImage = index; 
+        this.activeLightbox = true; 
+    },
+    nextImage() { 
+        this.currentImage = (this.currentImage + 1) % this.filteredImages().length; 
+    },
+    prevImage() { 
+        this.currentImage = (this.currentImage - 1 + this.filteredImages().length) % this.filteredImages().length; 
+    },
+    categories() { 
+        return ['all', 'kitchen', 'shower', 'flooring', 'fireplace', 'commercial']; 
+    }
+}"
     <style>
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
