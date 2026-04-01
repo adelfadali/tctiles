@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <title>High-End Tile Flooring Contractor Shakopee | True Craft Tile & Stone</title>
-    <meta name="description" content="Searching for a master tile installer in Shakopee? True Craft Tile & Stone provides engineered flooring solutions, heated floors, and large format porcelain. Read our guide on TCNA standards and professional floor preparation.">
-    <meta name="keywords" content="flooring contractor Shakopee, tile installer Prior Lake, heated floor specialist MN, LFP tile installer, subfloor leveling contractor, luxury stone flooring, best tile contractor near me">
+    <title>Flooring Contractor Shakopee | Tile, LVP & Laminate Installer | True Craft</title>
+    <meta name="description" content="Searching for a master flooring contractor in Shakopee? True Craft Tile & Stone specializes in porcelain, ceramic, luxury vinyl planks (LVP), and laminate flooring. Expert subfloor leveling and precision installation.">
+    <meta name="keywords" content="flooring contractor Shakopee, tile installer Prior Lake, vinyl plank installer MN, LVP flooring contractor, laminate flooring Shakopee, porcelain tile specialist, kitchen floor contractor near me">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -17,7 +17,9 @@
         h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
         .moving-grid { animation: moveGrid 3s linear infinite; }
         @keyframes moveGrid { from { background-position: 0px 0px; } to { background-position: 24px 24px; } }
-        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); }
+        .gradient-blue { background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%); }
+        .stat-card { border: 1px solid rgba(226, 232, 240, 0.8); transition: all 0.4s ease; }
+        .stat-card:hover { transform: translateY(-10px); border-color: #3b82f6; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
     </style>
 </head>
 
@@ -26,7 +28,7 @@
     <nav class="fixed w-full z-[100] bg-white/90 backdrop-blur-md border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
             <a href="/" class="flex items-center gap-4 group">
-                <img src="/TC tile.jpg" class="h-12 w-auto transition-transform group-hover:rotate-3" alt="Logo" />
+                <img src="/TC tile.jpg" class="h-12 w-auto" alt="True Craft Logo" />
                 <div class="flex flex-col text-left">
                     <span class="font-bold text-xl tracking-tighter text-slate-900 leading-none uppercase">True Craft</span>
                     <span class="text-[10px] uppercase tracking-[0.3em] text-blue-700 font-black">Tile & Stone</span>
@@ -40,141 +42,150 @@
             </div>
             <button class="lg:hidden text-slate-900" @click="mobileMenu = !mobileMenu">
                 <svg x-show="!mobileMenu" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                <svg x-show="mobileMenu" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
         </div>
     </nav>
 
     <header class="relative pt-64 pb-40 bg-slate-950 overflow-hidden">
         <div class="absolute inset-0 bg-[size:32px_32px] moving-grid opacity-10" style="background-image: linear-gradient(to right, #80808012 1px, transparent 1px), linear-gradient(to bottom, #80808012 1px, transparent 1px);"></div>
-        <div class="relative z-10 max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div class="text-white">
-                <span class="inline-block px-4 py-1.5 border border-blue-500/30 rounded-full text-blue-400 text-[10px] font-black uppercase tracking-widest mb-6 bg-blue-500/5">Certified Flooring Specialists</span>
-                <h1 class="text-6xl md:text-8xl font-bold mb-8 tracking-tighter leading-tight italic">
-                    Architectural <br><span class="text-blue-500">Flooring.</span>
-                </h1>
-                <p class="text-xl text-slate-400 leading-relaxed max-w-xl italic">
-                    We don't just install tile; we engineer systems. Serving the high-end residential market of Shakopee and the Greater Twin Cities with surgical precision.
-                </p>
-            </div>
-            <div class="hidden lg:block relative">
-                <div class="absolute -inset-4 border border-blue-500/20 rounded-[4rem] animate-pulse"></div>
-                <img src="/gallery/floor-main-hero.jpg" class="rounded-[3.5rem] shadow-2xl w-full aspect-[4/5] object-cover" alt="Luxury Flooring Installation">
-            </div>
+        <div class="relative z-10 max-w-6xl mx-auto px-6 text-center">
+            <span class="inline-block px-4 py-1.5 border border-blue-500/30 rounded-full text-blue-400 text-[10px] font-black uppercase tracking-widest mb-6 bg-blue-500/5">Master Flooring Contractor</span>
+            <h1 class="text-6xl md:text-8xl font-bold mb-8 tracking-tighter text-white italic">
+                Engineered <span class="text-blue-500">Floors.</span>
+            </h1>
+            <p class="text-xl text-slate-400 leading-relaxed max-w-3xl mx-auto italic">
+                From luxury porcelain tile to waterproof vinyl planks—we provide the structural precision required for Minnesota's demanding climate.
+            </p>
         </div>
     </header>
 
     <main class="max-w-7xl mx-auto px-6 py-32">
         
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-24 mb-32">
-            <div class="lg:col-span-7">
-                <h2 class="text-5xl font-bold text-slate-900 italic mb-10 leading-tight">Beyond the Surface: <br>Structural Integrity.</h2>
-                <p class="text-lg text-slate-600 mb-8 italic">
-                    Most flooring failures occur because the installer focused on the tile rather than the subfloor. In Minnesota, wood-framed homes move constantly due to humidity shifts. Without addressing **Deflection (L/360)**, your tile will eventually crack.
-                </p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-12">
-                    <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100">
-                        <h4 class="font-bold text-blue-700 mb-3 uppercase text-xs tracking-widest italic">Subfloor Preparation</h4>
-                        <p class="text-sm text-slate-500 italic leading-loose">We evaluate the joist span and subfloor thickness to ensure it meets TCNA (Tile Council of North America) standards before a single tile is set.</p>
-                    </div>
-                    <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100">
-                        <h4 class="font-bold text-blue-700 mb-3 uppercase text-xs tracking-widest italic">Self-Leveling Systems</h4>
-                        <p class="text-sm text-slate-500 italic leading-loose">We specialize in high-flow underlayments to ensure a perfectly flat floor (FF-Factor) essential for modern large-format tiles.</p>
-                    </div>
-                </div>
-
-                <h3 class="text-3xl font-bold text-slate-900 italic mt-16 mb-6">Large Format Porcelain Specialists</h3>
-                <p class="text-slate-600 mb-10 italic leading-relaxed">
-                    Modern design trends favor massive tiles (24"x48", 48"x48", and even gauged porcelain panels). These require specialized tools—suction cup rails, vibration machines, and high-performance mortars with high "Transfer" rates. As a leading **tile installer in Shakopee**, we have invested in the Italian technology necessary to handle these materials without breakage or lippage.
-                </p>
+        <div class="mb-32">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold text-slate-900 italic mb-4">Our Flooring Specialties</h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
             </div>
 
-            <div class="lg:col-span-5">
-                <div class="sticky top-32 bg-white border border-slate-100 p-12 rounded-[4rem] shadow-2xl shadow-blue-900/5">
-                    <h3 class="text-3xl font-bold mb-6 italic">Estimate My Floor</h3>
-                    <p class="text-slate-500 text-sm mb-10 italic">Providing fixed-price quotes for homeowners who value quality over the lowest bid.</p>
-                    
-                    <ul class="space-y-6 mb-10 text-sm font-bold text-slate-700 italic">
-                        <li class="flex items-center gap-4"><span class="w-2 h-2 bg-blue-600 rounded-full"></span> 100% Waterproofing Options</li>
-                        <li class="flex items-center gap-4"><span class="w-2 h-2 bg-blue-600 rounded-full"></span> Schluter-DITRA Certified</li>
-                        <li class="flex items-center gap-4"><span class="w-2 h-2 bg-blue-600 rounded-full"></span> Lifetime Grout Technology</li>
-                    </ul>
-
-                    <a href="/contact%20form.html" class="block w-full text-center bg-blue-700 text-white py-5 rounded-3xl font-bold text-lg hover:bg-slate-900 transition-all shadow-xl transform hover:-translate-y-1">Request Consultation</a>
-                    
-                    <div class="mt-10 flex justify-center gap-6 opacity-30 grayscale">
-                        <img src="/schulter-logo.png" class="h-8" alt="Schluter">
-                        <img src="/mapei-logo.png" class="h-8" alt="Mapei">
-                        <img src="/laticrete-logo.png" class="h-8" alt="Laticrete">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <section class="bg-slate-950 text-white p-12 md:p-24 rounded-[4rem] my-32 overflow-hidden relative">
-            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                <div>
-                    <span class="text-blue-500 font-black text-[10px] uppercase tracking-[0.5em] mb-4 block">The Minnesota Necessity</span>
-                    <h2 class="text-5xl font-bold mb-8 italic">Radiant Heat Floors.</h2>
-                    <p class="text-slate-400 text-lg mb-8 italic leading-relaxed">
-                        Say goodbye to freezing tile. We install the **DITRA-HEAT** system—the only electric floor warming system that also provides uncoupling to prevent cracked tiles and grout. Control your floor from your phone and enjoy luxury comfort year-round.
-                    </p>
-                    <ul class="grid grid-cols-2 gap-4 text-xs font-bold text-slate-300 italic">
-                        <li>• Wi-Fi Touch Thermostats</li>
-                        <li>• Zero-Height Increase</li>
-                        <li>• Custom Heating Zones</li>
-                        <li>• Energy Efficient</li>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="stat-card p-10 rounded-[3rem] bg-slate-50">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4 italic">01 / Ceramic Tile</h3>
+                    <p class="text-slate-600 text-sm mb-6 italic">A timeless choice for light-to-medium traffic. Ceramic is softer and ideal for intricate decorative patterns in bathrooms and mudrooms.</p>
+                    <ul class="text-[10px] font-black uppercase tracking-widest text-blue-600 flex gap-4">
+                        <li>#Versatile</li><li>#Decorative</li><li>#BathroomReady</li>
                     </ul>
                 </div>
-                <div class="relative">
-                    <img src="/gallery/heated-floor-detail.jpg" class="rounded-3xl shadow-2xl rotate-3" alt="Heated Floor Installation">
-                </div>
-            </div>
-        </header>
 
-        <div class="py-32">
-            <h2 class="text-5xl font-bold text-slate-900 text-center italic mb-20">The Material Guide</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div class="group">
-                    <h4 class="text-xl font-bold mb-4 italic group-hover:text-blue-700 transition-colors">01 / Porcelain & Ceramic</h4>
-                    <p class="text-slate-500 italic text-sm leading-loose">The standard for durability. From wood-look planks to marble-look slabs, porcelain offers the highest resistance to scratches and moisture. Ideal for high-traffic entryways and mudrooms.</p>
+                <div class="stat-card p-10 rounded-[3rem] bg-slate-50">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4 italic">02 / Porcelain Tile</h3>
+                    <p class="text-slate-600 text-sm mb-6 italic">The gold standard for durability. Dense, frost-proof, and nearly impervious to water. We specialize in **Large Format Porcelain (LFP)** for a seamless stone look.</p>
+                    <ul class="text-[10px] font-black uppercase tracking-widest text-blue-600 flex gap-4">
+                        <li>#IndustrialGrade</li><li>#ScratchProof</li><li>#LargeFormat</li>
+                    </ul>
                 </div>
-                <div class="group">
-                    <h4 class="text-xl font-bold mb-4 italic group-hover:text-blue-700 transition-colors">02 / Natural Stone</h4>
-                    <p class="text-slate-500 italic text-sm leading-loose">Nothing matches the authenticity of Marble, Slate, or Travertine. We provide expert "Back-Buttering" and high-grade impregnating sealers to protect your stone's natural variation from the elements.</p>
+
+                <div class="stat-card p-10 rounded-[3rem] bg-slate-50">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4 italic">03 / Luxury Vinyl Planks (LVP)</h3>
+                    <p class="text-slate-600 text-sm mb-6 italic">100% waterproof "Rigid Core" flooring. We ensure a superior finish by applying self-leveling compounds to eliminate "clicking" or "bouncing" underfoot.</p>
+                    <ul class="text-[10px] font-black uppercase tracking-widest text-blue-600 flex gap-4">
+                        <li>#Waterproof</li><li>#PetFriendly</li><li>#LevelSubfloor</li>
+                    </ul>
                 </div>
-                <div class="group">
-                    <h4 class="text-xl font-bold mb-4 italic group-hover:text-blue-700 transition-colors">03 / Luxury Mosaics</h4>
-                    <p class="text-slate-500 italic text-sm leading-loose">Detailed patterns and glass tile work for powder rooms or feature floor areas. We use epoxy grouts (Laticrete SpectraLock) to ensure grout lines never stain or discolor.</p>
+
+                <div class="stat-card p-10 rounded-[3rem] bg-slate-50">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4 italic">04 / Laminated Flooring</h3>
+                    <p class="text-slate-600 text-sm mb-6 italic">High-performance aesthetics with the authentic texture of natural wood. We focus on critical expansion gaps to prevent buckling during humid summer months.</p>
+                    <ul class="text-[10px] font-black uppercase tracking-widest text-blue-600 flex gap-4">
+                        <li>#RealisticTexture</li><li>#HighACRating</li><li>#LivingSpace</li>
+                    </ul>
                 </div>
             </div>
         </div>
 
-        <div class="bg-slate-50 rounded-[4rem] p-12 md:p-20 border border-slate-100">
-            <h2 class="text-4xl font-bold italic mb-12">Investment & Planning</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                <div class="space-y-4">
-                    <p class="font-bold uppercase text-xs tracking-widest text-blue-700 italic">Starting Cost</p>
-                    <p class="text-3xl font-bold">$12 - $25 <span class="text-sm font-normal text-slate-500">/ sq.ft</span></p>
-                    <p class="text-slate-500 text-sm italic">Estimated labor for standard professional tile installation including subfloor prep.</p>
-                </div>
-                <div class="lg:col-span-2">
-                    <h4 class="font-bold text-slate-900 mb-4 italic">What drives the cost?</h4>
-                    <p class="text-slate-600 text-sm italic mb-6">The primary factors include tile size (Large format requires more labor), subfloor condition (Leveling compounds), and pattern complexity (Herringbone, Chevrons, etc.).</p>
-                    <div class="flex flex-wrap gap-4">
-                        <span class="px-4 py-2 bg-white rounded-full text-[10px] font-black uppercase tracking-widest border border-slate-200">Site Prep</span>
-                        <span class="px-4 py-2 bg-white rounded-full text-[10px] font-black uppercase tracking-widest border border-slate-200">Membrane Install</span>
-                        <span class="px-4 py-2 bg-white rounded-full text-[10px] font-black uppercase tracking-widest border border-slate-200">Setting & Grouting</span>
+        <div class="mb-32 overflow-hidden rounded-[3rem] border border-slate-100 shadow-xl">
+            <div class="bg-slate-950 p-8 text-center">
+                <h3 class="text-2xl font-bold text-white italic">Technical Comparison Guide</h3>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead class="bg-slate-50 text-[10px] uppercase tracking-widest font-black text-slate-400">
+                        <tr>
+                            <th class="p-6 border-b">Feature</th>
+                            <th class="p-6 border-b">Ceramic</th>
+                            <th class="p-6 border-b">Porcelain</th>
+                            <th class="p-6 border-b">Vinyl (LVP)</th>
+                            <th class="p-6 border-b">Laminate</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm italic text-slate-600">
+                        <tr>
+                            <td class="p-6 border-b font-bold text-slate-900">Water Resistance</td>
+                            <td class="p-6 border-b">High</td>
+                            <td class="p-6 border-b text-blue-600">Extreme</td>
+                            <td class="p-6 border-b text-blue-600">100% Waterproof</td>
+                            <td class="p-6 border-b">Moderate</td>
+                        </tr>
+                        <tr>
+                            <td class="p-6 border-b font-bold text-slate-900">Durability (Pets/Kids)</td>
+                            <td class="p-6 border-b">Moderate</td>
+                            <td class="p-6 border-b text-blue-600">Highest</td>
+                            <td class="p-6 border-b">High</td>
+                            <td class="p-6 border-b">High</td>
+                        </tr>
+                        <tr>
+                            <td class="p-6 border-b font-bold text-slate-900">Installation Method</td>
+                            <td class="p-6 border-b">Mortar/Grout</td>
+                            <td class="p-6 border-b">Mortar/Grout</td>
+                            <td class="p-6 border-b">Floating/Click</td>
+                            <td class="p-6 border-b">Floating/Click</td>
+                        </tr>
+                        <tr>
+                            <td class="p-6 font-bold text-slate-900">Subfloor Prep</td>
+                            <td class="p-6">Uncoupling</td>
+                            <td class="p-6">Uncoupling</td>
+                            <td class="p-6">Leveling</td>
+                            <td class="p-6">Leveling</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="text-4xl font-bold mb-8 italic">The True Craft Standard</h2>
+                <p class="text-slate-600 mb-8 italic">
+                    Most companies treat planks and tile as a "commodity." We treat them as engineering projects. Whether it's grinding concrete for a flat LVP layout or installing **Schluter-DITRA** for a porcelain floor, we never skip the steps that ensure a lifetime of performance.
+                </p>
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 font-bold italic">01</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 italic">Subfloor Inspection</h4>
+                            <p class="text-xs text-slate-500 italic">We check for deflection and levelness before the first board is laid.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 font-bold italic">02</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 italic">Precision Layout</h4>
+                            <p class="text-xs text-slate-500 italic">Calculated symmetry to avoid awkward small cuts at walls and doors.</p>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="bg-slate-950 p-12 rounded-[4rem] text-center shadow-2xl">
+                <h3 class="text-3xl font-bold text-white mb-6 italic">Estimate My Floor</h3>
+                <p class="text-slate-400 text-sm mb-10 italic">Serving Shakopee, Prior Lake, and the Metro Area.</p>
+                <a href="/contact form.html" class="block w-full bg-blue-600 py-5 rounded-3xl text-white font-bold text-lg hover:bg-blue-500 transition shadow-xl transform hover:-translate-y-1 italic">Book Consultation</a>
+                <p class="mt-8 text-[10px] text-slate-500 font-black uppercase tracking-widest">Licensed • Insured • Certified</p>
+            </div>
         </div>
-
     </main>
 
     <footer class="py-20 text-center bg-white border-t border-slate-100">
-        <p class="text-slate-400 text-[10px] font-black uppercase tracking-[0.5em] italic">&copy; 2026 True Craft Tile & Stone | Architectural Flooring Specialists</p>
-        <p class="text-[10px] text-slate-400 mt-4 uppercase tracking-widest">Shakopee • Prior Lake • Twin Cities Metro</p>
+        <p class="text-slate-400 text-[10px] font-black uppercase tracking-[0.5em] italic">&copy; 2026 True Craft Tile & Stone | Flooring Authority</p>
     </footer>
 
 </body>
