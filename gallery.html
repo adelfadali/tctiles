@@ -105,7 +105,7 @@
         <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
             <a href="index.html" class="flex items-center gap-3">
                 <img src="TC tile.jpg" class="h-14 w-auto" alt="Logo" />
-                <span class="font-bold text-lg tracking-tighter text-slate-900 hidden sm:block">True Craft Tile & Stone</span>
+                <span class="font-bold text-lg tracking-tighter text-slate-900 hidden sm:block text-nowrap">True Craft Tile & Stone</span>
             </a>
             <div class="hidden lg:flex items-center space-x-8 font-bold text-xs uppercase tracking-widest text-slate-500">
                 <a href="index.html" class="hover:text-blue-700 transition">Home</a>
@@ -141,7 +141,7 @@
         </div>
     </section>
 
-    <main class="max-w-7xl mx-auto px-6 py-20">
+    <main class="max-w-7xl mx-auto px-6 py-20 min-h-screen">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             <template x-for="project in filteredProjects" :key="project.id">
                 <div class="project-card group cursor-pointer" @click="openProject(project)">
