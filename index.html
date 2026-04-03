@@ -692,6 +692,34 @@
                                  >
                                 <img :src="slide" class="w-full h-full object-cover" :alt="'Premium Tile Installation ' + (index + 1)" />
                             </div>
+                            <div class="w-full h-[500px] lg:h-[650px] overflow-hidden rounded-[2.5rem] shadow-2xl bg-slate-900 relative">
+    <template x-for="(slide, index) in slides" :key="index">
+        <div x-show="activeSlide === index" 
+             x-transition:enter="transition duration-500"
+             x-transition:enter-start="opacity-0 scale-105"
+             x-transition:enter-end="opacity-100 scale-100"
+             class="absolute inset-0 cursor-zoom-in"
+             @click="activeLightbox = index"
+             role="button"
+             tabindex="0"
+             :aria-label="'Open gallery image ' + (index + 1)"
+             @keydown.enter.prevent="activeLightbox = index">
+            <img :src="slide" class="w-full h-full object-cover" :alt="'Premium Tile Installation ' + (index + 1)" />
+        </div>
+    </template>
+
+    <div class="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none">
+        <div class="absolute inset-0 bg-black/20 pointer-events-none"></div>
+        
+        <a href="master-portfolio.html" 
+           class="pointer-events-auto bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl font-bold uppercase tracking-widest transition-all shadow-2xl transform hover:scale-105 flex items-center gap-3">
+            <span>Browse Gallery</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+        </a>
+    </div>
+</div>
                         </template>
                     </div>
                 </div>
