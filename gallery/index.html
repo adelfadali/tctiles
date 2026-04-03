@@ -88,22 +88,6 @@
                 ]
             }
         ],
-
-
-    {
-    id: 4, // Next unique number
-    title: 'Modern Fireplace Hearth',
-    location: 'Eden Prairie, MN',
-    category: 'fireplace',
-    images: [
-        'fireplace-1.jpg',
-        'fireplace-2.jpg',
-        'fireplace-detail.jpg'
-    ]
-},
-
-    
-
         get filteredProjects() {
             return this.projects.filter(p => {
                 const matchCat = this.category === 'all' || p.category === this.category;
