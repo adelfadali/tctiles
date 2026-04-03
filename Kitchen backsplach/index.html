@@ -64,7 +64,8 @@
             <h2 class="text-3xl font-bold mb-6">Elevating Your Kitchen’s Aesthetic</h2>
             <p class="text-slate-600 mb-4">A kitchen backsplash is more than a functional moisture barrier; it is the visual centerpiece of your home. At True Craft Tile & Stone, we understand that the kitchen is the heart of the household, and our backsplash installations are designed to reflect that importance. Whether you prefer the timeless appeal of white subway tile or the intricate complexity of hand-laid glass mosaics, our 35+ years of experience ensures a flawless finish.</p>
             <p class="text-slate-600">Precision is our baseline. We utilize advanced laser-leveling technology to ensure that every horizontal line is perfectly straight, even if your countertops have minor imperfections. Our master installers specialize in symmetrical layouts, ensuring that "cuts" at the corners or under cabinets are balanced and visually pleasing.</p>
-<section id="work" class="py-24 bg-white border-b reveal">
+        </section>
+            <section id="work" class="py-24 bg-white border-b reveal">
     <div class="max-w-[1400px] mx-auto px-6">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
@@ -128,26 +129,38 @@
                                    class="w-full bg-slate-800 border border-slate-700 rounded-xl p-4 text-white outline-none focus:border-blue-500 transition-all">
                             
                             <select name="service" required 
-                                    class="w-full bg-slate-800 border border-slate-700 rounded
-        <section class="bg-slate-50 rounded-[2.5rem] p-10 mb-16 border border-slate-100">
-            <h2 class="text-2xl font-bold mb-6">Investment & Quality Guide</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                    <h3 class="text-lg font-bold text-blue-600 uppercase tracking-widest mb-2">Average Cost</h3>
-                    <p class="text-slate-600 italic mb-4">Typical range: $1,200 – $3,500</p>
-                    <p class="text-sm text-slate-500">Costs vary based on square footage, tile material (ceramic vs. natural stone), and pattern complexity (Herringbone, Chevron, or Mosaic).</p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-bold text-blue-600 uppercase tracking-widest mb-2">Premium Materials</h3>
-                    <ul class="text-slate-600 space-y-2">
-                        <li>• Mapei Ultracolor Plus FA Grout</li>
-                        <li>• Schluter-Systems Edge Profiles</li>
-                        <li>• Custom-Mixed Laticrete Thinset</li>
-                        <li>• Professional Grade Sealants</li>
-                    </ul>
+                                    class="w-full bg-slate-800 border border-slate-700 rounded-xl p-4 text-white outline-none focus:border-blue-500 transition-all appearance-none">
+                                <option disabled selected value="">Select Project Type</option>
+                                <option>Kitchen Backsplash</option>
+                                <option>Custom Shower</option>
+                                <option>Large Format Flooring</option>
+                                <option>Fireplace / Stone Work</option>
+                            </select>
+
+                            <textarea name="message" rows="3" placeholder="Brief project details..." 
+                                      class="w-full bg-slate-800 border border-slate-700 rounded-xl p-4 text-white outline-none focus:border-blue-500 transition-all"></textarea>
+                            
+                            <button type="submit" class="w-full bg-blue-600 text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-blue-700 transition-all shadow-lg disabled:opacity-50" :disabled="loading">
+                                <span x-show="!loading">Send Request</span>
+                                <span x-show="loading">Processing...</span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <div x-show="submitted" class="absolute inset-0 bg-slate-950 z-50 flex flex-col items-center justify-center text-center p-8" x-cloak x-transition>
+                        <div class="w-20 h-20 bg-blue-600/20 text-blue-500 text-4xl rounded-full flex items-center justify-center mb-6">✓</div>
+                        <h3 class="text-2xl font-bold mb-2 uppercase">Request Received</h3>
+                        <p class="text-slate-400 mb-8">We will contact you within 24 hours.</p>
+                        <button @click="submitted = false" class="text-blue-500 font-bold text-xs uppercase tracking-[0.2em] hover:text-white transition-colors">
+                            Send Another Request
+                        </button>
+                    </div>
                 </div>
             </div>
-        </section>
+
+        </div>
+    </div>
+</section>
 
         <section class="mb-16">
             <h3 class="text-2xl font-bold mb-4 text-slate-900">The Technical Advantage</h3>
