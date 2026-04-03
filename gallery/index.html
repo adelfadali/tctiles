@@ -193,41 +193,43 @@
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
     </a>
 
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100">
-    <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-        <a href="index.html#home" class="flex items-center gap-3" @click="closeNav()">
-            <img src="../TC tile.jpg" class="h-14 w-auto" alt="Logo" />
-            <span class="font-bold text-lg tracking-tighter text-slate-900 hidden sm:block">True Craft Tile & Stone</span>
-        </a>
+<nav class="fixed w-full z-[100] bg-white/95 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center gap-3 group">
+                <img src="../TC tile.jpg" class="h-12 w-auto transition-transform group-hover:scale-105" alt="True Craft Tile & Stone Logo" />
+                <div class="flex flex-col">
+                    <span class="font-bold text-lg tracking-tighter text-slate-900 leading-none">True Craft</span>
+                    <span class="text-[10px] uppercase tracking-[0.3em] text-blue-700 font-black">Tile & Stone</span>
+                </div>
+            </a>
 
-        <div class="hidden lg:flex items-center space-x-8 font-bold text-xs uppercase tracking-widest text-slate-500">
-            <a href="index.html#home" class="hover:text-blue-700 transition" @click="closeNav()">Home</a>
-            <a href="gallery" class="hover:text-blue-700 transition text-blue-900 border-b-2 border-blue-700 pb-1">Gallery</a>
-            <a href="index.html#services" class="hover:text-blue-700 transition" @click="closeNav()">Services</a>
-            <a href="index.html#about" class="hover:text-blue-700 transition" @click="closeNav()">About</a>
-            <a href="index.html#faq" class="hover:text-blue-700 transition" @click="closeNav()">FAQ</a>
-            <a href="tel:9524860554" class="bg-slate-900 text-white px-5 py-2.5 rounded-lg hover:bg-blue-600 transition ml-4">Call Now</a>
+            <div class="hidden lg:flex items-center space-x-10 font-bold text-xs uppercase tracking-widest text-slate-500">
+                <a href="../index.html" class="hover:text-blue-700 transition-colors">Home</a>
+                <a href="../index.html#services" class="hover:text-blue-700 transition-colors">Services</a>
+                <a href="index.html" class="text-blue-700">Gallery</a>
+                <a href="../contact form.html" class="bg-slate-900 text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition-all shadow-lg">Get Quote</a>
+            </div>
+
+            <button class="lg:hidden text-slate-900 focus:outline-none" @click="mobileMenu = !mobileMenu">
+                <svg x-show="!mobileMenu" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                <svg x-show="mobileMenu" x-cloak class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
         </div>
 
-        <button @click="toggleNav()" class="lg:hidden flex items-center px-3 py-2 border rounded text-slate-700 border-slate-500 hover:text-blue-700 hover:border-blue-700 transition focus:outline-none">
-            <svg class="fill-current h-6 w-6" viewBox="0 0 20 20">
-                <path x-show="!navOpen" d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
-                <path x-show="navOpen" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 011.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/>
-            </svg>
-        </button>
-    </div>
-
-    <div class="lg:hidden bg-white border-t border-slate-100 shadow-md" x-show="navOpen" @click.outside="closeNav()" x-transition x-cloak>
-        <div class="flex flex-col space-y-2 px-6 pb-4 pt-2 font-bold text-sm uppercase tracking-wide text-slate-700 select-none">
-            <a href="index.html#home" class="py-3 border-b border-slate-200 hover:bg-blue-50" @click="closeNav()"> Home</a>
-            <a href="gallery" class="py-3 border-b border-slate-200 bg-blue-50 text-blue-700 font-black"> Gallery</a>
-            <a href="index.html#services" class="py-3 border-b border-slate-200 hover:bg-blue-50" @click="closeNav()">Services</a>
-            <a href="index.html#about" class="py-3 border-b border-slate-200 hover:bg-blue-50" @click="closeNav()">About</a>
-            <a href="index.html#faq" class="py-3 border-b border-slate-200 hover:bg-blue-50" @click="closeNav()">FAQ</a>
-            <a href="tel:9524860554" class="block bg-slate-900 text-white p-4 rounded-xl text-center mt-4">Call Now</a>
+        <div x-show="mobileMenu" 
+             x-cloak
+             @click.away="mobileMenu = false"
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0 -translate-y-4"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             class="lg:hidden bg-white border-b border-slate-100 px-6 py-8 space-y-6 shadow-2xl absolute w-full top-full left-0">
+            <a href="../index.html" class="block text-xl font-bold text-slate-900" @click="mobileMenu = false">Home</a>
+            <a href="../index.html#services" class="block text-xl font-bold text-slate-900" @click="mobileMenu = false">Services</a>
+            <a href="index.html" class="block text-xl font-bold text-blue-600" @click="mobileMenu = false">Gallery</a>
+            <hr class="border-slate-100">
+            <a href="../contact form.html" class="block w-full text-center bg-blue-600 text-white py-4 rounded-2xl font-bold shadow-lg" @click="mobileMenu = false">Request a Quote</a>
         </div>
-    </div>
-</nav>
+    </nav>
 
     <header class="relative pt-48 pb-28 bg-slate-950 overflow-hidden text-center">
         <div class="absolute inset-0 bg-[size:24px_24px] moving-grid opacity-10" style="background-image: linear-gradient(to right, #80808012 1px, transparent 1px), linear-gradient(to bottom, #80808012 1px, transparent 1px);"></div>
