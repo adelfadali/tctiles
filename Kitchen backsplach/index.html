@@ -1,6 +1,122 @@
-<section class="mb-24 not-prose" x-data="{ active: null }">
-            <h2 class="text-3xl font-bold mb-2 text-slate-900 text-center uppercase tracking-tighter">Installation FAQ</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <title>Kitchen Backsplash Installer | True Craft Tile & Stone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .moving-grid { animation: moveGrid 3s linear infinite; }
+        @keyframes moveGrid { from { background-position: 0px 0px; } to { background-position: 24px 24px; } }
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="bg-white text-slate-900" x-data="{ mobileMenu: false }">
+
+    <nav class="fixed w-full z-[100] bg-white/95 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="TC tile.jpg" class="h-12 w-auto transition-transform group-hover:scale-105" alt="True Craft Tile & Stone Logo" />
+                <div class="flex flex-col">
+                    <span class="font-bold text-lg tracking-tighter text-slate-900 leading-none">True Craft</span>
+                    <span class="text-[10px] uppercase tracking-[0.3em] text-blue-700 font-black">Tile & Stone</span>
+                </div>
+            </a>
+
+            <div class="hidden lg:flex items-center space-x-10 font-bold text-xs uppercase tracking-widest text-slate-500">
+                <a href="index.html" class="hover:text-blue-700 transition-colors">Home</a>
+                <a href="index.html#services" class="hover:text-blue-700 transition-colors">Services</a>
+                <a href="gallery/index.html" class="hover:text-blue-700 transition-colors">Gallery</a>
+                <a href="contact form.html" class="bg-slate-900 text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-200">Get Quote</a>
+            </div>
+
+            <button class="lg:hidden text-slate-900" @click="mobileMenu = !mobileMenu">
+                <svg x-show="!mobileMenu" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                <svg x-show="mobileMenu" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" x-cloak><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+
+        <div x-show="mobileMenu" x-cloak
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0 -translate-y-4"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             class="lg:hidden bg-white border-b border-slate-100 px-6 py-8 space-y-6 shadow-xl">
+            <a href="index.html" class="block text-xl font-bold text-slate-900">Home</a>
+            <a href="index.html#services" class="block text-xl font-bold text-slate-900">Services</a>
+            <a href="gallery/index.html" class="block text-xl font-bold text-blue-600">Gallery</a>
+            <a href="contact form.html" class="block w-full text-center bg-blue-600 text-white py-4 rounded-2xl font-bold">Request a Quote</a>
+        </div>
+    </nav>
+
+    <header class="relative pt-48 pb-28 bg-slate-950 overflow-hidden text-center">
+        <div class="absolute inset-0 bg-[size:24px_24px] moving-grid opacity-10" style="background-image: linear-gradient(to right, #80808012 1px, transparent 1px), linear-gradient(to bottom, #80808012 1px, transparent 1px);"></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-white">
+            <h1 class="text-5xl md:text-7xl font-bold mb-8 tracking-tighter uppercase">Kitchen <span class="text-blue-500">Backsplash</span> Mastery</h1>
+            <p class="text-xl text-slate-400 leading-relaxed font-medium">Precision mosaic and subway tile work that serves as the crown jewel of your kitchen remodel.</p>
+        </div>
+    </header>
+
+    <article class="max-w-4xl mx-auto px-6 py-24 prose prose-slate prose-lg">
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-6 text-slate-900">Elevating Your Kitchen’s Aesthetic</h2>
+            <p class="text-slate-600 mb-4">A kitchen backsplash is more than a functional moisture barrier; it is the visual centerpiece of your home. At True Craft Tile & Stone, we understand that the kitchen is the heart of the household, and our backsplash installations are designed to reflect that importance. Whether you prefer the timeless appeal of white subway tile or the intricate complexity of hand-laid glass mosaics, our 35+ years of experience ensures a flawless finish.</p>
+            <p class="text-slate-600">Precision is our baseline. We utilize advanced laser-leveling technology to ensure that every horizontal line is perfectly straight, even if your countertops have minor imperfections. Our master installers specialize in symmetrical layouts, ensuring that "cuts" at the corners or under cabinets are balanced and visually pleasing.</p>
+        </section>
+
+        <section class="bg-slate-50 rounded-[2.5rem] p-10 mb-16 border border-slate-100 not-prose">
+            <h2 class="text-2xl font-bold mb-6 text-slate-900">Investment & Quality Guide</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold text-blue-600 uppercase tracking-widest mb-2">Average Cost</h3>
+                    <p class="text-slate-600 italic mb-4">Typical range: $1,200 – $3,500</p>
+                    <p class="text-sm text-slate-500">Costs vary based on square footage, tile material (ceramic vs. natural stone), and pattern complexity (Herringbone, Chevron, or Mosaic).</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-blue-600 uppercase tracking-widest mb-2">Premium Materials</h3>
+                    <ul class="text-slate-600 space-y-2 font-medium">
+                        <li>• Mapei Ultracolor Plus FA Grout</li>
+                        <li>• Schluter-Systems Edge Profiles</li>
+                        <li>• Custom-Mixed Laticrete Thinset</li>
+                        <li>• Professional Grade Sealants</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h3 class="text-2xl font-bold mb-4 text-slate-900 uppercase tracking-tight">The Technical Advantage</h3>
+            <p class="text-slate-600 mb-6">Proper backsplash installation requires a deep understanding of substrate preparation. Many contractors skip the critical step of ensuring the drywall is flat and free of oils or grease before setting tile. We utilize premium modified thinsets that offer superior bond strength, ensuring your tiles will never shift or crack over time.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 not-prose">
+                <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100">
+                    <h4 class="font-bold text-blue-700 mb-2">Waterproof Integrity</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">We treat the area behind the sink with extra care, ensuring silicone-based caulking at the countertop junction to prevent water from reaching the cabinets.</p>
+                </div>
+                <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100">
+                    <h4 class="font-bold text-blue-700 mb-2">Zero-Mess Guarantee</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">We protect your countertops, flooring, and appliances with heavy-duty masking. Your kitchen stays clean and functional throughout the process.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="mb-24 not-prose" x-data="{ active: null }">
+            <h2 class="text-3xl font-bold mb-2 text-slate-900 text-center uppercase tracking-tighter">Backsplash FAQ</h2>
             <p class="text-center text-slate-500 mb-12 italic font-medium">Expert insights from True Craft Tile & Stone.</p>
+            
+            <div class="space-y-4">
+                <div class="border border-slate-200 rounded-2xl overflow-hidden transition-all shadow-sm" :class="active === 1 ? 'ring-2 ring-blue-500 border-transparent' : ''">
+                    <button @click="active = active === 1 ? null : 1" class="w-full flex justify-between items-center p-6 text-left bg-white hover:bg-slate-50 transition-colors">
+                        <span class="font-bold text-slate-900">How long will my kitchen be "out of commission"?</span>
+                        <svg class="w-5 h-5 transition-transform duration-300" :class="active === 1 ? 'rotate-180 text-blue-600' : 'text-slate-400'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="active === 1" x-collapse x-cloak class="p-6 pt-0 text-slate-600 bg-white">
+                        At True Craft, we value your time. A standard backsplash usually takes **2 to 3 days**. We set the tile on day one, allow the thinset to cure, and return for grouting and final cleaning. You can still use your kitchen in the evenings.
+                    </div>
+                </div>
             
             <div class="space-y-4">
                 <div class="border border-slate-200 rounded-2xl overflow-hidden transition-all shadow-sm" :class="active === 1 ? 'ring-2 ring-blue-500 border-transparent' : ''">
@@ -43,4 +159,43 @@
                     </div>
                 </div>
             </div>
+                <div class="border border-slate-200 rounded-2xl overflow-hidden transition-all shadow-sm" :class="active === 2 ? 'ring-2 ring-blue-500 border-transparent' : ''">
+                    <button @click="active = active === 2 ? null : 2" class="w-full flex justify-between items-center p-6 text-left bg-white hover:bg-slate-50 transition-colors">
+                        <span class="font-bold text-slate-900">Can you install new tile over my existing backsplash?</span>
+                        <svg class="w-5 h-5 transition-transform duration-300" :class="active === 2 ? 'rotate-180 text-blue-600' : 'text-slate-400'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="active === 2" x-collapse x-cloak class="p-6 pt-0 text-slate-600 bg-white">
+                        We **never** install tile over old tile. We remove the old materials and ensure the drywall substrate is perfectly flat and clean. If the wall is damaged during demo, we repair it to ensure your new backsplash is laser-straight.
+                    </div>
+                </div>
+
+                <div class="border border-slate-200 rounded-2xl overflow-hidden transition-all shadow-sm" :class="active === 3 ? 'ring-2 ring-blue-500 border-transparent' : ''">
+                    <button @click="active = active === 3 ? null : 3" class="w-full flex justify-between items-center p-6 text-left bg-white hover:bg-slate-50 transition-colors">
+                        <span class="font-bold text-slate-900">What do you recommend for grout staining?</span>
+                        <svg class="w-5 h-5 transition-transform duration-300" :class="active === 3 ? 'rotate-180 text-blue-600' : 'text-slate-400'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div x-show="active === 3" x-collapse x-cloak class="p-6 pt-0 text-slate-600 bg-white">
+                        In high-use kitchens, we utilize **Mapei Ultracolor Plus FA** or epoxy grouts. These are water-repellent and stain-resistant. For natural stone, we apply a professional-grade sealer to prevent grease absorption.
+                    </div>
+                </div>
+            </div>
         </section>
+
+        <section class="text-center not-prose">
+            <h2 class="text-3xl font-bold mb-8 text-slate-900 uppercase tracking-tighter">Ready to transform your kitchen?</h2>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="contact form.html" class="inline-block bg-blue-600 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-blue-700 transition shadow-xl hover:scale-[1.02]">Request a Free Estimate</a>
+                <a href="gallery/index.html" class="inline-block bg-slate-900 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-slate-800 transition shadow-xl hover:scale-[1.02]">Browse Photo Gallery</a>
+            </div>
+            <p class="mt-8 text-slate-400 font-bold uppercase tracking-widest text-[10px]">Serving Shakopee & The Greater Minneapolis Area</p>
+        </section>
+    </article>
+
+    <footer class="py-12 text-center border-t border-slate-100 bg-white">
+        <p class="text-slate-400 text-[10px] font-black uppercase tracking-[0.5em]">&copy; 2026 True Craft Tile & Stone</p>
+    </footer>
+
+</body>
+</html>
+
+
