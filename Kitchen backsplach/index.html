@@ -61,14 +61,51 @@
     </header>
 
     <article class="max-w-4xl mx-auto px-6 py-24 prose prose-slate prose-lg">
+        
         <section class="mb-16">
             <h2 class="text-3xl font-bold mb-6">Elevating Your Kitchen’s Aesthetic</h2>
             <p class="text-slate-600 mb-4">A kitchen backsplash is more than a functional moisture barrier; it is the visual centerpiece of your home. At True Craft Tile & Stone, we understand that the kitchen is the heart of the household, and our backsplash installations are designed to reflect that importance. Whether you prefer the timeless appeal of white subway tile or the intricate complexity of hand-laid glass mosaics, our 35+ years of experience ensures a flawless finish.</p>
+            <p class="text-slate-600">Precision is our baseline. We utilize advanced laser-leveling technology to ensure that every horizontal line is perfectly straight, even if your countertops have minor imperfections. Our master installers specialize in symmetrical layouts, ensuring that "cuts" at the corners or under cabinets are balanced and visually pleasing.</p>
+        </section>
+
+        <section class="bg-slate-50 rounded-[2.5rem] p-10 mb-16 border border-slate-100 not-prose">
+            <h2 class="text-2xl font-bold mb-6">Investment & Quality Guide</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold text-blue-600 uppercase tracking-widest mb-2">Average Cost</h3>
+                    <p class="text-slate-600 italic mb-4">Typical range: $1,200 – $3,500</p>
+                    <p class="text-sm text-slate-500">Costs vary based on square footage, tile material (ceramic vs. natural stone), and pattern complexity (Herringbone, Chevron, or Mosaic).</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-blue-600 uppercase tracking-widest mb-2">Premium Materials</h3>
+                    <ul class="text-slate-600 space-y-2">
+                        <li>• Mapei Ultracolor Plus FA Grout</li>
+                        <li>• Schluter-Systems Edge Profiles</li>
+                        <li>• Custom-Mixed Laticrete Thinset</li>
+                        <li>• Professional Grade Sealants</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h3 class="text-2xl font-bold mb-4 text-slate-900">The Technical Advantage</h3>
+            <p class="text-slate-600 mb-6">Proper backsplash installation requires a deep understanding of substrate preparation. Many contractors skip the critical step of ensuring the drywall is flat and free of oils or grease before setting tile. We utilize premium modified thinsets that offer superior bond strength, ensuring your tiles will never shift or crack over time. For outlets and switches, we provide precision wet-saw cuts for a tight fit that is perfectly covered by your faceplates.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 not-prose">
+                <div class="bg-blue-50 p-6 rounded-2xl">
+                    <h4 class="font-bold text-blue-700">Waterproof Integrity</h4>
+                    <p class="text-sm text-slate-600">We treat the area behind the sink with extra care, ensuring silicone-based caulking at the countertop junction to prevent water from reaching the cabinets.</p>
+                </div>
+                <div class="bg-blue-50 p-6 rounded-2xl">
+                    <h4 class="font-bold text-blue-700">Zero-Mess Guarantee</h4>
+                    <p class="text-sm text-slate-600">We protect your countertops, flooring, and appliances with heavy-duty masking and drop cloths. Your kitchen stays clean throughout the process.</p>
+                </div>
+            </div>
         </section>
 
         <section class="mb-24 not-prose" x-data="{ active: null }">
-            <h2 class="text-3xl font-bold mb-2 text-slate-900 text-center">Backsplash Project FAQ</h2>
-            <p class="text-center text-slate-500 mb-12 italic">Direct answers from our master installers.</p>
+            <h2 class="text-3xl font-bold mb-2 text-slate-900 text-center uppercase tracking-tighter">Backsplash FAQ</h2>
+            <p class="text-center text-slate-500 mb-12 italic">Expert insights from True Craft Tile & Stone.</p>
             
             <div class="space-y-4">
                 <div class="border border-slate-200 rounded-2xl overflow-hidden transition-all" :class="active === 1 ? 'ring-2 ring-blue-500 border-transparent' : ''">
@@ -83,43 +120,33 @@
 
                 <div class="border border-slate-200 rounded-2xl overflow-hidden transition-all" :class="active === 2 ? 'ring-2 ring-blue-500 border-transparent' : ''">
                     <button @click="active = active === 2 ? null : 2" class="w-full flex justify-between items-center p-6 text-left bg-white hover:bg-slate-50 transition-colors">
-                        <span class="font-bold text-slate-900">Can you install new tile over my existing backsplash or directly on the drywall?</span>
+                        <span class="font-bold text-slate-900">Can you install new tile over my existing backsplash?</span>
                         <svg class="w-5 h-5 transition-transform duration-300" :class="active === 2 ? 'rotate-180 text-blue-600' : 'text-slate-400'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div x-show="active === 2" x-collapse x-cloak class="p-6 pt-0 text-slate-600 bg-white">
-                        We **never** install tile over old tile—it compromises the bond and the look. For a "True Craft" finish, we remove the old materials and ensure the drywall substrate is perfectly flat and clean. If the wall is damaged during demo, we repair it or install a fresh backer board to ensure your new backsplash is laser-straight.
+                        We **never** install tile over old tile—it compromises the bond and the vertical depth. We remove the old materials and ensure the drywall substrate is perfectly flat and clean. If the wall is damaged during demo, we repair it to ensure your new backsplash is laser-straight.
                     </div>
                 </div>
 
                 <div class="border border-slate-200 rounded-2xl overflow-hidden transition-all" :class="active === 3 ? 'ring-2 ring-blue-500 border-transparent' : ''">
                     <button @click="active = active === 3 ? null : 3" class="w-full flex justify-between items-center p-6 text-left bg-white hover:bg-slate-50 transition-colors">
-                        <span class="font-bold text-slate-900">How do you handle the visible edges where the tile ends?</span>
+                        <span class="font-bold text-slate-900">I’m worried about grout staining behind the stove. What do you recommend?</span>
                         <svg class="w-5 h-5 transition-transform duration-300" :class="active === 3 ? 'rotate-180 text-blue-600' : 'text-slate-400'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div x-show="active === 3" x-collapse x-cloak class="p-6 pt-0 text-slate-600 bg-white">
-                        Exposed edges can make or break a design. We specialize in using **Schluter-Systems metal profiles** or matching bullnose tiles to create a clean, modern transition. We’ll help you select a finish (like brushed nickel or matte black) that complements your faucets and cabinet hardware.
-                    </div>
-                </div>
-
-                <div class="border border-slate-200 rounded-2xl overflow-hidden transition-all" :class="active === 4 ? 'ring-2 ring-blue-500 border-transparent' : ''">
-                    <button @click="active = active === 4 ? null : 4" class="w-full flex justify-between items-center p-6 text-left bg-white hover:bg-slate-50 transition-colors">
-                        <span class="font-bold text-slate-900">I’m worried about grout staining behind the stove. What do you recommend?</span>
-                        <svg class="w-5 h-5 transition-transform duration-300" :class="active === 4 ? 'rotate-180 text-blue-600' : 'text-slate-400'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div x-show="active === 4" x-collapse x-cloak class="p-6 pt-0 text-slate-600 bg-white">
-                        In a high-use kitchen, standard grout isn't enough. We utilize **Mapei Ultracolor Plus FA** or high-performance epoxy grouts. These are water-repellent and stain-resistant right out of the bucket. For natural stone, we apply a professional-grade sealer to prevent grease from soaking into the tile itself.
+                        In a high-use kitchen, standard grout isn't enough. We utilize **Mapei Ultracolor Plus FA** or high-performance epoxy grouts. These are water-repellent and stain-resistant. For natural stone, we apply a professional-grade sealer to prevent grease from soaking into the tile.
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="text-center bg-slate-900 rounded-[3rem] p-12 text-white shadow-2xl">
-            <h2 class="text-3xl font-bold mb-8">Ready to see our work?</h2>
+        <section class="text-center not-prose">
+            <h2 class="text-3xl font-bold mb-8">Ready to transform your kitchen?</h2>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="contact form.html" class="inline-block bg-blue-600 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-blue-700 transition">Request a Free Estimate</a>
-                <a href="gallery/gallery.html" class="inline-block bg-white/10 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-white/20 transition border border-white/20">View Photo Gallery</a>
+                <a href="contact form.html" class="inline-block bg-blue-600 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-blue-700 transition shadow-xl">Request a Free Estimate</a>
+                <a href="gallery/gallery.html" class="inline-block bg-slate-900 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-slate-800 transition shadow-xl">Browse Photo Gallery</a>
             </div>
-            <p class="mt-8 text-slate-400 font-bold uppercase tracking-widest text-[10px]">Serving Shakopee & The Greater Minneapolis Area</p>
+            <p class="mt-6 text-slate-400 font-bold uppercase tracking-widest text-xs">Serving Shakopee & The Greater Minneapolis Area</p>
         </section>
     </article>
 
