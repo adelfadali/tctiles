@@ -64,7 +64,71 @@
             <h2 class="text-3xl font-bold mb-6">Elevating Your Kitchen’s Aesthetic</h2>
             <p class="text-slate-600 mb-4">A kitchen backsplash is more than a functional moisture barrier; it is the visual centerpiece of your home. At True Craft Tile & Stone, we understand that the kitchen is the heart of the household, and our backsplash installations are designed to reflect that importance. Whether you prefer the timeless appeal of white subway tile or the intricate complexity of hand-laid glass mosaics, our 35+ years of experience ensures a flawless finish.</p>
             <p class="text-slate-600">Precision is our baseline. We utilize advanced laser-leveling technology to ensure that every horizontal line is perfectly straight, even if your countertops have minor imperfections. Our master installers specialize in symmetrical layouts, ensuring that "cuts" at the corners or under cabinets are balanced and visually pleasing.</p>
+<section id="work" class="py-24 bg-white border-b reveal">
+    <div class="max-w-[1400px] mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            
+            <div class="lg:col-span-7 relative">
+                <div class="w-full h-[500px] lg:h-[650px] overflow-hidden rounded-[2.5rem] shadow-2xl bg-slate-900 relative">
+                    
+                    <template x-for="(slide, index) in slides" :key="index">
+                        <div x-show="activeSlide === index" 
+                             x-transition:enter="transition duration-500"
+                             x-transition:enter-start="opacity-0 scale-105"
+                             x-transition:enter-end="opacity-100 scale-100"
+                             class="absolute inset-0 cursor-zoom-in"
+                             @click="activeLightbox = index">
+                            <div class="absolute inset-0 bg-black/20 z-10"></div>
+                            <img :src="slide" class="w-full h-full object-cover" alt="Premium Tile Installation" />
+                        </div>
+                    </template>
 
+                    <div class="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none">
+                        <div class="text-center p-6">
+                            <h3 class="text-white text-3xl md:text-5xl font-bold mb-6 tracking-tighter drop-shadow-lg">
+                                Master Portfolio
+                            </h3>
+                            
+                            <a href="gallery/gallery.html" 
+                               class="pointer-events-auto inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl font-bold uppercase tracking-widest transition-all shadow-2xl hover:scale-105 pulse-blue">
+                                <span>Browse Gallery</span>
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex gap-2">
+                        <template x-for="(slide, index) in slides" :key="index">
+                            <button @click="activeSlide = index" 
+                                    :class="activeSlide === index ? 'w-8 bg-blue-600' : 'w-2 bg-white/40'"
+                                    class="h-2 rounded-full transition-all duration-300"></button>
+                        </template>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-5">
+                <div class="bg-slate-900 rounded-[2.5rem] p-8 lg:p-10 shadow-2xl text-white relative overflow-hidden border border-slate-800">
+                    <div class="relative z-10">
+                        <h2 class="text-3xl font-bold mb-2 uppercase tracking-tighter">
+                            Start Your <span class="text-blue-500">Project</span>
+                        </h2>
+                        <p class="text-slate-400 mb-8 text-sm font-medium">Get a precise quote for your custom tile installation.</p>
+                        
+                        <form @submit.prevent="submitForm($event)" class="space-y-4">
+                            <input type="text" name="name" placeholder="Full Name" required 
+                                   class="w-full bg-slate-800 border border-slate-700 rounded-xl p-4 text-white outline-none focus:border-blue-500 transition-all">
+                            
+                            <input type="tel" name="phone" placeholder="Phone Number" required 
+                                   class="w-full bg-slate-800 border border-slate-700 rounded-xl p-4 text-white outline-none focus:border-blue-500 transition-all">
+                            
+                            <input type="email" name="email" placeholder="Email Address" required 
+                                   class="w-full bg-slate-800 border border-slate-700 rounded-xl p-4 text-white outline-none focus:border-blue-500 transition-all">
+                            
+                            <select name="service" required 
+                                    class="w-full bg-slate-800 border border-slate-700 rounded
         <section class="bg-slate-50 rounded-[2.5rem] p-10 mb-16 border border-slate-100">
             <h2 class="text-2xl font-bold mb-6">Investment & Quality Guide</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
