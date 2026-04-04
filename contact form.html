@@ -14,7 +14,7 @@
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
         [x-cloak] { display: none !important; }
 
-        /* Animated Grid & Orbs from Landing Page */
+        /* Animated Grid & Orbs */
         @keyframes moveGrid { from { background-position: 0px 0px; } to { background-position: 24px 24px; } }
         .moving-grid { animation: moveGrid 3s linear infinite; }
         
@@ -22,6 +22,14 @@
         .orb-1 { animation: float1 15s ease-in-out infinite; }
 
         .form-container { transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+
+        /* Pulse Animation for Sticky Button */
+        .pulse-blue { animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(59, 130, 246, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900" x-data="{ 
@@ -42,6 +50,11 @@
         }
     }
 }">
+
+    <a href="tel:9524860554" class="fixed bottom-8 right-8 z-[60] bg-blue-600 text-white px-6 py-4 rounded-full font-bold shadow-2xl pulse-blue flex items-center gap-3 hover:bg-blue-700 transition-all">
+        <span class="text-xs uppercase tracking-widest text-white">Call Now</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+    </a>
 
     <nav class="fixed w-full z-[100] bg-white/95 backdrop-blur-md border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
