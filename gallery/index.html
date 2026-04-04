@@ -33,7 +33,7 @@
 </head>
 <body class="bg-white text-slate-900" 
       x-data="{ 
-        navOpen: false,
+        mobileMenu: false, 
         category: 'all',
         activeProject: null,
         fullscreenPhoto: null,
@@ -41,15 +41,6 @@
         search: '',
         submitted: false,
         loading: false,
-    // NAVIGATION LOGIC
-        toggleNav() {
-            this.navOpen = !this.navOpen;
-            document.documentElement.classList.toggle('nav-open', this.navOpen);
-        },
-        closeNav() {
-            this.navOpen = false;
-            document.documentElement.classList.remove('nav-open');
-        },
         projects: [
             {
                 id: 1,
@@ -62,10 +53,8 @@
                     '../kitchen backsplash 00 Shakopee Minneapolis Tile contractor.jpg',
                     '../kitchen backsplash 0 Shakopee Minneapolis Tile contractor.jpg',
                     '../kitchen backsplash1 Shakopee Minneapolis Tile contractor.jpg',
-                
                 ]
             },
-    
             {
                 id: 2,
                 title: 'Premium Backsplash',
@@ -76,11 +65,9 @@
                     '../gallery/kitchen backsplash before done Shakopee Minneapolis Tile contractor.jpg',
                     '../gallery/kitchen backsplash1 Shakopee Minneapolis Tile contractor.jpg',
                     '../gallery/kitchen backsplash done1 Shakopee Minneapolis Tile contractor.jpg',
-                
-                    
                 ]
             },
-              {
+            {
                 id: 3,
                 title: 'Subway Backsplash',
                 location: 'Minneapolis, MN',
@@ -91,7 +78,6 @@
                     '../kitchen backsplash 2 Shakopee Minneapolis Tile contractor.jpg',
                     '../kitchen backsplash 5 Shakopee Minneapolis Tile contractor.jpg',
                 ]
-
             },
             {
                 id: 4,
@@ -99,13 +85,12 @@
                 location: 'Prior Lake, MN',
                 category: 'kitchens',
                 images: [
-                
                     '../kitchen backsplash 444Shakopee Minneapolis Tile contractor.jpg',
                     '../kitchen backsplash 4444Shakopee Minneapolis Tile contractor.jpg',
                     '../kitchen backsplash 44Shakopee Minneapolis Tile contractor.jpg',
                 ]
             },
-              {
+            {
                 id: 5,
                 title: 'Shuluter Heated Floor & Walk-in Shower',
                 location: 'Chaska, MN',
@@ -116,12 +101,11 @@
                     '../gallery/Shakopee Minneapolis Tile contractor bathroom remodeling 13.jpg',
                     '../gallery/Shakopee Minneapolis Tile contractor bathroom remodeling 12.jpg',
                 ]
-
- },
-              {
+            },
+            {
                 id: 6,
-                title: 'Premium Full Bathroom Renovation& Elfadali LLC now True Craft Tile & Stone',
-                location: 'Eden Paririe, MN',
+                title: 'Premium Full Bathroom Renovation',
+                location: 'Eden Prairie, MN',
                 category: 'showers',
                 images: [
                     '../gallery/Shakopee Minneapolis Tile contractor bathroom remodeling4.jpg',
@@ -129,31 +113,28 @@
                     '../gallery/Shakopee Minneapolis Tile contractor bathroom remodeling3.jpg',
                     '../gallery/Shakopee Minneapolis Tile contractor bathroom remodeling2.jpg',
                 ]
-     },
-              {
+            },
+            {
                 id: 7,
                 title: 'Shuluter Premium Walk-in Shower',
                 location: 'Richfield, MN',
                 category: 'showers',
                 images: [
                     '../gallery/Shakopee Minneapolis Tile contractor bathroom remodeling 55.jpg',
-                     '../gallery/Shakopee Minneapolis Tile contractor bathroom remodeling 54.jpg',
-                     '../gallery/Shakopee Minneapolis Tile contractor bathroom remodeling 53.jpg',
+                    '../gallery/Shakopee Minneapolis Tile contractor bathroom remodeling 54.jpg',
+                    '../gallery/Shakopee Minneapolis Tile contractor bathroom remodeling 53.jpg',
                 ]
-    },
-              {
+            },
+            {
                 id: 8,
                 title: '1940 Walk-in Shower Remodeling',
-                location: 'Burnsville',
+                location: 'Burnsville, MN',
                 category: 'showers',
                 images: [
                     '../gallery/Shakopee Minneapolis Tile contractor bathroom remodeling 8.jpg',
-                     '../gallery/Shakopee Minneapolis Tile contractor bathroom remodeling 7.jpg',
-                     '../gallery/Shakopee Minneapolis Tile contractor bathroom remodeling 6.jpg',
+                    '../gallery/Shakopee Minneapolis Tile contractor bathroom remodeling 7.jpg',
+                    '../gallery/Shakopee Minneapolis Tile contractor bathroom remodeling 6.jpg',
                 ]
-
-
-    
             }
         ],
         get filteredProjects() {
@@ -188,12 +169,12 @@
         }
       }">
 
-    <a href="contact form.html" class="fixed bottom-8 right-8 z-[60] bg-blue-600 text-white px-6 py-4 rounded-full font-bold shadow-2xl pulse-blue flex items-center gap-3 hover:bg-blue-700 transition-all">
+    <a href="../contact form.html" class="fixed bottom-8 right-8 z-[60] bg-blue-600 text-white px-6 py-4 rounded-full font-bold shadow-2xl pulse-blue flex items-center gap-3 hover:bg-blue-700 transition-all">
         <span class="text-xs uppercase tracking-widest">Start My Project</span>
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
     </a>
 
-<nav class="fixed w-full z-[100] bg-white/95 backdrop-blur-md border-b border-slate-100">
+    <nav class="fixed w-full z-[100] bg-white/95 backdrop-blur-md border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <a href="../index.html" class="flex items-center gap-3 group">
                 <img src="../TC tile.jpg" class="h-12 w-auto transition-transform group-hover:scale-105" alt="True Craft Tile & Stone Logo" />
@@ -229,12 +210,12 @@
             <hr class="border-slate-100">
             <a href="../contact form.html" class="block w-full text-center bg-blue-600 text-white py-4 rounded-2xl font-bold shadow-lg" @click="mobileMenu = false">Request a Quote</a>
         </div>
-    </nav> 
+    </nav>
 
     <header class="relative pt-48 pb-28 bg-slate-950 overflow-hidden text-center">
         <div class="absolute inset-0 bg-[size:24px_24px] moving-grid opacity-10" style="background-image: linear-gradient(to right, #80808012 1px, transparent 1px), linear-gradient(to bottom, #80808012 1px, transparent 1px);"></div>
         <div class="relative z-10 max-w-7xl mx-auto px-6">
-            <h1 class="text-6xl md:text-8xl font-bold text-white mb-8 tracking-tighter">Master <span class="text-blue-500">Portfolio</span></h1>
+            <h1 class="text-6xl md:text-8xl font-bold text-white mb-8 tracking-tighter uppercase">Master <span class="text-blue-500">Portfolio</span></h1>
             <input type="text" x-model="search" placeholder="Search by city..." class="max-w-xl w-full bg-slate-800/50 border border-slate-700 rounded-2xl py-5 px-8 text-white outline-none focus:border-blue-500 transition-all">
         </div>
     </header>
@@ -359,4 +340,3 @@
     </div>
 </body>
 </html>
-
