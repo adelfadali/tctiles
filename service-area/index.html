@@ -1,235 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Service Area | True Craft Tile & Stone | Twin Cities Tile Contractor</title>
-    <meta name="description" content="True Craft Tile & Stone provides professional tile installation starting at $5/sq. ft. Serving Shakopee, Savage, Prior Lake, and over 80 cities across the Twin Cities.">
-    <link rel="canonical" href="https://tctiles.com/service-area.html" />
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "FlooringBusiness",
-      "name": "True Craft Tile & Stone",
-      "@id": "https://tctiles.com",
-      "url": "https://tctiles.com",
-      "telephone": "+1-952-486-0554",
-      "priceRange": "$5 per sq. ft. and up",
-      "image": "https://tctiles.com/logo.jpg",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "1364 Savanna Drive",
-        "addressLocality": "Shakopee",
-        "addressRegion": "MN",
-        "postalCode": "55379",
-        "addressCountry": "US"
-      },
-      "areaServed": [
-        "Apple Valley", "Arden Hills", "Argonne", "Bloomington", "Brooklyn Center", "Brooklyn Park", "Burnsville", "Castle Rock", "Chanhassen", "Chaska", "Columbia Heights", "Crystal", "Crystal Bay", "Deephaven", "Dundas", "Eagan", "Eden Prairie", "Edina", "Elko", "Elko New Market", "Excelsior", "Falcon Heights", "Farmington", "Fort Snelling", "Fridley", "Golden Valley", "Greenwood", "Grey Cloud Island", "Hampton", "Heidelberg", "Hilltop", "Hopkins", "Inver Grove", "Inver Grove Heights", "Jordan", "Lakeville", "Lauderdale", "Lilydale", "Little Canada", "Lonsdale", "Maplewood", "Medicine Lake", "Mendota", "Mendota Heights", "Minneapolis", "Minnetonka", "Minnetonka Beach", "Minnetonka Mills", "Mounds View", "Navarre", "New Brighton", "New Hope", "New Market", "New Prague", "New Trier", "Newport", "North Saint Paul", "Northfield", "Plymouth", "Prior Lake", "Randolph", "Richfield", "Robbinsdale", "Rosemount", "Roseville", "Saint Anthony", "Saint Louis Park", "Saint Paul", "Saint Paul Park", "Savage", "Shakopee", "Shoreview", "South Saint Paul", "Spring Lake Park", "Sunfish Lake", "Tonka Bay", "Vermillion", "Veseli", "Waterford", "Wayzata", "Webster", "West Saint Paul", "Woodland", "Woodbury"
-      ],
-      "description": "Professional tile and stone installation based in Shakopee, MN. Quality craftsmanship starting at $5 per sq. ft."
+      "@type": "WebPage",
+      "name": "Service Area - True Craft Tile & Stone",
+      "url": "https://www.tctiles.com/service-area/"
     }
     </script>
+    <link rel="canonical" href="https://www.tctiles.com/service-area/" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Service Area | Master Tile Contractor Shakopee & Minneapolis</title>
+    <meta name="description" content="True Craft Tile & Stone serves the entire Twin Cities metro. Professional tile installation in Shakopee, Minneapolis, Edina, and beyond. Starting at $5/sq. ft.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
 
     <style>
-        :root {
-            --brand-dark: #1a252f;
-            --brand-orange: #d35400; 
-            --light-gray: #f9f9f9;
-        }
-        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; background-color: #fff; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .bg-grid { background-image: radial-gradient(#ffffff12 0.5px, transparent 0.5px); background-size: 30px 30px; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
         
-        header { text-align: center; padding: 40px 0; border-bottom: 3px solid var(--brand-orange); }
-        h1 { font-size: 2.5rem; color: var(--brand-dark); text-transform: uppercase; margin: 0; letter-spacing: 1px; }
-        .sub-head { font-size: 1.1rem; color: #666; margin-top: 10px; max-width: 800px; margin-left: auto; margin-right: auto; }
-
-        /* TOWNS GRID */
-        .towns-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); 
-            gap: 10px; 
-            margin: 40px 0; 
-        }
-        .town-item { 
-            background: #fff; 
-            border: 1px solid #eee; 
-            padding: 10px; 
-            text-align: center; 
-            font-size: 0.9rem; 
-            border-radius: 4px;
-            transition: all 0.2s ease;
-        }
-        .town-item:hover { background: var(--brand-dark); color: #fff; border-color: var(--brand-dark); }
-
-        /* CONTACT FORM SECTION */
-        .form-section { background: var(--brand-dark); color: #fff; padding: 50px 20px; border-radius: 8px; margin-top: 40px; }
-        .form-container { max-width: 600px; margin: 0 auto; }
-        .form-container h2 { text-align: center; color: var(--brand-orange); margin-bottom: 5px; }
-        .form-container p { text-align: center; margin-bottom: 30px; font-size: 0.95rem; }
-        
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
-        .form-group input, .form-group textarea, .form-group select { 
-            width: 100%; padding: 12px; border: none; border-radius: 4px; box-sizing: border-box; font-size: 1rem;
-        }
-        
-        .submit-btn { 
-            background: var(--brand-orange); color: #fff; border: none; padding: 15px 30px; 
-            font-size: 1.1rem; font-weight: bold; cursor: pointer; width: 100%; border-radius: 4px; transition: 0.3s;
-        }
-        .submit-btn:hover { background: #b34700; }
-
-        /* FOOTER CTA */
-        .cta-box { margin-top: 40px; text-align: center; padding: 30px; border-top: 1px solid #eee; }
-        .btn-call { 
-            background-color: var(--brand-orange); color: white; padding: 15px 35px; 
-            text-decoration: none; font-weight: bold; border-radius: 5px; display: inline-block; margin-top: 15px; 
-        }
-        
-        @media (max-width: 600px) {
-            .towns-grid { grid-template-columns: repeat(2, 1fr); }
-            h1 { font-size: 1.8rem; }
-        }
+        /* Animations recovered from your main design */
+        @keyframes moveGrid { from { background-position: 0 0; } to { background-position: 24px 24px; } }
+        .moving-grid { animation: moveGrid 3s linear infinite; }
+        @keyframes float1 { 0%, 100% { transform: translate(0, 0) scale(1); } 33% { transform: translate(100px, 50px) scale(1.3); } 66% { transform: translate(-50px, -30px) scale(0.9); } }
+        .orb-1 { animation: float1 15s ease-in-out infinite; }
+        .gradient-text { background: linear-gradient(90deg, #60a5fa, #3b82f6, #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        @keyframes floatParticle { 0% { transform: translateY(0) scale(0); opacity: 0; } 50% { opacity: 1; transform: translateY(-150px) scale(1.5); } 100% { transform: translateY(0) scale(0); opacity: 0; } }
+        .particle { animation: floatParticle 6s ease-in-out infinite; }
     </style>
 </head>
-<body>
+<body class="bg-white text-slate-900" x-data="{ 
+    navOpen: false,
+    activeSlide: 0,
+    slides: [
+        '/kitchen backsplash 0000 Shakopee Minneapolis Tile contractor.jpg',
+        '/gallery/kitchen backsplash done Shakopee Minneapolis Tile contractor.jpg',
+        '/gallery/Shakopee Minneapolis Tile contractor bathroom remodeling 15.jpg'
+    ],
+    next() { this.activeSlide = this.activeSlide === this.slides.length - 1 ? 0 : this.activeSlide + 1; },
+    init() { 
+        setInterval(() => this.next(), 3500);
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
+}" x-init="init()">
 
-<div class="container">
-    <header>
-        <h1>Service Area</h1>
-        <p class="sub-head">Based in Shakopee, <strong>True Craft Tile & Stone</strong> provides premium tile and stone installation to the following Minnesota communities.</p>
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="/" class="flex items-center gap-3">
+                <img src="/TC tile.jpg" class="h-14 w-auto" alt="Logo" />
+                <span class="font-bold text-lg tracking-tighter text-slate-900 hidden sm:block">True Craft Tile & Stone</span>
+            </a>
+            <div class="hidden lg:flex items-center space-x-8 font-bold text-xs uppercase tracking-widest text-slate-500">
+                <a href="/" class="hover:text-blue-700 transition">Home</a>
+                <a href="/gallery/" class="hover:text-blue-700 transition">Gallery</a>
+                <a href="/service-area/" class="text-blue-700 border-b-2 border-blue-700 transition">Service Area</a>
+                <a href="/#services" class="hover:text-blue-700 transition">Services</a>
+                <a href="tel:9524860554" class="bg-blue-600 text-white px-5 py-2 rounded-full hover:bg-blue-700 transition">(952) 486-0554</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative min-h-[70vh] bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden flex items-center">
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] moving-grid"></div>
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-3xl orb-1" style="background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);"></div>
+        <div id="particles"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 pt-20">
+            <div class="max-w-4xl">
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600/20 border border-blue-400/30 rounded-full text-blue-300 text-sm mb-8">
+                    <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                    Twin Cities Coverage
+                </div>
+                <h1 class="text-5xl lg:text-8xl font-bold text-white leading-tight mb-6">
+                    Serving the <span class="gradient-text">Entire Metro</span>
+                </h1>
+                <p class="text-xl text-slate-300 mb-8 max-w-2xl">
+                    From our home base in Shakopee, we bring 35+ years of master craftsmanship to every corner of the Twin Cities.
+                </p>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent"></div>
     </header>
 
-    <div class="towns-grid">
-        <div class="town-item">Apple Valley, MN</div>
-        <div class="town-item">Arden Hills, MN</div>
-        <div class="town-item">Argonne, MN</div>
-        <div class="town-item">Bloomington, MN</div>
-        <div class="town-item">Brooklyn Center, MN</div>
-        <div class="town-item">Brooklyn Park, MN</div>
-        <div class="town-item">Burnsville, MN</div>
-        <div class="town-item">Castle Rock, MN</div>
-        <div class="town-item">Chanhassen, MN</div>
-        <div class="town-item">Chaska, MN</div>
-        <div class="town-item">Columbia Heights, MN</div>
-        <div class="town-item">Crystal, MN</div>
-        <div class="town-item">Crystal Bay, MN</div>
-        <div class="town-item">Deephaven, MN</div>
-        <div class="town-item">Dundas, MN</div>
-        <div class="town-item">Eagan, MN</div>
-        <div class="town-item">Eden Prairie, MN</div>
-        <div class="town-item">Edina, MN</div>
-        <div class="town-item">Elko, MN</div>
-        <div class="town-item">Elko New Market, MN</div>
-        <div class="town-item">Excelsior, MN</div>
-        <div class="town-item">Falcon Heights, MN</div>
-        <div class="town-item">Farmington, MN</div>
-        <div class="town-item">Fort Snelling, MN</div>
-        <div class="town-item">Fridley, MN</div>
-        <div class="town-item">Golden Valley, MN</div>
-        <div class="town-item">Greenwood, MN</div>
-        <div class="town-item">Grey Cloud Island, MN</div>
-        <div class="town-item">Hampton, MN</div>
-        <div class="town-item">Heidelberg, MN</div>
-        <div class="town-item">Hilltop, MN</div>
-        <div class="town-item">Hopkins, MN</div>
-        <div class="town-item">Inver Grove, MN</div>
-        <div class="town-item">Inver Grove Heights, MN</div>
-        <div class="town-item">Jordan, MN</div>
-        <div class="town-item">Lakeville, MN</div>
-        <div class="town-item">Lauderdale, MN</div>
-        <div class="town-item">Lilydale, MN</div>
-        <div class="town-item">Little Canada, MN</div>
-        <div class="town-item">Lonsdale, MN</div>
-        <div class="town-item">Maplewood, MN</div>
-        <div class="town-item">Medicine Lake, MN</div>
-        <div class="town-item">Mendota, MN</div>
-        <div class="town-item">Mendota Heights, MN</div>
-        <div class="town-item">Minneapolis, MN</div>
-        <div class="town-item">Minnetonka, MN</div>
-        <div class="town-item">Minnetonka Beach, MN</div>
-        <div class="town-item">Minnetonka Mills, MN</div>
-        <div class="town-item">Mounds View, MN</div>
-        <div class="town-item">Navarre, MN</div>
-        <div class="town-item">New Brighton, MN</div>
-        <div class="town-item">New Hope, MN</div>
-        <div class="town-item">New Market, MN</div>
-        <div class="town-item">New Prague, MN</div>
-        <div class="town-item">New Trier, MN</div>
-        <div class="town-item">Newport, MN</div>
-        <div class="town-item">North Saint Paul, MN</div>
-        <div class="town-item">Northfield, MN</div>
-        <div class="town-item">Plymouth, MN</div>
-        <div class="town-item">Prior Lake, MN</div>
-        <div class="town-item">Randolph, MN</div>
-        <div class="town-item">Richfield, MN</div>
-        <div class="town-item">Robbinsdale, MN</div>
-        <div class="town-item">Rosemount, MN</div>
-        <div class="town-item">Roseville, MN</div>
-        <div class="town-item">Saint Anthony, MN</div>
-        <div class="town-item">Saint Louis Park, MN</div>
-        <div class="town-item">Saint Paul, MN</div>
-        <div class="town-item">Saint Paul Park, MN</div>
-        <div class="town-item">Savage, MN</div>
-        <div class="town-item">Shakopee, MN</div>
-        <div class="town-item">Shoreview, MN</div>
-        <div class="town-item">South Saint Paul, MN</div>
-        <div class="town-item">Spring Lake Park, MN</div>
-        <div class="town-item">Sunfish Lake, MN</div>
-        <div class="town-item">Tonka Bay, MN</div>
-        <div class="town-item">Vermillion, MN</div>
-        <div class="town-item">Veseli, MN</div>
-        <div class="town-item">Waterford, MN</div>
-        <div class="town-item">Wayzata, MN</div>
-        <div class="town-item">Webster, MN</div>
-        <div class="town-item">West Saint Paul, MN</div>
-        <div class="town-item">Woodland, MN</div>
-        <div class="town-item">Woodbury, MN</div>
-    </div>
-
-    <section class="form-section">
-        <div class="form-container">
-            <h2>Get a Free Estimate</h2>
-            <p>Quality craftsmanship starting at <strong>$5 per sq. ft.</strong></p>
-            
-            <form action="#" method="POST">
-                <div class="form-group">
-                    <label>Full Name*</label>
-                    <input type="text" name="name" required placeholder="Your Name">
+    <section class="py-24 bg-white reveal">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                <div class="lg:col-span-5">
+                    <h2 class="text-4xl font-bold mb-6 tracking-tighter uppercase">Local <span class="text-blue-700">Expertise</span></h2>
+                    <p class="text-slate-600 mb-8 leading-relaxed">
+                        We offer professional tile, LVP, and stone installation starting at <strong>$5 per sq. ft.</strong> across more than 30 major cities. If you are in the Twin Cities area, we have you covered.
+                    </p>
+                    <div class="grid grid-cols-2 gap-y-3 font-semibold text-slate-800">
+                        <span>✓ Shakopee</span><span>✓ Minneapolis</span>
+                        <span>✓ Edina</span><span>✓ Eden Prairie</span>
+                        <span>✓ Bloomington</span><span>✓ Prior Lake</span>
+                        <span>✓ Savage</span><span>✓ Chanhassen</span>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Phone Number*</label>
-                    <input type="tel" name="phone" required placeholder="(952) 486-0554">
+                
+                <div class="lg:col-span-7 relative h-[400px] overflow-hidden rounded-[2.5rem] shadow-2xl bg-slate-900">
+                    <template x-for="(slide, index) in slides" :key="index">
+                        <div x-show="activeSlide === index" x-transition:enter="transition duration-500" class="absolute inset-0">
+                            <img :src="slide" class="w-full h-full object-cover opacity-60" />
+                        </div>
+                    </template>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center text-white p-6">
+                            <h3 class="text-2xl font-bold mb-4">View Our Work Near You</h3>
+                            <a href="/gallery/" class="inline-block bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-xl font-bold transition">Open Gallery</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Service Needed*</label>
-                    <select name="service" required>
-                        <option value="">Select a Service</option>
-                        <option value="Shower">Custom Shower Tile</option>
-                        <option value="Backsplash">Kitchen Backsplash</option>
-                        <option value="Floor">Floor Tile Installation</option>
-                        <option value="Other">Other / Stone Work</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Project Details</label>
-                    <textarea name="message" rows="4" placeholder="Tell us about your project..."></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Request Quote</button>
-            </form>
+            </div>
         </div>
     </section>
 
-    <div class="cta-box">
-        <h3>Direct Contact</h3>
-        <a href="tel:9524860554" class="btn-call">Call (952) 486-0554</a>
-        <p style="margin-top: 20px;"><strong>1364 Savanna Drive, Shakopee MN 55379</strong></p>
-        <p style="font-size: 0.85rem; color: #888; font-style: italic;">Licensed & Insured Minnesota Contractor</p>
-    </div>
-</div>
+    <section class="py-20 bg-slate-50 border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                <script>
+                    const cities = ["Apple Valley", "Arden Hills", "Brooklyn Park", "Burnsville", "Chaska", "Eagan", "Excelsior", "Farmington", "Inver Grove", "Jordan", "Lakeville", "Maplewood", "Minnetonka", "New Prague", "Northfield", "Plymouth", "Richfield", "Rosemount", "St. Louis Park", "St. Paul", "Wayzata", "Woodbury"];
+                    cities.forEach(city => {
+                        document.write(`<div class="p-4 bg-white border border-slate-200 rounded-xl text-center text-sm font-medium text-slate-600 hover:border-blue-500 hover:text-blue-600 transition cursor-default">${city}, MN</div>`);
+                    });
+                </script>
+            </div>
+        </div>
+    </section>
 
+    <section class="bg-slate-900 py-24 text-center text-white relative overflow-hidden">
+        <div class="relative z-10 max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl lg:text-5xl font-bold mb-8">Schedule Your Shakopee or Metro Project</h2>
+            <p class="text-slate-400 mb-12 text-lg">Master-grade installation. Licensed, insured, and 5-star rated.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="tel:9524860554" class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-xl font-bold text-lg transition shadow-xl shadow-blue-600/30">Call (952) 486-0554</a>
+                <a href="/#work" class="bg-white/10 hover:bg-white/20 border border-white/20 px-10 py-4 rounded-xl font-bold text-lg transition">Email Request</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Recovered Particle Generator
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 20; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle absolute rounded-full';
+            p.style.left = Math.random() * 100 + '%';
+            p.style.top = Math.random() * 100 + '%';
+            p.style.width = p.style.height = (2 + Math.random() * 3) + 'px';
+            p.style.background = 'rgba(96, 165, 250, 0.4)';
+            p.style.animationDelay = Math.random() * 5 + 's';
+            particlesContainer.appendChild(p);
+        }
+    </script>
 </body>
 </html>
