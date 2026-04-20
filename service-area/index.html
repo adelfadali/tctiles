@@ -168,6 +168,26 @@
         </div>
     </div>
 </section>
+    <section id="map" class="w-full h-96 mb-0">
+    <div id="google-map" class="w-full h-full rounded-lg shadow-lg"></div>
+  </section>
+   
+
+<script>
+  function initMap() {
+    const shakopee = { lat: 44.7973, lng: -93.5273 };
+    const map = new google.maps.Map(document.getElementById("google-map"), {
+      zoom: 13,
+      center: shakopee,
+    });
+    new google.maps.Marker({
+      position: shakopee,
+      map: map,
+      title: "True Craft Tile & Stone - Shakopee, MN",
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfr6vidpdA6W71-vaDh3DY1xOugpjwKFY&callback=initMap" async defer></script>
 
     <footer class="bg-slate-950 pt-20 pb-10 border-t border-slate-900 relative z-10 text-slate-400">
         <div class="max-w-7xl mx-auto px-6">
