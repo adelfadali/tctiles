@@ -71,32 +71,35 @@
             </div>
         </a>
 
-        <div class="hidden lg:flex items-center space-x-10 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">
-            <a href="/" class="hover:text-white transition">Home</a>
-            <a href="/gallery/" class="hover:text-white transition">Gallery</a>
-            <a href="/service-area/" class="text-blue-500 border-b-2 border-blue-500 pb-1">Service Area</a>
-            <a href="tel:9524860554" class="gradient-blue shimmer pulse-btn text-white px-8 py-3.5 rounded-full font-black tracking-widest text-xs shadow-lg shadow-blue-600/40">(952) 486-0554</a>
+        <div class="hidden lg:flex items-center space-x-8 font-bold text-xs uppercase tracking-widest text-slate-500">
+            <a href="/" class="hover:text-blue-700 transition text-slate-900">Home</a>
+            <a href="/gallery/" class="hover:text-blue-700 transition text-slate-900">Gallery</a>
+            <a href="/service-area" class="hover:text-blue-700 transition">Service Area</a>
+            <a href="/#services" class="hover:text-blue-700 transition">Services</a>
+            <a href="/#about" class="hover:text-blue-700 transition">About</a>
+            <a href="/#faq" class="hover:text-blue-700 transition">FAQ</a>
         </div>
 
-        <button @click="navOpen = !navOpen" class="lg:hidden text-white p-2 focus:outline-none">
-            <svg x-show="!navOpen" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-            </svg>
-            <svg x-show="navOpen" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display: none;">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        <button @click="toggleNav()" class="lg:hidden flex items-center px-3 py-2 border rounded text-slate-700 border-slate-500 hover:text-blue-700 hover:border-blue-700 transition focus:outline-none">
+            <svg class="fill-current h-6 w-6" viewBox="0 0 20 20">
+                <path x-show="!navOpen" d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
+                <path x-show="navOpen" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 011.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
             </svg>
         </button>
     </div>
 
-    <div x-show="navOpen" 
-         x-transition 
-         class="lg:hidden bg-slate-900 border-b border-slate-800 py-6 px-6" 
-         style="display: none;">
-        <div class="flex flex-col space-y-4 text-sm font-bold uppercase tracking-widest text-slate-300">
-            <a href="/" class="py-2 border-b border-slate-800 hover:text-white">Home</a>
-            <a href="/gallery/" class="py-2 border-b border-slate-800 hover:text-white">Gallery</a>
-            <a href="/service-area/" class="py-2 border-b border-slate-800 text-blue-500">Service Area</a>
-            <a href="tel:9524860554" class="py-2 text-white">Call: (952) 486-0554</a>
+    <div class="lg:hidden bg-white border-t border-slate-100 shadow-md" 
+         x-show="navOpen" 
+         x-cloak 
+         @click.outside="closeNav()" 
+         x-transition>
+        <div class="flex flex-col space-y-2 px-6 pb-4 pt-2 font-bold text-sm uppercase tracking-wide text-slate-700">
+            <a href="/" class="py-3 border-b border-slate-200 hover:bg-blue-50" @click="closeNav()">Home</a>
+            <a href="/gallery/" class="py-3 border-b border-slate-200 hover:bg-blue-50" @click="closeNav()">Gallery</a>
+            <a href="/service-area" class="py-3 border-b border-slate-200 hover:bg-blue-50" @click="closeNav()">Service Area</a>
+            <a href="/#services" class="py-3 border-b border-slate-200 hover:bg-blue-50" @click="closeNav()">Services</a>
+            <a href="/#about" class="py-3 border-b border-slate-200 hover:bg-blue-50" @click="closeNav()">About</a>
+            <a href="/#faq" class="py-3 hover:bg-blue-50" @click="closeNav()">FAQ</a>
         </div>
     </div>
 </nav>
