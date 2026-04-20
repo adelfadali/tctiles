@@ -138,28 +138,36 @@
         </div>
     </header>
 
-    <section class="py-24 bg-white text-slate-900 rounded-t-[3rem] relative z-20 shadow-[0_-20px_50px_rgba(0,0,0,0.2)]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-6xl font-black tracking-tight mb-4 uppercase italic">Cities We <span class="text-blue-600">Serve</span></h2>
-                <div class="h-1 w-20 gradient-blue mx-auto mb-6"></div>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 lg:gap-4">
-                <script>
-                    const cities = ["Apple Valley", "Arden Hills", "Bloomington", "Brooklyn Park", "Burnsville", "Chanhassen", "Chaska", "Eagan", "Eden Prairie", "Edina", "Excelsior", "Farmington", "Inver Grove", "Jordan", "Lakeville", "Maplewood", "Minneapolis", "Minnetonka", "New Prague", "Northfield", "Plymouth", "Prior Lake", "Richfield", "Rosemount", "Savage", "Shakopee", "St. Louis Park", "St. Paul", "Wayzata", "Woodbury"];
-                    cities.sort().forEach(city => {
-                        const slug = city.toLowerCase().replace(/\s+/g, '-').replace(/\./g, '');
-                        document.write(`<a href="/service-area/${slug}/" class="city-link block p-5 bg-slate-50 border border-slate-100 rounded-2xl text-center group hover:bg-slate-900 transition-all"><p class="text-sm font-black text-slate-700 group-hover:text-blue-500 transition-colors uppercase tracking-tight">${city}</p></a>`);
-                    });
-                </script>
-            </div>
-            <div class="mt-16 p-8 bg-slate-950 rounded-[2.5rem] text-center text-white reveal">
-                <h3 class="text-2xl font-black italic mb-2">Don't see your city?</h3>
-                <p class="text-slate-400 mb-6">We cover a 50-mile radius around Shakopee MN.</p>
-                <a href="sms:9524860554" class="inline-block text-blue-400 font-black border border-blue-400/30 px-6 py-2 rounded-full hover:bg-blue-400 hover:text-slate-950 transition">Text For Free Quote </a>
-            </div>
+ <section class="py-24 bg-white text-slate-900 rounded-t-[3rem] relative z-20 shadow-[0_-20px_50px_rgba(0,0,0,0.2)]">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl lg:text-6xl font-black tracking-tight mb-4 uppercase italic">Cities We <span class="text-blue-600">Serve</span></h2>
+            <div class="h-1 w-20 gradient-blue mx-auto mb-6"></div>
         </div>
-    </section>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 lg:gap-4">
+            <script>
+                const cities = ["Apple Valley", "Arden Hills", "Bloomington", "Brooklyn Park", "Burnsville", "Chanhassen", "Chaska", "Eagan", "Eden Prairie", "Edina", "Excelsior", "Farmington", "Inver Grove", "Jordan", "Lakeville", "Maplewood", "Minneapolis", "Minnetonka", "New Prague", "Northfield", "Plymouth", "Prior Lake", "Richfield", "Rosemount", "Savage", "Shakopee", "St. Louis Park", "St. Paul", "Wayzata", "Woodbury"];
+                cities.sort().forEach(city => {
+                    const slug = city.toLowerCase().replace(/\s+/g, '-').replace(/\./g, '');
+                    document.write(`
+                        <a href="/service-area/${slug}/" class="city-link block p-5 bg-slate-50 border border-slate-100 rounded-2xl text-center group hover:bg-slate-900 transition-all">
+                            <p class="text-sm font-black text-slate-700 group-hover:text-blue-500 transition-colors uppercase tracking-tight">${city}</p>
+                        </a>
+                    `);
+                });
+            </script>
+        </div>
+
+        <div class="mt-16 p-8 bg-slate-950 rounded-[2.5rem] text-center text-white reveal">
+            <h3 class="text-2xl font-black italic mb-2">Don't see your city?</h3>
+            <p class="text-slate-400 mb-6">We cover a 50-mile radius around Shakopee MN.</p>
+            <a href="sms:9524860554" class="inline-block text-blue-400 font-black border border-blue-400/30 px-6 py-2 rounded-full hover:bg-blue-400 hover:text-slate-950 transition">
+                Text For Free Quote
+            </a>
+        </div>
+    </div>
+</section>
 
     <footer class="bg-slate-950 pt-20 pb-10 border-t border-slate-900 relative z-10 text-slate-400">
         <div class="max-w-7xl mx-auto px-6">
