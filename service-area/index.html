@@ -3,10 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Service Area | True Craft Tile & Stone</title>
+    <title>Service Area | True Craft Tile & Stone | Shakopee & Twin Cities</title>
     
-    <meta name="description" content="Master tile installation serving Shakopee, Minneapolis, and the Twin Cities. Licensed and insured professional stone work starting at $5/sq. ft.">
+    <meta name="description" content="Master tile installation serving Shakopee, Minneapolis, and the Twin Cities. Formerly Elfadali LLC. Licensed and insured stone work starting at $5/sq. ft.">
     <link rel="canonical" href="https://www.tctiles.com/service-area/" />
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.tctiles.com/service-area/">
+    <meta property="og:title" content="Expert Tile Installation | Shakopee & Twin Cities Metro">
+    <meta property="og:description" content="Professional stone and tile work starting at $5/sq. ft. Serving the 7-county metro with 35+ years of experience.">
+    <meta property="og:image" content="https://www.tctiles.com/TC%20tile.jpg">
+    <meta property="article:publisher" content="https://www.facebook.com/elfadali.llc/">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HomeAndConstructionBusiness",
+      "name": "True Craft Tile & Stone",
+      "alternateName": "Elfadali LLC",
+      "image": "https://www.tctiles.com/TC%20tile.jpg",
+      "@id": "https://www.tctiles.com",
+      "url": "https://www.tctiles.com",
+      "telephone": "+19524860554",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1364 Savanna Drive",
+        "addressLocality": "Shakopee",
+        "addressRegion": "MN",
+        "postalCode": "55379",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 44.7678,
+        "longitude": -93.5049
+      },
+      "areaServed": ["Shakopee", "Minneapolis", "St. Paul", "Eden Prairie", "Bloomington", "Prior Lake", "Savage", "Burnsville"],
+      "sameAs": [
+        "https://www.facebook.com/elfadali.llc/"
+      ]
+    }
+    </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -60,20 +98,19 @@
          class="fixed w-full z-50 transition-all duration-300 border-b py-4">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
             <a href="/" class="flex items-center gap-3">
-                <img src="/TC tile.jpg" class="h-10 lg:h-12 w-auto rounded shadow-lg" alt="Logo">
+                <img src="/TC tile.jpg" class="h-10 lg:h-12 w-auto rounded shadow-lg" alt="True Craft Tile and Stone Logo - Shakopee MN">
                 <div class="leading-none text-white uppercase">
                     <span class="block font-black text-lg lg:text-xl tracking-tighter">True Craft</span>
                     <span class="block text-[9px] lg:text-[10px] tracking-[0.3em] text-blue-500 font-bold">Tile & Stone</span>
                 </div>
             </a>
 
-            <div class="hidden lg:flex items-center space-x-8 font-bold text-[10px] uppercase tracking-[0.2em] text-slate-400">
+            <div class="hidden lg:flex items-center space-x-10 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">
                 <a href="/" class="hover:text-white transition">Home</a>
                 <a href="/gallery/" class="hover:text-white transition">Gallery</a>
-                <a href="/service-area" class="text-blue-500">Service Area</a>
+                <a href="/service-area/" class="text-blue-500 border-b-2 border-blue-500 pb-1">Service Area</a>
                 <a href="/#services" class="hover:text-white transition">Services</a>
-                <a href="/#faq" class="hover:text-white transition">FAQ</a>
-                <a href="tel:9524860554" class="gradient-blue px-6 py-2 rounded-full text-white text-[10px] font-black tracking-widest shadow-lg">Call Now</a>
+                <a href="tel:9524860554" class="gradient-blue shimmer pulse-btn text-white px-8 py-3.5 rounded-full font-black tracking-widest text-xs shadow-lg shadow-blue-600/40">(952) 486-0554</a>
             </div>
 
             <button @click="navOpen = !navOpen" class="lg:hidden text-white p-2 focus:outline-none">
@@ -96,13 +133,12 @@
                 <a href="/gallery/" @click="navOpen = false">Gallery</a>
                 <a href="/service-area" class="text-blue-500" @click="navOpen = false">Service Area</a>
                 <a href="/#services" @click="navOpen = false">Services</a>
-                <a href="/#faq" @click="navOpen = false">FAQ</a>
                 <a href="tel:9524860554" class="text-blue-400">Call Now</a>
             </div>
         </div>
     </nav>
 
-    <div class="lg:hidden fixed top-[81px] left-0 w-full z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 py-4 px-6">
+    <div class="lg:hidden fixed top-[81px] left-0 w-full z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 py-4 px-6 shadow-xl">
         <a href="sms:9524860554" class="gradient-blue shimmer pulse-btn text-white w-full py-4 rounded-2xl font-black text-center flex items-center justify-center gap-3 shadow-2xl uppercase tracking-widest text-sm">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 animate-bounce" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
@@ -116,7 +152,7 @@
         <div class="absolute inset-0 bg-grid-pattern opacity-40"></div>
         <div class="relative z-10 max-w-5xl mx-auto px-6">
             <h1 class="text-6xl lg:text-9xl font-black text-white mb-6 tracking-tighter leading-tight">Our <span class="text-gradient">Region</span></h1>
-            <p class="text-lg lg:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">Expert tile and stone installation based in <span class="text-white font-bold">Shakopee</span>. Serving the 7-county metro.</p>
+            <p class="text-lg lg:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">Master tile installation based in <span class="text-white font-bold">Shakopee</span>. Serving the Twin Cities metro with 35+ years of precision.</p>
         </div>
     </header>
 
@@ -139,19 +175,7 @@
             <div class="mt-16 p-8 bg-slate-950 rounded-[2.5rem] text-center text-white reveal">
                 <h3 class="text-2xl font-black italic mb-2">Don't see your city?</h3>
                 <p class="text-slate-400 mb-6">We cover a 50-mile radius around Shakopee MN.</p>
-                <a href="sms:9524860554" class="inline-block text-blue-400 font-black border border-blue-400/30 px-6 py-2 rounded-full hover:bg-blue-400 hover:text-slate-950 transition">Text For Free Quote</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-32 bg-slate-950 relative overflow-hidden text-center">
-        <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
-        <div class="relative z-10 max-w-4xl mx-auto px-6 reveal">
-            <h2 class="text-4xl lg:text-7xl font-black text-white mb-6 italic tracking-tight">Ready for a <span class="text-blue-500">Free Estimate?</span></h2>
-            <p class="text-slate-400 text-lg lg:text-xl mb-12">Quality workmanship starting at <span class="text-white font-bold">$5 per sq. ft.</span></p>
-            <div class="flex flex-col md:flex-row items-center justify-center gap-6">
-                <a href="/contact-form.html" class="gradient-blue shimmer pulse-btn text-white font-black py-6 px-12 rounded-2xl text-2xl hover:scale-105 transition-all shadow-2xl uppercase tracking-widest w-full md:w-auto">Request A Quote</a>
-                <a href="sms:9524860554" class="bg-slate-900 border border-slate-800 text-white font-bold py-6 px-12 rounded-2xl text-2xl hover:bg-slate-800 transition-all w-full md:w-auto">Send A Text</a>
+                <a href="sms:9524860554" class="inline-block text-blue-400 font-black border border-blue-400/30 px-6 py-2 rounded-full hover:bg-blue-400 hover:text-slate-950 transition">Text For Free Quote </a>
             </div>
         </div>
     </section>
@@ -159,7 +183,7 @@
     <footer class="bg-slate-950 py-16 text-center border-t border-slate-900 relative z-10">
         <div class="max-w-7xl mx-auto px-6">
             <p class="text-slate-600 text-[10px] font-black uppercase tracking-[.4em] mb-4">True Craft Tile & Stone</p>
-            <p class="text-slate-500 text-xs">Shakopee, Minnesota | Licensed & Insured</p>
+            <p class="text-slate-500 text-xs">Shakopee, Minnesota | Licensed & Insured Contractor</p>
         </div>
     </footer>
 
