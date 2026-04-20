@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Service Area | True Craft Tile & Stone</title>
     
-    <meta name="description" content="Professional tile installation serving Shakopee, Minneapolis, and the entire Twin Cities metro. Quality craftsmanship starting at $5/sq. ft.">
+    <meta name="description" content="Master tile installation serving Shakopee, Minneapolis, and the Twin Cities. Licensed and insured professional stone work starting at $5/sq. ft.">
     <link rel="canonical" href="https://www.tctiles.com/service-area/" />
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -15,6 +15,7 @@
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #f8fafc; scroll-behavior: smooth; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        
         .gradient-blue { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); }
         .text-gradient { background: linear-gradient(to right, #60a5fa, #3b82f6, #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
@@ -24,12 +25,37 @@
             background-size: 40px 40px;
         }
 
+        /* Catchy Pulse Animation */
+        @keyframes pulse-blue {
+            0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(59, 130, 246, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+        }
+
+        /* Glossy Shimmer Effect */
+        .shimmer { position: relative; overflow: hidden; }
+        .shimmer::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(45deg);
+            animation: shimmer-sweep 3s infinite;
+        }
+        @keyframes shimmer-sweep {
+            0% { transform: translate(-100%, -100%) rotate(45deg); }
+            100% { transform: translate(100%, 100%) rotate(45deg); }
+        }
+
+        .pulse-btn { animation: pulse-blue 2s infinite; }
         .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* City Link Hover Effects */
-        .city-link { transition: all 0.3s ease; }
-        .city-link:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.2); }
+        .city-link { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .city-link:hover { transform: translateY(-5px); }
     </style>
 </head>
 <body x-data="{ navOpen: false, scrolled: false }" @scroll.window="scrolled = (window.pageYOffset > 50)" class="overflow-x-hidden">
@@ -50,7 +76,7 @@
                 <a href="/gallery/" class="hover:text-white transition">Gallery</a>
                 <a href="/service-area/" class="text-blue-500 border-b-2 border-blue-500 pb-1">Service Area</a>
                 <a href="/#services" class="hover:text-white transition">Services</a>
-                <a href="tel:9524860554" class="gradient-blue text-white px-7 py-3 rounded-full hover:scale-105 transition shadow-lg shadow-blue-600/30">
+                <a href="tel:9524860554" class="gradient-blue shimmer pulse-btn text-white px-8 py-3.5 rounded-full hover:scale-105 transition shadow-lg shadow-blue-600/40 font-black tracking-widest text-xs">
                     (952) 486-0554
                 </a>
             </div>
@@ -71,23 +97,25 @@
         </div>
     </nav>
 
-    <div class="lg:hidden fixed top-[72px] left-0 w-full z-40 bg-slate-900/90 backdrop-blur-sm border-b border-slate-800 py-3 px-6 flex justify-center">
-        <a href="tel:9524860554" class="gradient-blue text-white w-full max-w-sm py-3.5 rounded-xl font-black text-center flex items-center justify-center gap-3 shadow-lg">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.176 1.106l3.515 3.515a1.203 1.203 0 010 1.702L7.994 8.02a11.531 11.531 0 007.987 7.987l1.697-1.697a1.203 1.203 0 011.702 0l3.515 3.515a1.203 1.203 0 010 1.702l-2.059 2.059c-1.637 1.637-4.57 2.05-7.79 0C8.423 18.66 5.34 15.577 2.414 10.95c-2.05-3.22-1.637-6.153 0-7.79l2.06-2.059a1.203 1.203 0 011.702 0z"/></svg>
+    <div class="lg:hidden fixed top-[72px] left-0 w-full z-40 bg-slate-900/95 backdrop-blur-sm border-b border-slate-800 py-4 px-6 flex justify-center">
+        <a href="tel:9524860554" class="gradient-blue shimmer pulse-btn text-white w-full max-w-sm py-4 rounded-2xl font-black text-center flex items-center justify-center gap-3 shadow-2xl">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 animate-bounce" fill="currentColor" viewBox="0 0 24 24"><path d="M6.176 1.106l3.515 3.515a1.203 1.203 0 010 1.702L7.994 8.02a11.531 11.531 0 007.987 7.987l1.697-1.697a1.203 1.203 0 011.702 0l3.515 3.515a1.203 1.203 0 010 1.702l-2.059 2.059c-1.637 1.637-4.57 2.05-7.79 0C8.423 18.66 5.34 15.577 2.414 10.95c-2.05-3.22-1.637-6.153 0-7.79l2.06-2.059a1.203 1.203 0 011.702 0z"/></svg>
             CALL REDA: (952) 486-0554
         </a>
     </div>
 
-    <header class="relative min-h-[60vh] flex items-center justify-center pt-48 pb-20 overflow-hidden text-center">
+    <header class="relative min-h-[60vh] flex items-center justify-center pt-56 pb-20 overflow-hidden text-center">
         <div class="absolute inset-0 bg-slate-950"></div>
         <div class="absolute inset-0 bg-grid-pattern opacity-40"></div>
+        <div class="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px]"></div>
+        
         <div class="relative z-10 max-w-5xl mx-auto px-6">
             <h1 class="text-6xl lg:text-9xl font-black text-white mb-6 tracking-tighter leading-tight">
                 Our <span class="text-gradient">Region</span>
             </h1>
             <p class="text-lg lg:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                Premium tile and stone installation based in <span class="text-white font-bold">Shakopee</span>. 
-                Bringing 35+ years of experience to every city in the Twin Cities metro.
+                Expert tile and stone installation based in <span class="text-white font-bold">Shakopee</span>. 
+                Bringing master craftsmanship to residential and commercial projects across the Twin Cities metro.
             </p>
         </div>
     </header>
@@ -95,20 +123,20 @@
     <section class="py-24 bg-white text-slate-900 rounded-t-[3rem] relative z-20 shadow-[0_-20px_50px_rgba(0,0,0,0.2)]">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-6xl font-black tracking-tight mb-4">Cities We <span class="text-blue-600">Serve</span></h2>
-                <p class="text-slate-500 font-bold uppercase tracking-widest text-xs">Select a city to see our local work</p>
+                <h2 class="text-4xl lg:text-6xl font-black tracking-tight mb-4 uppercase italic">Cities We <span class="text-blue-600">Serve</span></h2>
+                <div class="h-1 w-20 gradient-blue mx-auto mb-6"></div>
+                <p class="text-slate-500 font-bold uppercase tracking-widest text-xs">Select a city for local project details</p>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 lg:gap-4">
                 <script>
                     const cities = ["Apple Valley", "Arden Hills", "Bloomington", "Brooklyn Park", "Burnsville", "Chanhassen", "Chaska", "Eagan", "Eden Prairie", "Edina", "Excelsior", "Farmington", "Inver Grove", "Jordan", "Lakeville", "Maplewood", "Minneapolis", "Minnetonka", "New Prague", "Northfield", "Plymouth", "Prior Lake", "Richfield", "Rosemount", "Savage", "Shakopee", "St. Louis Park", "St. Paul", "Wayzata", "Woodbury"];
                     cities.sort().forEach(city => {
-                        // This creates a URL-friendly version of the city name (e.g. "St. Paul" -> "st-paul")
                         const slug = city.toLowerCase().replace(/\s+/g, '-').replace(/\./g, '');
                         document.write(`
-                            <a href="/service-area/${slug}/" class="city-link block p-5 bg-slate-50 border border-slate-100 rounded-2xl text-center group">
-                                <p class="text-sm font-black text-slate-700 group-hover:text-blue-600 transition-colors uppercase tracking-tight">${city}</p>
-                                <span class="text-[9px] text-slate-400 font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">View Local Projects</span>
+                            <a href="/service-area/${slug}/" class="city-link block p-5 bg-slate-50 border border-slate-100 rounded-2xl text-center group hover:bg-slate-900 transition-all">
+                                <p class="text-sm font-black text-slate-700 group-hover:text-blue-500 transition-colors uppercase tracking-tight">${city}</p>
+                                <span class="text-[8px] text-slate-400 font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">Browse Work</span>
                             </a>
                         `);
                     });
@@ -117,45 +145,36 @@
         </div>
     </section>
 
-    <section id="contact" class="py-24 bg-slate-950 relative overflow-hidden">
+    <section id="contact" class="py-32 bg-slate-950 relative overflow-hidden text-center">
         <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
         <div class="relative z-10 max-w-4xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-4xl lg:text-6xl font-black text-white mb-4">Get Your <span class="text-blue-500">Estimate</span></h2>
-                <p class="text-slate-400">Master-grade installation starting at <span class="text-white font-bold">$5/sq. ft.</span></p>
+            <div class="reveal">
+                <h2 class="text-4xl lg:text-7xl font-black text-white mb-6 italic tracking-tight">Ready for a <span class="text-blue-500">Free Estimate?</span></h2>
+                <p class="text-slate-400 text-lg lg:text-xl mb-12 max-w-2xl mx-auto">
+                    Contact Reda today to discuss your project. Master-grade installation starting at <span class="text-white font-bold">$5 per sq. ft.</span>
+                </p>
+                
+                <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                    <a href="https://formspree.io/f/mqakppov" class="gradient-blue shimmer pulse-btn text-white font-black py-6 px-12 rounded-2xl text-2xl hover:scale-105 transition-all shadow-2xl shadow-blue-600/30 uppercase tracking-widest w-full md:w-auto">
+                        Request A Quote
+                    </a>
+                    
+                    <a href="tel:9524860554" class="bg-slate-900 border border-slate-800 text-white font-bold py-6 px-12 rounded-2xl text-2xl hover:bg-slate-800 transition-all w-full md:w-auto">
+                        Call (952) 486-0554
+                    </a>
+                </div>
             </div>
-
-            <form action="https://formspree.io/f/mqakppov" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6 reveal">
-                <div class="space-y-2">
-                    <label class="text-xs font-black uppercase tracking-widest text-slate-500 ml-2">Your Name</label>
-                    <input type="text" name="name" placeholder="Full Name" required class="w-full bg-slate-900 border border-slate-800 rounded-xl px-6 py-4 text-white placeholder:text-slate-700 focus:outline-none focus:border-blue-500 transition">
-                </div>
-                <div class="space-y-2">
-                    <label class="text-xs font-black uppercase tracking-widest text-slate-500 ml-2">Phone Number</label>
-                    <input type="tel" name="phone" placeholder="(952) 000-0000" required class="w-full bg-slate-900 border border-slate-800 rounded-xl px-6 py-4 text-white placeholder:text-slate-700 focus:outline-none focus:border-blue-500 transition">
-                </div>
-                <div class="md:col-span-2 space-y-2">
-                    <label class="text-xs font-black uppercase tracking-widest text-slate-500 ml-2">Project Details</label>
-                    <textarea name="message" rows="4" placeholder="Describe your tile project (size, room type, etc.)" required class="w-full bg-slate-900 border border-slate-800 rounded-xl px-6 py-4 text-white placeholder:text-slate-700 focus:outline-none focus:border-blue-500 transition"></textarea>
-                </div>
-                <div class="md:col-span-2 mt-4">
-                    <button type="submit" class="w-full gradient-blue text-white font-black py-5 rounded-2xl text-xl hover:scale-[1.02] active:scale-95 transition shadow-2xl shadow-blue-600/30">
-                        Submit Request
-                    </button>
-                </div>
-            </form>
         </div>
     </section>
 
-    <footer class="bg-slate-950 py-16 text-center border-t border-slate-900">
+    <footer class="bg-slate-950 py-16 text-center border-t border-slate-900 relative z-10">
         <div class="max-w-7xl mx-auto px-6">
             <p class="text-slate-600 text-[10px] font-black uppercase tracking-[.4em] mb-4">True Craft Tile & Stone</p>
-            <p class="text-slate-500 text-xs">1364 Savanna Drive, Shakopee MN 55379 | Licensed & Insured</p>
+            <p class="text-slate-500 text-xs">1364 Savanna Drive, Shakopee MN 55379 | Professional Grade Masonry</p>
         </div>
     </footer>
 
     <script>
-        // Scroll Reveal Logic
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.1 });
